@@ -2,7 +2,7 @@
 	<View layout="vertical">
 		<View id="navView">
 			<View id="button" />
-			<Label id="title">Empresa Jr.</Label>			
+			<Label class="title">Empresa Jr.</Label>			
 		</View>
 		<ScrollableView id="scrollview" showPagingControl="true">
             <View id="view1" backgroundImage="images/outros/background.png" layout="vertical">

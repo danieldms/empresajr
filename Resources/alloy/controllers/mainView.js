@@ -24,12 +24,12 @@ function Controller() {
         id: "button"
     });
     $.__views.navView.add($.__views.button);
-    $.__views.title = Ti.UI.createLabel({
-        height: "46dp",
+    $.__views.__alloyId80 = Ti.UI.createLabel({
         font: {
             fontSize: "18dp",
             fontWeight: "bold"
         },
+        height: "46dp",
         color: "#FFF",
         textAlign: "center",
         shadowColor: "#000",
@@ -38,17 +38,17 @@ function Controller() {
             y: "1dp"
         },
         text: "Empresa Jr.",
-        id: "title"
+        id: "__alloyId80"
     });
-    $.__views.navView.add($.__views.title);
-    var __alloyId80 = [];
+    $.__views.navView.add($.__views.__alloyId80);
+    var __alloyId81 = [];
     $.__views.view1 = Ti.UI.createView({
         id: "view1",
         backgroundImage: "images/outros/background.png",
         layout: "vertical"
     });
-    __alloyId80.push($.__views.view1);
-    $.__views.__alloyId81 = Ti.UI.createLabel({
+    __alloyId81.push($.__views.view1);
+    $.__views.__alloyId82 = Ti.UI.createLabel({
         font: {
             fontSize: 18,
             fontWeight: "bold"
@@ -57,10 +57,10 @@ function Controller() {
         left: 30,
         top: 30,
         text: "CONSULTORIA",
-        id: "__alloyId81"
+        id: "__alloyId82"
     });
-    $.__views.view1.add($.__views.__alloyId81);
-    $.__views.__alloyId82 = Ti.UI.createLabel({
+    $.__views.view1.add($.__views.__alloyId82);
+    $.__views.__alloyId83 = Ti.UI.createLabel({
         font: {
             fontSize: 18,
             fontWeight: "bold"
@@ -69,10 +69,10 @@ function Controller() {
         left: 30,
         top: "0",
         text: "ORGANIZACIONAL",
-        id: "__alloyId82"
+        id: "__alloyId83"
     });
-    $.__views.view1.add($.__views.__alloyId82);
-    $.__views.__alloyId83 = Ti.UI.createLabel({
+    $.__views.view1.add($.__views.__alloyId83);
+    $.__views.__alloyId84 = Ti.UI.createLabel({
         font: {
             fontSize: 12
         },
@@ -81,16 +81,16 @@ function Controller() {
         top: 10,
         right: 50,
         text: "ANÁLISE GERAL DA ORGANIZAÇÃO PARA QUE SE ESTABELEÇA UM MODELO DE ESTRUTURA MAIS ADEQUADO.",
-        id: "__alloyId83"
+        id: "__alloyId84"
     });
-    $.__views.view1.add($.__views.__alloyId83);
+    $.__views.view1.add($.__views.__alloyId84);
     $.__views.view2 = Ti.UI.createView({
         id: "view2",
         backgroundImage: "images/outros/background.png",
         layout: "vertical"
     });
-    __alloyId80.push($.__views.view2);
-    $.__views.__alloyId84 = Ti.UI.createLabel({
+    __alloyId81.push($.__views.view2);
+    $.__views.__alloyId85 = Ti.UI.createLabel({
         font: {
             fontSize: 18,
             fontWeight: "bold"
@@ -99,10 +99,10 @@ function Controller() {
         left: 30,
         top: 30,
         text: "SOLUÇÃO",
-        id: "__alloyId84"
+        id: "__alloyId85"
     });
-    $.__views.view2.add($.__views.__alloyId84);
-    $.__views.__alloyId85 = Ti.UI.createLabel({
+    $.__views.view2.add($.__views.__alloyId85);
+    $.__views.__alloyId86 = Ti.UI.createLabel({
         font: {
             fontSize: 18,
             fontWeight: "bold"
@@ -111,10 +111,10 @@ function Controller() {
         left: 30,
         top: "0",
         text: "EM MARKETING",
-        id: "__alloyId85"
+        id: "__alloyId86"
     });
-    $.__views.view2.add($.__views.__alloyId85);
-    $.__views.__alloyId86 = Ti.UI.createLabel({
+    $.__views.view2.add($.__views.__alloyId86);
+    $.__views.__alloyId87 = Ti.UI.createLabel({
         font: {
             fontSize: 12
         },
@@ -123,11 +123,11 @@ function Controller() {
         top: 10,
         right: 50,
         text: "PESQUISAS DE MERCADO E ESTUDO EXPLORATÓRIOS, ELABORAÇÃO DE PLANOS DE MARKETING.",
-        id: "__alloyId86"
+        id: "__alloyId87"
     });
-    $.__views.view2.add($.__views.__alloyId86);
+    $.__views.view2.add($.__views.__alloyId87);
     $.__views.scrollview = Ti.UI.createScrollableView({
-        views: __alloyId80,
+        views: __alloyId81,
         id: "scrollview",
         showPagingControl: "true"
     });

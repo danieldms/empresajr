@@ -6,7 +6,7 @@
 
 ".labelfixed":{ font: {fontSize: 11}, left: 5, top: 4 },
 
-"#title": {	font: {fontSize: 20, fontWeight: "bold"}, color:"#FFF", left: 40, top: 5},
+"#titlenav": {	font: {fontSize: 20, fontWeight: "bold"}, color:"#FFF", left: 40, top: 15},
 
 ".menuItem": { layout:"horizontal", width:"100%", height:39, anchorPoint: {y:1}, toggle: "false"},
 

@@ -27,30 +27,21 @@ function Controller() {
     });
     $.__views.navView.add($.__views.button);
     $.__views.title = Ti.UI.createLabel({
-        height: "46dp",
         font: {
-            fontSize: "18dp",
-            fontWeight: "bold"
-        },
-        color: "#FFF",
-        textAlign: "center",
-        shadowColor: "#000",
-        shadowOffset: {
-            x: "0dp",
-            y: "1dp"
+            fontFamily: "DIN-BoldAlternate"
         },
         text: "Localização",
         id: "title"
     });
     $.__views.navView.add($.__views.title);
-    $.__views.__alloyId87 = Ti.UI.createView({
+    $.__views.__alloyId88 = Ti.UI.createView({
         layout: "vertical",
-        id: "__alloyId87"
+        id: "__alloyId88"
     });
-    $.__views.mapa.add($.__views.__alloyId87);
-    var __alloyId88 = [];
+    $.__views.mapa.add($.__views.__alloyId88);
+    var __alloyId89 = [];
     $.__views.mapview = Ti.Map.createView({
-        annotations: __alloyId88,
+        annotations: __alloyId89,
         id: "mapview",
         ns: Ti.Map,
         animate: "true",
@@ -59,17 +50,17 @@ function Controller() {
         height: "250",
         mapType: Ti.Map.STANDARD_TYPE
     });
-    $.__views.__alloyId87.add($.__views.mapview);
+    $.__views.__alloyId88.add($.__views.mapview);
     setRegion ? $.__views.mapview.addEventListener("complete", setRegion) : __defers["$.__views.mapview!complete!setRegion"] = true;
-    $.__views.__alloyId89 = Ti.UI.createView({
+    $.__views.__alloyId90 = Ti.UI.createView({
         height: 22,
         left: 0,
         layout: "vertical",
         backgroundColor: "#f5f5f5",
-        id: "__alloyId89"
+        id: "__alloyId90"
     });
-    $.__views.__alloyId87.add($.__views.__alloyId89);
-    $.__views.__alloyId90 = Ti.UI.createLabel({
+    $.__views.__alloyId88.add($.__views.__alloyId90);
+    $.__views.__alloyId91 = Ti.UI.createLabel({
         font: {
             fontSize: 11,
             fontWeight: "bold"
@@ -78,10 +69,10 @@ function Controller() {
         top: 6,
         color: "#8a8a8a",
         text: "Endereço",
-        id: "__alloyId90"
+        id: "__alloyId91"
     });
-    $.__views.__alloyId89.add($.__views.__alloyId90);
-    $.__views.__alloyId91 = Ti.UI.createLabel({
+    $.__views.__alloyId90.add($.__views.__alloyId91);
+    $.__views.__alloyId92 = Ti.UI.createLabel({
         font: {
             fontSize: 12
         },
@@ -91,9 +82,9 @@ function Controller() {
         right: "10",
         top: "10",
         textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
-        id: "__alloyId91"
+        id: "__alloyId92"
     });
-    $.__views.__alloyId87.add($.__views.__alloyId91);
+    $.__views.__alloyId88.add($.__views.__alloyId92);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var args = arguments[0] || {};

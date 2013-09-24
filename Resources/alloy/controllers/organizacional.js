@@ -25,29 +25,20 @@ function Controller() {
     });
     $.__views.navView.add($.__views.button);
     $.__views.title = Ti.UI.createLabel({
-        height: "46dp",
         font: {
-            fontSize: "18dp",
-            fontWeight: "bold"
-        },
-        color: "#FFF",
-        textAlign: "center",
-        shadowColor: "#000",
-        shadowOffset: {
-            x: "0dp",
-            y: "1dp"
+            fontFamily: "DIN-BoldAlternate"
         },
         text: "Organizacional",
         id: "title"
     });
     $.__views.navView.add($.__views.title);
-    $.__views.__alloyId99 = Ti.UI.createScrollView({
+    $.__views.__alloyId100 = Ti.UI.createScrollView({
         backgroundColor: "transparent",
         layout: "vertical",
         scrollingEnabled: "true",
-        id: "__alloyId99"
+        id: "__alloyId100"
     });
-    $.__views.organizacional.add($.__views.__alloyId99);
+    $.__views.organizacional.add($.__views.__alloyId100);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var args = arguments[0] || {};

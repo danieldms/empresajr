@@ -1,4 +1,5 @@
-ts	1379999805000
+ts	1380034397000
+.DS_Store	6148
 Default-Landscape.jpg	36232
 Default-Portrait.jpg	28479
 Default.jpg	17184
@@ -12,59 +13,59 @@ alloy
 	controllers
 		BaseController.js	1108
 		BaseController.js.uncompressed.js	5693
-		consultoriafinanceira.js	3212
-		consultoriafinanceira.js.uncompressed.js	4294
-		estudomkt.js	3141
-		estudomkt.js.uncompressed.js	4223
-		faleconosco.js	5451
-		faleconosco.js.uncompressed.js	8030
-		index.js	16457
-		index.js.uncompressed.js	24377
-		login.js	3858
-		login.js.uncompressed.js	5677
-		mainView.js	2814
-		mainView.js.uncompressed.js	4134
-		mapa.js	2443
-		mapa.js.uncompressed.js	3505
-		negociosmkt.js	3165
-		negociosmkt.js.uncompressed.js	4247
-		organizacional.js	1337
-		organizacional.js.uncompressed.js	1850
-		pesquisamkt.js	3193
-		pesquisamkt.js.uncompressed.js	4275
-		planomkt.js	3171
-		planomkt.js.uncompressed.js	4253
-		sac.js	4350
-		sac.js.uncompressed.js	6650
-		sobre.js	5101
-		sobre.js.uncompressed.js	6076
+		consultoriafinanceira.js	3113
+		consultoriafinanceira.js.uncompressed.js	4094
+		estudomkt.js	3042
+		estudomkt.js.uncompressed.js	4023
+		faleconosco.js	5352
+		faleconosco.js.uncompressed.js	7830
+		index.js	16513
+		index.js.uncompressed.js	24356
+		login.js	3759
+		login.js.uncompressed.js	5477
+		mainView.js	2832
+		mainView.js.uncompressed.js	4152
+		mapa.js	2344
+		mapa.js.uncompressed.js	3305
+		negociosmkt.js	3066
+		negociosmkt.js.uncompressed.js	4047
+		organizacional.js	1241
+		organizacional.js.uncompressed.js	1653
+		pesquisamkt.js	3094
+		pesquisamkt.js.uncompressed.js	4075
+		planomkt.js	3072
+		planomkt.js.uncompressed.js	4053
+		sac.js	4502
+		sac.js.uncompressed.js	6934
+		sobre.js	5002
+		sobre.js.uncompressed.js	5876
 	styles
-		consultoriafinanceira.js	2467
-		consultoriafinanceira.js.uncompressed.js	2689
-		estudomkt.js	2467
-		estudomkt.js.uncompressed.js	2689
-		faleconosco.js	2467
-		faleconosco.js.uncompressed.js	2689
-		index.js	3815
-		index.js.uncompressed.js	4185
-		login.js	2467
-		login.js.uncompressed.js	2689
-		mainView.js	2467
-		mainView.js.uncompressed.js	2689
-		mapa.js	2467
-		mapa.js.uncompressed.js	2689
-		negociosmkt.js	2467
-		negociosmkt.js.uncompressed.js	2689
-		organizacional.js	2467
-		organizacional.js.uncompressed.js	2689
-		pesquisamkt.js	2467
-		pesquisamkt.js.uncompressed.js	2689
-		planomkt.js	2467
-		planomkt.js.uncompressed.js	2689
-		sac.js	2467
-		sac.js.uncompressed.js	2689
-		sobre.js	2467
-		sobre.js.uncompressed.js	2689
+		consultoriafinanceira.js	2558
+		consultoriafinanceira.js.uncompressed.js	2792
+		estudomkt.js	2558
+		estudomkt.js.uncompressed.js	2792
+		faleconosco.js	2558
+		faleconosco.js.uncompressed.js	2792
+		index.js	3910
+		index.js.uncompressed.js	4292
+		login.js	2558
+		login.js.uncompressed.js	2792
+		mainView.js	2558
+		mainView.js.uncompressed.js	2792
+		mapa.js	2558
+		mapa.js.uncompressed.js	2792
+		negociosmkt.js	2558
+		negociosmkt.js.uncompressed.js	2792
+		organizacional.js	2558
+		organizacional.js.uncompressed.js	2792
+		pesquisamkt.js	2558
+		pesquisamkt.js.uncompressed.js	2792
+		planomkt.js	2558
+		planomkt.js.uncompressed.js	2792
+		sac.js	2558
+		sac.js.uncompressed.js	2792
+		sobre.js	2558
+		sobre.js.uncompressed.js	2792
 	sync
 		localStorage.js	1038
 		localStorage.js.uncompressed.js	1913
@@ -113,6 +114,7 @@ images
 		sobre_header.png	392629
 lightbg.png	256
 mobileweb
+	.DS_Store	6148
 	alloy
 		CFG.js	49
 		CFG.js.uncompressed.js	64
@@ -419,6 +421,6 @@ titanium
 	Ti.js.uncompressed.js	11558
 	dependencies.json	10389
 	package.json	660
-titanium.css	37837
+titanium.css	38015
 titanium.js	239064
 titanium.js.uncompressed.js	488077

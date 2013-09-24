@@ -25,17 +25,8 @@ function Controller() {
     });
     $.__views.navView.add($.__views.button);
     $.__views.title = Ti.UI.createLabel({
-        height: "46dp",
         font: {
-            fontSize: "18dp",
-            fontWeight: "bold"
-        },
-        color: "#FFF",
-        textAlign: "center",
-        shadowColor: "#000",
-        shadowOffset: {
-            x: "0dp",
-            y: "1dp"
+            fontFamily: "DIN-BoldAlternate"
         },
         text: "SAC",
         id: "title"
@@ -66,13 +57,13 @@ function Controller() {
     });
     $.__views.__alloyId71.add($.__views.__alloyId72);
     $.__views.label = Ti.UI.createLabel({
-        left: 20,
-        right: 10,
-        top: "20",
         font: {
             fontWeight: "bold",
             fontSize: 18
         },
+        left: 20,
+        right: 10,
+        top: "20",
         color: "#115a98",
         text: "ACOMPANHE O \nANDAMENTO DO SEU \nPROJETO",
         id: "label",

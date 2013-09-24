@@ -96,25 +96,18 @@ function Controller() {
         id: "__alloyId32"
     });
     $.__views.menuNavView.add($.__views.__alloyId32);
-    $.__views.title = Ti.UI.createLabel({
+    $.__views.titlenav = Ti.UI.createLabel({
         color: "#FFF",
         left: 40,
         font: {
-            fontSize: "18dp",
+            fontSize: 20,
             fontWeight: "bold"
         },
-        top: 5,
-        height: "46dp",
-        textAlign: "center",
-        shadowColor: "#000",
-        shadowOffset: {
-            x: "0dp",
-            y: "1dp"
-        },
+        top: 15,
         text: "Menu",
-        id: "title"
+        id: "titlenav"
     });
-    $.__views.menuNavView.add($.__views.title);
+    $.__views.menuNavView.add($.__views.titlenav);
     $.__views.__alloyId33 = Ti.UI.createView({
         height: "20",
         width: "100%",
@@ -168,7 +161,7 @@ function Controller() {
         color: "#f9f7f8",
         left: "10",
         font: {
-            fontSize: 14
+            fontFamily: "DIN-BoldAlternate"
         },
         top: 12,
         text: "Financeira",
@@ -222,7 +215,7 @@ function Controller() {
         color: "#f9f7f8",
         left: "10",
         font: {
-            fontSize: 14
+            fontFamily: "DIN-BoldAlternate"
         },
         top: 12,
         text: "Marketing",
@@ -417,7 +410,7 @@ function Controller() {
         color: "#f9f7f8",
         left: "10",
         font: {
-            fontSize: 14
+            fontFamily: "DIN-BoldAlternate"
         },
         top: 12,
         text: "Organizacional",
@@ -478,7 +471,7 @@ function Controller() {
         color: "#f9f7f8",
         left: 10,
         font: {
-            fontSize: 14
+            fontFamily: "DIN-BoldAlternate"
         },
         top: 12,
         text: "Sobre a Empresa Jr.",
@@ -526,7 +519,7 @@ function Controller() {
         color: "#f9f7f8",
         left: 10,
         font: {
-            fontSize: 14
+            fontFamily: "DIN-BoldAlternate"
         },
         top: 12,
         text: "SAC",
@@ -573,7 +566,7 @@ function Controller() {
         color: "#f9f7f8",
         left: 10,
         font: {
-            fontSize: 14
+            fontFamily: "DIN-BoldAlternate"
         },
         top: 12,
         text: "Mapa de Localização",
@@ -620,7 +613,7 @@ function Controller() {
         color: "#f9f7f8",
         left: 10,
         font: {
-            fontSize: 14
+            fontFamily: "DIN-BoldAlternate"
         },
         top: 12,
         text: "Fale Conosco",

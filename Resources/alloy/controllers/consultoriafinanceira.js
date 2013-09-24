@@ -25,17 +25,8 @@ function Controller() {
     });
     $.__views.navView.add($.__views.button);
     $.__views.title = Ti.UI.createLabel({
-        height: "46dp",
         font: {
-            fontSize: "18dp",
-            fontWeight: "bold"
-        },
-        color: "#FFF",
-        textAlign: "center",
-        shadowColor: "#000",
-        shadowOffset: {
-            x: "0dp",
-            y: "1dp"
+            fontFamily: "DIN-BoldAlternate"
         },
         text: "Consultoria Financeira",
         id: "title"
@@ -66,13 +57,13 @@ function Controller() {
     });
     $.__views.__alloyId1.add($.__views.__alloyId2);
     $.__views.__alloyId3 = Ti.UI.createLabel({
-        left: 20,
-        right: 10,
-        top: 30,
         font: {
             fontWeight: "bold",
             fontSize: 18
         },
+        left: 20,
+        right: 10,
+        top: 30,
         color: "#115a98",
         text: "CONSULTORIA\nFINANCEIRA",
         id: "__alloyId3"

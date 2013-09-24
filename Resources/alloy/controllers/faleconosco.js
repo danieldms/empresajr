@@ -25,17 +25,8 @@ function Controller() {
     });
     $.__views.navView.add($.__views.button);
     $.__views.title = Ti.UI.createLabel({
-        height: "46dp",
         font: {
-            fontSize: "18dp",
-            fontWeight: "bold"
-        },
-        color: "#FFF",
-        textAlign: "center",
-        shadowColor: "#000",
-        shadowOffset: {
-            x: "0dp",
-            y: "1dp"
+            fontFamily: "DIN-BoldAlternate"
         },
         text: "Fale Conosco",
         id: "title"
@@ -68,13 +59,13 @@ function Controller() {
     });
     $.__views.__alloyId14.add($.__views.__alloyId15);
     $.__views.__alloyId16 = Ti.UI.createLabel({
-        left: 20,
-        right: 10,
-        top: "40",
         font: {
             fontWeight: "bold",
             fontSize: 18
         },
+        left: 20,
+        right: 10,
+        top: "40",
         color: "#115a98",
         text: "FALE CONOSCO",
         id: "__alloyId16"
