@@ -24,21 +24,31 @@ function Controller() {
         id: "button"
     });
     $.__views.navView.add($.__views.button);
-    $.__views.title = Ti.UI.createLabel({
+    $.__views.__alloyId106 = Ti.UI.createLabel({
         font: {
+            fontSize: "18dp",
+            fontWeight: "bold",
             fontFamily: "DIN-BoldAlternate"
         },
+        height: "46dp",
+        color: "#FFF",
+        textAlign: "center",
+        shadowColor: "#000",
+        shadowOffset: {
+            x: "0dp",
+            y: "1dp"
+        },
         text: "Organizacional",
-        id: "title"
+        id: "__alloyId106"
     });
-    $.__views.navView.add($.__views.title);
-    $.__views.__alloyId100 = Ti.UI.createScrollView({
+    $.__views.navView.add($.__views.__alloyId106);
+    $.__views.__alloyId107 = Ti.UI.createScrollView({
         backgroundColor: "transparent",
         layout: "vertical",
         scrollingEnabled: "true",
-        id: "__alloyId100"
+        id: "__alloyId107"
     });
-    $.__views.organizacional.add($.__views.__alloyId100);
+    $.__views.organizacional.add($.__views.__alloyId107);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var args = arguments[0] || {};

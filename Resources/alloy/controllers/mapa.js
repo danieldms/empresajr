@@ -1,5 +1,12 @@
 function Controller() {
-    function setRegion() {}
+    function setRegion() {
+        $.mapview.region = {
+            latitude: 37.390749,
+            longitude: -122.081651,
+            latitudeDelta: .01,
+            longitudeDelta: .01
+        };
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "mapa";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
@@ -26,22 +33,32 @@ function Controller() {
         id: "button"
     });
     $.__views.navView.add($.__views.button);
-    $.__views.title = Ti.UI.createLabel({
+    $.__views.__alloyId92 = Ti.UI.createLabel({
         font: {
+            fontSize: "18dp",
+            fontWeight: "bold",
             fontFamily: "DIN-BoldAlternate"
         },
+        height: "46dp",
+        color: "#FFF",
+        textAlign: "center",
+        shadowColor: "#000",
+        shadowOffset: {
+            x: "0dp",
+            y: "1dp"
+        },
         text: "Localização",
-        id: "title"
+        id: "__alloyId92"
     });
-    $.__views.navView.add($.__views.title);
-    $.__views.__alloyId88 = Ti.UI.createView({
+    $.__views.navView.add($.__views.__alloyId92);
+    $.__views.__alloyId93 = Ti.UI.createView({
         layout: "vertical",
-        id: "__alloyId88"
+        id: "__alloyId93"
     });
-    $.__views.mapa.add($.__views.__alloyId88);
-    var __alloyId89 = [];
+    $.__views.mapa.add($.__views.__alloyId93);
+    var __alloyId94 = [];
     $.__views.mapview = Ti.Map.createView({
-        annotations: __alloyId89,
+        annotations: __alloyId94,
         id: "mapview",
         ns: Ti.Map,
         animate: "true",
@@ -50,17 +67,17 @@ function Controller() {
         height: "250",
         mapType: Ti.Map.STANDARD_TYPE
     });
-    $.__views.__alloyId88.add($.__views.mapview);
+    $.__views.__alloyId93.add($.__views.mapview);
     setRegion ? $.__views.mapview.addEventListener("complete", setRegion) : __defers["$.__views.mapview!complete!setRegion"] = true;
-    $.__views.__alloyId90 = Ti.UI.createView({
+    $.__views.__alloyId95 = Ti.UI.createView({
         height: 22,
         left: 0,
         layout: "vertical",
         backgroundColor: "#f5f5f5",
-        id: "__alloyId90"
+        id: "__alloyId95"
     });
-    $.__views.__alloyId88.add($.__views.__alloyId90);
-    $.__views.__alloyId91 = Ti.UI.createLabel({
+    $.__views.__alloyId93.add($.__views.__alloyId95);
+    $.__views.__alloyId96 = Ti.UI.createLabel({
         font: {
             fontSize: 11,
             fontWeight: "bold"
@@ -69,10 +86,10 @@ function Controller() {
         top: 6,
         color: "#8a8a8a",
         text: "Endereço",
-        id: "__alloyId91"
+        id: "__alloyId96"
     });
-    $.__views.__alloyId90.add($.__views.__alloyId91);
-    $.__views.__alloyId92 = Ti.UI.createLabel({
+    $.__views.__alloyId95.add($.__views.__alloyId96);
+    $.__views.__alloyId97 = Ti.UI.createLabel({
         font: {
             fontSize: 12
         },
@@ -82,9 +99,9 @@ function Controller() {
         right: "10",
         top: "10",
         textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
-        id: "__alloyId92"
+        id: "__alloyId97"
     });
-    $.__views.__alloyId88.add($.__views.__alloyId92);
+    $.__views.__alloyId93.add($.__views.__alloyId97);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var args = arguments[0] || {};

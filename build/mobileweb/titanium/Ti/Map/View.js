@@ -1,1 +1,7 @@
-define(["Ti/_/declare","Ti/_/Evented","Ti/_/Map/Google","Ti/App/Properties"],function(e,t,i,o){var a=o.getString("ti.map.backend");return e("Ti.Map.View",[t,a?require(a):i])});
+define(["Ti/_/declare", "Ti/_/Evented", "Ti/_/Map/Google", "Ti/App/Properties"], function(declare, Evented, Google, Properties) {
+
+	var backend = Properties.getString("ti.map.backend");
+
+	return declare("Ti.Map.View", [Evented, backend ? require(backend) : Google]);
+
+});

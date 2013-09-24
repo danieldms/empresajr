@@ -1,1 +1,132 @@
-define(["Ti/_/css","Ti/_/declare","Ti/_/style","Ti/_/lang","Ti/API","Ti/UI","Ti/_","Ti/_/dom"],function(e,t,i,o,n,r,a,s){var l=o.val;return t("Ti._.Layouts.Base",null,{computedSize:{width:0,height:0},constructor:function(t){this.element=t,e.add(t.domNode,e.clean(this.declaredClass))},destroy:function(){e.remove(this.element.domNode,e.clean(this.declaredClass))},handleInvalidState:function(e,t){n.debug("WARNING: Attempting to layout element that has been destroyed.\n	 Removing the element from the parent.\n	 The parent has a widget ID of "+t.widgetId+".");var i=t._children;i.splice(i.indexOf(e),1)},getValueType:function(e){return void 0!==e?e===r.SIZE||e===r.FILL?e:~(e+"").indexOf("%")?"%":"#":void 0},calculateAnimation:function(e,t){var i=e._animationCoefficients||(e._animationCoefficients={height:{},left:{},minWidth:{},sandboxWidth:{},minHeight:{},sandboxHeight:{},top:{},width:{}}),o={};return this._measureNode(e,{left:l(t.left,e.left),right:l(t.right,e.right),top:l(t.top,e.top),bottom:l(t.bottom,e.bottom),center:(e.center||t.center)&&{x:l(t.center&&t.center.x,e.center&&e.center.x),y:l(t.center&&t.center.y,e.center&&e.center.y)},width:l(t.width,e.width),minWidth:e.minWidth,minHeight:e.minHeight,height:l(t.height,e.height)},i,this),o=this._doAnimationLayout(e,i),{left:o.left,top:o.top,width:o.width-e._borderLeftWidth-e._borderRightWidth,height:o.height-e._borderTopWidth-e._borderBottomWidth}},computeValue:function(e,t){return"%"===t?parseFloat(e)/100:"#"===t?s.computeSize(e):void 0}})});
+/*global define*/
+define(['Ti/_/css', 'Ti/_/declare', 'Ti/_/style', 'Ti/_/lang', 'Ti/API', 'Ti/UI', 'Ti/_', 'Ti/_/dom'],
+	function(css, declare, style, lang, API, UI, _, dom) {
+
+	var val = lang.val;
+
+	return declare('Ti._.Layouts.Base', null, {
+
+		computedSize: {width: 0, height: 0},
+
+		constructor: function(element) {
+			this.element = element;
+			css.add(element.domNode, css.clean(this.declaredClass));
+		},
+
+		destroy: function() {
+			css.remove(this.element.domNode, css.clean(this.declaredClass));
+		},
+
+		handleInvalidState: function(child, parent) {
+			API.debug('WARNING: Attempting to layout element that has been destroyed.\n\t Removing the element from the parent.\n\t The parent has a widget ID of ' + parent.widgetId + '.');
+			var children = parent._children;
+			children.splice(children.indexOf(child),1);
+		},
+
+		getValueType: function(value) {
+			if (value !== void 0) {
+				if (value === UI.SIZE || value === UI.FILL) {
+					return value;
+				}
+				return ~(value + '').indexOf('%') ? '%' : '#';
+			}
+		},
+
+		/*
+		calculateAnimation: function(node, animation) {
+			var animationCoefficients = node._animationCoefficients,
+				center,
+				results,
+				pixelUnits = 'px';
+
+			(node.center || animation.center) && (center = {});
+			if (center) {
+				center.x = val(animation.center && animation.center.x, node.center && node.center.x);
+				center.y = val(animation.center && animation.center.y, node.center && node.center.y);
+			}
+
+			!animationCoefficients && (animationCoefficients = node._animationCoefficients = {
+				width: {},
+				minWidth: {},
+				sandboxWidth: {},
+				height: {},
+				minHeight: {},
+				sandboxHeight: {},
+				left: {},
+				top: {}
+			});
+
+			this._measureNode(node, {
+				left: val(animation.left,node.left),
+				right: val(animation.right,node.right),
+				top: val(animation.top,node.top),
+				bottom: val(animation.bottom,node.bottom),
+				center: center,
+				width: val(animation.width,node.width),
+				minWidth: node.minWidth,
+				minHeight: node.minHeight,
+				height: val(animation.height,node.height)
+			},animationCoefficients, this);
+
+			results = this._doAnimationLayout(node, animationCoefficients);
+
+			style.set(node.domNode, {
+				zIndex: node.zIndex | 0,
+				left: Math.round(results.left) + pixelUnits,
+				top: Math.round(results.top) + pixelUnits,
+				width: Math.round(results.width - node._borderLeftWidth - node._borderRightWidth) + pixelUnits,
+				height: Math.round(results.height - node._borderTopWidth - node._borderBottomWidth) + pixelUnits
+			});
+		},
+		*/
+
+		calculateAnimation: function(elem, animation) {
+			var animationCoefficients = elem._animationCoefficients || (elem._animationCoefficients = {
+					height: {},
+					left: {},
+					minWidth: {},
+					sandboxWidth: {},
+					minHeight: {},
+					sandboxHeight: {},
+					top: {},
+					width: {}
+				}),
+				results = {};
+
+			this._measureNode(elem, {
+				left: val(animation.left, elem.left),
+				right: val(animation.right, elem.right),
+				top: val(animation.top, elem.top),
+				bottom: val(animation.bottom, elem.bottom),
+				center: (elem.center || animation.center) && {
+					x: val(animation.center && animation.center.x, elem.center && elem.center.x),
+					y: val(animation.center && animation.center.y, elem.center && elem.center.y)
+				},
+				width: val(animation.width, elem.width),
+				minWidth: elem.minWidth,
+				minHeight: elem.minHeight,
+				height: val(animation.height, elem.height)
+			}, animationCoefficients, this);
+
+			results = this._doAnimationLayout(elem, animationCoefficients);
+
+			return {
+				left: results.left,
+				top: results.top,
+				width: results.width - elem._borderLeftWidth - elem._borderRightWidth,
+				height: results.height - elem._borderTopWidth - elem._borderBottomWidth
+			};
+		},
+
+		computeValue: function(dimension, valueType) {
+			if (valueType === '%') {
+				return parseFloat(dimension) / 100;
+			}
+			if (valueType === '#') {
+				return dom.computeSize(dimension);
+			}
+		}
+
+	});
+
+});

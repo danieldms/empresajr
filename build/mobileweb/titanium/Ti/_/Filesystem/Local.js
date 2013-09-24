@@ -1,1 +1,523 @@
-define(["Ti/_","Ti/_/declare","Ti/_/encoding","Ti/_/lang","Ti/API","Ti/Blob"],function(e,t,i,o,n,r){function a(e,t){return w.getItem("ti:fs:"+(t?"meta:":"blob:")+e)}function s(e,t,i){return w.setItem("ti:fs:"+(i?"meta:":"blob:")+e,t),t.length}function l(e){var t=new XMLHttpRequest;return t.overrideMimeType("text/plain; charset=x-user-defined"),t.open("GET","."+e,!1),t.send(null),200===t.status?{data:t.responseText,mimeType:t.getResponseHeader("Content-Type")}:null}function d(e){var t,i=[];return p||(p={"/":"tD\nr1"},require("./titanium/filesystem.registry").split(/\n|\|/).forEach(function(e,t){var o,n=0,e=e.split("	"),r=e.length;if(0===t&&"ts"===e[0])y=e[1],p[I]+="\nc"+y;else{for(;r>n&&!e[n];n++);i=i.slice(0,n).concat(o=e[n]),p[I+i.join(I)]="n"+o+"\nt"+(n+1==r?"D":"F\ns"+e[n+1])}})),(t=p[e])&&t+"\nr1\ne1\nc"+y+"\nm"+y}function c(){return v||(v=require("Ti/Filesystem"))}function _(e,t,i,o){var r,i=i||1,a=e+t.slice(0,i).join(I);return o&&o.readonly?(n.error('Unable to create "'+a+'" because parent is readonly'),!1):(r=new g({nativePath:a,type:"D"}),r.createDirectory(),++i>t.length?!0:_(e,t,i,r))}function u(e){if(e){var t=e.match(A),i=(t[1]?t[1]:t[2]+t[3])||I;return e=t[1]?t[2]:t[4],e?_(i,e.split(I)):!0}return!1}function h(e,t){var i,o,n=e.nativePath,r=RegExp("^(ti:fs:meta|ti:fs:blob):"+n+(/\/$/.test(n)?"":I)+"(.*)"),a=0,s=w.length;if(t=c().getFile(t.nativePath,e.name),u(t.nativePath)){for(;s>a;)o=w.key(a++),(i=o.match(r))&&w.setItem(i[1]+":"+t.nativePath+I+i[2],w.getItem(o)||"");return!0}return!1}function f(){for(var e,t=/^ti:fs:tmp:\/\//,i=0,o=w.length;o>i;)e=w.key(i++),t.test(e)&&w.removeItem(e)}var p,g,v,y=Date.now(),m=require.is,w=localStorage,I="/",T={n:"sname",c:"i_created",m:"i_modified",t:"s_type",y:"s_mimeType",e:"b_remote",x:"bexecutable",r:"breadonly",s:"isize",l:"bsymbolicLink",h:"bhidden"},b={i:function(e){return e-0},s:function(e){return""+e},b:function(e){return!!(0|e)}},E="ti:fs:meta:",C="ti:fs:blob:",A=/(\/)?([^\:]*)(\:\/\/)?(.*)/,S="application/octet-stream,text/plain,text/html,text/css,text/xml,text/mathml,image/gif,image/jpeg,image/png,image/x-icon,image/svg+xml,application/x-javascript,application/json,application/pdf,application/x-opentype,audio/mpeg,video/mpeg,video/quicktime,video/x-flv,video/x-ms-wmv,video/x-msvideo,video/ogg,video/mp4,video/webm,text/csv".split(","),k={txt:1,html:2,htm:2,css:3,xml:4,mml:5,gif:6,jpeg:7,jpg:7,png:8,ico:9,svg:10,js:11,json:12,pdf:13,otf:14,mp3:15,mpeg:16,mpg:16,mov:17,flv:18,wmv:19,avi:20,ogg:21,ogv:21,mp4:22,m4v:22,webm:23,csv:24};return f(),require.on(window,"beforeunload",f),function(e,t){for(var i in e)a(i,1)||s(i,"c"+t+"\nm"+t+"\ntD\ne0\nx0\nl0\nh0\nr"+e[i],1)}({"appdata://":0,"/":1,"tmp://":0},Date.now()),g=t("Ti._.Filesystem.Local",null,{constructor:function(e){if(m(e,"String")){var t=e.match(A),i=!t[1]&&t[3];if(/^\.\./.test(e=i?t[4]:t[2]))throw Error('Irrational path "'+e+'"');this.constants.__values__.nativePath=(i?t[2]+"://":I)+e}this._type=e&&"D"!==e._type?"F":"D"},postscript:function(){var e,t,i=this.constants,o=this.nativePath,n=o&&a(o,1)||d(o),r=o.match(A),s=(r[1]?r[1]:r[2]+r[3])||I;n&&(this._exists=1)&&n.split("\n").forEach(function(e){var t=T[e.charAt(0)],o=t.substring(1),n=b[t.charAt(0)](e.substring(1));(i.hasOwnProperty(o)?i.__values__:this)[o]=n},this),o=r[1]?r[2]:r[4],e=o.split(I),i.name=e.pop(),e=e.join(I),t=i.parent=o?new g(s+e):null,t&&t.readonly||r&&r[1]&&(i.readonly=!0)},constants:{name:"",executable:!1,readonly:!1,size:0,symbolicLink:!1,nativePath:"",parent:null,writable:{get:function(){return!this.readonly},set:function(e){return this.constants.__value__.readonly=!e},value:!0}},properties:{hidden:!1},append:function(e){if(this.isFile()){switch(e&&e.declaredClass){case"Ti.Filesystem.File":e=e.read();case"Ti.Blob":this._mimeType=e.mimeType,e=e.text}var t=this.read();return t.append(e),this.write(t)}return!1},copy:function(e){if(this.exists&&e){var t=c(),e="Ti.Filesystem.File"===e.declaredClass?e:t.getFile.apply(null,arguments),i=e.parent,o=this.isFile();return e.exists()?e.readonly?!1:e.isFile()?o?e.write(this.read()):(Ti.API.error("Destination is not a directory"),!1):o?t.getFile(e.nativePath,this.name).write(this.read()):h(this,e):i&&(i.createDirectory(),!i.exists()||i.readonly||!o&&!e.createDirectory())?!1:o?e.write(this.read()):h(this,e)}return!1},createDirectory:function(){return this._create("D")},createFile:function(){return this._create("F")},createTimestamp:function(){return this._created||null},deleteDirectory:function(e){if(this.isDirectory()&&!this.readonly){for(var t=this.nativePath,i=RegExp("^ti:fs:(meta|blob):"+t+(/\/$/.test(t)?"":I)+".*"),o=0,n=w.length;n>o;)if(i.test(key=w.key(o++))){if(!e)return Ti.API.error('Directory "'+t+'" not empty'),!1;w.removeItem(key)}return this._exists=0,w.removeItem(E+t),w.removeItem(C+t),!0}return!1},deleteFile:function(){if(this.exists()&&this.isFile()&&!this.readonly){var e=this.nativePath;return this._exists=0,w.removeItem(E+e),w.removeItem(C+e),!0}return!1},exists:function(){return!!this._exists},extension:function(){var e=this.name.match(/\.(.+)$/);return e?e[1]:""},getDirectoryListing:function(){function e(e,i){var o,n=e.match(i);n&&n[1]&&0>t.indexOf(o=n[1].split(I)[0])&&t.push(o)}var t=[];if(this.isDirectory()){for(var i=this.nativePath+(/\/$/.test(this.nativePath)?"":I),o=RegExp("^"+E+i+"(.*)"),n=RegExp("^"+i+"(.*)"),r=0,a=w.length;a>r;)e(w.key(r++),o);for(r in p)e(r,n)}return t.sort()},isDirectory:function(){return"D"===this._type},isFile:function(){return"F"===this._type},modificationTimestamp:function(){return this._modified||null},move:function(){return this.copy.apply(this,arguments)&&this[this.isFile()?"deleteFile":"deleteDirectory"](1)},open:function(e){var t=require("Ti/Filesystem/FileStream");return this.exists()&&this.isFile()?new t({mode:e,data:this.read().text}):null},read:function(){if(this.exists()&&this.isFile()){var t,i=this.nativePath,o=this._remote?(t=l(i)).data:a(i)||"",n=S[k[this.extension()]||0],s=t&&t.mimeType||this._mimeType||n,d=0,c=o.length,_="",u={file:this,data:o,length:c,mimeType:s="application/octet-stream"===s&&s!==n?n:s,nativePath:i};if(this._remote&&e.isBinaryMimeType(s)){for(;c>d;)_+=String.fromCharCode(255&o.charCodeAt(d++));u.data=btoa(_)}return new r(u)}return null},rename:function(e){if(this.exists&&!this.readonly){var t,i,o=this.nativePath,n=o,r=w.getItem(C+n),a=RegExp("^ti:fs:(meta|blob):"+n+(/\/$/.test(n)?"":I)+"(.*)"),s=n.match(A),l=(s[1]?s[1]:s[2]+s[3])||I,d=0,c=w.length;if(this.constants.__values__,n=s[1]?s[2]:s[4],!n)return Ti.API.error("Can't rename root \""+l+'"'),!1;if(n=n.split(I),n.pop(),n.push(e),t=new g(n=l+n.join(I)),t.exists()||t.parent.readonly)return!1;if("D"===this._type)for(;c>d;)i=w.key(d++),(s=i.match(a))&&(w.setItem("ti:fs:"+s[1]+":"+n+I+s[2],w.getItem(i)),w.removeItem(i));return this._save(n,e),r&&w.setItem(C+n,r),w.removeItem(E+o),w.removeItem(C+o),!0}return!1},resolve:function(){return this.nativePath},spaceAvailable:function(){return"remainingSpace"in w?w.remainingSpace:null},write:function(e,t){var i=this.nativePath;if(i&&this.isFile()&&!this.readonly&&this.parent&&!this.parent.readonly){switch(e&&m(e,"String")&&(this._mimeType=S[1]),e&&e.declaredClass){case"Ti.Filesystem.File":e=e.read();case"Ti.Blob":this._mimeType=e.mimeType,e=e._data||""}return this._exists=1,this._modified=Date.now(),this._created||(this._created=this._modified),this.constants.__values__.size=s(i,t?this.read()+e:e),this._save()}return!1},_create:function(e){return!this.exists()&&this.parent&&!this.parent.readonly&&u(this.parent.nativePath)?(this._created=this._modified=Date.now(),this._exists=1,this._type=e,this._save()):!1},_save:function(e,t){var i,e=e||this.nativePath;return e?(i=["n",t||this.name,"\nc",this._created,"\nm",this._modified,"\nt",this._type,"\ne0\nx0\nr",0|this.readonly,"\nl",0|this.symbolicLink,"\nh",0|this.hidden],"F"===this._type&&i.push("\ns"+this.size),this._mimeType&&i.push("\ny"+this._mimeType),s(e,i.join(""),1),!0):!1}})});
+define(["Ti/_", "Ti/_/declare", "Ti/_/encoding", "Ti/_/lang", "Ti/API", "Ti/Blob"],
+	function(_, declare, encoding, lang, API, Blob) {
+
+	var reg,
+		regDate = Date.now(),
+		File,
+		Filesystem,
+		is = require.is,
+		ls = localStorage,
+		slash = '/',
+		metaMap = {
+			n: "sname",
+			c: "i_created",
+			m: "i_modified",
+			t: "s_type",
+			y: "s_mimeType",
+			e: "b_remote",
+			x: "bexecutable",
+			r: "breadonly",
+			s: "isize",
+			l: "bsymbolicLink",
+			h: "bhidden"
+		},
+		metaCast = {
+			i: function(i) {
+				return i - 0;
+			},
+			s: function(s) {
+				return ""+s;
+			},
+			b: function(b) {
+				return !!(b|0);
+			}
+		},
+		metaPrefix = "ti:fs:meta:",
+		blobPrefix = "ti:fs:blob:",
+		pathRegExp = /(\/)?([^\:]*)(\:\/\/)?(.*)/,
+
+		// important! add new mime types to the end of array and then figure out the index to assign to each extension
+		mimeTypes = "application/octet-stream,text/plain,text/html,text/css,text/xml,text/mathml,image/gif,image/jpeg,image/png,image/x-icon,image/svg+xml,application/x-javascript,application/json,application/pdf,application/x-opentype,audio/mpeg,video/mpeg,video/quicktime,video/x-flv,video/x-ms-wmv,video/x-msvideo,video/ogg,video/mp4,video/webm,text/csv".split(','),
+		mimeExtentions = { txt: 1, html: 2, htm: 2, css: 3, xml: 4, mml: 5, gif: 6, jpeg: 7, jpg: 7, png: 8, ico: 9, svg: 10, js: 11, json: 12, pdf: 13, otf: 14, mp3: 15, mpeg: 16, mpg: 16, mov: 17, flv: 18, wmv: 19, avi: 20, ogg: 21, ogv: 21, mp4: 22, m4v: 22, webm: 23, csv: 24 };
+
+	function getLocal(path, meta) {
+		return ls.getItem("ti:fs:" + (meta ? "meta:" : "blob:") + path);
+	}
+
+	function setLocal(path, value, meta) {
+		ls.setItem("ti:fs:" + (meta ? "meta:" : "blob:") + path, value);
+		return value.length;
+	}
+
+	function getRemote(path) {
+		var xhr = new XMLHttpRequest;
+		xhr.overrideMimeType('text/plain; charset=x-user-defined');
+		xhr.open("GET", '.' + path, false);
+		xhr.send(null);
+		return xhr.status === 200 ? { data: xhr.responseText, mimeType: xhr.getResponseHeader("Content-Type") } : null;
+	}
+
+	function registry(path) {
+		var stack = [],
+			r;
+
+		if (!reg) {
+			reg = {
+				'/': "tD\nr1"
+			};
+
+			require("./titanium/filesystem.registry").split(/\n|\|/).forEach(function(line, i) {
+				var depth = 0,
+					line = line.split('\t'),
+					len = line.length,
+					name;
+
+				if (i === 0 && line[0] === "ts") {
+					regDate = line[1];
+					reg[slash] += "\nc" + regDate;
+				} else {
+					for (; depth < len && !line[depth]; depth++) {}
+					stack = stack.slice(0, depth).concat(name = line[depth]);
+					reg[slash + stack.join(slash)] = "n" + name + "\nt" + (depth + 1 == len ? 'D' : 'F\ns' + line[depth + 1]);
+				}
+			});
+		}
+		return (r = reg[path]) && r + "\nr1\ne1\nc" + regDate + "\nm" + regDate;
+	}
+
+	function filesystem() {
+		return Filesystem || (Filesystem = require("Ti/Filesystem"));
+	}
+
+	function mkdir(prefix, parts, i, parent) {
+		var file,
+			i = i || 1,
+			path = prefix + parts.slice(0, i).join(slash);
+
+		if (parent && parent.readonly) {
+			// parent directory is readonly, so we can't create a directory here
+			API.error('Unable to create "' + path + '" because parent is readonly');
+			return false;
+		}
+
+		file = new File({
+			nativePath: path,
+			type: 'D'
+		});
+		file.createDirectory();
+
+		if (++i > parts.length) {
+			// we're done!
+			return true;
+		}
+
+		return mkdir(prefix, parts, i, file);
+	}
+
+	function mkdirs(path) {
+		if (path) {
+			var match = path.match(pathRegExp),
+				prefix = (match[1] ? match[1] : match[2] + match[3]) || slash;
+			path = match[1] ? match[2] : match[4];
+			return path ? mkdir(prefix, path.split(slash)) : true;
+		}
+		return false;
+	}
+
+	function cpdir(src, dest) {
+		var path = src.nativePath,
+			re = new RegExp("^(ti:fs:meta|ti:fs:blob):" + path + (/\/$/.test(path) ? '' : slash) + "(.*)"),
+			match,
+			key,
+			i = 0,
+			len = ls.length;
+
+		dest = filesystem().getFile(dest.nativePath, src.name);
+
+		if (mkdirs(dest.nativePath)) {
+			while (i < len) {
+				key = ls.key(i++);
+				(match = key.match(re)) && ls.setItem(match[1] + ':' + dest.nativePath + slash + match[2], ls.getItem(key) || '');
+			}
+			return true;
+		}
+
+		return false;
+	}
+
+	function purgeTemp() {
+		var re = /^ti:fs:tmp:\/\//,
+			i = 0,
+			len = ls.length,
+			key;
+		while (i < len) {
+			key = ls.key(i++);
+			re.test(key) && ls.removeItem(key);
+		}
+	}
+	purgeTemp();
+	require.on(window, "beforeunload", purgeTemp);
+
+	(function(paths, now) {
+		for (var p in paths) {
+			getLocal(p, 1) || setLocal(p, "c" + now + "\nm" + now + "\ntD\ne0\nx0\nl0\nh0\nr" + paths[p], 1);
+		}
+	}({
+		"appdata://": 0,
+		"/": 1,
+		"tmp://": 0
+	}, Date.now()));
+
+	return File = declare("Ti._.Filesystem.Local", null, {
+
+		constructor: function(path) {
+			if (is(path, "String")) {
+				var match = path.match(pathRegExp),
+					b = !match[1] && match[3];
+
+				if (/^\.\./.test(path = b ? match[4] : match[2])) {
+					throw new Error('Irrational path "' + path + '"');
+				}
+
+				this.constants.__values__.nativePath = (b ? match[2] + "://" : slash) + path;
+			}
+
+			this._type = !path || path._type === 'D' ? 'D' : 'F';
+		},
+
+		postscript: function(args) {
+			var c = this.constants,
+				path = this.nativePath,
+				metaData = path && getLocal(path, 1) || registry(path),
+				match = path.match(pathRegExp),
+				prefix = (match[1] ? match[1] : match[2] + match[3]) || slash,
+				parentPath,
+				parent;
+
+			metaData && (this._exists = 1) && metaData.split('\n').forEach(function(line) {
+				var fieldInfo = metaMap[line.charAt(0)],
+					field = fieldInfo.substring(1),
+					value = metaCast[fieldInfo.charAt(0)](line.substring(1));
+				(c.hasOwnProperty(field) ? c.__values__ : this)[field] = value;
+			}, this);
+
+			path = match[1] ? match[2] : match[4];
+			parentPath = path.split(slash);
+			c.name = parentPath.pop();
+			parentPath = parentPath.join(slash);
+			parent = c.parent = path ? new File(prefix + parentPath) : null;
+
+			(parent && parent.readonly) || (match && match[1]) && (c.readonly = true);
+		},
+
+		constants: {
+			name: "",
+			executable: false,
+			readonly: false,
+			size: 0,
+			symbolicLink: false,
+			nativePath: "",
+			parent: null,
+			writable: {
+				get: function() {
+					return !this.readonly;
+				},
+				set: function(value) {
+					return this.constants.__value__.readonly = !value;
+				},
+				value: true
+			}
+		},
+
+		properties: {
+			hidden: false
+		},
+
+		append: function(/*Ti.Blob|Ti.Filesystem.File*/data) {
+			if (this.isFile()) {
+				switch (data && data.declaredClass) {
+					case "Ti.Filesystem.File":
+						data = data.read();
+					case "Ti.Blob":
+						this._mimeType = data.mimeType;
+						data = data.text;
+				}
+				var blob = this.read();
+				blob.append(data);
+				return this.write(blob);
+			}
+			return false;
+		},
+
+		copy: function(dest) {
+			if (this.exists && dest) {
+				var fs = filesystem(),
+					dest = dest.declaredClass === "Ti.Filesystem.File" ? dest : fs.getFile.apply(null, arguments),
+					p = dest.parent,
+					isFile = this.isFile();
+				if (dest.exists()) {
+					if (dest.readonly) {
+						return false;
+					}
+					if (dest.isFile()) {
+						if (!isFile) {
+							Ti.API.error("Destination is not a directory");
+							return false;
+						}
+						return dest.write(this.read());
+					} else {
+						return isFile ? fs.getFile(dest.nativePath, this.name).write(this.read()) : cpdir(this, dest);
+					}
+				} else {
+					if (p) {
+						p.createDirectory();
+						if (!p.exists() || p.readonly || (!isFile && !dest.createDirectory())) {
+							return false;
+						}
+					}
+					return isFile ? dest.write(this.read()) : cpdir(this, dest);
+				}
+			}
+			return false;
+		},
+
+		createDirectory: function() {
+			return this._create('D');
+		},
+
+		createFile: function() {
+			return this._create('F');
+		},
+
+		createTimestamp: function() {
+			return this._created || null;
+		},
+
+		deleteDirectory: function(recursive) {
+			if (this.isDirectory() && !this.readonly) {
+				var path = this.nativePath,
+					re = new RegExp("^ti:fs:(meta|blob):" + path + (/\/$/.test(path) ? '' : slash) + ".*"),
+					i = 0,
+					len = ls.length;
+				while (i < len) {
+					if (re.test(key = ls.key(i++))) {
+						if (!recursive) {
+							Ti.API.error('Directory "' + path + '" not empty');
+							return false;
+						}
+						ls.removeItem(key);
+					}
+				}
+				this._exists = 0;
+				ls.removeItem(metaPrefix + path);
+				ls.removeItem(blobPrefix + path);
+				return true;
+			}
+			return false;
+		},
+
+		deleteFile: function() {
+			if (this.exists() && this.isFile() && !this.readonly) {
+				var path = this.nativePath;
+				this._exists = 0;
+				ls.removeItem(metaPrefix + path);
+				ls.removeItem(blobPrefix + path);
+				return true;
+			}
+			return false;
+		},
+
+		exists: function() {
+			return !!this._exists;
+		},
+
+		extension: function() {
+			var m = this.name.match(/\.(.+)$/);
+			return m ? m[1] : "";
+		},
+
+		getDirectoryListing: function() {
+			var files = [];
+			if (this.isDirectory()) {
+				var path = this.nativePath + (/\/$/.test(this.nativePath) ? '' : slash),
+					lsRegExp = new RegExp("^" + metaPrefix + path + "(.*)"),
+					regRegExp = new RegExp("^" + path + "(.*)"),
+					i = 0,
+					len = ls.length;
+
+				function add(s, re) {
+					var file, match = s.match(re);
+					match && match[1] && files.indexOf(file = match[1].split(slash)[0]) < 0 && files.push(file);
+				}
+
+				// check local storage
+				while (i < len) {
+					add(ls.key(i++), lsRegExp);
+				}
+
+				// check remote storage
+				for (i in reg) {
+					add(i, regRegExp);
+				}
+			}
+			return files.sort();
+		},
+
+		isDirectory: function() {
+			return this._type === 'D';
+		},
+
+		isFile: function() {
+			return this._type === 'F';
+		},
+
+		modificationTimestamp: function() {
+			return this._modified || null;
+		},
+
+		move: function() {
+			return this.copy.apply(this, arguments) && this[this.isFile() ? "deleteFile" : "deleteDirectory"](1);
+		},
+
+		open: function(mode) {
+			var FileStream = require("Ti/Filesystem/FileStream");
+			return this.exists() && this.isFile() ? new FileStream({
+				mode: mode,
+				data: this.read().text
+			}) : null;
+		},
+
+		read: function() {
+			if (this.exists() && this.isFile()) {
+				var path = this.nativePath,
+					obj,
+					data = this._remote ? (obj = getRemote(path)).data : getLocal(path) || "",
+					defaultMimeType =  mimeTypes[mimeExtentions[this.extension()] || 0],
+					type = obj && obj.mimeType || this._mimeType || defaultMimeType,
+					i = 0,
+					len = data.length,
+					binaryData = '',
+					params = {
+						file: this,
+						data: data,
+						length: len,
+						mimeType: type = type === "application/octet-stream" && type !== defaultMimeType ? defaultMimeType : type,
+						nativePath: path
+					};
+
+				if (this._remote && _.isBinaryMimeType(type)) {
+					while (i < len) {
+						binaryData += String.fromCharCode(data.charCodeAt(i++) & 0xff);
+					}
+					params.data = btoa(binaryData);
+				}
+
+				return new Blob(params);
+			}
+			return null;
+		},
+
+		rename: function(name) {
+			if (this.exists && !this.readonly) {
+				var origPath = this.nativePath,
+					path = origPath,
+					blob = ls.getItem(blobPrefix + path),
+					re = new RegExp("^ti:fs:(meta|blob):" + path + (/\/$/.test(path) ? '' : slash) + "(.*)"),
+					match = path.match(pathRegExp),
+					prefix = (match[1] ? match[1] : match[2] + match[3]) || slash,
+					i = 0,
+					len = ls.length,
+					c = this.constants.__values__,
+					dest,
+					key;
+
+				path = match[1] ? match[2] : match[4];
+
+				if (!path) {
+					Ti.API.error('Can\'t rename root "' + prefix + '"');
+					return false;
+				}
+
+				path = path.split(slash);
+				path.pop();
+				path.push(name);
+
+				dest = new File(path = prefix + path.join(slash));
+				if (dest.exists() || dest.parent.readonly) {
+					return false;
+				}
+
+				if (this._type === 'D') {
+					while (i < len) {
+						key = ls.key(i++);
+						if (match = key.match(re)) {
+							ls.setItem("ti:fs:" + match[1] + ":" + path + slash + match[2], ls.getItem(key));
+							ls.removeItem(key);
+						}
+					}
+				}
+
+				this._save(path, name);
+				blob && ls.setItem(blobPrefix + path, blob);
+				ls.removeItem(metaPrefix + origPath);
+				ls.removeItem(blobPrefix + origPath);
+
+				return true;
+			}
+			return false;
+		},
+
+		resolve: function() {
+			return this.nativePath;
+		},
+
+		spaceAvailable: function() {
+			return "remainingSpace" in ls ? ls.remainingSpace : null;
+		},
+
+		write: function(/*String|File|Blob*/data, append) {
+			var path = this.nativePath;
+			if (path && this.isFile() && !this.readonly && this.parent && !this.parent.readonly) {
+				data && is(data, "String") && (this._mimeType = mimeTypes[1]);
+				switch (data && data.declaredClass) {
+					case "Ti.Filesystem.File":
+						data = data.read();
+					case "Ti.Blob":
+						this._mimeType = data.mimeType;
+						data = data._data || "";
+				}
+				this._exists = 1;
+				this._modified = Date.now();
+				this._created || (this._created = this._modified);
+				this.constants.__values__.size = setLocal(path, append ? this.read() + data : data);
+				return this._save();
+			}
+			return false;
+		},
+
+		_create: function(type) {
+			if (!this.exists() && this.parent && !this.parent.readonly && mkdirs(this.parent.nativePath)) {
+				this._created = this._modified = Date.now();
+				this._exists = 1;
+				this._type = type;
+				return this._save();
+			}
+			return false;
+		},
+
+		_save: function(path, name) {
+			var path = path || this.nativePath,
+				meta;
+			if (path) {
+				meta = ["n", name || this.name, "\nc", this._created, "\nm", this._modified, "\nt", this._type, "\ne0\nx0\nr", this.readonly|0, "\nl", this.symbolicLink|0, "\nh", this.hidden|0];
+				this._type === 'F' && meta.push("\ns" + this.size);
+				this._mimeType && meta.push("\ny" + this._mimeType);
+				setLocal(path, meta.join(''), 1);
+				return true;
+			}
+			return false;
+		}
+
+	});
+
+});

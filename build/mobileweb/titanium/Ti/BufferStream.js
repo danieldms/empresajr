@@ -1,1 +1,5 @@
-define(["Ti/_/declare","Ti/IOStream"],function(e,t){return e("Ti.BufferStream",t)});
+define(["Ti/_/declare", "Ti/IOStream"], function(declare, IOStream) {
+
+	return declare("Ti.BufferStream", IOStream);
+
+});

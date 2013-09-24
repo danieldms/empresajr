@@ -1,1 +1,402 @@
-define(["Ti/_/browser","Ti/_/declare","Ti/UI/View","Ti/_/lang","Ti/_/dom","Ti/_/style","Ti/UI","Ti/_/event"],function(e,t,i,o,n,r,a){var s=(r.set,n.unitize),l=n.calculateDistance,d=require.on,c=100,u=100;return t("Ti._.UI.KineticScrollView",i,{_initKineticScrollView:function(e,t,i,o){function n(){m=Date.now(),v=m-p,p=m,T++?(b=(b*(T-1)+T*(_-y)/v)/2/T,I=(I*(T-1)+T*(h-w)/v)/2/T):(b=(_-c)/v,I=(h-u)/v)}function r(){f=x._minTranslationX=Math.min(0,x._measuredWidth-x._borderLeftWidth-x._borderRightWidth-x._contentContainer._measuredWidth),g=x._minTranslationY=Math.min(0,x._measuredHeight-x._borderTopWidth-x._borderBottomWidth-x._contentContainer._measuredHeight)}var s,c,u,_,h,f,g,p,m,v,y,w,T,b,I,E,x=this;x._currentTranslationX=0,x._currentTranslationY=0,x._horizontalElastic="horizontal"===t||"both"===t,x._verticalElastic="vertical"===t||"both"===t,x._kineticTransform=a.create2DMatrix(),("horizontal"===i||"both"===i)&&x._createHorizontalScrollBar(),("vertical"===i||"both"===i)&&x._createVerticalScrollBar(),x._add(x._contentContainer=e),s=e.domNode,d(x._contentContainer,"postlayout",function(){r(),x._setTranslation(x._currentTranslationX,x._currentTranslationY)}),d(x,"draggingstart",function(t){if(x.scrollingEnabled){x._cancelAnimations(),b=void 0,I=void 0,c=x._currentTranslationX,u=x._currentTranslationY,T=0,p=(new Date).getTime(),r();var i=x._measuredWidth,o=x._measuredHeight,n=e._measuredWidth,a=e._measuredHeight;x._startScrollBars({x:-x._currentTranslationX/(n-i),y:-x._currentTranslationY/(a-o)},{x:i/n,y:o/a}),x._handleDragStart&&x._handleDragStart(t)}}),d(x,"dragging",function(e){x.scrollingEnabled&&(_=c+e.distanceX,h=u+e.distanceY,n(),x._setTranslation(y=_,w=h),x._handleDrag&&x._handleDrag(e))}),d(x,"draggingcancel",function(e){x.scrollingEnabled&&(x._animateToPosition(c,u,400+.3*l(c,u,x._currentTranslationX,x._currentTranslationY),a.ANIMATION_CURVE_EASE_IN_OUT,function(){x._handleDragCancel&&x._handleDragCancel(e)}),x._endScrollBars(),x._handleDragCancel&&x._handleDragCancel(e))}),d(x,"draggingend",function(e){if(x.scrollingEnabled){_=c+e.distanceX,h=u+e.distanceY,n();var t,i=x._currentTranslationX,o=x._currentTranslationY;i>0?(i=0,t=1):f>i&&(i=f,t=1),o>0?(o=0,t=1):g>o&&(o=g,t=1),t?x._animateToPosition(i,o,200,a.ANIMATION_CURVE_EASE_OUT,function(){x._handleDragEnd&&x._handleDragEnd(e),x._endScrollBars()}):x._handleDragEnd&&x._handleDragEnd(e,b,I)}}),o&&(this._disconnectMouseWheelEvent=d(x.domNode,"mousewheel",function(t){if(x.scrollingEnabled){x._cancelAnimations();var i=e._measuredWidth-x._measuredWidth,o=e._measuredHeight-x._measuredHeight,n=-x._currentTranslationX,a=-x._currentTranslationY;r(),x._startScrollBars({x:n/i,y:a/o},{x:x._measuredWidth/e._measuredWidth,y:x._measuredHeight/e._measuredHeight}),x._setTranslation(Math.min(0,Math.max(x._minTranslationX,-n+t.wheelDeltaX)),Math.min(0,Math.max(x._minTranslationY,-a+t.wheelDeltaY))),clearTimeout(E),E=setTimeout(function(){x._endScrollBars()},500),x._handleMouseWheel&&x._handleMouseWheel()}}))},destroy:function(){this._disconnectMouseWheelEvent&&this._disconnectMouseWheelEvent(),i.prototype.destroy.apply(this,arguments)},_animateToPosition:function(e,t,i,o,n){var r,a=this,s=a._contentContainer,d=(s.domNode,a._horizontalScrollBar),c=a._verticalScrollBar;1>l(a._currentTranslationX,a._currentTranslationY,e,t)?(a._setTranslation(e,t),n()):(r=a._setTranslation(e,t,1),a._contentAnimation=s.animate({transform:a._kineticTransform.translate(r.translationX,r.translationY),duration:Math.round(i),curve:o},n),a._horizontalScrollBarAnimation=d&&d.animate({transform:this._kineticTransform.translate(Math.max(0,Math.min(1,-r.translationX/(s._measuredWidth-a._measuredWidth)))*(this._measuredWidth-this._scrollBarWidth),0),duration:i,curve:o}),a._verticalScrollBarAnimation=c&&c.animate({transform:this._kineticTransform.translate(0,Math.max(0,Math.min(1,-r.translationY/(s._measuredHeight-a._measuredHeight)))*(this._measuredHeight-this._scrollBarHeight)),duration:i,curve:o}))},_setTranslation:function(e,t,i){function o(e){return c*(-1/(e/u+1)+1)}var n=this._contentContainer,r=this._minTranslationX,a=this._minTranslationY,s=this._horizontalElastic&&!this.disableBounce&&this._measuredWidth<n._measuredWidth,l=this._verticalElastic&&!this.disableBounce&&this._measuredHeight<n._measuredHeight,d=this._measuredWidth,_=this._measuredHeight,h=n._measuredWidth,f=n._measuredHeight;if(e>0?e=s?o(e):0:r>e&&(e=s?r-o(r-e):r),t>0?t=l?o(t):0:a>t&&(t=l?a-o(a-t):a),i||this._contentContainer.animate({transform:this._kineticTransform.translate(this._currentTranslationX=e,this._currentTranslationY=t)}),this._isScrollBarActive){var g=this._horizontalScrollBar,p=this._verticalScrollBar;g&&g.animate({transform:this._kineticTransform.translate(Math.max(0,Math.min(1,-e/(h-d)))*(this._measuredWidth-this._scrollBarWidth),0)}),p&&p.animate({transform:this._kineticTransform.translate(0,Math.max(0,Math.min(1,-t/(f-_)))*(this._measuredHeight-this._scrollBarHeight))})}return{translationX:e,translationY:t}},_cancelAnimations:function(){this._horizontalScrollBarAnimation&&this._horizontalScrollBarAnimation.cancel(),this._verticalScrollBarAnimation&&this._verticalScrollBarAnimation.cancel(),this._contentAnimation&&this._contentAnimation.cancel()},_createHorizontalScrollBar:function(){this._horizontalScrollBar||this._add(this._horizontalScrollBar=a.createView({zIndex:2147483647,backgroundColor:"#555",borderRadius:3,width:0,height:6,left:0,bottom:0,opacity:0}))},_createVerticalScrollBar:function(){this._verticalScrollBar||this._add(this._verticalScrollBar=a.createView({zIndex:2147483647,backgroundColor:"#555",borderRadius:3,width:6,height:0,right:0,top:0,opacity:0}))},_destroyHorizontalScrollBar:function(){this._horizontalScrollBarAnimation&&this._horizontalScrollBarAnimation.cancel(),this._remove(this._horizontalScrollBar)},_destroyVerticalScrollBar:function(){this._verticalScrollBarAnimation&&this._verticalScrollBarAnimation.cancel(),this._remove(this._verticalScrollBar)},_startScrollBars:function(e,t){if(this._horizontalScrollBar&&1>t.x&&t.x>0){var i=this._measuredWidth,o=this._scrollBarWidth=Math.round(Math.max(10,i*t.x)),n=this._horizontalScrollBar;n.opacity=.5,n.domNode.style.width=s(o),n.animate({transform:this._kineticTransform.translate(Math.max(0,Math.min(1,e.x))*(i-o),0)}),this._isScrollBarActive=1}if(this._verticalScrollBar&&1>t.y&&t.y>0){var r=this._measuredHeight,a=this._scrollBarHeight=Math.round(Math.max(10,r*t.y)),l=this._verticalScrollBar;l.opacity=.5,l.domNode.style.height=s(a),l.animate({transform:this._kineticTransform.translate(0,Math.max(0,Math.min(1,e.y))*(r-a))}),this._isScrollBarActive=1}},_endScrollBars:function(){function e(e){e&&e.animate({opacity:0,duration:500},function(){t._isScrollBarActive=!1})}if(this._isScrollBarActive){var t=this,i=t._horizontalScrollBar,o=t._verticalScrollBar;e(i),e(o)}},properties:{scrollingEnabled:!0}})});
+define(["Ti/_/browser", "Ti/_/declare", "Ti/UI/View", "Ti/_/lang", "Ti/_/dom", "Ti/_/style", "Ti/UI", "Ti/_/event"],
+	function(browser, declare, View, lang, dom, style, UI, event) {
+
+	var setStyle = style.set,
+		unitize = dom.unitize,
+		calculateDistance = dom.calculateDistance,
+		on = require.on,
+
+		// This is the limit that elastic drags will go towards (i.e. limit as x->infinity = elasticityLimit)
+		elasticityLimit = 100,
+
+		// Controls the friction curve for elastic dragging. The higher the value, the sooner drag starts to kick in. 
+		// Must be greater than or equal to elasticityLimit otherwise the curve has a slope greater than 1, which is bad.
+		elasticityDrag = 100;
+
+	return declare("Ti._.UI.KineticScrollView", View, {
+
+		_initKineticScrollView: function(contentContainer, elasticity, scrollbars, enableMouseWheel){
+
+			var contentContainerDomNode,
+				self = this,
+				velocity = 0,
+				startTranslationX,
+				startTranslationY,
+				translationX,
+				translationY,
+				minTranslationX,
+				minTranslationY,
+				positionData,
+				previousTime,
+				currentTime,
+				period,
+				previousTranslationX,
+				previousTranslationY,
+				numSamples,
+				velocityX,
+				velocityY,
+				scrollbarTimeout;
+			self._currentTranslationX = 0;
+			self._currentTranslationY = 0;
+			self._horizontalElastic = elasticity === "horizontal" || elasticity === "both";
+			self._verticalElastic = elasticity === "vertical" || elasticity === "both";
+			self._kineticTransform = UI.create2DMatrix();
+			
+			(scrollbars === "horizontal" || scrollbars === "both") && self._createHorizontalScrollBar();
+			(scrollbars === "vertical" || scrollbars === "both") && self._createVerticalScrollBar();
+
+			// Create the content container
+			self._add(self._contentContainer = contentContainer);
+			contentContainerDomNode = contentContainer.domNode;
+
+			// Calculate the velocity by calculating a weighted slope average, favoring more recent movement
+			function calculateVelocity() {
+				currentTime = Date.now();
+				period = currentTime - previousTime;
+				previousTime = currentTime;
+				if (numSamples++) {
+					velocityX = (velocityX * (numSamples - 1) + numSamples * (translationX - previousTranslationX) / period) / 2 / numSamples;
+					velocityY = (velocityY * (numSamples - 1) + numSamples * (translationY - previousTranslationY) / period) / 2 / numSamples;
+				} else {
+					velocityX = (translationX - startTranslationX) / period;
+					velocityY = (translationY - startTranslationY) / period;
+				}
+			}
+			
+			function setMinTranslations() {
+				minTranslationX = self._minTranslationX = Math.min(0, self._measuredWidth - self._borderLeftWidth - self._borderRightWidth - self._contentContainer._measuredWidth);
+				minTranslationY = self._minTranslationY = Math.min(0, self._measuredHeight - self._borderTopWidth - self._borderBottomWidth - self._contentContainer._measuredHeight);
+			}
+			
+			on(self._contentContainer, "postlayout", function() {
+				setMinTranslations();
+				self._setTranslation(self._currentTranslationX, self._currentTranslationY);
+			});
+
+			on(self, "draggingstart", function(e) {
+				if (self.scrollingEnabled) {
+					self._cancelAnimations();
+
+					// Initialize the velocity calculations
+					velocityX = void 0;
+					velocityY = void 0;
+					startTranslationX = self._currentTranslationX;
+					startTranslationY = self._currentTranslationY;
+					numSamples = 0;
+					previousTime = (new Date).getTime();
+
+					setMinTranslations();
+
+					// Start the scroll bars
+					var width = self._measuredWidth,
+						height = self._measuredHeight,
+						contentWidth = contentContainer._measuredWidth,
+						contentHeight = contentContainer._measuredHeight;
+					self._startScrollBars({
+						x: -self._currentTranslationX / (contentWidth - width),
+						y: -self._currentTranslationY / (contentHeight - height)
+					},
+					{
+						x: width / contentWidth,
+						y: height / contentHeight
+					});
+
+					// Call the callback
+					self._handleDragStart && self._handleDragStart(e);
+				}
+			});
+
+			on(self, "dragging", function(e) {
+				if (self.scrollingEnabled) {
+					// Update the velocity calculations
+					translationX = startTranslationX + e.distanceX;
+					translationY = startTranslationY + e.distanceY;
+					calculateVelocity();
+
+					// Update the translation
+					self._setTranslation(previousTranslationX = translationX, previousTranslationY = translationY);
+					
+					self._handleDrag && self._handleDrag(e);
+				}
+			});
+
+			on(self, "draggingcancel", function(e) {
+				if (self.scrollingEnabled) {
+					self._animateToPosition(startTranslationX, startTranslationY, 400 + 0.3 * calculateDistance(
+							startTranslationX, startTranslationY, self._currentTranslationX, self._currentTranslationY),
+						UI.ANIMATION_CURVE_EASE_IN_OUT, function(){
+							self._handleDragCancel && self._handleDragCancel(e);
+						});
+					self._endScrollBars();
+					self._handleDragCancel && self._handleDragCancel(e);
+				}
+			});
+
+			on(self, "draggingend", function(e) {
+				if (self.scrollingEnabled) {
+					translationX = startTranslationX + e.distanceX;
+					translationY = startTranslationY + e.distanceY;
+					calculateVelocity();
+					var x = self._currentTranslationX,
+						y = self._currentTranslationY,
+						springBack;
+
+					// Spring back if need be
+					if (x > 0) {
+						x = 0;
+						springBack = 1;
+					} else if(x < minTranslationX) {
+						x = minTranslationX;
+						springBack = 1;
+					}
+					if (y > 0) {
+						y = 0;
+						springBack = 1;
+					} else if(y < minTranslationY) {
+						y = minTranslationY;
+						springBack = 1;
+					}
+
+					if (springBack) {
+						self._animateToPosition(x, y, 200, UI.ANIMATION_CURVE_EASE_OUT, function(){
+							self._handleDragEnd && self._handleDragEnd(e);
+							self._endScrollBars();
+						});
+					} else {
+						self._handleDragEnd && self._handleDragEnd(e, velocityX, velocityY);
+					}
+				}
+			});
+
+			// Handle mouse wheel scrolling
+			enableMouseWheel && (this._disconnectMouseWheelEvent = on(self.domNode, "mousewheel",function(e) {
+				if (self.scrollingEnabled) {
+					self._cancelAnimations();
+					var distanceX = contentContainer._measuredWidth - self._measuredWidth,
+						distanceY = contentContainer._measuredHeight - self._measuredHeight,
+						currentPositionX = -self._currentTranslationX,
+						currentPositionY = -self._currentTranslationY;
+
+					setMinTranslations();
+
+					// Start the scrollbar
+					self._startScrollBars({
+						x: currentPositionX / distanceX,
+						y: currentPositionY / distanceY
+					},
+					{
+						x: self._measuredWidth / contentContainer._measuredWidth,
+						y: self._measuredHeight / contentContainer._measuredHeight
+					});
+
+					// Set the scroll position
+					self._setTranslation(Math.min(0, Math.max(self._minTranslationX,-currentPositionX + e.wheelDeltaX)),
+						Math.min(0, Math.max(self._minTranslationY,-currentPositionY + e.wheelDeltaY)));
+
+					clearTimeout(scrollbarTimeout);
+					scrollbarTimeout = setTimeout(function(){
+						self._endScrollBars();
+					},500);
+
+					self._handleMouseWheel && self._handleMouseWheel();
+				}
+			}));
+		},
+
+		destroy: function() {
+			this._disconnectMouseWheelEvent && this._disconnectMouseWheelEvent();
+			View.prototype.destroy.apply(this, arguments);
+		},
+
+		_animateToPosition: function(destinationTranslationX, destinationTranslationY, duration, curve, callback) {
+			var self = this,
+				contentContainer = self._contentContainer,
+				contentContainerDomNode = contentContainer.domNode,
+				destination,
+				horizontalScrollBar = self._horizontalScrollBar,
+				verticalScrollBar = self._verticalScrollBar;
+			
+			if (calculateDistance(self._currentTranslationX, self._currentTranslationY, destinationTranslationX, destinationTranslationY) < 1) {
+				self._setTranslation(destinationTranslationX, destinationTranslationY);
+				callback();
+			} else {
+
+				// Animate the contents
+				destination = self._setTranslation(destinationTranslationX, destinationTranslationY, 1);
+				self._contentAnimation = contentContainer.animate({
+					transform: self._kineticTransform.translate(destination.translationX, destination.translationY),
+					duration: Math.round(duration),
+					curve: curve
+				}, callback);
+
+				// Animate the scroll bars
+				self._horizontalScrollBarAnimation = horizontalScrollBar && horizontalScrollBar.animate({
+					transform: this._kineticTransform.translate(Math.max(0,Math.min(1, 
+						-destination.translationX / (contentContainer._measuredWidth - self._measuredWidth))) *
+						(this._measuredWidth - this._scrollBarWidth), 0),
+					duration: duration,
+					curve: curve
+				});
+				self._verticalScrollBarAnimation = verticalScrollBar && verticalScrollBar.animate({
+					transform: this._kineticTransform.translate(0, Math.max(0,Math.min(1, 
+						-destination.translationY / (contentContainer._measuredHeight - self._measuredHeight))) *
+						(this._measuredHeight - this._scrollBarHeight)),
+					duration: duration,
+					curve: curve
+				});
+			}
+		},
+
+		_setTranslation: function(translationX, translationY, dontSet) {
+
+			// Check if the translation is outside the limits of the view and apply elasticity
+			function elastize(value) {
+				return elasticityLimit * (-1 / (value / elasticityDrag + 1) + 1);
+			}
+			var contentContainer = this._contentContainer,
+				minTranslationX = this._minTranslationX,
+				minTranslationY = this._minTranslationY,
+				horizontalElastic = this._horizontalElastic && !this.disableBounce && 
+					this._measuredWidth < contentContainer._measuredWidth,
+				verticalElastic = this._verticalElastic && !this.disableBounce && 
+					this._measuredHeight < contentContainer._measuredHeight,
+				width = this._measuredWidth,
+				height = this._measuredHeight,
+				contentWidth = contentContainer._measuredWidth,
+				contentHeight = contentContainer._measuredHeight;
+
+			if (translationX > 0) {
+				translationX = horizontalElastic ? elastize(translationX) : 0;
+			} else if(translationX < minTranslationX) {
+				translationX = horizontalElastic ? minTranslationX - elastize(minTranslationX - translationX) : minTranslationX;
+			}
+			if (translationY > 0) {
+				translationY = verticalElastic ? elastize(translationY) : 0;
+			} else if(translationY < minTranslationY) {
+				translationY = verticalElastic ? minTranslationY - elastize(minTranslationY - translationY) : minTranslationY;
+			}
+
+			// Apply the translation
+			dontSet || this._contentContainer.animate({
+				transform: this._kineticTransform.translate(this._currentTranslationX = translationX, this._currentTranslationY = translationY)
+			});
+
+			// Update the scroll bars
+			if (this._isScrollBarActive) {
+				var horizontalScrollBar = this._horizontalScrollBar,
+					verticalScrollBar = this._verticalScrollBar;
+				
+				horizontalScrollBar && horizontalScrollBar.animate({
+					transform: this._kineticTransform.translate(Math.max(0,Math.min(1, 
+						-translationX / (contentWidth - width))) * (this._measuredWidth - this._scrollBarWidth), 0)
+				});
+				
+				verticalScrollBar && verticalScrollBar.animate({
+					transform: this._kineticTransform.translate(0, Math.max(0,Math.min(1,
+						-translationY / (contentHeight - height))) * (this._measuredHeight - this._scrollBarHeight))
+				});
+			}
+
+			// Return the results
+			return {
+				translationX: translationX,
+				translationY: translationY
+			}
+		},
+
+		_cancelAnimations: function() {
+			this._horizontalScrollBarAnimation && this._horizontalScrollBarAnimation.cancel();
+			this._verticalScrollBarAnimation && this._verticalScrollBarAnimation.cancel();
+			this._contentAnimation && this._contentAnimation.cancel();
+		},
+
+		_createHorizontalScrollBar: function() {
+			this._horizontalScrollBar || this._add(this._horizontalScrollBar = UI.createView({
+				zIndex: 0x7FFFFFFF, // Max (32-bit) z-index
+				backgroundColor: "#555",
+				borderRadius: 3,
+				width: 0,
+				height: 6,
+				left: 0,
+				bottom: 0,
+				opacity: 0
+			}));
+		},
+		
+		_createVerticalScrollBar: function() {			
+			this._verticalScrollBar || this._add(this._verticalScrollBar = UI.createView({
+				zIndex: 0x7FFFFFFF, // Max (32-bit) z-index
+				backgroundColor: "#555",
+				borderRadius: 3,
+				width: 6,
+				height: 0,
+				right: 0,
+				top: 0,
+				opacity: 0
+			}));
+		},
+
+		_destroyHorizontalScrollBar: function() {
+			this._horizontalScrollBarAnimation && this._horizontalScrollBarAnimation.cancel();
+			this._remove(this._horizontalScrollBar);
+		},
+
+		_destroyVerticalScrollBar: function() {
+			this._verticalScrollBarAnimation && this._verticalScrollBarAnimation.cancel();
+			this._remove(this._verticalScrollBar);
+		},
+
+		_startScrollBars: function(normalizedScrollPosition, visibleAreaRatio) {
+
+			if (this._horizontalScrollBar && visibleAreaRatio.x < 1 && visibleAreaRatio.x > 0) {
+				var measuredWidth = this._measuredWidth,
+					scrollBarWidth = this._scrollBarWidth = Math.round(Math.max(10, measuredWidth * visibleAreaRatio.x)),
+					horizontalScrollBar = this._horizontalScrollBar;
+				horizontalScrollBar.opacity = 0.5;
+				horizontalScrollBar.domNode.style.width = unitize(scrollBarWidth);
+				horizontalScrollBar.animate({
+					transform: this._kineticTransform.translate(Math.max(0, Math.min(1, normalizedScrollPosition.x)) * 
+						(measuredWidth - scrollBarWidth), 0)
+				});
+				this._isScrollBarActive = 1;
+			}
+
+			if (this._verticalScrollBar && visibleAreaRatio.y < 1 && visibleAreaRatio.y > 0) {
+				var measuredHeight = this._measuredHeight,
+					scrollBarHeight = this._scrollBarHeight = Math.round(Math.max(10, measuredHeight * visibleAreaRatio.y)),
+					verticalScrollBar = this._verticalScrollBar;
+				verticalScrollBar.opacity = 0.5;
+				verticalScrollBar.domNode.style.height = unitize(scrollBarHeight);
+				verticalScrollBar.animate({
+					transform: this._kineticTransform.translate(0, Math.max(0, Math.min(1, normalizedScrollPosition.y)) * 
+						(measuredHeight - scrollBarHeight))
+				});
+				this._isScrollBarActive = 1;
+			}
+		},
+
+		_endScrollBars: function() {
+			if (this._isScrollBarActive) {
+				var self = this,
+					horizontalScrollBar = self._horizontalScrollBar,
+					verticalScrollBar = self._verticalScrollBar;
+
+				function animateScrollBar(scrollBar) {
+					scrollBar && scrollBar.animate({
+						opacity: 0,
+						duration: 500
+					}, function() {
+						self._isScrollBarActive = false;
+					});
+				}
+
+				animateScrollBar(horizontalScrollBar);
+				animateScrollBar(verticalScrollBar);
+			}
+		},
+		
+		properties: {
+			scrollingEnabled: true
+		}
+	});
+});

@@ -1,5 +1,9 @@
 <Alloy>
 	<View layout="vertical">
+		<View id="navView">
+			<View id="button"></View>
+			<Label class="title">Consultoria Financeira</Label>			
+		</View>
 		<ScrollView class="contentView" scrollingEnabled="true">
 			<View class="fixedHeader">
 				<Label class="titleFixed">Seu Projeto</Label>

@@ -1,1 +1,194 @@
-define(["Ti/_","Ti/_/declare","Ti/_/has","Ti/_/lang","Ti/_/Evented","Ti/Filesystem","Ti/Network","Ti/Blob","Ti/_/event","Ti/App"],function(e,t,i,o,a,r,n,l,s,d){var _=require.is,c=require.on;return t("Ti.Network.HTTPClient",a,{constructor:function(){var e=this._xhr=new XMLHttpRequest;this._handles=[c(e,"error",this,"_onError"),e.upload&&c(e.upload,"error",this,"_onError"),c(e,"progress",this,function(e){e.progress=e.lengthComputable?e.loaded/e.total:!1,_(this.ondatastream,"Function")&&this.ondatastream.call(this,e)}),e.upload&&c(e.upload,"progress",this,function(e){e.progress=e.lengthComputable?e.loaded/e.total:!1,_(this.onsendstream,"Function")&&this.onsendstream.call(this,e)})],e.onreadystatechange=o.hitch(this,function(){var t,o=this.constants,a=this.onload;switch(e.readyState){case 0:o.readyState=this.UNSENT;break;case 1:o.readyState=this.OPENED;break;case 2:o.readyState=this.LOADING;break;case 3:o.readyState=this.HEADERS_RECEIVED;break;case 4:clearTimeout(this._timeoutTimer),this._completed=1,o.readyState=this.DONE,this._aborted||((t=this.file)&&(t=r.getFile(t),t.writable&&t.write(e.responseText)),o.responseText=e.responseText,o.responseData=new l({data:e.responseText,length:e.responseText.length,mimeType:e.getResponseHeader("Content-Type")||"text/plain"}),o.responseXML=e.responseXML,i("ti-instrumentation")&&instrumentation.stopTest(this._requestInstrumentationTest,this.location),e.status>=400&&(a=this._onError),_(a,"Function")&&a.call(this))}this._fireStateChange()})},destroy:function(){this._xhr&&(this._xhr.abort(),this._xhr=null),s.off(this._handles),a.destroy.apply(this,arguments)},_onError:function(e){this.abort(),_(e,"Object")||(e={message:e}),e.source=this,e.type="error",e.error||(e.error=e.message||this._xhr.status),parseInt(e.error)||(e.error="Can't reach host"),_(this.onerror,"Function")&&this.onerror.call(this,e)},abort:function(){clearTimeout(this._timeoutTimer),this._aborted=1,this.connected&&this._xhr.abort(),this.constants.readyState=this.UNSENT,this._fireStateChange()},_fireStateChange:function(){_(this.onreadystatechange,"Function")&&this.onreadystatechange.call(this)},getResponseHeader:function(e){return this._xhr.readyState>1?this._xhr.getResponseHeader(e):null},open:function(t,i,o){var a=Ti.Network.httpURLFormatter,r=this.constants,n=this.withCredentials,l=e.getAbsolutePath(a?a(i):i),s=l.match(/^((?:.+\:)?\/\/)?(?:.+@)?(.*)$/);s&&this.username&&this.password&&(l=(s[1]||"")+(this.domain?this.domain+"\\":"")+this.username+":"+this.password+"@"+s[2]),this.abort(),this._xhr.open(r.connectionType=t,r.location=l,n||void 0===o?!0:!!o),n&&(this._xhr.withCredentials=n)},send:function(e){try{var t=0|this.timeout;this._aborted=this._completed=0,i("ti-instrumentation")&&(this._requestInstrumentationTest=instrumentation.startTest("HTTP Request")),e=_(e,"Object")?o.urlEncode(e):e,e&&this._xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded"),this._xhr.setRequestHeader("X-Titanium-Id",d.guid),this._xhr.send(e),clearTimeout(this._timeoutTimer),t&&(this._timeoutTimer=setTimeout(o.hitch(this,function(){this.connected&&(this.abort(),!this._completed&&this._onError("Request timed out"))}),t))}catch(a){}},setRequestHeader:function(e,t){this._xhr.setRequestHeader(e,t)},properties:{ondatastream:void 0,onerror:void 0,onload:void 0,onreadystatechange:void 0,onsendstream:void 0,timeout:void 0,username:null,password:null,domain:null,withCredentials:!1},constants:{DONE:4,HEADERS_RECEIVED:2,LOADING:3,OPENED:1,UNSENT:1,connected:function(){return this.readyState>=this.OPENED},connectionType:void 0,location:void 0,readyState:this.UNSENT,responseData:void 0,responseText:void 0,responseXML:void 0,status:function(){return this._xhr.status},statusText:function(){return this._xhr.statusText}}})});
+define(["Ti/_", "Ti/_/declare", "Ti/_/has", "Ti/_/lang", "Ti/_/Evented", "Ti/Filesystem", "Ti/Network", "Ti/Blob", "Ti/_/event", "Ti/App"],
+	function(_, declare, has, lang, Evented, Filesystem, Network, Blob, event, App) {
+
+	var is = require.is,
+		on = require.on;
+
+	return declare("Ti.Network.HTTPClient", Evented, {
+
+		constructor: function() {
+			var xhr = this._xhr = new XMLHttpRequest;
+
+			this._handles = [
+				on(xhr, "error", this, "_onError"),
+				xhr.upload && on(xhr.upload, "error", this, "_onError"),
+				on(xhr, "progress", this, function(evt) {
+					evt.progress = evt.lengthComputable ? evt.loaded / evt.total : false;
+					is(this.ondatastream, "Function") && this.ondatastream.call(this, evt);
+				}),
+				xhr.upload && on(xhr.upload, "progress", this, function(evt) {
+					evt.progress = evt.lengthComputable ? evt.loaded / evt.total : false;
+					is(this.onsendstream, "Function") && this.onsendstream.call(this, evt);
+				})
+			];
+
+			xhr.onreadystatechange = lang.hitch(this, function() {
+				var c = this.constants,
+					f,
+					onload = this.onload;
+
+				switch (xhr.readyState) {
+					case 0: c.readyState = this.UNSENT; break;
+					case 1: c.readyState = this.OPENED; break;
+					case 2: c.readyState = this.LOADING; break;
+					case 3: c.readyState = this.HEADERS_RECEIVED; break;
+					case 4:
+						clearTimeout(this._timeoutTimer);
+						this._completed = 1;
+						c.readyState = this.DONE;
+
+						if (!this._aborted) {
+							if (f = this.file) {
+								f = Filesystem.getFile(f);
+								f.writable && f.write(xhr.responseText);
+							}
+
+							c.responseText = xhr.responseText;
+							c.responseData = new Blob({
+								data: xhr.responseText,
+								length: xhr.responseText.length,
+								mimeType: xhr.getResponseHeader("Content-Type") || "text/plain"
+							});
+							c.responseXML = xhr.responseXML;
+
+							has("ti-instrumentation") && (instrumentation.stopTest(this._requestInstrumentationTest, this.location));
+
+							xhr.status >= 400 && (onload = this._onError);
+							is(onload, "Function") && onload.call(this);
+						}
+				}
+
+				this._fireStateChange();
+			});
+		},
+
+		destroy: function() {
+			if (this._xhr) {
+				this._xhr.abort();
+				this._xhr = null;
+			}
+			event.off(this._handles);
+			Evented.destroy.apply(this, arguments);
+		},
+
+		_onError: function(error) {
+			this.abort();
+			is(error, "Object") || (error = { message: error });
+			error.source = this;
+			error.type = "error";
+			error.error || (error.error = error.message || this._xhr.status);
+			parseInt(error.error) || (error.error = "Can't reach host");
+			is(this.onerror, "Function") && this.onerror.call(this, error);
+		},
+
+		abort: function() {
+			clearTimeout(this._timeoutTimer);
+			this._aborted = 1;
+			this.connected && this._xhr.abort();
+			this.constants.readyState = this.UNSENT;
+			this._fireStateChange();
+		},
+
+		_fireStateChange: function() {
+			is(this.onreadystatechange, "Function") && this.onreadystatechange.call(this);
+		},
+
+		getResponseHeader: function(name) {
+			return this._xhr.readyState > 1 ? this._xhr.getResponseHeader(name) : null;
+		},
+
+		open: function(method, url, async) {
+			var httpURLFormatter = Ti.Network.httpURLFormatter,
+				c = this.constants,
+				wc = this.withCredentials,
+				loc = _.getAbsolutePath(httpURLFormatter ? httpURLFormatter(url) : url),
+				parts = loc.match(/^((?:.+\:)?\/\/)?(?:.+@)?(.*)$/);
+
+			if (parts && this.username && this.password) {
+				loc = (parts[1] || '') + (this.domain ? this.domain + '\\' : '') + this.username + ':' + this.password + '@' + parts[2];
+			}
+
+			this.abort();
+			this._xhr.open(
+				c.connectionType = method,
+				c.location = loc,
+				wc || async === void 0 ? true : !!async
+			);
+			wc && (this._xhr.withCredentials = wc);
+		},
+
+		send: function(args){
+			try {
+				var timeout = this.timeout | 0;
+				this._aborted = this._completed = 0;
+				has("ti-instrumentation") && (this._requestInstrumentationTest = instrumentation.startTest("HTTP Request")),
+				args = is(args, "Object") ? lang.urlEncode(args) : args;
+				args && this._xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+				this._xhr.setRequestHeader('X-Titanium-Id', App.guid);
+				this._xhr.send(args);
+				clearTimeout(this._timeoutTimer);
+				timeout && (this._timeoutTimer = setTimeout(lang.hitch(this, function() {
+					if (this.connected) {
+						this.abort();
+						!this._completed && this._onError("Request timed out");
+					}
+				}), timeout));
+			} catch (ex) {}
+		},
+
+		setRequestHeader: function(name, value) {
+			this._xhr.setRequestHeader(name, value);
+		},
+
+		properties: {
+			ondatastream: void 0,
+			onerror: void 0,
+			onload: void 0,
+			onreadystatechange: void 0,
+			onsendstream: void 0,
+			timeout: void 0,
+			username: null,
+			password: null,
+			domain: null,
+			withCredentials: false
+		},
+
+		constants: {
+			DONE: 4,
+
+			HEADERS_RECEIVED: 2,
+
+			LOADING: 3,
+
+			OPENED: 1,
+
+			UNSENT: 1,
+
+			connected: function() {
+				return this.readyState >= this.OPENED;
+			},
+
+			connectionType: void 0,
+
+			location: void 0,
+
+			readyState: this.UNSENT,
+
+			responseData: void 0,
+
+			responseText: void 0,
+
+			responseXML: void 0,
+
+			status: function() {
+				return this._xhr.status;
+			},
+
+			statusText: function() {
+				return this._xhr.statusText;
+			}
+		}
+
+	});
+
+});

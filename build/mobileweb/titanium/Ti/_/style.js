@@ -1,1 +1,77 @@
-define(["Ti/_","Ti/_/string","Ti/Filesystem"],function(e,t,i){function o(e,i,a){var s,l,d=0;if(e)if(arguments.length>2){for(;n.length>d;)if(s=n[d++],s+=s?l||(l=t.capitalize(i)):i,s in e.style)return(r(a,"Array")?a:[a]).forEach(function(t){e.style[s]=t}),a}else for(s in i)o(e,s,i[s]);return e}var n=require.config.vendorPrefixes.dom,r=require.is,a=document.createElement("p");return{discover:function(e,i){var o,r,s=0;for(i||(i=a);n.length>s;)if(o=n[s++],o+=o?r||(r=t.capitalize(e)):e,o in i.style)return o;return e},get:function(e,t){return e.style[this.discover(t,e)]},set:o,supports:function(e,t){var i=this.discover(e,t);return i in t.style},url:function(t){if(t&&"Ti.Blob"===t.declaredClass)return"url("+(""+t)+")";var o=t&&t.match(/^(.+):\/\//),n=o&&~i.protocols.indexOf(o[1])&&i.getFile(t);return n&&n.exists()?"url("+(""+n.read())+")":t&&"none"!==t?/^url\(/.test(t)?t:"url("+(require.cache(t)||e.getAbsolutePath(t))+")":""}}});
+define(["Ti/_", "Ti/_/string", "Ti/Filesystem"], function(_, string, Filesystem) {
+
+	var vp = require.config.vendorPrefixes.dom,
+		is = require.is,
+		dummyNode = document.createElement("p");
+
+	function set(node, name, value) {
+		var i = 0,
+			x,
+			uc;
+		if (node) {
+			if (arguments.length > 2) {
+				while (i < vp.length) {
+					x = vp[i++];
+					x += x ? uc || (uc = string.capitalize(name)) : name;
+					if (x in node.style) {
+						(is(value, "Array") ? value : [value]).forEach(function(v) { node.style[x] = v; });
+						return value;
+					}
+				}
+			} else {
+				for (x in name) {
+					set(node, x, name[x]);
+				}
+			}
+		}
+		return node;
+	}
+
+	return {
+		discover: function(name, node) {
+			var i = 0,
+				x,
+				uc;
+
+			node || (node = dummyNode);
+
+			while (i < vp.length) {
+				x = vp[i++];
+				x += x ? uc || (uc = string.capitalize(name)) : name;
+				if (x in node.style) {
+					return x;
+				}
+			}
+
+			return name;
+		},
+
+		get: function(node, name) {
+			return node.style[this.discover(name, node)];
+		},
+
+		set: set,
+
+		supports: function(name, node) {
+			var x = this.discover(name, node);
+			return x in node.style;
+		},
+
+		url: function(/*String|Blob*/url) {
+			if (url && url.declaredClass === "Ti.Blob") {
+				return "url(" + url.toString() + ")";
+			}
+
+			var match = url && url.match(/^(.+):\/\//),
+				file = match && ~Filesystem.protocols.indexOf(match[1]) && Filesystem.getFile(url);
+
+			return file && file.exists()
+				? "url(" + file.read().toString() + ")"
+				: !url || url === "none"
+					? ""
+					: /^url\(/.test(url)
+						? url
+						: "url(" + (require.cache(url) || _.getAbsolutePath(url)) + ")";
+		}
+	};
+});

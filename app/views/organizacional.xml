@@ -2,7 +2,7 @@
 	<View layout="vertical">
 		<View id="navView">
 			<View id="button"></View>
-			<Label id="title">Organizacional</Label>			
+			<Label class="title">Organizacional</Label>			
 		</View>
 		<ScrollView class="contentView" scrollingEnabled="true">
 		</ScrollView>

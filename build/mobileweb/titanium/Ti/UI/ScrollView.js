@@ -1,1 +1,185 @@
-define(["Ti/_/declare","Ti/_/UI/KineticScrollView","Ti/_/style","Ti/_/lang","Ti/UI"],function(e,t,i,o,r){var n=o.isDef,a=.001;return e("Ti.UI.ScrollView",t,{constructor:function(){var e;this._initKineticScrollView(e=r.createView({width:r.SIZE,height:r.SIZE,_minWidth:"100%",_minHeight:"100%",left:0,top:0}),"both","both",1)},_handleMouseWheel:function(){this._isScrollBarActive&&this.fireEvent("scroll",{x:-this._currentTranslationX,y:-this._currentTranslationY,dragging:!1,decelerating:!1})},_handleDragStart:function(){this.fireEvent("dragStart")},_handleDrag:function(){this.fireEvent("scroll",{x:-this._currentTranslationX,y:-this._currentTranslationY,dragging:!0,decelerating:!1})},_handleDragEnd:function(e,t,i){if(n(t)){var o=this,s=Math.sqrt(t*t+i*i),l=s*s/(1.724*a),d=s/a,c=Math.atan(Math.abs(i/t)),_=l*Math.cos(c)*(0>t?-1:1),u=l*Math.sin(c)*(0>i?-1:1),h=Math.min(0,Math.max(o._minTranslationX,o._currentTranslationX+_)),f=Math.min(0,Math.max(o._minTranslationY,o._currentTranslationY+u));o.fireEvent("dragEnd",{decelerate:!0}),o._animateToPosition(h,f,d,r.ANIMATION_CURVE_EASE_OUT,function(){o._setTranslation(h,f),o._endScrollBars(),o.fireEvent("scrollEnd")})}},scrollTo:function(e,t){this._setTranslation(null!==e?-e:this._currentTranslationX,null!==t?-t:this._currentTranslationX)},_defaultWidth:r.FILL,_defaultHeight:r.FILL,_getContentOffset:function(){return this.contentOffset},_preLayout:function(){var e=this._contentContainer.layout===this.layout;return this._contentContainer.layout=this.layout,e},add:function(e){this._contentContainer._add(e),this._publish(e)},remove:function(e){this._contentContainer.remove(e),this._unpublish(e)},properties:{contentHeight:{get:function(){return this._contentContainer.height},set:function(e){return this._contentContainer.height=e,e}},contentOffset:{get:function(){return{x:-this._currentTranslationX,y:-this._currentTranslationY}},set:function(e){return this._setTranslation(n(e.x)?-e.x:this._currentTranslationX,n(e.y)?-e.y:this._currentTranslationY),e}},contentWidth:{get:function(){return this._contentContainer.width},set:function(e){return this._contentContainer.width=e,e}},disableBounce:!1,horizontalBounce:{set:function(e){return this._horizontalElastic=e},value:!0},layout:{set:function(e){return this._contentContainer.layout=e},value:"composite"},showHorizontalScrollIndicator:{set:function(e,t){return e!==t&&(e?this._createHorizontalScrollBar():this._destroyHorizontalScrollBar()),e},value:!0},showVerticalScrollIndicator:{set:function(e,t){return e!==t&&(e?this._createVerticalScrollBar():this._destroyVerticalScrollBar()),e},value:!0},verticalBounce:{set:function(e){return this._verticalElastic=e},value:!0}}})});
+/*global define*/
+define(['Ti/_/declare', 'Ti/_/UI/KineticScrollView', 'Ti/_/style', 'Ti/_/lang', 'Ti/UI'],
+	function(declare, KineticScrollView, style, lang, UI) {
+
+	var isDef = lang.isDef,
+
+		// The amount of deceleration (in pixels/ms^2)
+		deceleration = 0.001;
+
+	return declare('Ti.UI.ScrollView', KineticScrollView, {
+
+		constructor: function() {
+			var contentContainer;
+			this._initKineticScrollView(contentContainer = UI.createView({
+				width: UI.SIZE,
+				height: UI.SIZE,
+				_minWidth: '100%',
+				_minHeight: '100%',
+				left: 0,
+				top: 0
+			}), 'both', 'both', 1);
+		},
+
+		_handleMouseWheel: function() {
+			this._isScrollBarActive && this.fireEvent('scroll',{
+				x: -this._currentTranslationX,
+				y: -this._currentTranslationY,
+				dragging: false,
+				decelerating: false
+			});
+		},
+
+		_handleDragStart: function() {
+			this.fireEvent('dragStart');
+		},
+
+		_handleDrag: function() {
+			this.fireEvent('scroll',{
+				x: -this._currentTranslationX,
+				y: -this._currentTranslationY,
+				dragging: true,
+				decelerating: false
+			});
+		},
+
+		_handleDragEnd: function(e, velocityX, velocityY) {
+			if (isDef(velocityX)) {
+				var self = this,
+					velocity = Math.sqrt(velocityX * velocityX + velocityY * velocityY),
+					distance = velocity * velocity / (1.724 * deceleration),
+					duration = velocity / deceleration,
+					theta = Math.atan(Math.abs(velocityY / velocityX)),
+					distanceX = distance * Math.cos(theta) * (velocityX < 0 ? -1 : 1),
+					distanceY = distance * Math.sin(theta) * (velocityY < 0 ? -1 : 1),
+					translationX = Math.min(0, Math.max(self._minTranslationX, self._currentTranslationX + distanceX)),
+					translationY = Math.min(0, Math.max(self._minTranslationY, self._currentTranslationY + distanceY));
+				self.fireEvent('dragEnd',{
+					decelerate: true
+				});
+				self._animateToPosition(translationX, translationY, duration, UI.ANIMATION_CURVE_EASE_OUT, function() {
+					self._setTranslation(translationX, translationY);
+					self._endScrollBars();
+					self.fireEvent('scrollEnd');
+				});
+			}
+		},
+
+		scrollTo: function(x, y) {
+			this._setTranslation(x !== null ? -x : this._currentTranslationX, y !== null ? -y : this._currentTranslationX);
+		},
+
+		_defaultWidth: UI.FILL,
+
+		_defaultHeight: UI.FILL,
+
+		_getContentOffset: function(){
+			return this.contentOffset;
+		},
+
+		_preLayout: function() {
+			var needsRecalculation = this._contentContainer.layout === this.layout;
+			this._contentContainer.layout = this.layout;
+			return needsRecalculation;
+		},
+
+		add: function(view) {
+			this._contentContainer._add(view);
+			this._publish(view);
+		},
+
+		remove: function(view) {
+			this._contentContainer.remove(view);
+			this._unpublish(view);
+		},
+
+		properties: {
+			contentHeight: {
+				get: function() {
+					return this._contentContainer.height;
+				},
+				set: function(value) {
+					this._contentContainer.height = value;
+					return value;
+				}
+			},
+
+			contentOffset: {
+				get: function() {
+					return {
+						x: -this._currentTranslationX,
+						y: -this._currentTranslationY
+					};
+				},
+				set: function(value) {
+					this._setTranslation(isDef(value.x) ? -value.x : this._currentTranslationX,
+						isDef(value.y) ? -value.y : this._currentTranslationY);
+					return value;
+				}
+			},
+
+			contentWidth: {
+				get: function() {
+					return this._contentContainer.width;
+				},
+				set: function(value) {
+					this._contentContainer.width = value;
+					return value;
+				}
+			},
+
+			disableBounce: false,
+
+			horizontalBounce: {
+				set: function(value) {
+					return this._horizontalElastic = value;
+				},
+				value: true
+			},
+
+			layout: {
+				set: function(value) {
+					return this._contentContainer.layout = value;
+				},
+				value: 'composite'
+			},
+
+			showHorizontalScrollIndicator: {
+				set: function(value, oldValue) {
+					if (value !== oldValue) {
+						if (value) {
+							this._createHorizontalScrollBar();
+						} else {
+							this._destroyHorizontalScrollBar();
+						}
+					}
+					return value;
+				},
+				value: true
+			},
+
+			showVerticalScrollIndicator: {
+				set: function(value, oldValue) {
+					if (value !== oldValue) {
+						if (value) {
+							this._createVerticalScrollBar();
+						} else {
+							this._destroyVerticalScrollBar();
+						}
+					}
+					return value;
+				},
+				value: true
+			},
+
+			verticalBounce: {
+				set: function(value) {
+					return this._verticalElastic = value;
+				},
+				value: true
+			}
+		}
+
+	});
+
+});

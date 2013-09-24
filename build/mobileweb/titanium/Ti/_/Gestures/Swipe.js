@@ -1,1 +1,80 @@
-define(["Ti/_/declare","Ti/_/lang"],function(e,t){var i,o,n=50,r=Math.PI/6,a=.5,s=!1;return t.setObject("Ti._.Gestures.Swipe",{processTouchStartEvent:function(e){1==e.touches.length&&1==e.changedTouches.length?(s=!1,i={x:e.changedTouches[0].clientX,y:e.changedTouches[0].clientY},o=Date.now()):i=null},processTouchEndEvent:function(e){if(0===e.touches.length&&1===e.changedTouches.length&&i){var t,l,d,c=e.changedTouches[0].clientX,u=e.changedTouches[0].clientY,_=Math.abs(i.x-c),h=Math.abs(i.y-u),f=Math.sqrt(Math.pow(i.x-c,2)+Math.pow(i.y-u,2));if(!s&&(s=f>n),s&&(t=n>=f||0===_||0===h?!0:_>h?r>Math.atan(h/_):r>Math.atan(_/h),t&&(l=_>h?i.x-c>0?"left":"right":0>i.y-u?"down":"up",d=Math.abs(f/(Date.now()-o)),d>a)))return{swipe:[{x:c,y:u,direction:l}]}}i=null},processTouchCancelEvent:function(){i=null}})});
+/*global define*/
+define(['Ti/_/declare', 'Ti/_/lang'], function (declare, lang) {
+
+		// This specifies the minimum distance that a finger must travel before it is considered a swipe
+	var distanceThreshold = 50,
+
+		// The maximum angle, in radians, from the axis a swipe is allowed to travel before it is no longer considered a swipe
+		angleThreshold = Math.PI/6, // 30 degrees
+
+		// This sets the minimum velocity that determines this is a swipe, or just a drag
+		velocityThreshold = 0.5,
+
+		distanceThresholdPassed = false,
+		touchStartLocation,
+		startTime;
+
+	return lang.setObject('Ti._.Gestures.Swipe', {
+
+		processTouchStartEvent: function(e){
+			if (e.touches.length == 1 && e.changedTouches.length == 1) {
+				distanceThresholdPassed = false;
+				touchStartLocation = {
+					x: e.changedTouches[0].clientX,
+					y: e.changedTouches[0].clientY
+				};
+				startTime = Date.now();
+			} else {
+				touchStartLocation = null;
+			}
+		},
+
+		processTouchEndEvent: function(e){
+			if (e.touches.length === 0 && e.changedTouches.length === 1 && touchStartLocation) {
+				var x = e.changedTouches[0].clientX,
+						y = e.changedTouches[0].clientY,
+						xDiff = Math.abs(touchStartLocation.x - x),
+						yDiff = Math.abs(touchStartLocation.y - y),
+						distance = Math.sqrt(Math.pow(touchStartLocation.x - x, 2) + Math.pow(touchStartLocation.y - y, 2)),
+						angleOK,
+						direction,
+						velocity;
+					!distanceThresholdPassed && (distanceThresholdPassed = distance > distanceThreshold);
+
+					if (distanceThresholdPassed) {
+						// If the distance is small, then the angle is way restrictive, so we ignore it
+						if (distance <= distanceThreshold || xDiff === 0 || yDiff === 0) {
+							angleOK = true;
+						} else if (xDiff > yDiff) {
+							angleOK = Math.atan(yDiff/xDiff) < angleThreshold;
+						} else {
+							angleOK = Math.atan(xDiff/yDiff) < angleThreshold;
+						}
+						if (angleOK) {
+
+							// Calculate the direction
+							direction = xDiff > yDiff ?
+								touchStartLocation.x - x > 0 ? 'left' : 'right' :
+								touchStartLocation.y - y < 0 ? 'down' : 'up';
+							velocity = Math.abs(distance / (Date.now() - startTime));
+							if (velocity > velocityThreshold) {
+								return {
+									swipe: [{
+										x: x,
+										y: y,
+										direction: direction
+									}]
+								};
+							}
+						}
+					}
+			}
+			touchStartLocation = null;
+		},
+
+		processTouchCancelEvent: function(){
+			touchStartLocation = null;
+		}
+	});
+	
+});

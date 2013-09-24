@@ -1,1 +1,27 @@
-define(["Ti/_/Evented","Ti/_/lang"],function(e,t){return t.setObject("Ti.Yahoo",e,{yql:function(e,t){require(["http://query.yahooapis.com/v1/public/yql?format=json&callback=define&q="+encodeURIComponent(e).replace(/!/g,"%21").replace(/'/g,"%27").replace(/\(/,"%28").replace(/\)/,"%29")],function(e){var e=e||{},i=e.query&&e.query.results;require.is(t,"Function")&&t({success:!!i,data:i,message:e.error&&e.error.description})})}})});
+define(["Ti/_/Evented", "Ti/_/lang"],
+	function(Evented, lang) {
+
+	return lang.setObject("Ti.Yahoo", Evented, {
+
+		yql: function(query, callback) {
+			require([
+				"http://query.yahooapis.com/v1/public/yql?format=json&callback=define&q="
+					+ encodeURIComponent(query)
+					.replace(/!/g,'%21')
+					.replace(/'/g,'%27')
+					.replace(/\(/,'%28')
+					.replace(/\)/,'%29')
+			], function(data) {
+				var data = data || {},
+					results = data.query && data.query.results;
+				require.is(callback, "Function") && callback({
+					success: !!results,
+					data: results,
+					message: data.error && data.error.description
+				});
+			});
+		}
+
+	});
+
+});

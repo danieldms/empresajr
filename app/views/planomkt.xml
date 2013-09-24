@@ -2,7 +2,7 @@
 	<View layout="vertical">
 		<View id="navView">
 			<View id="button"></View>
-			<Label id="title">Consultoria Financeira</Label>			
+			<Label class="title">Consultoria Financeira</Label>			
 		</View>
 		<ScrollView class="contentView" scrollingEnabled="true">		
 			<View class="header">

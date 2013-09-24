@@ -1,1 +1,4 @@
-module.exports={dependencies:{},theme:"default"};
+module.exports = {
+    dependencies: {},
+    theme: "default"
+};

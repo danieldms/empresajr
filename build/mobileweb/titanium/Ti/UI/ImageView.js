@@ -1,1 +1,264 @@
-define(["Ti/_/declare","Ti/_/event","Ti/_/lang","Ti/_/style","Ti/_/UI/Widget","Ti/UI","Ti/Filesystem"],function(e,t,i,o,r,a,n){var l=o.set,s=require.is,d=require.on,c=e(r,{domType:"img",onload:null,onerror:null,constructor:function(){this.domNode.ondragstart=function(){return!1}},_getContentSize:function(){return{width:this.domNode.width,height:this.domNode.height}},_preLayout:function(e,t,i,o){this.domNode.style.width="",this.domNode.style.height="";var r=this.domNode.width/this.domNode.height,n=this.properties.__values__,l=n.width,s=n.height;return i||o?i?o?(n.width=a.SIZE,n.height=a.SIZE):(n.width=t*r,n.height=t):(n.width=e,n.height=e/r):e/t>r?(n.width=t*r,n.height=t):(n.width=e,n.height=e/r),l!==n.width||s!==n.height},_imageRatio:1,properties:{src:{set:function(e){var o,r=this.domNode,a="none",n=i.hitch(this,function(e){t.off(o),this._triggerLayout(),this.onerror&&this.onerror(e)});return e&&(a="inherit",o=[d(r,"load",this,function(){r.style.width="",r.style.height="";var e=r.width/r.height;isNaN(e)&&(e=0===r.width?1:1/0),this._imageRatio=e,this._triggerLayout(),this.onload&&this.onload()}),d(r,"error",n),d(r,"abort",n)],r.src=require.cache(e)||e),l(r,"display",a),e}}}});return e("Ti.UI.ImageView",r,{_createImage:function(e,t,i){var o=s(e,"String")&&e.match(/^(.+)\:\/\//);switch(o&&~n.protocols.indexOf(o[1])&&(e=n.getFile(e)),e&&e.declaredClass){case"Ti.Filesystem.File":e=e.read();case"Ti.Blob":e=""+e}return new c({onload:t,onerror:i,src:e})},_defaultWidth:a.SIZE,_defaultHeight:a.SIZE,_slideshowCount:0,_setSlideshowInterval:function(){var e=this,t=e._images;clearInterval(this._slideshowTimer),this._slideshowTimer=setInterval(function(){var i=!1;return l(t[e._currentIndex].domNode,"display","none"),e.reverse?0===--e._currentIndex&&(e._currentIndex=e.images.length-1,i=!0):++e._currentIndex===e.images.length&&(e._currentIndex=0,i=!0),l(t[e._currentIndex].domNode,"display","inherit"),e.repeatCount&&i&&++e._slideshowCount===e.repeatCount?(e.stop(),void 0):(e.fireEvent("change",{index:e._currentIndex}),void 0)},this.duration)},start:function(){this._images&&(this._setState(0,1),this._slideshowCount=0,this._setSlideshowInterval(),this.fireEvent("start"))},stop:function(){var e=this._images;if(e){if(clearInterval(this._slideshowTimer),e.length){var t=0;this.reverse&&(t=e.length-1),this._currentIndex&&l(e[this._currentIndex].domNode,"display","none"),l(e[t].domNode,"display","inherit"),this._currentIndex=t}this._setState(0,0),this.fireEvent("stop")}},pause:function(){this._images&&(clearInterval(this._slideshowTimer),this._setState(1,0),this.fireEvent("pause"))},resume:function(){this._images&&(this._setSlideshowInterval(),this._setState(0,1))},_setState:function(e,t){this.constants.paused=!!e,this.constants.animating=!!t},constants:{animating:!1,paused:!1},properties:{duration:{set:function(e){return Math.max(30,e)},value:200},image:{set:function(e){return this._removeAllChildren(),this._images=void 0,this._add(this._createImage(e,function(){this.fireEvent("load",{state:"image"})},function(e){this.fireEvent("error",e)})),e}},images:{set:function(e){var t=void 0,i=0,o=0;return this._removeAllChildren(),s(e,"Array")&&(t=[],e.forEach(function(r){var a=this._createImage(r,function(){!o&&++i===e.length&&this.fireEvent("load",{state:"image"})},function(e){o||(o=1)&&this.fireEvent("error",e)});l(a.domNode,"display","none"),t.push(a),this._add(a)},this)),this._images=t,e},post:function(){this.stop()}},repeatCount:0,reverse:!1}})});
+define(["Ti/_/declare", "Ti/_/event", "Ti/_/lang", "Ti/_/style", "Ti/_/UI/Widget", "Ti/UI", "Ti/Filesystem"], 
+	function(declare, event, lang, style, Widget, UI, Filesystem) {
+
+	var setStyle = style.set,
+		is = require.is,
+		on = require.on,
+		InternalImageView = declare(Widget, {
+
+			domType: "img",
+			onload: null,
+			onerror: null,
+
+			constructor: function() {
+				this.domNode.ondragstart = function() { return false; }; // Prevent images from being dragged
+			},
+
+			_getContentSize: function() {
+				return {
+					width: this.domNode.width,
+					height: this.domNode.height
+				}
+			},
+
+			_preLayout: function(boundingWidth, boundingHeight, isParentWidthSize, isParentHeightSize) {
+				// We have to remove the old style to get the image to scale to its default size,
+				// otherwise we are just reading in whatever we set in the last doLayout(), which is
+				// 0 if the image was not loaded...thus always clamping it to 0.
+				this.domNode.style.width = "";
+				this.domNode.style.height = "";
+
+				var imageRatio = this.domNode.width / this.domNode.height,
+					values = this.properties.__values__,
+					oldWidth = values.width,
+					oldHeight = values.height;
+
+				if (!isParentWidthSize && !isParentHeightSize) {
+					if (boundingWidth / boundingHeight > imageRatio) {
+						values.width = boundingHeight * imageRatio;
+						values.height = boundingHeight;
+					} else {
+						values.width = boundingWidth;
+						values.height = boundingWidth / imageRatio;
+					}
+				} else if (!isParentWidthSize) {
+					values.width = boundingWidth;
+					values.height = boundingWidth / imageRatio;
+				} else if (!isParentHeightSize) {
+					values.width = boundingHeight * imageRatio;
+					values.height = boundingHeight;
+				} else {
+					values.width = UI.SIZE;
+					values.height = UI.SIZE;
+				}
+
+				return oldWidth !== values.width || oldHeight !== values.height;
+			},
+
+			_imageRatio: 1,
+
+			properties: {
+				src: {
+					set: function(value) {
+						var node = this.domNode,
+							disp = "none",
+							handles,
+							onerror = lang.hitch(this, function(e) {
+								event.off(handles);
+								this._triggerLayout();
+								this.onerror && this.onerror(e);
+							});
+
+						if (value) {
+							disp = "inherit";
+							handles = [
+								on(node, "load", this, function() {
+									node.style.width = "";
+									node.style.height = "";
+									var imageRatio = node.width / node.height;
+									isNaN(imageRatio) && (imageRatio = node.width === 0 ? 1 : Infinity);
+									this._imageRatio = imageRatio;
+									this._triggerLayout();
+									this.onload && this.onload();
+								}),
+								on(node, "error", onerror),
+								on(node, "abort", onerror)
+							];
+							node.src = require.cache(value) || value;
+						}
+
+						setStyle(node, "display", disp);
+						return value;
+					}
+				}
+			}
+		});
+
+	return declare("Ti.UI.ImageView", Widget, {
+
+		_createImage: function(src, onload, onerror) {
+			var m = is(src, "String") && src.match(/^(.+)\:\/\//);
+			m && ~Filesystem.protocols.indexOf(m[1]) && (src = Filesystem.getFile(src));
+			switch (src && src.declaredClass) {
+				case "Ti.Filesystem.File":
+					src = src.read();
+				case "Ti.Blob":
+					src = src.toString();
+			}
+			return new InternalImageView({
+				onload: onload,
+				onerror: onerror,
+				src: src
+			});
+		},
+
+		_defaultWidth: UI.SIZE,
+
+		_defaultHeight: UI.SIZE,
+
+		_slideshowCount: 0,
+
+		_setSlideshowInterval: function() {
+			var self = this,
+				imgs = self._images;
+			clearInterval(this._slideshowTimer);
+
+			this._slideshowTimer = setInterval(function(){
+				var rollover = false;
+
+				setStyle(imgs[self._currentIndex].domNode, "display", "none");
+
+				if (self.reverse) {
+					if (--self._currentIndex === 0) {
+						self._currentIndex = self.images.length - 1;
+						rollover = true;
+					}
+				} else if (++self._currentIndex === self.images.length) {
+					self._currentIndex = 0;
+					rollover = true;
+				}
+
+				setStyle(imgs[self._currentIndex].domNode, "display", "inherit");
+
+				if (self.repeatCount && rollover && ++self._slideshowCount === self.repeatCount) {
+					self.stop();
+					return;
+				}
+
+				self.fireEvent("change", {
+					index: self._currentIndex
+				});
+			}, this.duration);
+		},
+
+		start: function(){
+			if (this._images) {
+				this._setState(0, 1);
+				this._slideshowCount = 0;
+				this._setSlideshowInterval();
+				this.fireEvent("start");
+			}
+		},
+
+		stop: function(){
+			var imgs = this._images;
+			if (imgs) {
+				clearInterval(this._slideshowTimer);
+				if (imgs.length) {
+					var start = 0;
+					this.reverse && (start = imgs.length - 1);
+					this._currentIndex && setStyle(imgs[this._currentIndex].domNode, "display", "none");
+					setStyle(imgs[start].domNode, "display", "inherit");
+					this._currentIndex = start;
+				}
+				this._setState(0, 0);
+				this.fireEvent("stop");
+			}
+		},
+
+		pause: function(){
+			if (this._images) {
+				clearInterval(this._slideshowTimer);
+				this._setState(1, 0);
+				this.fireEvent("pause");
+			}
+		},
+
+		resume: function() {
+			if (this._images) {
+				this._setSlideshowInterval();
+				this._setState(0, 1);
+			}
+		},
+
+		_setState: function(paused, animating) {
+			this.constants.paused = !!paused;
+			this.constants.animating = !!animating;
+		},
+
+		constants: {
+			animating: false, 
+			paused: false
+		},
+
+		properties: {
+			duration: {
+				set: function(value) {
+					return Math.max(30, value);
+				},
+				value: 200
+			},
+
+			image: {
+				set: function(value) {
+					this._removeAllChildren();
+					this._images = void 0;
+					this._add(this._createImage(value, function() {
+						this.fireEvent("load", {
+							state: "image"
+						});
+					}, function(e) {
+						this.fireEvent("error", e);
+					}));
+					return value;
+				}
+			},
+
+			images: {
+				set: function(value) {
+					var imgs = void 0,
+						counter = 0,
+						errored = 0;
+					this._removeAllChildren();
+					if (is(value, "Array")) {
+						imgs = [];
+						value.forEach(function(val) {
+							var img = this._createImage(val, function() {
+								!errored && ++counter === value.length && this.fireEvent("load", {
+									state: "image"
+								});
+							}, function(e) {
+								errored || (errored = 1) && this.fireEvent("error", e);
+							});
+							setStyle(img.domNode, "display", "none");
+							imgs.push(img);
+							this._add(img);
+						}, this);
+					}
+					this._images = imgs;
+					return value;
+				},
+
+				post: function() {
+					this.stop();
+				}
+			},
+
+			repeatCount: 0,
+
+			reverse: false
+		}
+
+	});
+
+});

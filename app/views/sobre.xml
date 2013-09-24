@@ -2,7 +2,7 @@
 	<View layout="vertical">
 		<View id="navView">
 			<View id="button" ></View>
-			<Label id="title">Sobre</Label>			
+			<Label class="title">Sobre</Label>			
 		</View>
 		<ScrollView class="contentView" scrollingEnabled="true">
 			<View class="header" height="200">

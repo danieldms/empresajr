@@ -1,1 +1,33 @@
-define(["Ti/_/declare","Ti/_/UI/TextBox","Ti/_/dom","Ti/_/css","Ti/_/style","Ti/UI"],function(e,t,i,o,n,r){return e("Ti.UI.TextArea",t,{constructor:function(){var e=i.create("textarea",{autocomplete:"off",className:"TiUITextFieldInput"},this.domNode);this._initTextBox(e)},_defaultWidth:r.SIZE,_defaultHeight:r.SIZE,_getContentSize:function(e){return{width:this._measureText(this.value,this._field,e).width,height:this._measureText(this.value,this._field,e).height}},_setTouchEnabled:function(e){t.prototype._setTouchEnabled.apply(this,arguments),this.slider&&n.set(this.textArea,"pointerEvents",e?"auto":"none")}})});
+define(["Ti/_/declare", "Ti/_/UI/TextBox", "Ti/_/dom", "Ti/_/css", "Ti/_/style", "Ti/UI"],
+	function(declare, TextBox, dom, css, style, UI) {
+
+	return declare("Ti.UI.TextArea", TextBox, {
+
+		constructor: function(args) {
+			var field = dom.create("textarea", {
+				autocomplete: "off",
+				className: "TiUITextFieldInput"
+			}, this.domNode);
+
+			this._initTextBox(field);
+		},
+
+		_defaultWidth: UI.SIZE,
+
+		_defaultHeight: UI.SIZE,
+		
+		_getContentSize: function(width, height) {
+			return {
+				width: this._measureText(this.value, this._field, width).width,
+				height: this._measureText(this.value, this._field, width).height
+			};
+		},
+
+		_setTouchEnabled: function(value) {
+			TextBox.prototype._setTouchEnabled.apply(this,arguments);
+			this.slider && style.set(this.textArea, "pointerEvents", value ? "auto" : "none");
+		}
+
+	});
+
+});

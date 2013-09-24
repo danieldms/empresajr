@@ -2,7 +2,7 @@
 	<View layout="vertical">
 		<View id="navView">
 			<View id="button" />
-			<Label id="title">Fale Conosco</Label>			
+			<Label class="title">Fale Conosco</Label>			
 		</View>
 		<ScrollView id="scrollview" class="contentView" contentHeight="auto" scrollingEnabled="true" showVerticalScrollIndicator="true">
 			<View class="header">

@@ -1,1 +1,34 @@
-function ucfirst(e){return e?e[0].toUpperCase()+e.substr(1):e}var Alloy=require("alloy"),widgets={};module.exports=function(e){var t=this;return widgets[e]?widgets[e]:(this.widgetId=e,this.Collections={},this.Models={},this.Shared={},this.createController=function(t,i){return new(require("alloy/widgets/"+e+"/controllers/"+t))(i)},this.createCollection=function(t,i){return new(require("alloy/widgets/"+e+"/models/"+ucfirst(t)).Collection)(i)},this.createModel=function(t,i){return new(require("alloy/widgets/"+e+"/models/"+ucfirst(t)).Model)(i)},this.createWidget=Alloy.createWidget,this.Collections.instance=function(e){return t.Collections[e]||(t.Collections[e]=t.createCollection(e))},this.Models.instance=function(e){return t.Models[e]||(t.Models[e]=t.createModel(e))},widgets[e]=this,void 0)};
+function ucfirst(text) {
+    if (!text) return text;
+    return text[0].toUpperCase() + text.substr(1);
+}
+
+var Alloy = require("alloy");
+
+var widgets = {};
+
+module.exports = function(widgetId) {
+    var self = this;
+    if (widgets[widgetId]) return widgets[widgetId];
+    this.widgetId = widgetId;
+    this.Collections = {};
+    this.Models = {};
+    this.Shared = {};
+    this.createController = function(name, args) {
+        return new (require("alloy/widgets/" + widgetId + "/controllers/" + name))(args);
+    };
+    this.createCollection = function(name, args) {
+        return new (require("alloy/widgets/" + widgetId + "/models/" + ucfirst(name)).Collection)(args);
+    };
+    this.createModel = function(name, args) {
+        return new (require("alloy/widgets/" + widgetId + "/models/" + ucfirst(name)).Model)(args);
+    };
+    this.createWidget = Alloy.createWidget;
+    this.Collections.instance = function(name) {
+        return self.Collections[name] || (self.Collections[name] = self.createCollection(name));
+    };
+    this.Models.instance = function(name) {
+        return self.Models[name] || (self.Models[name] = self.createModel(name));
+    };
+    widgets[widgetId] = this;
+};

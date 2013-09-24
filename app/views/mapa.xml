@@ -2,7 +2,7 @@
 	<View layout="vertical">
 		<View id="navView">
 			<View id="button" />
-			<Label id="title">Localização</Label>			
+			<Label class="title">Localização</Label>			
 		</View>
 		<View class="contentView">
 			<!-- Note the ns attribute is used to change the default namespace. -->

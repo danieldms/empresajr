@@ -1,1 +1,150 @@
-define(["Ti/_/declare","Ti/_/lang","Ti/_/UI/Widget","Ti/_/dom","Ti/_/style","Ti/Locale","Ti/UI","Ti/UI/ActivityIndicatorStyle"],function(e,t,i,o,r,a,n,l){var s=.3,d=r.set;return e("Ti.UI.ActivityIndicator",i,{constructor:function(){var e=this._contentContainer=n.createView({layout:n._LAYOUT_CONSTRAINING_HORIZONTAL,width:n.SIZE,height:n.SIZE});this._add(e),i.prototype.hide.call(this),e._add(this._indicatorIndicator=n.createView()),e._add(this._indicatorMessage=n.createLabel()),this._createProngs()},_createProngs:function(){var e,t=0,i=this._prongs=[],r=this._indicatorIndicator,a=r.domNode,n=this.indicatorColor,l=this.indicatorDiameter,d=l/36;for(r.width=r.height=l;a.firstChild;)a.removeChild(a.firstChild);for(e=o.create("div",{className:"TiUIActivityIndicatorProngContainer",style:{transformOrigin:"0px 0px",transform:"scale("+d+")"}},a);12>t;t++)i.push(o.create("div",{className:"TiUIActivityIndicatorProng",style:{transform:"translate(16px,0px) rotate("+30*t+"deg)",transformOrigin:"2px 18px",opacity:s,backgroundColor:n}},e))},show:function(){i.prototype.show.call(this),this._timer=setInterval(t.hitch(this,"_animate"),100)},hide:function(){clearTimeout(this._timer),i.prototype.hide.call(this)},_currentProng:0,_animate:function(){var e=this._prongs[this._currentProng];12==++this._currentProng&&(this._currentProng=0),d(e,"transition",""),setTimeout(function(){d(e,"opacity",1),setTimeout(function(){d(e,"transition","opacity 500ms linear 0ms"),setTimeout(function(){d(e,"opacity",s)},1)},1)},1)},_defaultWidth:n.SIZE,_defaultHeight:n.SIZE,_messagePadding:0,properties:{color:{set:function(e){return this._indicatorMessage.color=e}},font:{set:function(e){return this._indicatorMessage.font=e}},indicatorColor:{post:"_createProngs",value:"#fff"},indicatorDiameter:{post:"_createProngs",value:36},message:{set:function(e){var t=this._indicatorMessage;return t.left=e?5:0,t.text=e}},messageid:{set:function(e){var t=this._indicatorMessage;return t.left=e?5:0,t.textid=e}},style:{set:function(e){this.indicatorColor=~[l.DARK,l.BIG_DARK].indexOf(e)?"#444":"#fff",this.indicatorDiameter=~[l.BIG,l.BIG_DARK].indexOf(e)?72:36}}}})});
+define(['Ti/_/declare', 'Ti/_/lang', 'Ti/_/UI/Widget', 'Ti/_/dom', 'Ti/_/style', 'Ti/Locale', 'Ti/UI', 'Ti/UI/ActivityIndicatorStyle'],
+	function(declare, lang, Widget, dom, style, Locale, UI, ActivityIndicatorStyle) {
+
+	var opacity = 0.3,
+		setStyle = style.set;
+
+	return declare('Ti.UI.ActivityIndicator', Widget, {
+
+		constructor: function() {
+			var contentContainer = this._contentContainer = UI.createView({
+					layout: UI._LAYOUT_CONSTRAINING_HORIZONTAL,
+					width: UI.SIZE,
+					height: UI.SIZE
+				});
+			this._add(contentContainer);
+
+			Widget.prototype.hide.call(this);
+
+			contentContainer._add(this._indicatorIndicator = UI.createView());
+			contentContainer._add(this._indicatorMessage = UI.createLabel());
+
+			this._createProngs();
+		},
+
+		_createProngs: function() {
+
+			var i = 0,
+				prongs = this._prongs = [],
+				indicator = this._indicatorIndicator,
+				indicatorDomNode = indicator.domNode,
+				backgroundColor = this.indicatorColor,
+				diameter = this.indicatorDiameter,
+				scale = diameter / 36,
+				prongContainer;
+
+			// Set the container size
+			indicator.width = indicator.height = diameter;
+
+			// Remove any old children
+			while (indicatorDomNode.firstChild) {
+				indicatorDomNode.removeChild(indicatorDomNode.firstChild);
+			}
+
+			// Add the prong container
+			prongContainer = dom.create('div', {
+				className: 'TiUIActivityIndicatorProngContainer',
+				style: {
+					transformOrigin: '0px 0px',
+					transform: 'scale(' + scale + ')'
+				}
+			}, indicatorDomNode);
+
+			// Add the new prongs
+			for (; i < 12; i++) {
+				prongs.push(dom.create('div', {
+					className: 'TiUIActivityIndicatorProng',
+					style: {
+						transform: 'translate(16px,0px) rotate(' + i * 30 + 'deg)',
+						transformOrigin: '2px 18px',
+						opacity: opacity,
+						backgroundColor: backgroundColor
+					}
+				}, prongContainer));
+			}
+		},
+
+		show: function() {
+			Widget.prototype.show.call(this);
+			this._timer = setInterval(lang.hitch(this, '_animate'), 100);
+		},
+
+		hide: function() {
+			clearTimeout(this._timer);
+			Widget.prototype.hide.call(this);
+		},
+
+		_currentProng: 0,
+
+		_animate: function() {
+			var prong = this._prongs[this._currentProng];
+			++this._currentProng == 12 && (this._currentProng = 0);
+			setStyle(prong, 'transition', '');
+			setTimeout(function() {
+				setStyle(prong, 'opacity', 1);
+				setTimeout(function() {
+					setStyle(prong, 'transition', 'opacity 500ms linear 0ms');
+					setTimeout(function() {
+						setStyle(prong, 'opacity', opacity);
+					}, 1);
+				}, 1);
+			}, 1);
+		},
+
+		_defaultWidth: UI.SIZE,
+
+		_defaultHeight: UI.SIZE,
+
+		_messagePadding: 0,
+
+		properties: {
+			color: {
+				set: function(value) {
+					return this._indicatorMessage.color = value;
+				}
+			},
+			font: {
+				set: function(value) {
+					return this._indicatorMessage.font = value;
+				}
+			},
+			indicatorColor: {
+				post: '_createProngs',
+				value: '#fff'
+			},
+			indicatorDiameter: {
+				post: '_createProngs',
+				value: 36
+			},
+			message: {
+				set: function(value) {
+					var indicatorMessage = this._indicatorMessage;
+					indicatorMessage.left = value ? 5 : 0;
+					return indicatorMessage.text = value;
+				}
+			},
+			messageid: {
+				set: function(value) {
+					var indicatorMessage = this._indicatorMessage;
+					indicatorMessage.left = value ? 5 : 0;
+					return indicatorMessage.textid = value;
+				}
+			},
+			style: {
+				set: function(value) {
+					if (~[ActivityIndicatorStyle.DARK, ActivityIndicatorStyle.BIG_DARK].indexOf(value)) {
+						this.indicatorColor = '#444';
+					} else {
+						this.indicatorColor = '#fff';
+					}
+					if (~[ActivityIndicatorStyle.BIG, ActivityIndicatorStyle.BIG_DARK].indexOf(value)) {
+						this.indicatorDiameter = 72;
+					} else {
+						this.indicatorDiameter = 36;
+					}
+				}
+			}
+		}
+
+	});
+});

@@ -1,1 +1,88 @@
-define(["Ti/_","Ti/_/Evented","Ti/_/lang","Ti/Filesystem/File"],function(e,t,i,o){function a(){var e,t=/(.+:\/\/)?(.*)/,o="",a=[],r=i.toArray(arguments).filter(function(e){return void 0!==e}).map(function(e){return o||(o=e.match(t))&&(o=o[1]||""),e.replace(o,"").replace(/^\/|\/$/g,"")}).join("/");return r.split("/").forEach(function(t){if(".."===t&&".."!==e){if(!a.length)throw Error('Irrational path "'+r+'"');a.pop(),e=a[a.length-1]}else t&&"."!==t&&a.push(e=t)}),r=o+a.join("/"),o||/^\//.test(r)||(r="/"+r),r}function r(t){var i=new o({_type:t.charAt(0),nativePath:n+e.uuid()});return i["create"+t]()?i:null}var l="appdata://",n="tmp://";return i.setObject("Ti.Filesystem",t,{constants:{MODE_APPEND:4,MODE_READ:1,MODE_WRITE:2,applicationDataDirectory:l,lineEnding:"\n",resourcesDirectory:"/",separator:"/",tempDirectory:n},protocols:["appdata","tmp"],createTempDirectory:function(){return r("Directory")},createTempFile:function(){return r("File")},getFile:function(){return new o(a.apply(null,arguments))},isExternalStoragePresent:function(){return!1},openStream:function(e){var t,r=i.toArray(arguments);return r.shift(),t=new o(a.apply(null,r)),t.open(e)}})});
+define(["Ti/_", "Ti/_/Evented", "Ti/_/lang", "Ti/Filesystem/File"],
+	function(_, Evented, lang, File) {
+
+	var applicationDataDirectory = "appdata://",
+		tempDirectory = "tmp://";
+
+	function join() {
+		var re = /(.+:\/\/)?(.*)/,
+			prefix = "",
+			result = [],
+			lastSegment,
+			path = lang.toArray(arguments).filter(function(a) {
+				return a !== void 0;
+			}).map(function(a) {
+				prefix || (prefix = a.match(re)) && (prefix = prefix[1] || "");
+				return a.replace(prefix, "").replace(/^\/|\/$/g, '');
+			}).join('/');
+
+		// compact the path
+		path.split('/').forEach(function(segment) {
+			if (segment === ".." && lastSegment !== "..") {
+				if (!result.length) {
+					throw new Error('Irrational path "' + path + '"')
+				}
+				result.pop();
+				lastSegment = result[result.length - 1];
+			} else if (segment && segment !== ".") {
+				result.push(lastSegment = segment);
+			}
+		});
+
+		// re-assemble path
+		path = prefix + result.join('/');
+		if (!prefix && !/^\//.test(path)) {
+			path = '/' + path;
+		}
+
+		return path;
+	}
+
+	function makeTemp(type) {
+		var f = new File({
+			_type: type.charAt(0),
+			nativePath: tempDirectory + _.uuid()
+		});
+		return f["create" + type]() ? f : null;
+	}
+
+	return lang.setObject("Ti.Filesystem", Evented, {
+		constants: {
+			MODE_APPEND: 4,
+			MODE_READ: 1,
+			MODE_WRITE: 2,
+			applicationDataDirectory: applicationDataDirectory,
+			lineEnding: '\n',
+			resourcesDirectory: '/',
+			separator: '/',
+			tempDirectory: tempDirectory
+		},
+
+		protocols: ["appdata", "tmp"],
+
+		createTempDirectory: function() {
+			return makeTemp("Directory");
+		},
+
+		createTempFile: function() {
+			return makeTemp("File");
+		},
+
+		getFile: function() {
+			return new File(join.apply(null, arguments));
+		},
+
+		isExternalStoragePresent: function() {
+			return false;
+		},
+
+		openStream: function(mode) {
+			var args = lang.toArray(arguments),
+				file;
+			args.shift();
+			file = new File(join.apply(null, args));
+			return file.open(mode);
+		}
+	});
+
+});

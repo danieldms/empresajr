@@ -1,1 +1,441 @@
-define(["Ti/_/declare","Ti/_/UI/KineticScrollView","Ti/_/style","Ti/_/lang","Ti/UI/MobileWeb/TableViewSeparatorStyle","Ti/UI"],function(e,t,i,o,n,r){var a=i.set,s=require.is,l=o.isDef,d=.001,c=/(click|singletap|longpress)/;return e("Ti.UI.TableView",t,{constructor:function(){var e;this._initKineticScrollView(e=r.createView({width:r.INHERIT,height:r.SIZE,left:0,top:0,layout:r._LAYOUT_CONSTRAINING_VERTICAL}),"vertical","vertical",1),e._add(this._header=r.createView({height:r.SIZE,width:r.INHERIT,layout:r._LAYOUT_CONSTRAINING_VERTICAL})),e._add(this._sections=r.createView({height:r.SIZE,width:r.INHERIT,layout:r._LAYOUT_CONSTRAINING_VERTICAL})),e._add(this._footer=r.createView({height:r.SIZE,width:r.INHERIT,layout:r._LAYOUT_CONSTRAINING_VERTICAL})),this.data=[],this.constants.__values__.sections=[]},_handleMouseWheel:function(){this._fireScrollEvent("scroll")},_handleDragStart:function(){this.fireEvent("dragstart")},_handleDrag:function(e){this._fireScrollEvent("scroll",e)},_handleDragEnd:function(e,t,i){var o=this;if(l(i)){var n=i*i/(1.724*d)*(0>i?-1:1),a=Math.abs(i)/d,s=Math.min(0,Math.max(o._minTranslationY,o._currentTranslationY+n));o.fireEvent("dragend",{decelerate:!0}),o._animateToPosition(o._currentTranslationX,s,a,r.ANIMATION_CURVE_EASE_OUT,function(){o._setTranslation(o._currentTranslationX,s),o._endScrollBars(),o._fireScrollEvent("scrollend",e)})}},_fireScrollEvent:function(e,t){for(var i,o=0,n=this._contentContainer,r=-this._currentTranslationY,a=this._sections,s=a._children,l=s.length,d=0;l>d;d+=2){var c=s[d],_=r-c._measuredTop,u=c._measuredHeight-_;if(_>0&&u>0)for(var h=c._rows._children,f=1;h.length>f;f+=2){var p=h[f],g=_-p._measuredTop,v=p._measuredHeight-g;g>0&&v>0&&(o++,!i&&(i=p))}}this.fireEvent(e,{contentOffset:{x:0,y:r},contentSize:{width:a._measuredWidth,height:a._measuredHeight},firstVisibleItem:i,size:{width:n._measuredWidth,height:n._measuredHeight},totalItemCount:this.data.length,visibleItemCount:o,x:t&&t.x,y:t&&t.y})},_defaultWidth:r.FILL,_defaultHeight:r.FILL,_getContentOffset:function(){return{x:-this._currentTranslationX,y:-this._currentTranslationY}},fireEvent:function(e,i){var o,n=0,r=0,a=this._sections._children,s=this._tableViewRowClicked,l=this._tableViewSectionClicked;if(c.test(e)){if(s&&l){for(;a.length>n;n+=2){if(o=a[n]._rows._children.indexOf(s),-1!==o){r+=Math.floor(o/2);break}r+=a[n].rowCount}i.row=i.rowData=s,i.index=r,i.section=l,i.searchMode=!1,t.prototype.fireEvent.apply(this,arguments),this._tableViewRowClicked=null,this._tableViewSectionClicked=null}}else t.prototype.fireEvent.apply(this,arguments)},_createSeparator:function(){var e=r.createView({height:1,width:r.INHERIT,backgroundColor:"white"});return a(e.domNode,"minWidth","100%"),e},_createDecorationLabel:function(e){return r.createLabel({text:e,backgroundColor:"darkGrey",color:"white",width:r.INHERIT,height:r.SIZE,left:0,font:{fontSize:22}})},_refreshSections:function(){for(var e=0;this._sections._children.length>e;e+=2)this._sections._children[e]._refreshRows();this._triggerLayout()},_calculateLocation:function(e){for(var t,i=0,o=0;this._sections._children.length>o;o+=2)if(t=this._sections._children[o],i+=t.rowCount,i>e)return{section:t,localIndex:t.rowCount-(i-e)};return e==i?{section:t,localIndex:t.rowCount}:void 0},_insertRow:function(e,t){var i=this._calculateLocation(t);i&&i.section.add(e,i.localIndex),this._publish(e),this._refreshSections()},_removeRow:function(e){var t=this._calculateLocation(e);t&&(this._unpublish(t.section._rows._children[2*t.localIndex+1]),t.section._removeAt(t.localIndex))},appendRow:function(e){this._currentSection||(this._sections._add(this._currentSection=r.createTableViewSection({_tableView:this})),this.sections.push(this._currentSection),this._sections._add(this._createSeparator()),this.data.push(this._currentSection)),this._currentSection.add(e),this._publish(e),this._refreshSections()},deleteRow:function(e){this._removeRow(e)},insertRowAfter:function(e,t){this._insertRow(t,e+1)},insertRowBefore:function(e,t){this._insertRow(t,e)},updateRow:function(e,t){this._removeRow(e),this._insertRow(t,e)},scrollToIndex:function(e){var t=this._calculateLocation(e);t&&this._setTranslation(0,-t.section._measuredTop-t.section._rows._children[2*t.localIndex+1]._measuredTop)},scrollToTop:function(e){this._setTranslation(0,-e)},_insertSection:function(e,t){!s(e,"Array")&&(e=[e]);for(var i=0,o=e.length;o>i;i++)l(e[i].declaredClass)&&"Ti.UI.TableViewSection"==e[i].declaredClass||(e[i]=r.createTableViewSection(e[i])),this._sections._insertAt(e[i],t+i),t===o?this.sections.push(e[i]):this.sections.splice(t,0,e[i]);this._refreshSections()},_removeSection:function(e){this._sections._remove(this.sections[e]),this.sections.splice(e,1)},appendSection:function(e){this._insertSection(e,this.sections.length)},deleteSection:function(e){e in this.sections&&(this._sections._remove(this.sections[e]),this.sections.splice(e,1))},insertSectionBefore:function(e,t){this._insertSection(t,e)},insertSectionAfter:function(e,t){this._insertSection(t,e+1)},updateSection:function(e,t){this._removeSection(e),this._insertSection(t,e)},constants:{sectionCount:{get:function(){return this.sections.length}},sections:void 0},properties:{data:{set:function(e){if(s(e,"Array")){var t,i=[];this._sections._removeAllChildren(),this.constants.__values__.sections=[],this._currentSection=void 0;for(t in e)(!l(e[t].declaredClass)||"Ti.UI.TableViewRow"!=e[t].declaredClass&&"Ti.UI.TableViewSection"!=e[t].declaredClass)&&(e[t]=r.createTableViewRow(e[t]));for(t=0;e.length>t;t++)"Ti.UI.TableViewRow"===e[t].declaredClass?(this._currentSection||(this.appendSection(this._currentSection=r.createTableViewSection({_tableView:this})),i.push(this._currentSection)),this._currentSection.add(e[t])):"Ti.UI.TableViewSection"===e[t].declaredClass&&(e[t]._tableView=this,this.appendSection(this._currentSection=e[t]),i.push(this._currentSection)),this._publish(e[t]);return this._refreshSections(),i}}},footerTitle:{set:function(e,t){return t!=e&&(this._footer._removeAllChildren(),this._footer._add(this._createDecorationLabel(e))),e}},footerView:{set:function(e,t){return t!=e&&(this._footer._removeAllChildren(),this._footer._add(e)),e}},headerTitle:{set:function(e,t){return t!=e&&(this._header._removeAllChildren(),this._header._add(this._createDecorationLabel(e)),this._header._add(this._createSeparator())),e}},headerView:{set:function(e,t){return t!=e&&(this._header._removeAllChildren(),this._header._add(e)),e}},maxRowHeight:{post:"_refreshSections"},minRowHeight:{post:"_refreshSections"},rowHeight:{post:"_refreshSections",value:"50px"},separatorColor:{post:"_refreshSections",value:"lightGrey"},separatorStyle:{post:"_refreshSections",value:n.SINGLE_LINE}}})});
+/*global define*/
+define(['Ti/_/declare', 'Ti/_/UI/KineticScrollView', 'Ti/_/style', 'Ti/_/lang', 'Ti/UI/MobileWeb/TableViewSeparatorStyle', 'Ti/UI'],
+	function(declare, KineticScrollView, style, lang, TableViewSeparatorStyle, UI) {
+
+	var setStyle = style.set,
+		is = require.is,
+		isDef = lang.isDef,
+
+		// The amount of deceleration (in pixels/ms^2)
+		deceleration = 0.001,
+		eventFilter = /(click|singletap|longpress)/;
+
+	return declare('Ti.UI.TableView', KineticScrollView, {
+
+		constructor: function() {
+
+			var contentContainer;
+			this._initKineticScrollView(contentContainer = UI.createView({
+				width: UI.INHERIT,
+				height: UI.SIZE,
+				left: 0,
+				top: 0,
+				layout: UI._LAYOUT_CONSTRAINING_VERTICAL
+			}), 'vertical', 'vertical', 1);
+
+			contentContainer._add(this._header = UI.createView({
+				height: UI.SIZE,
+				width: UI.INHERIT,
+				layout: UI._LAYOUT_CONSTRAINING_VERTICAL
+			}));
+			contentContainer._add(this._sections = UI.createView({
+				height: UI.SIZE,
+				width: UI.INHERIT,
+				layout: UI._LAYOUT_CONSTRAINING_VERTICAL
+			}));
+			contentContainer._add(this._footer = UI.createView({
+				height: UI.SIZE,
+				width: UI.INHERIT,
+				layout: UI._LAYOUT_CONSTRAINING_VERTICAL
+			}));
+
+			this.data = [];
+			this.constants.__values__.sections = [];
+		},
+
+		_handleMouseWheel: function() {
+			this._fireScrollEvent('scroll');
+		},
+
+		_handleDragStart: function() {
+			this.fireEvent('dragstart');
+		},
+
+		_handleDrag: function(e) {
+			this._fireScrollEvent('scroll', e);
+		},
+
+		_handleDragEnd: function(e, velocityX, velocityY) {
+			var self = this;
+			if (isDef(velocityY)) {
+				var distance = velocityY * velocityY / (1.724 * deceleration) * (velocityY < 0 ? -1 : 1),
+					duration = Math.abs(velocityY) / deceleration,
+					translation = Math.min(0, Math.max(self._minTranslationY, self._currentTranslationY + distance));
+				self.fireEvent('dragend',{
+					decelerate: true
+				});
+				self._animateToPosition(self._currentTranslationX, translation, duration, UI.ANIMATION_CURVE_EASE_OUT, function() {
+					self._setTranslation(self._currentTranslationX, translation);
+					self._endScrollBars();
+					self._fireScrollEvent('scrollend', e);
+				});
+			}
+
+		},
+
+		_fireScrollEvent: function(type, e) {
+			// Calculate the visible items
+			var firstVisibleItem,
+				visibleItemCount = 0,
+				contentContainer = this._contentContainer,
+				y = -this._currentTranslationY,
+				sections = this._sections,
+				sectionsList = sections._children,
+				len = sectionsList.length;
+			for(var i = 0; i < len; i+= 2) {
+
+				// Check if the section is visible
+				var section = sectionsList[i],
+					sectionOffsetTop = y - section._measuredTop,
+					sectionOffsetBottom = section._measuredHeight - sectionOffsetTop;
+				if (sectionOffsetTop > 0 && sectionOffsetBottom > 0) {
+					var rows = section._rows._children;
+					for (var j = 1; j < rows.length; j += 2) {
+						var row = rows[j],
+							rowOffsetTop = sectionOffsetTop - row._measuredTop,
+							rowOffsetBottom = row._measuredHeight - rowOffsetTop;
+						if (rowOffsetTop > 0 && rowOffsetBottom > 0) {
+							visibleItemCount++;
+							!firstVisibleItem && (firstVisibleItem = row);
+						}
+					}
+				}
+			}
+
+			// Create the scroll event
+			this.fireEvent(type, {
+				contentOffset: {
+					x: 0,
+					y: y
+				},
+				contentSize: {
+					width: sections._measuredWidth,
+					height: sections._measuredHeight
+				},
+				firstVisibleItem: firstVisibleItem,
+				size: {
+					width: contentContainer._measuredWidth,
+					height: contentContainer._measuredHeight
+				},
+				totalItemCount: this.data.length,
+				visibleItemCount: visibleItemCount,
+				x: e && e.x,
+				y: e && e.y
+			});
+		},
+
+		_defaultWidth: UI.FILL,
+
+		_defaultHeight: UI.FILL,
+
+		_getContentOffset: function(){
+			return {
+				x: -this._currentTranslationX,
+				y: -this._currentTranslationY
+			};
+		},
+
+		fireEvent: function(type, e) {
+			var i = 0,
+				index = 0,
+				localIndex,
+				sections = this._sections._children,
+				row = this._tableViewRowClicked,
+				section = this._tableViewSectionClicked;
+			if (eventFilter.test(type)) {
+				if (row && section) {
+
+					for (; i < sections.length; i += 2) {
+						localIndex = sections[i]._rows._children.indexOf(row);
+						if (localIndex !== -1) {
+							index += Math.floor(localIndex / 2);
+							break;
+						} else {
+							index += sections[i].rowCount;
+						}
+					}
+					e.row = e.rowData = row;
+					e.index = index;
+					e.section = section;
+					e.searchMode = false;
+
+					KineticScrollView.prototype.fireEvent.apply(this, arguments);
+
+					this._tableViewRowClicked = null;
+					this._tableViewSectionClicked = null;
+				}
+			} else {
+				KineticScrollView.prototype.fireEvent.apply(this, arguments);
+			}
+		},
+
+		_createSeparator: function() {
+			var separator = UI.createView({
+				height: 1,
+				width: UI.INHERIT,
+				backgroundColor: 'white'
+			});
+			setStyle(separator.domNode,'minWidth','100%'); // Temporary hack until TIMOB-8124 is completed.
+			return separator;
+		},
+
+		_createDecorationLabel: function(text) {
+			return UI.createLabel({
+				text: text,
+				backgroundColor: 'darkGrey',
+				color: 'white',
+				width: UI.INHERIT,
+				height: UI.SIZE,
+				left: 0,
+				font: {fontSize: 22}
+			});
+		},
+
+		_refreshSections: function() {
+			for (var i = 0; i < this._sections._children.length; i += 2) {
+				this._sections._children[i]._refreshRows();
+			}
+			this._triggerLayout();
+		},
+
+		_calculateLocation: function(index) {
+			var currentOffset = 0,
+				section;
+			for(var i = 0; i < this._sections._children.length; i += 2) {
+				section = this._sections._children[i];
+				currentOffset += section.rowCount;
+				if (index < currentOffset) {
+					return {
+						section: section,
+						localIndex: section.rowCount - (currentOffset - index)
+					};
+				}
+			}
+
+			// Handle the special case of inserting after the last element in the last section
+			if (index == currentOffset) {
+				return {
+					section: section,
+					localIndex: section.rowCount
+				};
+			}
+		},
+
+		_insertRow: function(value, index) {
+			var location = this._calculateLocation(index);
+			if (location) {
+				location.section.add(value,location.localIndex); // We call the normal .add() method to hook into the sections proper add mechanism
+			}
+			this._publish(value);
+			this._refreshSections();
+		},
+
+		_removeRow: function(index) {
+			var location = this._calculateLocation(index);
+			if (location) {
+				this._unpublish(location.section._rows._children[2 * location.localIndex + 1]);
+				location.section._removeAt(location.localIndex);
+			}
+		},
+
+		appendRow: function(value) {
+			if (!this._currentSection) {
+				this._sections._add(this._currentSection = UI.createTableViewSection({_tableView: this}));
+				this.sections.push(this._currentSection);
+				this._sections._add(this._createSeparator());
+				this.data.push(this._currentSection);
+			}
+			this._currentSection.add(value); // We call the normal .add() method to hook into the sections proper add mechanism
+			this._publish(value);
+			this._refreshSections();
+		},
+
+		deleteRow: function(index) {
+			this._removeRow(index);
+		},
+
+		insertRowAfter: function(index, value) {
+			this._insertRow(value, index + 1);
+		},
+
+		insertRowBefore: function(index, value) {
+			this._insertRow(value, index);
+		},
+
+		updateRow: function(index, row) {
+			this._removeRow(index);
+			this._insertRow(row, index);
+		},
+
+		scrollToIndex: function(index) {
+			var location = this._calculateLocation(index);
+			location && this._setTranslation(0,-location.section._measuredTop -
+				location.section._rows._children[2 * location.localIndex + 1]._measuredTop);
+		},
+
+		scrollToTop: function(top) {
+			this._setTranslation(0,-top);
+		},
+
+		_insertSection: function(sections, index) {
+			!is(sections,'Array') && (sections = [sections]);
+			var i = 0,
+				len = sections.length;
+			for(; i < len; i++) {
+				if (!isDef(sections[i].declaredClass) || sections[i].declaredClass != 'Ti.UI.TableViewSection') {
+					sections[i] = UI.createTableViewSection(sections[i]);
+				}
+				this._sections._insertAt(sections[i], index + i);
+				if (index === len) {
+					this.sections.push(sections[i]);
+				} else {
+					this.sections.splice(index,0,sections[i]);
+				}
+			}
+			this._refreshSections();
+		},
+
+		_removeSection: function(index) {
+			this._sections._remove(this.sections[index]);
+			this.sections.splice(index,1);
+		},
+
+		appendSection: function(section) {
+			this._insertSection(section, this.sections.length);
+		},
+
+		deleteSection: function(section) {
+			if (section in this.sections) {
+				this._sections._remove(this.sections[section]);
+				this.sections.splice(section,1);
+			}
+		},
+
+		insertSectionBefore: function(index, section) {
+			this._insertSection(section, index);
+		},
+
+		insertSectionAfter: function(index, section) {
+			this._insertSection(section, index + 1);
+		},
+
+		updateSection: function(index, section) {
+			this._removeSection(index);
+			this._insertSection(section, index);
+		},
+
+		constants: {
+			sectionCount: {
+				get: function() {
+					return this.sections.length;
+				}
+			},
+			sections: void 0
+		},
+
+		properties: {
+			data: {
+				set: function(value) {
+					if (is(value,'Array')) {
+
+						var retval = [],
+							i;
+
+						// Remove all of the previous sections
+						this._sections._removeAllChildren();
+						this.constants.__values__.sections = [];
+						this._currentSection = void 0;
+
+						// Convert any object literals to TableViewRow instances
+						for (i in value) {
+							if (!isDef(value[i].declaredClass) || (value[i].declaredClass != 'Ti.UI.TableViewRow' && value[i].declaredClass != 'Ti.UI.TableViewSection')) {
+								value[i] = UI.createTableViewRow(value[i]);
+							}
+						}
+
+						// Add each element
+						for (i = 0; i < value.length; i++) {
+							if (value[i].declaredClass === 'Ti.UI.TableViewRow') {
+								// Check if we need a default section
+								if (!this._currentSection) {
+									this.appendSection(this._currentSection = UI.createTableViewSection({_tableView: this}));
+									retval.push(this._currentSection);
+								}
+								this._currentSection.add(value[i]); // We call the normal .add() method to hook into the sections proper add mechanism
+							} else if (value[i].declaredClass === 'Ti.UI.TableViewSection') {
+								value[i]._tableView = this;
+								this.appendSection(this._currentSection = value[i]);
+								retval.push(this._currentSection);
+							}
+							this._publish(value[i]);
+						}
+						this._refreshSections();
+
+						return retval;
+					} else {
+						// Data must be an array
+						return;
+					}
+				}
+			},
+			footerTitle: {
+				set: function(value, oldValue) {
+					if (oldValue != value) {
+						this._footer._removeAllChildren();
+						this._footer._add(this._createDecorationLabel(value));
+					}
+					return value;
+				}
+			},
+			footerView: {
+				set: function(value, oldValue) {
+					if (oldValue != value) {
+						this._footer._removeAllChildren();
+						this._footer._add(value);
+					}
+					return value;
+				}
+			},
+			headerTitle: {
+				set: function(value, oldValue) {
+					if (oldValue != value) {
+						this._header._removeAllChildren();
+						this._header._add(this._createDecorationLabel(value));
+						this._header._add(this._createSeparator());
+					}
+					return value;
+				}
+			},
+			headerView: {
+				set: function(value, oldValue) {
+					if (oldValue != value) {
+						this._header._removeAllChildren();
+						this._header._add(value);
+					}
+					return value;
+				}
+			},
+			maxRowHeight: {
+				post: '_refreshSections'
+			},
+			minRowHeight: {
+				post: '_refreshSections'
+			},
+			rowHeight: {
+				post: '_refreshSections',
+				value: '50px'
+			},
+
+			separatorColor: {
+				post: '_refreshSections',
+				value: 'lightGrey'
+			},
+			separatorStyle: {
+				post: '_refreshSections',
+				value: TableViewSeparatorStyle.SINGLE_LINE
+			}
+		}
+
+	});
+
+});

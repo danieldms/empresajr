@@ -1,1 +1,73 @@
-define(function(){var e=require.mix;return{destroy:function(){for(var e in this)delete this[e];this._alive=0},addEventListener:function(e,t){this.listeners||(this.listeners={}),(this.listeners[e]=this.listeners[e]||[]).push(t)},removeEventListener:function(e,t){if(this.listeners)if(t)for(var i=0,o=this.listeners[e],n=o&&o.length||0;n>i;i++)o[i]===t&&o.splice(i,1);else delete this.listeners[e]},fireEvent:function(t,i){var o=0,n=this._modifiers&&this._modifiers[t],r=this.listeners&&this.listeners[t],a=n&&n.length;for(i=i||{},e(i,{source:i.source||this,type:t});a>o;)n[o++].call(this,i);if(r)for(r=[].concat(r),o=0,a=r.length;a>o;)r[o++].call(this,i)},applyProperties:function(t){e(this,t)},_addEventModifier:function(e,t){this._modifiers||(this._modifiers={}),(require.is(e,"Array")?e:[e]).forEach(function(e){(this._modifiers[e]=this._modifiers[e]||[]).push(t)},this)}}});
+/*global define*/
+define(function() {
+
+	var mix = require.mix;
+
+	return {
+		destroy: function() {
+			for (var i in this) {
+				delete this[i];
+			}
+			this._alive = 0;
+		},
+
+		addEventListener: function(name, handler) {
+			this.listeners || (this.listeners = {});
+			(this.listeners[name] = this.listeners[name] || []).push(handler);
+		},
+
+		removeEventListener: function(name, handler) {
+			if (this.listeners) {
+				if (handler) {
+					var i = 0,
+						events = this.listeners[name],
+						l = events && events.length || 0;
+
+					for (; i < l; i++) {
+						events[i] === handler && events.splice(i, 1);
+					}
+				} else {
+					delete this.listeners[name];
+				}
+			}
+		},
+
+		fireEvent: function(name, data) {
+			var i = 0,
+				modifiers = this._modifiers && this._modifiers[name],
+				listeners = this.listeners && this.listeners[name],
+				l = modifiers && modifiers.length;
+			data = data || {};
+			mix(data, {
+				source: data.source || this,
+				type: name
+			});
+
+			while (i < l) {
+				modifiers[i++].call(this, data);
+			}
+
+			if (listeners) {
+				// We deep copy the listeners because the original list can change in the middle of a callback
+				listeners = [].concat(listeners);
+				i = 0;
+				l = listeners.length;
+				while (i < l) {
+					listeners[i++].call(this, data);
+				}
+			}
+		},
+
+		applyProperties: function(props) {
+			mix(this, props);
+		},
+
+		_addEventModifier: function(name, handler) {
+			this._modifiers || (this._modifiers = {});
+			(require.is(name, 'Array') ? name : [name]).forEach(function(n) {
+				(this._modifiers[n] = this._modifiers[n] || []).push(handler);
+			}, this);
+		}
+	};
+
+});
