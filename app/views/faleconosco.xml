@@ -1,0 +1,37 @@
+<Alloy>
+	<View layout="vertical">
+		<View id="navView">
+			<View id="button" />
+			<Label id="title">Fale Conosco</Label>			
+		</View>
+		<ScrollView id="scrollview" class="contentView" contentHeight="auto" scrollingEnabled="true" showVerticalScrollIndicator="true">
+			<View class="header">
+				<ImageView image="images/outros/faleconosco_header.png" height="50" width="55" left="10" top="25"></ImageView>
+				<Label class="titleHeader" top="40">FALE CONOSCO</Label>
+			</View>
+			<View class="fixedHeader">
+				<Label class="titleFixed">Contato</Label>
+			</View>
+			<View backgroundColor="#eeeeee" left="20" right="20" top="20" bottom="20" height="405" layout="vertical">
+				<View backgroundColor="#FFF" layout="horizontal" left="10" right="10" top="10" height="45" bottom="2">
+					<Label class="labelFields">Nome:</Label><TextField class="textFields" id="nome"></TextField>
+				</View>
+				<View backgroundColor="#FFF" layout="horizontal" left="10" right="10" height="45" bottom="2">
+					<Label class="labelFields">Email:  </Label><TextField class="textFields" id="email" left="27"></TextField>
+				</View>
+				<View backgroundColor="#FFF" layout="horizontal" left="10" right="10" height="45" bottom="2">
+					<Label class="labelFields">Telefone:  </Label><TextField class="textFields" id="telefone" left="7"></TextField>
+				</View>
+				<View backgroundColor="#FFF" layout="horizontal" left="10" right="10" height="45" bottom="2">
+					<Label class="labelFields">Assunto:  </Label><TextField class="textFields" id="assunto" left="12"></TextField>
+				</View>
+				<View backgroundColor="#FFF" layout="vertical" left="10" right="10" height="145" bottom="10">
+					<Label class="labelFields">Mensagem:  </Label><TextArea class="textArea" id="mensagem" left="11"></TextArea>
+				</View>
+
+				<Button class="buttonFields">ENVIAR</Button>
+			</View>
+
+		</ScrollView>
+	</View>
+</Alloy>

@@ -1,0 +1,20 @@
+<Alloy>
+	<View layout="vertical">
+		<View id="navView">
+			<View id="button" />
+			<Label id="title">Empresa Jr.</Label>			
+		</View>
+		<ScrollableView id="scrollview" showPagingControl="true">
+            <View id="view1" backgroundImage="images/outros/background.png" layout="vertical">
+            	<Label class="titleInner">CONSULTORIA</Label>
+            	<Label class="titleInner"  top="0">ORGANIZACIONAL</Label>
+            	<Label class="subInner">ANÁLISE GERAL DA ORGANIZAÇÃO PARA QUE SE ESTABELEÇA UM MODELO DE ESTRUTURA MAIS ADEQUADO.</Label>
+            </View>
+            <View id="view2" backgroundImage="images/outros/background.png" layout="vertical">
+            	<Label class="titleInner">SOLUÇÃO</Label>
+            	<Label class="titleInner"  top="0">EM MARKETING</Label>
+            	<Label class="subInner">PESQUISAS DE MERCADO E ESTUDO EXPLORATÓRIOS, ELABORAÇÃO DE PLANOS DE MARKETING.</Label>
+            </View>
+        </ScrollableView>
+	</View>
+</Alloy>

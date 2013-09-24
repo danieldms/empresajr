@@ -1,0 +1,20 @@
+<Alloy>
+	<View layout="vertical">
+		<View id="navView">
+			<View id="button" />
+			<Label id="title">Localização</Label>			
+		</View>
+		<View class="contentView">
+			<!-- Note the ns attribute is used to change the default namespace. -->
+	        <View id="mapview" ns="Ti.Map" onComplete="setRegion"
+	            animate="true" regionFit="true" userLocation="false" height="250"
+	            mapType="Ti.Map.STANDARD_TYPE" >	
+	        </View>			
+			<View class="fixedHeader">
+				<Label class="titleFixed">Endereço</Label>
+			</View>
+			<Label  left="10" right="10" top="10" textAlign="Ti.UI.TEXT_ALIGNMENT_LEFT" class="text">
+				Av. Reitor Miguel Calmon, s/n, Vale do Canela - Escola de Administração da Ufba, no térreo - Salvador/BA - Tel (71) 3245-0757</Label>
+		</View>
+	</View>	
+</Alloy>

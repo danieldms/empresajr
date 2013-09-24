@@ -1,0 +1,28 @@
+<Alloy>
+	<View layout="vertical">
+		<View id="navView">
+			<View id="button" />
+			<Label id="title">SAC</Label>			
+		</View>
+		<ScrollView id="scrollview" class="contentView" scrollingEnabled="true">
+			<View class="header" height="100">
+				<ImageView image="images/outros/header_login.png" height="60" width="60" left="10" top="20"></ImageView>
+				<Label class="titleHeader" top="20" id="label" width="auto">ACOMPANHE O 
+ANDAMENTO DO SEU 
+PROJETO</Label>
+			</View>
+			<View class="fixedHeader">
+				<Label class="titleFixed">LOGIN</Label>
+			</View>
+			<View backgroundColor="#eeeeee" left="20" right="20" top="20" height="162" layout="vertical">
+				<View backgroundColor="#FFF" layout="horizontal" left="10" right="10" top="10" height="45" bottom="2">
+					<Label class="labelFields">Usuário:</Label><TextField class="textFields" id="username" left="20" top="10"></TextField>
+				</View>
+				<View backgroundColor="#FFF" layout="horizontal" left="10" right="10" height="45" bottom="10">
+					<Label class="labelFields">Senha:  </Label><TextField class="textFields" id="senha" left="20" top="10"></TextField>
+				</View>
+				<Button class="buttonFields" id="entrar">ENTRAR</Button>
+			</View>
+		</ScrollView>
+	</View>
+</Alloy>
