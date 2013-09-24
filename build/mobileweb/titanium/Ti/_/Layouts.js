@@ -1,15 +1,1 @@
-define(
-	["Ti/_/Layouts/Composite", "Ti/_/Layouts/Horizontal", "Ti/_/Layouts/Vertical", "Ti/_/Layouts/ConstrainingHorizontal", "Ti/_/Layouts/ConstrainingVertical"],
-	function(Composite, Horizontal, Vertical, ConstrainingHorizontal, ConstrainingVertical) {
-
-	return {
-		Composite: Composite,
-		Horizontal: Horizontal,
-		Vertical: Vertical,
-		
-		// Mobile web specific layouts, used for internal controls
-		ConstrainingHorizontal: ConstrainingHorizontal,
-		ConstrainingVertical: ConstrainingVertical
-	};
-
-});
+define(["Ti/_/Layouts/Composite","Ti/_/Layouts/Horizontal","Ti/_/Layouts/Vertical","Ti/_/Layouts/ConstrainingHorizontal","Ti/_/Layouts/ConstrainingVertical"],function(e,t,i,o,n){return{Composite:e,Horizontal:t,Vertical:i,ConstrainingHorizontal:o,ConstrainingVertical:n}});
