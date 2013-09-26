@@ -6,7 +6,7 @@
 		</View>
 		<View class="contentView">
 			<!-- Note the ns attribute is used to change the default namespace. -->
-	        <View id="mapview" ns="Ti.Map" onComplete="setRegion"
+	        <View id="mapview" ns="Ti.Map"
 	            animate="true" regionFit="true" userLocation="false" height="250"
 	            mapType="Ti.Map.STANDARD_TYPE" >	
 	        </View>			

@@ -25,12 +25,11 @@ function Controller() {
     });
     $.__views.navView.add($.__views.button);
     $.__views.__alloyId8 = Ti.UI.createLabel({
+        height: "46dp",
         font: {
             fontSize: "18dp",
-            fontWeight: "bold",
-            fontFamily: "DIN-BoldAlternate"
+            fontWeight: "bold"
         },
-        height: "46dp",
         color: "#FFF",
         textAlign: "center",
         shadowColor: "#000",
@@ -67,13 +66,13 @@ function Controller() {
     });
     $.__views.__alloyId10.add($.__views.__alloyId11);
     $.__views.__alloyId12 = Ti.UI.createLabel({
+        left: 20,
+        right: 10,
+        top: 30,
         font: {
             fontWeight: "bold",
             fontSize: 18
         },
-        left: 20,
-        right: 10,
-        top: 30,
         color: "#115a98",
         text: "ESTUDO DE \nVIABILIDADE",
         id: "__alloyId12"

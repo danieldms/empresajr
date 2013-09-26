@@ -1,6 +1,22 @@
 var currentView = null;
 var currentMenu = null;
-var direction = 'left';
+var direction = 'reset';
+var touchStartX = 0;
+var buttonPressed = false;
+var touchRightStarted = false;
+
+//animation
+var animateRight = Ti.UI.createAnimation({
+	left : 250,
+	curve : Ti.UI.ANIMATION_CURVE_EASE_OUT,
+	duration : 150
+});
+
+var animateReset = Ti.UI.createAnimation({
+	left : 0,
+	curve : Ti.UI.ANIMATION_CURVE_EASE_OUT,
+	duration : 150
+});
 
 // Referente ao Button superior que abre o slide do menu
 var backView = Ti.UI.createView({
@@ -15,8 +31,11 @@ var backbutton = Ti.UI.createImageView({
 	image: 'images/icons/menu.png'
 });
 
-backView.addEventListener('click', function(e){
-	Ti.App.fireEvent('app:swipe');
+backView.addEventListener('touchend', function(e){
+	if(!touchRightStarted){
+		buttonPressed = true;	
+		toggleSlide(null);
+	}
 });
 
 backView.addEventListener('touchstart', function(e){
@@ -61,8 +80,7 @@ function clickMenu(){
 		if(currentMenu != null && currentMenu != this){
 			currentMenu.backgroundColor = 'transparent';
 		}
-		currentMenu = this;
-				
+		currentMenu = this;				
 	}else{
 		// Spin the image
 		var t = Ti.UI.create2DMatrix();
@@ -87,38 +105,65 @@ function clickMenu(){
 	}	
 }
 
-// Funcao que abre o slide do menu
-function swipe(direct){
-	if(direct != direction && direction == 'left'){
-		$.main.animate({
-			left: 260,
-			duration: 400
-		});
-		direction = 'right';
+
+$.main.addEventListener('touchstart', function(e) {
+	touchStartX = e.x;
+});
+
+$.main.addEventListener('touchend', function(e){
+	if(buttonPressed){
+		buttonPressed = false;
+		return;
 	}
 	
-	if(direct != direction && direction == 'right'){
-		$.main.animate({
-			left: 0,
-			duration: 400
-		});
-		direction = 'left';
-	}	
-};
+	if($.main.left >= 150 && touchRightStarted){
+		direction = 'right';
+		$.main.animate(animateRight);
+	}else if($.main.left <= 150){
+		direction = 'reset';
+		$.main.animate(animateReset);
+	}
+	
+	touchRightStarted = false;
+});
 
-$.index.addEventListener('swipe', function(e){
-	if(e.direction == "left" || e.direction == "right"){
-		swipe(e.direction);
+$.main.addEventListener('touchmove', function(e){
+	
+	if(e.source.id != 'mapview'){
+		var coords = $.main.convertPointToView({
+			x : e.x,
+			y : e.y
+		}, $.index);
+		
+		var newLeft = coords.x - touchStartX;
+		if ((touchRightStarted && newLeft <= 250 && newLeft >= 0)) {
+			$.main.left = newLeft;
+		}else{
+			// Sometimes newLeft goes beyond its bounds so the view gets stuck.
+			// This is a hack to fix that.
+			if ((touchRightStarted && newLeft < 0)) {
+				$.main.left = 0;
+			}
+			else if (touchRightStarted && newLeft > 250) {
+				$.main.left = 250;
+			}	
+		}
+		
+		if (newLeft > 5 && !touchRightStarted) {
+			touchRightStarted = true;
+		}		
 	}
 });
 
-Ti.App.addEventListener("app:swipe", function(e){
-	if(direction == 'left'){
-		swipe('right');
+function toggleSlide(e){
+	if(direction == 'reset'){
+		direction = 'right';
+		$.main.animate(animateRight);
 	}else{
-		swipe('left');
+		direction = 'reset';
+		$.main.animate(animateReset);
 	}
-});
+}
 
 Ti.App.addEventListener("app:setLayout", function(e){	
 	var view = Alloy.createController(e.layout, args).getView();
@@ -129,9 +174,8 @@ Ti.App.addEventListener("app:setLayout", function(e){
 	currentView = view;
 	view = null;
 	
-	if(e.swipe == null){
-		Ti.App.fireEvent("app:swipe", null);
-	}
+		toggleSlide();
+
 });
 
 if(currentView == null){

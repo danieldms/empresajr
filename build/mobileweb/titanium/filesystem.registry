@@ -1,8 +1,7 @@
-ts	1380043805000
+ts	1380231544000
 .DS_Store	6148
 Default-Landscape.jpg	36232
 Default-Portrait.jpg	28479
-Default.jpg	17184
 alloy
 	CFG.js	49
 	CFG.js.uncompressed.js	64
@@ -13,59 +12,59 @@ alloy
 	controllers
 		BaseController.js	1108
 		BaseController.js.uncompressed.js	5693
-		consultoriafinanceira.js	3258
-		consultoriafinanceira.js.uncompressed.js	4354
-		estudomkt.js	3195
-		estudomkt.js.uncompressed.js	4291
-		faleconosco.js	5500
-		faleconosco.js.uncompressed.js	8093
-		index.js	16730
-		index.js.uncompressed.js	24671
-		login.js	3907
-		login.js.uncompressed.js	5740
-		mainView.js	2863
-		mainView.js.uncompressed.js	4197
-		mapa.js	2492
-		mapa.js.uncompressed.js	3568
-		negociosmkt.js	3235
-		negociosmkt.js.uncompressed.js	4331
-		organizacional.js	1392
-		organizacional.js.uncompressed.js	1919
-		pesquisamkt.js	3245
-		pesquisamkt.js.uncompressed.js	4341
-		planomkt.js	3223
-		planomkt.js.uncompressed.js	4319
-		sac.js	5051
-		sac.js.uncompressed.js	7772
-		sobre.js	5153
-		sobre.js.uncompressed.js	6142
+		consultoriafinanceira.js	3227
+		consultoriafinanceira.js.uncompressed.js	4309
+		estudomkt.js	3164
+		estudomkt.js.uncompressed.js	4246
+		faleconosco.js	5469
+		faleconosco.js.uncompressed.js	8048
+		index.js	16965
+		index.js.uncompressed.js	25682
+		login.js	3876
+		login.js.uncompressed.js	5695
+		mainView.js	2832
+		mainView.js.uncompressed.js	4152
+		mapa.js	2157
+		mapa.js.uncompressed.js	3075
+		negociosmkt.js	3210
+		negociosmkt.js.uncompressed.js	4292
+		organizacional.js	1361
+		organizacional.js.uncompressed.js	1874
+		pesquisamkt.js	3214
+		pesquisamkt.js.uncompressed.js	4296
+		planomkt.js	3192
+		planomkt.js.uncompressed.js	4274
+		sac.js	4868
+		sac.js.uncompressed.js	7443
+		sobre.js	5122
+		sobre.js.uncompressed.js	6097
 	styles
-		consultoriafinanceira.js	2589
-		consultoriafinanceira.js.uncompressed.js	2823
-		estudomkt.js	2589
-		estudomkt.js.uncompressed.js	2823
-		faleconosco.js	2589
-		faleconosco.js.uncompressed.js	2823
-		index.js	4065
-		index.js.uncompressed.js	4447
-		login.js	2589
-		login.js.uncompressed.js	2823
-		mainView.js	2589
-		mainView.js.uncompressed.js	2823
-		mapa.js	2589
-		mapa.js.uncompressed.js	2823
-		negociosmkt.js	2589
-		negociosmkt.js.uncompressed.js	2823
-		organizacional.js	2589
-		organizacional.js.uncompressed.js	2823
-		pesquisamkt.js	2589
-		pesquisamkt.js.uncompressed.js	2823
-		planomkt.js	2589
-		planomkt.js.uncompressed.js	2823
-		sac.js	2589
-		sac.js.uncompressed.js	2823
-		sobre.js	2589
-		sobre.js.uncompressed.js	2823
+		consultoriafinanceira.js	2462
+		consultoriafinanceira.js.uncompressed.js	2684
+		estudomkt.js	2462
+		estudomkt.js.uncompressed.js	2684
+		faleconosco.js	2462
+		faleconosco.js.uncompressed.js	2684
+		index.js	3772
+		index.js.uncompressed.js	4130
+		login.js	2462
+		login.js.uncompressed.js	2684
+		mainView.js	2462
+		mainView.js.uncompressed.js	2684
+		mapa.js	2462
+		mapa.js.uncompressed.js	2684
+		negociosmkt.js	2462
+		negociosmkt.js.uncompressed.js	2684
+		organizacional.js	2462
+		organizacional.js.uncompressed.js	2684
+		pesquisamkt.js	2462
+		pesquisamkt.js.uncompressed.js	2684
+		planomkt.js	2462
+		planomkt.js.uncompressed.js	2684
+		sac.js	2462
+		sac.js.uncompressed.js	2684
+		sobre.js	2462
+		sobre.js.uncompressed.js	2684
 	sync
 		localStorage.js	1038
 		localStorage.js.uncompressed.js	1913
@@ -123,12 +122,12 @@ mobileweb
 		CFG.js.uncompressed.js	64
 	appicon.png	19109
 	apple_startup_images
+		.DS_Store	6148
 		Default-Landscape.jpg	36232
 		Default-Landscape.png	513333
 		Default-Portrait.jpg	28479
 		Default-Portrait.png	76153
-		Default.jpg	17184
-		Default.png	110858
+		Default.png	87119
 		README	492
 	fonts
 		.DS_Store	6148

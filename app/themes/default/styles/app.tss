@@ -1,8 +1,6 @@
 "#navView": { height: 44, width: "100%", top: 0, left: 0, backgroundImage: 'lightbg.png'},
 
-"Label": {font:{fontFamily: "DIN-BoldAlternate"}},
-
-".title": {height: "46dp", font: {fontSize: "18dp",	fontWeight: "bold", fontFamily: "DIN-BoldAlternate"}, color: "#FFF",	textAlign: "center", shadowColor: "#000",
+".title": {height: "46dp", font: {fontSize: "18dp",	fontWeight: "bold"}, color: "#FFF",	textAlign: "center", shadowColor: "#000",
 			shadowOffset: {	x: "0dp", y: "1dp"}},
 
 ".contentView": { layout:"vertical"},
@@ -13,7 +11,7 @@
 
 ".titleInner":{font: {fontSize: 18, fontWeight:'bold'}, color: "#115a98", left: 30, top: 30 },
 
-".subInner":{font: {fontSize: 12}, color: "#115a98", left: 30, top: 10, right: 50 }
+".subInner":{font: {fontSize: 12}, color: "#115a98", left: 30, top: 10, right: 50 },
 
 ".text":{font: {fontSize: 12}, color: "#666666"},
 

@@ -2,8 +2,8 @@
 	<Window class="container" navBarHidden="true">
 		<View id="menuView">
 			<View id="menuNavView">
-				<ImageView image="images/icons/casa.png" width="22" height="22" left="10" top="13"></ImageView>
-				<Label id="titlenav">Menu</Label>
+				<ImageView image="images/icons/casa.png" width="22" height="22" left="10" top="12"></ImageView>
+				<Label class="title" left="5" top="5">Menu</Label>
 			</View>
 			<View height="20" width="100%" backgroundColor="#6a6967" layout="horizontal">
 				<ImageView image="images/icons/oculos.png" height="10" top="5" width="22" left="10"></ImageView>
