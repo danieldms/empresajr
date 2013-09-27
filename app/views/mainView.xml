@@ -1,19 +1,24 @@
 <Alloy>
 	<View layout="vertical">
 		<View id="navView">
-			<View id="button" />
-			<Label class="title">Empresa Jr.</Label>			
+			<View id="button"></View>
+			<Label left="50dp" color="#2276be">MENU</Label>
 		</View>
-		<ScrollableView id="scrollview" showPagingControl="true">
-            <View id="view1" backgroundImage="images/outros/background.png" layout="vertical">
+		<ScrollableView id="scrollview" showPagingControl="true" backgroundImage="images/outros/background.png">
+			 <View id="view1" layout="vertical">
+            	<ImageView image="images/outros/home_empresajr.png" width="200" height="48" top="70" left="40"></ImageView>
+            </View>
+            <View id="view2"  layout="vertical">
             	<Label class="titleInner">CONSULTORIA</Label>
             	<Label class="titleInner"  top="0">ORGANIZACIONAL</Label>
             	<Label class="subInner">ANÁLISE GERAL DA ORGANIZAÇÃO PARA QUE SE ESTABELEÇA UM MODELO DE ESTRUTURA MAIS ADEQUADO.</Label>
+            	<ImageView image="images/outros/home_icon1.png" width="150" height="179" top="20"></ImageView>
             </View>
-            <View id="view2" backgroundImage="images/outros/background.png" layout="vertical">
+            <View id="view3" layout="vertical">
             	<Label class="titleInner">SOLUÇÃO</Label>
             	<Label class="titleInner"  top="0">EM MARKETING</Label>
             	<Label class="subInner">PESQUISAS DE MERCADO E ESTUDO EXPLORATÓRIOS, ELABORAÇÃO DE PLANOS DE MARKETING.</Label>
+            	<ImageView image="images/outros/home_icon2.png" width="150" height="194" top="20"></ImageView>
             </View>
         </ScrollableView>
 	</View> 

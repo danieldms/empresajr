@@ -54,10 +54,10 @@ function Controller() {
     var exports = {};
     var __defers = {};
     $.__views.index = Ti.UI.createWindow({
-        backgroundColor: "white",
+        backgroundColor: "#105a99",
         exitOnClose: true,
         fullscreen: false,
-        navBarHidden: "true",
+        navBarHidden: true,
         id: "index"
     });
     $.__views.index && $.addTopLevelView($.__views.index);
@@ -133,7 +133,7 @@ function Controller() {
             fontSize: 11,
             fontFamily: "Arial"
         },
-        top: 2,
+        top: 4,
         text: "SERVIÇOS DE CONSULTORIA",
         id: "__alloyId39"
     });
@@ -732,13 +732,12 @@ function Controller() {
         $.main.remove(currentView);
         currentView = view;
         view = null;
-        toggleSlide();
+        null == e.swipe && toggleSlide();
     });
     if (null == currentView) {
         currentView = Alloy.createController("mainView", args).getView();
         $.main.add(currentView);
     }
-    Ti.UI.Android && ($.index.windowSoftInputMode = Ti.UI.Android.SOFT_INPUT_ADJUST_PAN);
     $.index.open();
     __defers["$.__views.consultoriafinanceira!click!clickMenu"] && $.__views.consultoriafinanceira.addEventListener("click", clickMenu);
     __defers["$.__views.consultoriafinanceira!touchstart!touchStart"] && $.__views.consultoriafinanceira.addEventListener("touchstart", touchStart);

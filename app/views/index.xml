@@ -1,5 +1,5 @@
 <Alloy>
-	<Window class="container" navBarHidden="true">
+	<Window class="container">	
 		<View id="menuView">
 			<View id="menuNavView">
 				<ImageView image="images/icons/casa.png" width="22" height="22" left="10" top="12"></ImageView>
@@ -83,6 +83,6 @@
 				
 			</ScrollView>
 		</View>
-		<View id="main"/>
+		<View id="main" backgroundColor="#FFF"/>
 	</Window>
 </Alloy>

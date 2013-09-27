@@ -5,7 +5,7 @@ var touchStartX = 0;
 var buttonPressed = false;
 var touchRightStarted = false;
 
-//animation
+//animation for open the slidemenu
 var animateRight = Ti.UI.createAnimation({
 	left : 250,
 	curve : Ti.UI.ANIMATION_CURVE_EASE_OUT,
@@ -174,16 +174,15 @@ Ti.App.addEventListener("app:setLayout", function(e){
 	currentView = view;
 	view = null;
 	
+	if(e.swipe == null){
 		toggleSlide();
-
+	}
 });
+
 
 if(currentView == null){
 	currentView = Alloy.createController("mainView", args).getView();
 	$.main.add(currentView);
 };
 
-if (Ti.UI.Android){
-  $.index.windowSoftInputMode = Ti.UI.Android.SOFT_INPUT_ADJUST_PAN;
-}
 $.index.open();

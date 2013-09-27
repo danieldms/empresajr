@@ -71,7 +71,8 @@ function Controller() {
         top: 30,
         font: {
             fontWeight: "bold",
-            fontSize: 18
+            fontSize: 18,
+            fontFamily: "DIN-BoldAlternate"
         },
         color: "#115a98",
         text: "CONSULTORIA\nFINANCEIRA",

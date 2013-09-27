@@ -16,17 +16,17 @@
 				</View>
 				
 				<View layout="vertical" top="0" left="0" width="200">
-					<Label top="10" left="0">Titulo do projeto 2000</Label>
+					<Label top="10" left="0" class="titleProject">Titulo do projeto 2000</Label>
 					<Label top="5" left="0" class="labelMin" >DEADLINE</Label>
-					<Label left="0">12/08/2013</Label>
+					<Label left="0" class="labelMin">12/08/2013</Label>
 					
-					<View width="200" backgroundColor="#F5F5F5" top="9" height="15" left="0" layout="vertical">
+					<View width="200" backgroundColor="#F5F5F5" top="13" height="17" left="0" layout="vertical">
 						<View width="80%" class="pPrevisto" height="15" top="0" left="0"></View>
-						<Label color="#FFF" top="-17">80%</Label>
+						<Label color="#FFF" top="-16" font="{fontSize: 10}">80%</Label>
 					</View>
-					<View width="200" backgroundColor="#F5F5F5" top="4" height="15" left="0" layout="vertical">
+					<View width="200" backgroundColor="#F5F5F5" top="4" height="17" left="0" layout="vertical">
 						<View width="80%" class="pRealizado" height="15" left="0" top="0"></View>
-						<Label color="#FFF" top="-17">80%</Label>
+						<Label color="#FFF" top="-16" font="{fontSize: 10}">80%</Label>
 					</View>
 					
 				</View>

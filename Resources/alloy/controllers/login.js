@@ -71,7 +71,8 @@ function Controller() {
         top: "20",
         font: {
             fontWeight: "bold",
-            fontSize: 18
+            fontSize: 18,
+            fontFamily: "DIN-BoldAlternate"
         },
         color: "#115a98",
         text: "ACOMPANHE O \nANDAMENTO DO SEU \nPROJETO",
@@ -194,7 +195,7 @@ function Controller() {
     $.entrar.addEventListener("click", function() {
         Ti.App.fireEvent("app:setLayout", {
             layout: "sac",
-            swipe: true
+            swipe: false
         });
     });
     _.extend($, exports);

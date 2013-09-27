@@ -11,13 +11,13 @@
 
 ".titleInner":{font: {fontSize: 18, fontWeight:'bold'}, color: "#115a98", left: 30, top: 30 },
 
-".subInner":{font: {fontSize: 12}, color: "#115a98", left: 30, top: 10, right: 50 },
+".subInner":{font: {fontSize: 10}, color: "#115a98", left: 30, top: 5, right: 50 },
 
 ".text":{font: {fontSize: 12}, color: "#666666"},
 
 ".header": {left: 0, width: '100%', height: 100, layout:"horizontal"},
 
-".titleHeader": { left: 20, right: 10, top: 30, font: {fontWeight: "bold", fontSize: 18}, color: "#115a98"},
+".titleHeader": { left: 20, right: 10, top: 30, font: {fontWeight: "bold", fontSize: 18, fontFamily:"DIN-BoldAlternate"}, color: "#115a98"},
 
 "ScrollView":{ backgroundColor:"transparent" },
 
@@ -30,6 +30,8 @@
 ".buttonFields":{left:10, bottom: 10, right: 10, height: 40, borderColor: "#FFF", font:{fontWeight: 'bold'}, borderRadius: 0, backgroundColor: "transparent", 
 				borderColor: "#2155bb", color:"white", backgroundImage: "back_button.png"},
 				
+".titleProject":{ font:{fontFamily:"DIN-BoldAlternate"}},
+
 ".labelMin": { font: {fontSize: 10, fontWeight: "normal"}},
 
 ".pPrevisto": { backgroundGradient:{ type: "linear", startPoint: {x:0, y:"50%"}, endPoint: {x: "100%", y: "50%"},

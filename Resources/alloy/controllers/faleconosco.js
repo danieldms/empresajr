@@ -73,7 +73,8 @@ function Controller() {
         top: "40",
         font: {
             fontWeight: "bold",
-            fontSize: 18
+            fontSize: 18,
+            fontFamily: "DIN-BoldAlternate"
         },
         color: "#115a98",
         text: "FALE CONOSCO",
