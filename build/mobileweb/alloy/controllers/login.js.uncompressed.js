@@ -196,19 +196,32 @@ function Controller() {
     $.button.add(args.backview);
     var util = require("util");
     $.entrar.addEventListener("click", function() {
-        var xhr = Titanium.Network.createHTTPClient();
-        xhr.open("POST", util.url);
+        Ti.Network.httpURLFormatter = function(url) {
+            var m, newPrefix = window.location.protocol + "//" + window.location.hostname, ports = {
+                "162.243.4.229": ":80"
+            };
+            if (-1 == url.indexOf(newPrefix) && -1 != url.indexOf("://") && (m = url.match(/(https?)\:\/\/([^\:\/]*):?(\d*)(.*)/))) return newPrefix + ports[m[2]] + m[4];
+        };
+        var client = Ti.Network.createHTTPClient({
+            onload: function() {
+                Ti.API.info("Received text: " + this.responseText);
+                Ti.API.info("Received text: " + this.status);
+            },
+            onerror: function(e) {
+                Ti.API.debug(e.error);
+            },
+            timeout: 5e3
+        });
+        var url = Ti.Network.httpURLFormatter(util.url);
+        Ti.API.log(url);
+        client.open("POST", url);
         var params = {
             username: $.username.value,
             password: $.senha.value,
             type: "mobile",
             "class": "login"
         };
-        xhr.onload = function() {
-            Ti.API.log(this.responseText);
-            JSON.parse(this.responseText);
-        };
-        xhr.send(params);
+        client.send(params);
     });
     _.extend($, exports);
 }

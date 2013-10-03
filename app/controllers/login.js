@@ -5,18 +5,45 @@ $.button.add(args.backview);
 var util = require('util');
 
 $.entrar.addEventListener('click', function(e){
-		var xhr = Titanium.Network.createHTTPClient();
-		xhr.open("POST", util.url);
+		if (Ti.Platform.osname == "mobileweb") {
+		    Ti.Network.httpURLFormatter = function(url) {
+		        var m, newPrefix = window.location.protocol + "//" + window.location.hostname,
+		            ports = {
+		                "162.243.4.229": ":80" // leave blank for port 80 (Option 1)
+		            };
+		 
+		        if (url.indexOf(newPrefix) == -1 && url.indexOf("://") != -1) {
+		            if (m = url.match(/(https?)\:\/\/([^\:\/]*):?(\d*)(.*)/)) {
+		                return newPrefix + ports[m[2]] + m[4];
+		            }
+		        }
+		    };
+		}
+		
+		 var client = Ti.Network.createHTTPClient({
+		     // function called when the response data is available
+		     onload : function(e) {
+		         Ti.API.info("Received text: " + this.responseText);
+		         Ti.API.info("Received text: " + this.status);
+		     },
+		     // function called when an error occurs, including a timeout
+		     onerror : function(e) {
+		         Ti.API.debug(e.error);
+		     },
+		     timeout : 5000  // in milliseconds
+		 });
+		
+		var url = Ti.Network.httpURLFormatter(util.url);
+		Ti.API.log(url);
+		 // Prepare the connection.
+		 client.open("POST",  url);
+		 // Send the request.
 		var params = {'username': $.username.value, 
 					  'password': $.senha.value,
 					  'type': 'mobile',
 					  'class': 'login'};
-
-		xhr.onload = function(e){
-			Ti.API.log(this.responseText);
-			var json = JSON.parse(this.responseText);
-		};
-		xhr.send(params);
+		 client.send(params);
+	
 });
 
 function isLogin(e){
