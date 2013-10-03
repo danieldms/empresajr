@@ -30,6 +30,8 @@ exports.logout = function() {
     usuario = {};
 };
 
+exports.url = url;
+
 exports.getProjeto = function(_id, _callback) {
     if (null != _id) {
         xhr.open("POST", url);

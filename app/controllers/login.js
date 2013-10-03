@@ -5,8 +5,18 @@ $.button.add(args.backview);
 var util = require('util');
 
 $.entrar.addEventListener('click', function(e){
-	Ti.API.log($.username.value +" "+ $.senha.value + " " + isLogin);
-	util.login($.username.value, $.senha.value, isLogin);
+		var xhr = Titanium.Network.createHTTPClient();
+		xhr.open("POST", util.url);
+		var params = {'username': $.username.value, 
+					  'password': $.senha.value,
+					  'type': 'mobile',
+					  'class': 'login'};
+
+		xhr.onload = function(e){
+			Ti.API.log(this.responseText);
+			var json = JSON.parse(this.responseText);
+		};
+		xhr.send(params);
 });
 
 function isLogin(e){

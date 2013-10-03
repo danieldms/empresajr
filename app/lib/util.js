@@ -28,6 +28,8 @@ exports.logout = function(){
 	usuario = {};
 };
 
+exports.url = url;
+
 exports.getProjeto = function(_id, _callback){
 	if(_id != null){
 		xhr.open("POST", url);
