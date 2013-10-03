@@ -14,6 +14,7 @@ exports.login = function(username, password, _callback){
 		
 		xhr.onload = function(e){
 			if(e != null){
+				Ti.API.log(e);
 				var json = JSON.parse(this.responseText);
 				if(_callback){
 					_callback(json);
