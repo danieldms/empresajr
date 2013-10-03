@@ -1,4 +1,4 @@
-var url = "http://162.243.4.229/empresajr/servidor/processa.php";
+var url = "http://162.243.4.229/servidor/empresajr/processa.php";
 var usuario = [];
 var result = {};
 var xhr = Ti.Network.createHTTPClient();
