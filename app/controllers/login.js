@@ -5,6 +5,7 @@ $.button.add(args.backview);
 var util = require('util');
 
 $.entrar.addEventListener('click', function(e){
+	Ti.API.log($.username.value +" "+ $.senha.value + " " + isLogin);
 	util.login($.username.value, $.senha.value, isLogin);
 });
 
