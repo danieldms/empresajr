@@ -1,4 +1,4 @@
-var url = "http://192.168.0.11/empresajr/servidor/processa.php";
+var url = "http://162.243.4.229/empresajr/servidor/processa.php";
 
 var usuario = [];
 
