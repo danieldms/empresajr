@@ -20,7 +20,6 @@ exports.login = function(username, password, _callback){
 				} 
 			}
 		};
-
 	}	
 };
 
