@@ -1,4 +1,4 @@
-ts	1380807369000
+ts	1380819532000
 .DS_Store	6148
 Default-Landscape.jpg	36232
 Default-Portrait.jpg	28479
@@ -18,8 +18,8 @@ alloy
 		estudomkt.js.uncompressed.js	4291
 		faleconosco.js	5500
 		faleconosco.js.uncompressed.js	8093
-		index.js	16897
-		index.js.uncompressed.js	25611
+		index.js	16906
+		index.js.uncompressed.js	25620
 		login.js	4178
 		login.js.uncompressed.js	6184
 		mainView.js	3303
@@ -433,5 +433,5 @@ titanium
 titanium.css	38000
 titanium.js	239064
 titanium.js.uncompressed.js	488077
-util.js	619
-util.js.uncompressed.js	1178
+util.js	628
+util.js.uncompressed.js	1187

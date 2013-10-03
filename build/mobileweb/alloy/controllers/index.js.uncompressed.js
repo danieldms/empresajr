@@ -273,7 +273,7 @@ function Controller() {
             fontFamily: "Arial"
         },
         top: 12,
-        text: "Plano MKT",
+        text: "Plano de Marketing",
         id: "__alloyId46"
     });
     $.__views.planomkt.add($.__views.__alloyId46);
@@ -305,7 +305,7 @@ function Controller() {
             fontFamily: "Arial"
         },
         top: 12,
-        text: "Pesquisa de mercado",
+        text: "Pesquisa de Mercado",
         id: "__alloyId48"
     });
     $.__views.pesquisamkt.add($.__views.__alloyId48);
@@ -337,7 +337,7 @@ function Controller() {
             fontFamily: "Arial"
         },
         top: 12,
-        text: "Estudo de viabilidade",
+        text: "Estudo de Viabilidade",
         id: "__alloyId50"
     });
     $.__views.estudomkt.add($.__views.__alloyId50);
@@ -381,7 +381,7 @@ function Controller() {
             fontFamily: "Arial"
         },
         top: 12,
-        text: "Plano de negócios",
+        text: "Plano de Negócios",
         id: "__alloyId53"
     });
     $.__views.negociosmkt.add($.__views.__alloyId53);

@@ -24,22 +24,22 @@
 				<View class="subMenu" height="0" id="sub_mkt">						
 					<View height="1" backgroundColor="#b1b0ac" width="100%" />		
 					<View class="menuItem" onClick="clickMenu" sub="false" id="planomkt" swipe="false">
-						<Label class="subLabel">Plano MKT</Label>	
+						<Label class="subLabel">Plano de Marketing</Label>	
 					</View>		
 					
 					<View height="1" backgroundColor="#b1b0ac" width="100%" />		
 					<View class="menuItem" onClick="clickMenu" sub="false" id="pesquisamkt">
-						<Label class="subLabel">Pesquisa de mercado</Label>	
+						<Label class="subLabel">Pesquisa de Mercado</Label>	
 					</View>	
 					
 					<View height="1" backgroundColor="#b1b0ac" width="100%" />		
 					<View class="menuItem" onClick="clickMenu" sub="false" id="estudomkt" layout="horizontal">
-						<Label class="subLabel">Estudo de viabilidade</Label><Label class="littleLabel"> (mercadológico e financeiro)</Label>	
+						<Label class="subLabel">Estudo de Viabilidade</Label><Label class="littleLabel"> (mercadológico e financeiro)</Label>	
 					</View>		
 					
 					<View height="1" backgroundColor="#b1b0ac" width="100%" />		
 					<View class="menuItem" onClick="clickMenu" sub="false" id="negociosmkt">
-						<Label class="subLabel">Plano de negócios</Label>	
+						<Label class="subLabel">Plano de Negócios</Label>	
 					</View>	
 				</View>
 				
