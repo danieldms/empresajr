@@ -16,9 +16,11 @@ exports.login = function(username, password, _callback) {
             "class": "login"
         };
         xhr.send(params);
-        xhr.onload = function() {
-            var json = JSON.parse(this.responseText);
-            _callback && _callback(json);
+        xhr.onload = function(e) {
+            if (null != e) {
+                var json = JSON.parse(this.responseText);
+                _callback && _callback(json);
+            }
         };
     }
 };
@@ -36,9 +38,11 @@ exports.getProjeto = function(_id, _callback) {
             "class": "getProjeto"
         };
         xhr.send(params);
-        xhr.onload = function() {
-            var json = JSON.parse(this.responseText);
-            _callback && _callback(json);
+        xhr.onload = function(e) {
+            if (null != e) {
+                var json = JSON.parse(this.responseText);
+                _callback && _callback(json);
+            }
         };
     }
 };

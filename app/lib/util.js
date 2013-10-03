@@ -13,10 +13,12 @@ exports.login = function(username, password, _callback){
 		xhr.send(params);
 		
 		xhr.onload = function(e){
-			var json = JSON.parse(this.responseText);
-			if(_callback){
-				_callback(json);
-			} 
+			if(e != null){
+				var json = JSON.parse(this.responseText);
+				if(_callback){
+					_callback(json);
+				} 
+			}
 		};
 
 	}	
@@ -35,10 +37,12 @@ exports.getProjeto = function(_id, _callback){
 		xhr.send(params);
 		
 		xhr.onload = function(e){
+			if(e != null){
 			var json = JSON.parse(this.responseText);
-			if(_callback){
-				_callback(json);
-			} 
+				if(_callback){
+					_callback(json);
+				} 
+			}
 		};
 
 	}	
