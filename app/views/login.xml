@@ -19,7 +19,7 @@ PROJETO</Label>
 					<Label class="labelFields">Usuário:</Label><TextField class="textFields" id="username" left="20" top="10"></TextField>
 				</View>
 				<View backgroundColor="#FFF" layout="horizontal" left="10" right="10" height="45" bottom="10">
-					<Label class="labelFields">Senha:  </Label><TextField class="textFields" id="senha" left="20" top="10"></TextField>
+					<Label class="labelFields">Senha:  </Label><TextField passwordMask="true" returnKeyType="RETURNKEY_DONE" class="textFields" id="senha" left="20" top="10"></TextField>
 				</View>
 				<Button class="buttonFields" id="entrar">ENTRAR</Button>
 			</View>

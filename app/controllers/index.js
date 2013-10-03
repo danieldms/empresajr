@@ -165,7 +165,8 @@ function toggleSlide(e){
 	}
 }
 
-Ti.App.addEventListener("app:setLayout", function(e){	
+Ti.App.addEventListener("app:setLayout", function(e){
+
 	var view = Alloy.createController(e.layout, args).getView();
 	
 	$.main.add(view);

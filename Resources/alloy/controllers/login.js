@@ -1,4 +1,17 @@
 function Controller() {
+    function isLogin(e) {
+        "sucesso" == e.type ? util.getProjeto(e.id, setProjeto) : "error" == e.type && Ti.UI.createAlertDialog({
+            title: e.type,
+            message: e.message
+        }).show();
+    }
+    function setProjeto(e) {
+        Ti.App.fireEvent("app:setLayout", {
+            layout: "sac",
+            swipe: false,
+            data: e
+        });
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "login";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
@@ -168,6 +181,8 @@ function Controller() {
         left: "20",
         borderWidth: 0,
         borderColor: "#FFF",
+        passwordMask: "true",
+        returnKeyType: "RETURNKEY_DONE",
         id: "senha"
     });
     $.__views.__alloyId83.add($.__views.senha);
@@ -192,11 +207,9 @@ function Controller() {
     _.extend($, $.__views);
     var args = arguments[0] || {};
     $.button.add(args.backview);
+    var util = require("util");
     $.entrar.addEventListener("click", function() {
-        Ti.App.fireEvent("app:setLayout", {
-            layout: "sac",
-            swipe: false
-        });
+        util.login($.username.value, $.senha.value, isLogin);
     });
     _.extend($, exports);
 }
