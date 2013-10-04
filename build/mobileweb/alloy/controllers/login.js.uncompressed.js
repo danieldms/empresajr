@@ -1,15 +1,21 @@
 function Controller() {
     function isLogin(e) {
-        null != e && ("error" != e.type ? setProjeto() : Ti.UI.createAlertDialog({
+        Ti.API.log(e);
+        if (null != e) if ("error" != e.type) if (e.projeto.count > 0) {
+            Alloy.Globals.Usuario = e;
+            setProjeto();
+        } else Ti.UI.createAlertDialog({
+            message: e.projeto.message,
+            title: e.projeto.titulo
+        }).show(); else Ti.UI.createAlertDialog({
             message: e.message,
             title: e.error
-        }).show());
+        }).show();
     }
-    function setProjeto(e) {
+    function setProjeto() {
         Ti.App.fireEvent("app:setLayout", {
             layout: "sac",
-            swipe: false,
-            data: e
+            swipe: false
         });
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
@@ -94,8 +100,9 @@ function Controller() {
     });
     $.__views.__alloyId77.add($.__views.label);
     $.__views.__alloyId79 = Ti.UI.createView({
-        height: 22,
+        height: 26,
         left: 0,
+        bottom: 2,
         layout: "vertical",
         backgroundColor: "#f5f5f5",
         id: "__alloyId79"
@@ -207,9 +214,8 @@ function Controller() {
     _.extend($, $.__views);
     var args = arguments[0] || {};
     $.button.add(args.backview);
-    var util = require("util");
     $.entrar.addEventListener("click", function() {
-        util.login($.username.value, $.senha.value, isLogin);
+        Alloy.Globals.Util.login($.username.value, $.senha.value, isLogin);
     });
     _.extend($, exports);
 }

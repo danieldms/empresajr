@@ -164,7 +164,7 @@ function Controller() {
             fontSize: 12,
             fontWeight: "bold"
         },
-        text: "12/08/2013",
+        text: "0/00/0000",
         left: "0",
         id: "deadline"
     });
@@ -200,7 +200,7 @@ function Controller() {
             height: 10,
             left: 0
         },
-        width: "80%",
+        width: "0%",
         height: "15",
         top: "0",
         left: "0",
@@ -208,7 +208,7 @@ function Controller() {
     });
     $.__views.__alloyId140.add($.__views.sprevisto);
     $.__views.previsto = Ti.UI.createLabel({
-        text: "80%",
+        text: "0%",
         color: "#FFF",
         top: "-16",
         font: "{fontSize: 10}",
@@ -246,7 +246,7 @@ function Controller() {
             height: 10,
             left: 0
         },
-        width: "80%",
+        width: "0%",
         height: "15",
         left: "0",
         top: "0",
@@ -254,7 +254,7 @@ function Controller() {
     });
     $.__views.__alloyId141.add($.__views.srealizado);
     $.__views.realizado = Ti.UI.createLabel({
-        text: "80%",
+        text: "0%",
         color: "#FFF",
         top: "-16",
         font: "{fontSize: 10}",
