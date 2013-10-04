@@ -4,13 +4,7 @@ function Controller() {
         if (null != e) if ("error" != e.type) if (e.projeto.count > 0) {
             Alloy.Globals.Usuario = e;
             setProjeto();
-        } else Ti.UI.createAlertDialog({
-            message: e.projeto.message,
-            title: e.projeto.titulo
-        }).show(); else Ti.UI.createAlertDialog({
-            message: e.message,
-            title: e.error
-        }).show();
+        } else alert(e.projeto.message); else alert(e.message);
     }
     function setProjeto() {
         Ti.App.fireEvent("app:setLayout", {

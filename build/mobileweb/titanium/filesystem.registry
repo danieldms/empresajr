@@ -1,4 +1,4 @@
-ts	1380917609000
+ts	1380918404000
 .DS_Store	6148
 Default-Landscape.jpg	36232
 Default-Portrait.jpg	28479
@@ -20,8 +20,8 @@ alloy
 		faleconosco.js.uncompressed.js	8112
 		index.js	17279
 		index.js.uncompressed.js	26200
-		login.js	4291
-		login.js.uncompressed.js	6379
+		login.js	4184
+		login.js.uncompressed.js	6198
 		mainView.js	3303
 		mainView.js.uncompressed.js	4757
 		mapa.js	2176

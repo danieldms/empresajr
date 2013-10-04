@@ -14,10 +14,10 @@ function isLogin(e){
 				Alloy.Globals.Usuario = e;
 				setProjeto();
 			}else{
-				Ti.UI.createAlertDialog({message: e.projeto.message, title: e.projeto.titulo}).show();
+				alert(e.projeto.message);
 			}
 		}else{
-			Ti.UI.createAlertDialog({message: e.message, title: e.error}).show();
+			alert(e.message);
 		}
 	}
 };

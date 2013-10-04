@@ -46,8 +46,7 @@ function doPost(params, _callback) {
 					_callback(json);
 				} 
 			}
-		};	
-			
+		};				
 		xhr.open("POST", url);
 		xhr.send(params) ;
 	}
