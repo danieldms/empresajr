@@ -1,4 +1,17 @@
 function Controller() {
+    function isLogin(e) {
+        null != e && ("error" != e.type ? setProjeto() : Ti.UI.createAlertDialog({
+            message: e.message,
+            title: e.error
+        }).show());
+    }
+    function setProjeto(e) {
+        Ti.App.fireEvent("app:setLayout", {
+            layout: "sac",
+            swipe: false,
+            data: e
+        });
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "login";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
@@ -24,7 +37,7 @@ function Controller() {
         id: "button"
     });
     $.__views.navView.add($.__views.button);
-    $.__views.__alloyId75 = Ti.UI.createLabel({
+    $.__views.__alloyId76 = Ti.UI.createLabel({
         height: "46dp",
         font: {
             fontSize: "18dp",
@@ -38,9 +51,9 @@ function Controller() {
             y: "1dp"
         },
         text: "SAC",
-        id: "__alloyId75"
+        id: "__alloyId76"
     });
-    $.__views.navView.add($.__views.__alloyId75);
+    $.__views.navView.add($.__views.__alloyId76);
     $.__views.scrollview = Ti.UI.createScrollView({
         backgroundColor: "transparent",
         layout: "vertical",
@@ -48,23 +61,23 @@ function Controller() {
         scrollingEnabled: "true"
     });
     $.__views.login.add($.__views.scrollview);
-    $.__views.__alloyId76 = Ti.UI.createView({
+    $.__views.__alloyId77 = Ti.UI.createView({
         left: 0,
         width: "100%",
         height: "100",
         layout: "horizontal",
-        id: "__alloyId76"
+        id: "__alloyId77"
     });
-    $.__views.scrollview.add($.__views.__alloyId76);
-    $.__views.__alloyId77 = Ti.UI.createImageView({
+    $.__views.scrollview.add($.__views.__alloyId77);
+    $.__views.__alloyId78 = Ti.UI.createImageView({
         image: "images/outros/header_login.png",
         height: "60",
         width: "60",
         left: "10",
         top: "20",
-        id: "__alloyId77"
+        id: "__alloyId78"
     });
-    $.__views.__alloyId76.add($.__views.__alloyId77);
+    $.__views.__alloyId77.add($.__views.__alloyId78);
     $.__views.label = Ti.UI.createLabel({
         left: 20,
         right: 10,
@@ -79,16 +92,16 @@ function Controller() {
         id: "label",
         width: "auto"
     });
-    $.__views.__alloyId76.add($.__views.label);
-    $.__views.__alloyId78 = Ti.UI.createView({
+    $.__views.__alloyId77.add($.__views.label);
+    $.__views.__alloyId79 = Ti.UI.createView({
         height: 22,
         left: 0,
         layout: "vertical",
         backgroundColor: "#f5f5f5",
-        id: "__alloyId78"
+        id: "__alloyId79"
     });
-    $.__views.scrollview.add($.__views.__alloyId78);
-    $.__views.__alloyId79 = Ti.UI.createLabel({
+    $.__views.scrollview.add($.__views.__alloyId79);
+    $.__views.__alloyId80 = Ti.UI.createLabel({
         font: {
             fontSize: 11,
             fontWeight: "bold"
@@ -97,20 +110,20 @@ function Controller() {
         top: 6,
         color: "#8a8a8a",
         text: "LOGIN",
-        id: "__alloyId79"
+        id: "__alloyId80"
     });
-    $.__views.__alloyId78.add($.__views.__alloyId79);
-    $.__views.__alloyId80 = Ti.UI.createView({
+    $.__views.__alloyId79.add($.__views.__alloyId80);
+    $.__views.__alloyId81 = Ti.UI.createView({
         backgroundColor: "#eeeeee",
         left: "20",
         right: "20",
         top: "20",
         height: "162",
         layout: "vertical",
-        id: "__alloyId80"
+        id: "__alloyId81"
     });
-    $.__views.scrollview.add($.__views.__alloyId80);
-    $.__views.__alloyId81 = Ti.UI.createView({
+    $.__views.scrollview.add($.__views.__alloyId81);
+    $.__views.__alloyId82 = Ti.UI.createView({
         backgroundColor: "#FFF",
         layout: "horizontal",
         left: "10",
@@ -118,10 +131,10 @@ function Controller() {
         top: "10",
         height: "45",
         bottom: "2",
-        id: "__alloyId81"
+        id: "__alloyId82"
     });
-    $.__views.__alloyId80.add($.__views.__alloyId81);
-    $.__views.__alloyId82 = Ti.UI.createLabel({
+    $.__views.__alloyId81.add($.__views.__alloyId82);
+    $.__views.__alloyId83 = Ti.UI.createLabel({
         font: {
             fontSize: 14
         },
@@ -129,9 +142,9 @@ function Controller() {
         left: 5,
         top: 13,
         text: "Usuário:",
-        id: "__alloyId82"
+        id: "__alloyId83"
     });
-    $.__views.__alloyId81.add($.__views.__alloyId82);
+    $.__views.__alloyId82.add($.__views.__alloyId83);
     $.__views.username = Ti.UI.createTextField({
         width: 180,
         top: "10",
@@ -140,18 +153,18 @@ function Controller() {
         borderColor: "#FFF",
         id: "username"
     });
-    $.__views.__alloyId81.add($.__views.username);
-    $.__views.__alloyId83 = Ti.UI.createView({
+    $.__views.__alloyId82.add($.__views.username);
+    $.__views.__alloyId84 = Ti.UI.createView({
         backgroundColor: "#FFF",
         layout: "horizontal",
         left: "10",
         right: "10",
         height: "45",
         bottom: "10",
-        id: "__alloyId83"
+        id: "__alloyId84"
     });
-    $.__views.__alloyId80.add($.__views.__alloyId83);
-    $.__views.__alloyId84 = Ti.UI.createLabel({
+    $.__views.__alloyId81.add($.__views.__alloyId84);
+    $.__views.__alloyId85 = Ti.UI.createLabel({
         font: {
             fontSize: 14
         },
@@ -159,9 +172,9 @@ function Controller() {
         left: 5,
         top: 13,
         text: "Senha:",
-        id: "__alloyId84"
+        id: "__alloyId85"
     });
-    $.__views.__alloyId83.add($.__views.__alloyId84);
+    $.__views.__alloyId84.add($.__views.__alloyId85);
     $.__views.senha = Ti.UI.createTextField({
         width: 180,
         top: "10",
@@ -172,7 +185,7 @@ function Controller() {
         returnKeyType: "RETURNKEY_DONE",
         id: "senha"
     });
-    $.__views.__alloyId83.add($.__views.senha);
+    $.__views.__alloyId84.add($.__views.senha);
     $.__views.entrar = Ti.UI.createButton({
         left: 10,
         bottom: 10,
@@ -189,39 +202,14 @@ function Controller() {
         title: "ENTRAR",
         id: "entrar"
     });
-    $.__views.__alloyId80.add($.__views.entrar);
+    $.__views.__alloyId81.add($.__views.entrar);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var args = arguments[0] || {};
     $.button.add(args.backview);
     var util = require("util");
     $.entrar.addEventListener("click", function() {
-        Ti.Network.httpURLFormatter = function(url) {
-            var m, newPrefix = window.location.protocol + "//" + window.location.hostname, ports = {
-                "162.243.4.229": ":80"
-            };
-            if (-1 == url.indexOf(newPrefix) && -1 != url.indexOf("://") && (m = url.match(/(https?)\:\/\/([^\:\/]*):?(\d*)(.*)/))) return newPrefix + ports[m[2]] + m[4];
-        };
-        var client = Ti.Network.createHTTPClient({
-            onload: function() {
-                Ti.API.info("Received text: " + this.responseText);
-                Ti.API.info("Received text: " + this.status);
-            },
-            onerror: function(e) {
-                Ti.API.debug(e.error);
-            },
-            timeout: 5e3
-        });
-        var url = Ti.Network.httpURLFormatter(util.url);
-        Ti.API.log(url);
-        client.open("POST", url);
-        var params = {
-            username: $.username.value,
-            password: $.senha.value,
-            type: "mobile",
-            "class": "login"
-        };
-        client.send(params);
+        util.login($.username.value, $.senha.value, isLogin);
     });
     _.extend($, exports);
 }

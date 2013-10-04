@@ -1,3 +1,17 @@
+function doPost(params, _callback) {
+    xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
+    xhr.onreadystatechange = function() {
+        if (4 == xhr.readyState && 200 == xhr.status && null != xhr.responseText) {
+            var json = JSON.parse(xhr.responseText);
+            _callback && _callback(json);
+        }
+    };
+    var data = "?";
+    for (var prop in params) data += prop + "=" + params[prop] + "&";
+    xhr.open("POST", url + data);
+    xhr.send();
+}
+
 var url = "http://162.243.4.229/servidor/empresajr/processa.php";
 
 var usuario = [];
@@ -8,21 +22,13 @@ var xhr = Ti.Network.createHTTPClient();
 
 exports.login = function(username, password, _callback) {
     if (0 == usuario.length) {
-        xhr.open("POST", url);
         var params = {
             username: username,
             password: password,
             type: "mobile",
             "class": "login"
         };
-        xhr.send(params);
-        xhr.onload = function(e) {
-            if (null != e) {
-                Ti.API.log(e);
-                var json = JSON.parse(this.responseText);
-                _callback && _callback(json);
-            }
-        };
+        doPost(params, _callback);
     }
 };
 

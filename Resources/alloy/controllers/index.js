@@ -652,6 +652,16 @@ function Controller() {
         id: "main"
     });
     $.__views.index.add($.__views.main);
+    $.__views.__alloyId75 = Ti.UI.createView({
+        width: "100%",
+        zIndex: "10",
+        height: "0%",
+        top: "0",
+        left: "0",
+        backgroundColor: "",
+        id: "__alloyId75"
+    });
+    $.__views.index.add($.__views.__alloyId75);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var currentView = null;
