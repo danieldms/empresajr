@@ -8,7 +8,7 @@ function Controller() {
     function clickMenu() {
         if (null == this.subView) {
             var layout = null;
-            layout = "true" === this.restrito ? "login" : this.id;
+            layout = "true" === this.restrito && null == Alloy.Globals.Usuario ? "login" : this.id;
             Ti.App.fireEvent("app:setLayout", {
                 layout: layout
             });
@@ -684,6 +684,20 @@ function Controller() {
         height: "50dp",
         width: "50dp",
         left: 0
+    });
+    Ti.UI.createView({
+        width: 1,
+        height: "50dp",
+        top: 0,
+        right: 1,
+        backgroundColor: "##0C376E"
+    });
+    Ti.UI.createView({
+        width: 1,
+        height: "50dp",
+        top: 0,
+        right: 0,
+        backgroundColor: "#303030"
     });
     var backbutton = Ti.UI.createImageView({
         height: "15dp",

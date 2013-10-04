@@ -5,7 +5,7 @@
 
 ".contentView": { layout:"vertical"},
 
-".fixedHeader": {height: 22, left:0, layout: "vertical", backgroundColor: "#f5f5f5"},
+".fixedHeader": {height: 26, left:0, bottom: 2, layout: "vertical", backgroundColor: "#f5f5f5"},
 
 ".titleFixed": {font: {fontSize: 11, fontWeight: 'bold'}, left: 10, top: 6, color: "#8a8a8a"},
 
@@ -30,9 +30,11 @@
 ".buttonFields":{left:10, bottom: 10, right: 10, height: 40, borderColor: "#FFF", font:{fontWeight: 'bold'}, borderRadius: 0, backgroundColor: "transparent", 
 				borderColor: "#2155bb", color:"white", backgroundImage: "back_button.png"},
 				
-".titleProject":{ font:{fontFamily:"DIN-BoldAlternate"}},
+".titleProject":{ font:{fontFamily:"DIN-BoldAlternate", fontSize: 16}, color:"#7F7F7F"},
 
 ".labelMin": { font: {fontSize: 10, fontWeight: "normal"}},
+
+".labelMin2": { font: {fontSize: 12, fontWeight: "bold"}},
 
 ".pPrevisto": { backgroundGradient:{ type: "linear", startPoint: {x:0, y:"50%"}, endPoint: {x: "100%", y: "50%"},
 	colors: [ {color: '#125a95', offset: 0.0}, { color: '#4898dd', offset: 1.0 }], height: 10, left: 0 }},

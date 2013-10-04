@@ -2,7 +2,7 @@
 	<View layout="vertical">
 		<View id="navView">
 			<View id="button"></View>
-			<Label left="50dp" color="#2276be">MENU</Label>
+			<Label left="55dp" color="#2276be">MENU</Label>
 		</View>
 		<ScrollableView id="scrollview" showPagingControl="true" backgroundImage="images/outros/background.png">
 			 <View id="view1" layout="vertical">

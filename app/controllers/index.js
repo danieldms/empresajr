@@ -25,6 +25,17 @@ var backView = Ti.UI.createView({
 	left: 0
 });
 
+var borda1 = Ti.UI.createView({
+	width: 1, height: '50dp', top: 0, right: 1,
+	backgroundColor: "##0C376E"
+});
+
+var borda2 = Ti.UI.createView({
+	width: 1, height: '50dp', top: 0, right: 0,
+	backgroundColor: "#303030"
+});
+
+
 var backbutton = Ti.UI.createImageView({
 	height: '15dp',
 	width: '25dp',
@@ -65,10 +76,9 @@ var args = {
 
 function clickMenu(){	
 	
-	if(this.subView == null){
-		
+	if(this.subView == null){		
 		var layout = null;
-		if(this.restrito === "true"){			
+		if(this.restrito === "true" && Alloy.Globals.Usuario == null){			
 			layout= "login"; 
 		}else{
 			layout = this.id;

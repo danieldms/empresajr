@@ -26,7 +26,7 @@ function Controller() {
     $.__views.navView.add($.__views.button);
     $.__views.__alloyId86 = Ti.UI.createLabel({
         text: "MENU",
-        left: "50dp",
+        left: "55dp",
         color: "#2276be",
         id: "__alloyId86"
     });

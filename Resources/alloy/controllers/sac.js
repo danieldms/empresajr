@@ -1,4 +1,18 @@
 function Controller() {
+    function isProjeto(e) {
+        Ti.API.log(e);
+        if ("sucesso" == e.type) {
+            $.titulo_projeto.text = e.titulo;
+            $.descritivo.text = e.descricao;
+            $.deadline.text = e.deadline;
+            40 > e.previsto && ($.previsto.color = "#000");
+            $.sprevisto.width = e.previsto + "%";
+            $.previsto.text = e.previsto + "%";
+            40 > e.realizado && ($.realizado.color = "#000");
+            $.srealizado.width = e.realizado + "%";
+            $.realizado.text = e.realizado + "%";
+        }
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "sac";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
@@ -37,7 +51,7 @@ function Controller() {
             x: "0dp",
             y: "1dp"
         },
-        text: "Consultoria Financeira",
+        text: "SAC",
         id: "__alloyId129"
     });
     $.__views.navView.add($.__views.__alloyId129);
@@ -49,8 +63,9 @@ function Controller() {
     });
     $.__views.sac.add($.__views.__alloyId130);
     $.__views.__alloyId131 = Ti.UI.createView({
-        height: 22,
+        height: 26,
         left: 0,
+        bottom: 2,
         layout: "vertical",
         backgroundColor: "#f5f5f5",
         id: "__alloyId131"
@@ -69,7 +84,7 @@ function Controller() {
     });
     $.__views.__alloyId131.add($.__views.__alloyId132);
     $.__views.__alloyId133 = Ti.UI.createView({
-        height: "120",
+        height: "130",
         width: "100%",
         layout: "horizontal",
         id: "__alloyId133"
@@ -109,7 +124,7 @@ function Controller() {
         },
         text: "REALIZADO",
         left: "10",
-        top: "5",
+        top: "7",
         id: "__alloyId137"
     });
     $.__views.__alloyId134.add($.__views.__alloyId137);
@@ -121,17 +136,19 @@ function Controller() {
         id: "__alloyId138"
     });
     $.__views.__alloyId133.add($.__views.__alloyId138);
-    $.__views.__alloyId139 = Ti.UI.createLabel({
+    $.__views.titulo_projeto = Ti.UI.createLabel({
         font: {
-            fontFamily: "DIN-BoldAlternate"
+            fontFamily: "DIN-BoldAlternate",
+            fontSize: 16
         },
+        color: "#7F7F7F",
         text: "Titulo do projeto 2000",
-        top: "10",
+        top: "0",
         left: "0",
-        id: "__alloyId139"
+        id: "titulo_projeto"
     });
-    $.__views.__alloyId138.add($.__views.__alloyId139);
-    $.__views.__alloyId140 = Ti.UI.createLabel({
+    $.__views.__alloyId138.add($.__views.titulo_projeto);
+    $.__views.__alloyId139 = Ti.UI.createLabel({
         font: {
             fontSize: 10,
             fontWeight: "normal"
@@ -139,30 +156,30 @@ function Controller() {
         text: "DEADLINE",
         top: "5",
         left: "0",
-        id: "__alloyId140"
+        id: "__alloyId139"
     });
-    $.__views.__alloyId138.add($.__views.__alloyId140);
-    $.__views.__alloyId141 = Ti.UI.createLabel({
+    $.__views.__alloyId138.add($.__views.__alloyId139);
+    $.__views.deadline = Ti.UI.createLabel({
         font: {
-            fontSize: 10,
-            fontWeight: "normal"
+            fontSize: 12,
+            fontWeight: "bold"
         },
         text: "12/08/2013",
         left: "0",
-        id: "__alloyId141"
+        id: "deadline"
     });
-    $.__views.__alloyId138.add($.__views.__alloyId141);
-    $.__views.__alloyId142 = Ti.UI.createView({
-        width: "200",
+    $.__views.__alloyId138.add($.__views.deadline);
+    $.__views.__alloyId140 = Ti.UI.createView({
+        width: "220",
         backgroundColor: "#F5F5F5",
-        top: "13",
+        top: "18",
         height: "17",
         left: "0",
         layout: "vertical",
-        id: "__alloyId142"
+        id: "__alloyId140"
     });
-    $.__views.__alloyId138.add($.__views.__alloyId142);
-    $.__views.__alloyId143 = Ti.UI.createView({
+    $.__views.__alloyId138.add($.__views.__alloyId140);
+    $.__views.sprevisto = Ti.UI.createView({
         backgroundGradient: {
             type: "linear",
             startPoint: {
@@ -187,28 +204,28 @@ function Controller() {
         height: "15",
         top: "0",
         left: "0",
-        id: "__alloyId143"
+        id: "sprevisto"
     });
-    $.__views.__alloyId142.add($.__views.__alloyId143);
-    $.__views.__alloyId144 = Ti.UI.createLabel({
+    $.__views.__alloyId140.add($.__views.sprevisto);
+    $.__views.previsto = Ti.UI.createLabel({
         text: "80%",
         color: "#FFF",
         top: "-16",
         font: "{fontSize: 10}",
-        id: "__alloyId144"
+        id: "previsto"
     });
-    $.__views.__alloyId142.add($.__views.__alloyId144);
-    $.__views.__alloyId145 = Ti.UI.createView({
-        width: "200",
+    $.__views.__alloyId140.add($.__views.previsto);
+    $.__views.__alloyId141 = Ti.UI.createView({
+        width: "220",
         backgroundColor: "#F5F5F5",
         top: "4",
         height: "17",
         left: "0",
         layout: "vertical",
-        id: "__alloyId145"
+        id: "__alloyId141"
     });
-    $.__views.__alloyId138.add($.__views.__alloyId145);
-    $.__views.__alloyId146 = Ti.UI.createView({
+    $.__views.__alloyId138.add($.__views.__alloyId141);
+    $.__views.srealizado = Ti.UI.createView({
         backgroundGradient: {
             type: "linear",
             startPoint: {
@@ -233,26 +250,27 @@ function Controller() {
         height: "15",
         left: "0",
         top: "0",
-        id: "__alloyId146"
+        id: "srealizado"
     });
-    $.__views.__alloyId145.add($.__views.__alloyId146);
-    $.__views.__alloyId147 = Ti.UI.createLabel({
+    $.__views.__alloyId141.add($.__views.srealizado);
+    $.__views.realizado = Ti.UI.createLabel({
         text: "80%",
         color: "#FFF",
         top: "-16",
         font: "{fontSize: 10}",
-        id: "__alloyId147"
+        id: "realizado"
     });
-    $.__views.__alloyId145.add($.__views.__alloyId147);
-    $.__views.__alloyId148 = Ti.UI.createView({
-        height: 22,
+    $.__views.__alloyId141.add($.__views.realizado);
+    $.__views.__alloyId142 = Ti.UI.createView({
+        height: 26,
         left: 0,
+        bottom: 2,
         layout: "vertical",
         backgroundColor: "#f5f5f5",
-        id: "__alloyId148"
+        id: "__alloyId142"
     });
-    $.__views.__alloyId130.add($.__views.__alloyId148);
-    $.__views.__alloyId149 = Ti.UI.createLabel({
+    $.__views.__alloyId130.add($.__views.__alloyId142);
+    $.__views.__alloyId143 = Ti.UI.createLabel({
         font: {
             fontSize: 11,
             fontWeight: "bold"
@@ -261,13 +279,52 @@ function Controller() {
         top: 6,
         color: "#8a8a8a",
         text: "Descritivo",
-        id: "__alloyId149"
+        id: "__alloyId143"
     });
-    $.__views.__alloyId148.add($.__views.__alloyId149);
+    $.__views.__alloyId142.add($.__views.__alloyId143);
+    $.__views.descritivo = Ti.UI.createLabel({
+        font: {
+            fontSize: 12
+        },
+        color: "#666666",
+        id: "descritivo",
+        left: "10",
+        right: "10",
+        top: "10",
+        textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT
+    });
+    $.__views.__alloyId130.add($.__views.descritivo);
+    $.__views.__alloyId144 = Ti.UI.createView({
+        height: 26,
+        left: 0,
+        bottom: 2,
+        layout: "vertical",
+        backgroundColor: "#f5f5f5",
+        top: "10",
+        id: "__alloyId144"
+    });
+    $.__views.__alloyId130.add($.__views.__alloyId144);
+    $.__views.__alloyId145 = Ti.UI.createLabel({
+        font: {
+            fontSize: 11,
+            fontWeight: "bold"
+        },
+        left: 10,
+        top: 6,
+        color: "#8a8a8a",
+        text: "Comentários",
+        id: "__alloyId145"
+    });
+    $.__views.__alloyId144.add($.__views.__alloyId145);
+    $.__views.comentario = Ti.UI.createView({
+        id: "comentario"
+    });
+    $.__views.__alloyId130.add($.__views.comentario);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var args = arguments[0] || {};
     $.button.add(args.backview);
+    null != Alloy.Globals.Usuario && Alloy.Globals.Util.getProjeto(Alloy.Globals.Usuario.id, isProjeto);
     _.extend($, exports);
 }
 

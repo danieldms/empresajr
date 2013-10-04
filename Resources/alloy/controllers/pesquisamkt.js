@@ -80,8 +80,9 @@ function Controller() {
     });
     $.__views.__alloyId115.add($.__views.__alloyId117);
     $.__views.__alloyId118 = Ti.UI.createView({
-        height: 22,
+        height: 26,
         left: 0,
+        bottom: 2,
         layout: "vertical",
         backgroundColor: "#f5f5f5",
         id: "__alloyId118"
