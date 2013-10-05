@@ -24,5 +24,7 @@ function isProjeto(e){
 		}
 		$.srealizado.width = e.realizado +'%';
 		$.realizado.text = e.realizado +'%';
+	}else{
+		alert(e.message);
 	}
 };

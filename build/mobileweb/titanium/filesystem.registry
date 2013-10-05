@@ -1,4 +1,4 @@
-ts	1380918404000
+ts	1381001023000
 .DS_Store	6148
 Default-Landscape.jpg	36232
 Default-Portrait.jpg	28479
@@ -16,16 +16,16 @@ alloy
 		consultoriafinanceira.js.uncompressed.js	4373
 		estudomkt.js	3204
 		estudomkt.js.uncompressed.js	4310
-		faleconosco.js	5509
-		faleconosco.js.uncompressed.js	8112
+		faleconosco.js	5711
+		faleconosco.js.uncompressed.js	8383
 		index.js	17279
 		index.js.uncompressed.js	26200
 		login.js	4184
 		login.js.uncompressed.js	6198
 		mainView.js	3303
 		mainView.js.uncompressed.js	4757
-		mapa.js	2176
-		mapa.js.uncompressed.js	3104
+		mapa.js	2172
+		mapa.js.uncompressed.js	3100
 		negociosmkt.js	3253
 		negociosmkt.js.uncompressed.js	4359
 		organizacional.js	1361
@@ -34,8 +34,8 @@ alloy
 		pesquisamkt.js.uncompressed.js	4360
 		planomkt.js	3232
 		planomkt.js.uncompressed.js	4338
-		sac.js	6112
-		sac.js.uncompressed.js	9391
+		sac.js	6128
+		sac.js.uncompressed.js	9414
 		sobre.js	5131
 		sobre.js.uncompressed.js	6116
 	styles
@@ -433,5 +433,5 @@ titanium
 titanium.css	38000
 titanium.js	239064
 titanium.js.uncompressed.js	488077
-util.js	637
-util.js.uncompressed.js	1053
+util.js	773
+util.js.uncompressed.js	1369

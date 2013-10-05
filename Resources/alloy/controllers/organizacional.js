@@ -24,7 +24,7 @@ function Controller() {
         id: "button"
     });
     $.__views.navView.add($.__views.button);
-    $.__views.__alloyId111 = Ti.UI.createLabel({
+    $.__views.__alloyId110 = Ti.UI.createLabel({
         height: "46dp",
         font: {
             fontSize: "18dp",
@@ -38,16 +38,16 @@ function Controller() {
             y: "1dp"
         },
         text: "Organizacional",
-        id: "__alloyId111"
+        id: "__alloyId110"
     });
-    $.__views.navView.add($.__views.__alloyId111);
-    $.__views.__alloyId112 = Ti.UI.createScrollView({
+    $.__views.navView.add($.__views.__alloyId110);
+    $.__views.__alloyId111 = Ti.UI.createScrollView({
         backgroundColor: "transparent",
         layout: "vertical",
         scrollingEnabled: "true",
-        id: "__alloyId112"
+        id: "__alloyId111"
     });
-    $.__views.organizacional.add($.__views.__alloyId112);
+    $.__views.organizacional.add($.__views.__alloyId111);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var args = arguments[0] || {};

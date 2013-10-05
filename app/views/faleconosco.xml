@@ -30,7 +30,7 @@
 					<Label class="labelFields">Mensagem:  </Label><TextArea class="textArea" id="mensagem" left="11"></TextArea>
 				</View>
 
-				<Button class="buttonFields">ENVIAR</Button>
+				<Button class="buttonFields" id="enviar">ENVIAR</Button>
 			</View>
 
 		</ScrollView>

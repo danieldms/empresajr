@@ -1,4 +1,8 @@
 function Controller() {
+    function isSac(e) {
+        Ti.API.log(e);
+        "sucesso" == e.type && alert(e.message);
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "faleconosco";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
@@ -265,7 +269,7 @@ function Controller() {
         id: "mensagem"
     });
     $.__views.__alloyId31.add($.__views.mensagem);
-    $.__views.__alloyId33 = Ti.UI.createButton({
+    $.__views.enviar = Ti.UI.createButton({
         left: 10,
         bottom: 10,
         right: 10,
@@ -279,13 +283,16 @@ function Controller() {
         color: "white",
         backgroundImage: "back_button.png",
         title: "ENVIAR",
-        id: "__alloyId33"
+        id: "enviar"
     });
-    $.__views.__alloyId22.add($.__views.__alloyId33);
+    $.__views.__alloyId22.add($.__views.enviar);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var args = arguments[0] || {};
     $.button.add(args.backview);
+    $.enviar.addEventListener("click", function() {
+        Alloy.Globals.Util.newSac($.nome.value, $.assunto.value, $.email.value, $.telefone.value, $.mensagem.value, isSac);
+    });
     _.extend($, exports);
 }
 

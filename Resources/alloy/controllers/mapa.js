@@ -24,7 +24,7 @@ function Controller() {
         id: "button"
     });
     $.__views.navView.add($.__views.button);
-    $.__views.__alloyId97 = Ti.UI.createLabel({
+    $.__views.__alloyId96 = Ti.UI.createLabel({
         height: "46dp",
         font: {
             fontSize: "18dp",
@@ -38,17 +38,17 @@ function Controller() {
             y: "1dp"
         },
         text: "Localização",
+        id: "__alloyId96"
+    });
+    $.__views.navView.add($.__views.__alloyId96);
+    $.__views.__alloyId97 = Ti.UI.createView({
+        layout: "vertical",
         id: "__alloyId97"
     });
-    $.__views.navView.add($.__views.__alloyId97);
-    $.__views.__alloyId98 = Ti.UI.createView({
-        layout: "vertical",
-        id: "__alloyId98"
-    });
-    $.__views.mapa.add($.__views.__alloyId98);
-    var __alloyId99 = [];
+    $.__views.mapa.add($.__views.__alloyId97);
+    var __alloyId98 = [];
     $.__views.mapview = Ti.Map.createView({
-        annotations: __alloyId99,
+        annotations: __alloyId98,
         id: "mapview",
         ns: Ti.Map,
         animate: "true",
@@ -57,17 +57,17 @@ function Controller() {
         height: "250",
         mapType: Ti.Map.STANDARD_TYPE
     });
-    $.__views.__alloyId98.add($.__views.mapview);
-    $.__views.__alloyId100 = Ti.UI.createView({
+    $.__views.__alloyId97.add($.__views.mapview);
+    $.__views.__alloyId99 = Ti.UI.createView({
         height: 26,
         left: 0,
         bottom: 2,
         layout: "vertical",
         backgroundColor: "#f5f5f5",
-        id: "__alloyId100"
+        id: "__alloyId99"
     });
-    $.__views.__alloyId98.add($.__views.__alloyId100);
-    $.__views.__alloyId101 = Ti.UI.createLabel({
+    $.__views.__alloyId97.add($.__views.__alloyId99);
+    $.__views.__alloyId100 = Ti.UI.createLabel({
         font: {
             fontSize: 11,
             fontWeight: "bold"
@@ -76,10 +76,10 @@ function Controller() {
         top: 6,
         color: "#8a8a8a",
         text: "Endereço",
-        id: "__alloyId101"
+        id: "__alloyId100"
     });
-    $.__views.__alloyId100.add($.__views.__alloyId101);
-    $.__views.__alloyId102 = Ti.UI.createLabel({
+    $.__views.__alloyId99.add($.__views.__alloyId100);
+    $.__views.__alloyId101 = Ti.UI.createLabel({
         font: {
             fontSize: 12
         },
@@ -89,9 +89,9 @@ function Controller() {
         right: "10",
         top: "10",
         textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
-        id: "__alloyId102"
+        id: "__alloyId101"
     });
-    $.__views.__alloyId98.add($.__views.__alloyId102);
+    $.__views.__alloyId97.add($.__views.__alloyId101);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var args = arguments[0] || {};

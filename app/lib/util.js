@@ -58,3 +58,15 @@ exports.getProjeto = function(_id, _callback){
 					  'class': 'getProjeto'};
 		doPost(params, _callback);
 };
+
+exports.newSac = function(nome, assunto, email, telefone, mensagem, _callback){
+		var params = {'nome': nome, 
+					  'assunto': assunto,
+					  'email': email,
+					  'telefone': telefone,
+					  'mensagem': mensagem,
+					  'type': 'mobile',
+					  'class': 'newSac'};
+		doPost(params, _callback);
+};
+
