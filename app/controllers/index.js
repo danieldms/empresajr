@@ -81,7 +81,7 @@ function clickMenu(){
 		if(this.restrito === "true" && Alloy.Globals.Usuario == null){			
 			layout= "login"; 
 		}else{
-			layout = this.id;
+			layout = this.source;
 		}
 		
 		Ti.App.fireEvent("app:setLayout", {'layout': layout });	
@@ -94,15 +94,28 @@ function clickMenu(){
 	}else{
 		// Spin the image
 		var t = Ti.UI.create2DMatrix();
+		var	sub = null;
 		var spin = Titanium.UI.createAnimation({duration: 100});
 		if(this.subView == 'sub_mkt'){
-			var	sub = $.sub_mkt; 
-		}
+			sub = $.sub_mkt; 
+		}else{
+			if(this.subView == 'sub_fin'){
+				sub = $.sub_fin; 
+			}else{
+				if(this.subView == 'sub_org'){
+					sub = $.sub_org; 
+				}else{
+					if(this.subView == 'sub_gestao'){
+						sub = $.sub_gestao; 
+					}
+				}
+			}
+		}		
 		
 		if(this.toggle === "false"){
 			this.toggle = "true";
 			t = t.rotate(180);
-			sub.setHeight(160);
+			sub.setHeight(sub.expand);
 			spin.transform = t;
 			this.children[1].animate(spin);
 		}else{
@@ -114,7 +127,6 @@ function clickMenu(){
 		}		
 	}	
 }
-
 
 $.main.addEventListener('touchstart', function(e) {
 	touchStartX = e.x;

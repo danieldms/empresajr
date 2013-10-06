@@ -1,0 +1,26 @@
+<Alloy>
+	<View layout="vertical">
+		<View id="navView">
+			<View id="button"></View>
+			<Label class="title">Consultoria Organizacional</Label>			
+		</View>	
+		<ScrollView class="contentView" scrollingEnabled="true">		
+			<View class="header">
+				<ImageView image="images/outros/header_oculos.png" height="50" width="110" left="10" top="20"></ImageView>
+				<Label class="titleHeader">PADRONIZAÇÃO DE 
+PROCESSESOS</Label>
+			</View>
+			<View class="fixedHeader">
+				<Label class="titleFixed">Descritivo</Label>
+			</View>
+			<Label  left="10" right="10" top="10" textAlign="Ti.UI.TEXT_ALIGNMENT_LEFT" class="text">
+Padronização de Processos é um projeto oferecido pela consultoria Organizacional que tem o objetivo de melhorar o fluxo de informação da empresa, assim como garantir que as atividades ocorram de uma forma pré-estabelecida.
+
+Este serviço é indicado para empresas que:
+	• Não possuem uma definição bem estabelecida dos seus processos;
+	• Necessitem de ferramentas que auxiliem no controle.
+
+			</Label>
+		</ScrollView>
+	</View>	
+</Alloy>

@@ -1,0 +1,26 @@
+<Alloy>
+	<View layout="vertical">
+		<View id="navView">
+			<View id="button"></View>
+			<Label class="title">Gestão de Pessoas</Label>			
+		</View>	
+		<ScrollView class="contentView" scrollingEnabled="true">		
+			<View class="header">
+				<ImageView image="images/outros/header_oculos.png" height="50" width="110" left="10" top="20"></ImageView>
+				<Label class="titleHeader">PESQUISA DE 
+CLIMA ORGANIZACIONAL</Label>
+			</View>
+			<View class="fixedHeader">
+				<Label class="titleFixed">Descritivo</Label>
+			</View>
+			<Label  left="10" right="10" top="10" textAlign="Ti.UI.TEXT_ALIGNMENT_LEFT" class="text">
+A pesquisa de clima Organizacional visa proporcionar a análise do ambiente interno da organização, bem como o conjunto de condições que caracterizam o estado de satisfação ou insatisfação dos funcionários na empresa.
+
+Este serviço é indicado para empresas que:
+	• Avaliar a satisfação dos colaboradores em relação ao ambiente organizacional;
+	• Busquem traçar ações que permitam a manutenção de um bom clima para o trabalho, revertendo quadros de insatisfação.
+
+			</Label>
+		</ScrollView>
+	</View>	
+</Alloy>

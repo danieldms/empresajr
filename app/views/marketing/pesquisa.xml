@@ -1,0 +1,27 @@
+<Alloy>
+	<View layout="vertical">
+		<View id="navView">
+			<View id="button"></View>
+			<Label class="title">Consultoria Marketing</Label>			
+		</View>	
+		<ScrollView class="contentView" scrollingEnabled="true">		
+			<View class="header">
+				<ImageView image="images/outros/header_oculos.png" height="50" width="110" left="10" top="20"></ImageView>
+				<Label class="titleHeader">PESQUISA DE
+MERCADO</Label>
+			</View>
+			<View class="fixedHeader">
+				<Label class="titleFixed">Descritivo</Label>
+			</View>
+			<Label  left="10" right="10" top="10" textAlign="Ti.UI.TEXT_ALIGNMENT_LEFT" class="text">
+A Pesquisa de Mercado é um ramo da consultoria que, através da coleta de dados sobre o ambiente externo e interno, possibilita um suporte para as decisões de marketing, ampliando a sua efetividade.
+
+Este serviço é indicado para empresas que:
+	• Desejam conhecer um mercado específico;
+	• Desejam saber se há mercado para seu produto/serviço.
+	• Desejam saber se o negócio é viável dentro dos moldes pensados.
+
+			</Label>
+		</ScrollView>
+	</View>	
+</Alloy>

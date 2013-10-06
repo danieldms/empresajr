@@ -1,0 +1,27 @@
+<Alloy>
+	<View layout="vertical">
+		<View id="navView">
+			<View id="button"></View>
+			<Label class="title">Gestão de Pessoas</Label>			
+		</View>	
+		<ScrollView class="contentView" scrollingEnabled="true">		
+			<View class="header">
+				<ImageView image="images/outros/header_oculos.png" height="50" width="110" left="10" top="20"></ImageView>
+				<Label class="titleHeader">AVALIAÇÃO DE 
+DESEMPENHO</Label>
+			</View>
+			<View class="fixedHeader">
+				<Label class="titleFixed">Descritivo</Label>
+			</View>
+			<Label  left="10" right="10" top="10" textAlign="Ti.UI.TEXT_ALIGNMENT_LEFT" class="text">
+A Avaliação de Desempenho é um projeto da consultoria que fornece ferramentas que auxiliam os gestores a acompanhar o alcance dos objetivos da empresa através da mensuração do desempenho dos funcionários.
+
+Este serviço é indicado para empresas que:
+	• Desejam um sistema que auxilie os gestores a acompanhar o desempenho dos funcionários;
+	• Desejam o progresso, constante, de seus funcionários tanto profissional quanto pessoal, através da identificação dos pontos fortes e fracos de cada colaborador;
+	• Buscam otimizar o alcance de resultados da empresa por meio da melhoria do desempenho dos funcionários.
+
+			</Label>
+		</ScrollView>
+	</View>	
+</Alloy>

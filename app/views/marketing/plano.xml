@@ -1,0 +1,28 @@
+<Alloy>
+	<View layout="vertical">
+		<View id="navView">
+			<View id="button"></View>
+			<Label class="title">Consultoria Marketing</Label>			
+		</View>	
+		<ScrollView class="contentView" scrollingEnabled="true">		
+			<View class="header">
+				<ImageView image="images/outros/header_oculos.png" height="50" width="110" left="10" top="20"></ImageView>
+				<Label class="titleHeader">PLANO DE 
+MARKETING</Label>
+			</View>
+			<View class="fixedHeader">
+				<Label class="titleFixed">Descritivo</Label>
+			</View>
+			<Label  left="10" right="10" top="10" textAlign="Ti.UI.TEXT_ALIGNMENT_LEFT" class="text">
+O plano de Marketing é um serviço de consultoria que consiste na definição de objetivos para orientar os passos da organização e na criação de táticas, estratégias e planos de ação para direcionar o produto ou serviço ao mercado.
+
+Este serviço é indicado para empresas que:
+	• Desejam definir estratégias de atuação no mercado;
+	• Querem identificar suas principais ameaças, oportunidades, potencialidades e fraquezas;
+	• Desejam obter dados estratégicos sobre o produto e/ou serviço;
+	• Desejam posicionar-se competitivamente.
+
+			</Label>
+		</ScrollView>
+	</View>	
+</Alloy>

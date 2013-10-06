@@ -1,16 +1,16 @@
 function Controller() {
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
-    this.__controllerPath = "negociosmkt";
+    this.__controllerPath = "organizacional/estrutura";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
     arguments[0] ? arguments[0]["$model"] : null;
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
-    $.__views.negociosmkt = Ti.UI.createView({
+    $.__views.estrutura = Ti.UI.createView({
         layout: "vertical",
-        id: "negociosmkt"
+        id: "estrutura"
     });
-    $.__views.negociosmkt && $.addTopLevelView($.__views.negociosmkt);
+    $.__views.estrutura && $.addTopLevelView($.__views.estrutura);
     $.__views.navView = Ti.UI.createView({
         height: 44,
         width: "100%",
@@ -19,12 +19,12 @@ function Controller() {
         backgroundImage: "lightbg.png",
         id: "navView"
     });
-    $.__views.negociosmkt.add($.__views.navView);
+    $.__views.estrutura.add($.__views.navView);
     $.__views.button = Ti.UI.createView({
         id: "button"
     });
     $.__views.navView.add($.__views.button);
-    $.__views.__alloyId102 = Ti.UI.createLabel({
+    $.__views.__alloyId195 = Ti.UI.createLabel({
         height: "46dp",
         font: {
             fontSize: "18dp",
@@ -37,35 +37,35 @@ function Controller() {
             x: "0dp",
             y: "1dp"
         },
-        text: "Consultoria Financeira",
-        id: "__alloyId102"
+        text: "Consultoria Organizacional",
+        id: "__alloyId195"
     });
-    $.__views.navView.add($.__views.__alloyId102);
-    $.__views.__alloyId103 = Ti.UI.createScrollView({
+    $.__views.navView.add($.__views.__alloyId195);
+    $.__views.__alloyId196 = Ti.UI.createScrollView({
         backgroundColor: "transparent",
         layout: "vertical",
         scrollingEnabled: "true",
-        id: "__alloyId103"
+        id: "__alloyId196"
     });
-    $.__views.negociosmkt.add($.__views.__alloyId103);
-    $.__views.__alloyId104 = Ti.UI.createView({
+    $.__views.estrutura.add($.__views.__alloyId196);
+    $.__views.__alloyId197 = Ti.UI.createView({
         left: 0,
         width: "100%",
         height: 100,
         layout: "horizontal",
-        id: "__alloyId104"
+        id: "__alloyId197"
     });
-    $.__views.__alloyId103.add($.__views.__alloyId104);
-    $.__views.__alloyId105 = Ti.UI.createImageView({
+    $.__views.__alloyId196.add($.__views.__alloyId197);
+    $.__views.__alloyId198 = Ti.UI.createImageView({
         image: "images/outros/header_oculos.png",
         height: "50",
         width: "110",
         left: "10",
         top: "20",
-        id: "__alloyId105"
+        id: "__alloyId198"
     });
-    $.__views.__alloyId104.add($.__views.__alloyId105);
-    $.__views.__alloyId106 = Ti.UI.createLabel({
+    $.__views.__alloyId197.add($.__views.__alloyId198);
+    $.__views.__alloyId199 = Ti.UI.createLabel({
         left: 20,
         right: 10,
         top: 30,
@@ -75,20 +75,20 @@ function Controller() {
             fontFamily: "DIN-BoldAlternate"
         },
         color: "#115a98",
-        text: "PLANO DE\nNEGÓCIOS",
-        id: "__alloyId106"
+        text: "ESTRUTURAÇÃO \nORGANIZACIONAL",
+        id: "__alloyId199"
     });
-    $.__views.__alloyId104.add($.__views.__alloyId106);
-    $.__views.__alloyId107 = Ti.UI.createView({
+    $.__views.__alloyId197.add($.__views.__alloyId199);
+    $.__views.__alloyId200 = Ti.UI.createView({
         height: 26,
         left: 0,
         bottom: 2,
         layout: "vertical",
         backgroundColor: "#f5f5f5",
-        id: "__alloyId107"
+        id: "__alloyId200"
     });
-    $.__views.__alloyId103.add($.__views.__alloyId107);
-    $.__views.__alloyId108 = Ti.UI.createLabel({
+    $.__views.__alloyId196.add($.__views.__alloyId200);
+    $.__views.__alloyId201 = Ti.UI.createLabel({
         font: {
             fontSize: 11,
             fontWeight: "bold"
@@ -97,22 +97,22 @@ function Controller() {
         top: 6,
         color: "#8a8a8a",
         text: "Descritivo",
-        id: "__alloyId108"
+        id: "__alloyId201"
     });
-    $.__views.__alloyId107.add($.__views.__alloyId108);
-    $.__views.__alloyId109 = Ti.UI.createLabel({
+    $.__views.__alloyId200.add($.__views.__alloyId201);
+    $.__views.__alloyId202 = Ti.UI.createLabel({
         font: {
             fontSize: 12
         },
         color: "#666666",
-        text: "A consultoria em finanças permite uma análise aprofundada da situação financeira da organização. Essa consiste no desenvolvimento de ferramentas de controle financeiro e na elaboração de uma estrutura de custos compatível com a realidade da mesma. Estas medidas possibilitam a visualização clara do desempenho da empresa e a determinação das melhores práticas para solucionar as oscilações e evitar a ocorrência de gastos desnecessários.\n\n\nEste serviço é indicado para empresas que:\n\n	• Desconhecem a sua lucratividade;\n	• Apresentam dificuldade no gerenciamento de seus gastos;\n	• Desejam construir ferramentas para controle e planejamento de gastos futuros.",
+        text: "Este ramo da consultoria empresarial consiste em uma análise geral da estrutura organizacional, para que seja estabelecido o modelo mais eficiente de gestão. Envolve a elaboração de ferramentas que auxiliam a execução e o acompanhamento das atividades da empresa.\n\nEste serviço é indicado para empresas que:\n	• Necessitem de uma sistematização dos fluxos e rotinas e de uma padronização das atividades;\n	• Tenham funcionários (ou setores) sobrecarregados de atividades;\n	• Identifiquem ociosidade de funcionários ou setores;\n	• Cuja estrutura interna não acompanhou a velocidade de crescimento da organização.",
         left: "10",
         right: "10",
         top: "10",
         textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
-        id: "__alloyId109"
+        id: "__alloyId202"
     });
-    $.__views.__alloyId103.add($.__views.__alloyId109);
+    $.__views.__alloyId196.add($.__views.__alloyId202);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var args = arguments[0] || {};
