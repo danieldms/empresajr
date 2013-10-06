@@ -1,16 +1,16 @@
 function Controller() {
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
-    this.__controllerPath = "pesquisamkt";
+    this.__controllerPath = "financeira/estrutura";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
     arguments[0] ? arguments[0]["$model"] : null;
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
-    $.__views.pesquisamkt = Ti.UI.createView({
+    $.__views.estrutura = Ti.UI.createView({
         layout: "vertical",
-        id: "pesquisamkt"
+        id: "estrutura"
     });
-    $.__views.pesquisamkt && $.addTopLevelView($.__views.pesquisamkt);
+    $.__views.estrutura && $.addTopLevelView($.__views.estrutura);
     $.__views.navView = Ti.UI.createView({
         height: 44,
         width: "100%",
@@ -19,12 +19,12 @@ function Controller() {
         backgroundImage: "lightbg.png",
         id: "navView"
     });
-    $.__views.pesquisamkt.add($.__views.navView);
+    $.__views.estrutura.add($.__views.navView);
     $.__views.button = Ti.UI.createView({
         id: "button"
     });
     $.__views.navView.add($.__views.button);
-    $.__views.__alloyId112 = Ti.UI.createLabel({
+    $.__views.__alloyId147 = Ti.UI.createLabel({
         height: "46dp",
         font: {
             fontSize: "18dp",
@@ -38,34 +38,34 @@ function Controller() {
             y: "1dp"
         },
         text: "Consultoria Financeira",
-        id: "__alloyId112"
+        id: "__alloyId147"
     });
-    $.__views.navView.add($.__views.__alloyId112);
-    $.__views.__alloyId113 = Ti.UI.createScrollView({
+    $.__views.navView.add($.__views.__alloyId147);
+    $.__views.__alloyId148 = Ti.UI.createScrollView({
         backgroundColor: "transparent",
         layout: "vertical",
         scrollingEnabled: "true",
-        id: "__alloyId113"
+        id: "__alloyId148"
     });
-    $.__views.pesquisamkt.add($.__views.__alloyId113);
-    $.__views.__alloyId114 = Ti.UI.createView({
+    $.__views.estrutura.add($.__views.__alloyId148);
+    $.__views.__alloyId149 = Ti.UI.createView({
         left: 0,
         width: "100%",
         height: 100,
         layout: "horizontal",
-        id: "__alloyId114"
+        id: "__alloyId149"
     });
-    $.__views.__alloyId113.add($.__views.__alloyId114);
-    $.__views.__alloyId115 = Ti.UI.createImageView({
+    $.__views.__alloyId148.add($.__views.__alloyId149);
+    $.__views.__alloyId150 = Ti.UI.createImageView({
         image: "images/outros/header_oculos.png",
         height: "50",
         width: "110",
         left: "10",
         top: "20",
-        id: "__alloyId115"
+        id: "__alloyId150"
     });
-    $.__views.__alloyId114.add($.__views.__alloyId115);
-    $.__views.__alloyId116 = Ti.UI.createLabel({
+    $.__views.__alloyId149.add($.__views.__alloyId150);
+    $.__views.__alloyId151 = Ti.UI.createLabel({
         left: 20,
         right: 10,
         top: 30,
@@ -75,20 +75,20 @@ function Controller() {
             fontFamily: "DIN-BoldAlternate"
         },
         color: "#115a98",
-        text: "PESQUISA DE\nMERCADO",
-        id: "__alloyId116"
+        text: "ESTRUTURAÇÃO FINANCEIRA",
+        id: "__alloyId151"
     });
-    $.__views.__alloyId114.add($.__views.__alloyId116);
-    $.__views.__alloyId117 = Ti.UI.createView({
+    $.__views.__alloyId149.add($.__views.__alloyId151);
+    $.__views.__alloyId152 = Ti.UI.createView({
         height: 26,
         left: 0,
         bottom: 2,
         layout: "vertical",
         backgroundColor: "#f5f5f5",
-        id: "__alloyId117"
+        id: "__alloyId152"
     });
-    $.__views.__alloyId113.add($.__views.__alloyId117);
-    $.__views.__alloyId118 = Ti.UI.createLabel({
+    $.__views.__alloyId148.add($.__views.__alloyId152);
+    $.__views.__alloyId153 = Ti.UI.createLabel({
         font: {
             fontSize: 11,
             fontWeight: "bold"
@@ -97,22 +97,22 @@ function Controller() {
         top: 6,
         color: "#8a8a8a",
         text: "Descritivo",
-        id: "__alloyId118"
+        id: "__alloyId153"
     });
-    $.__views.__alloyId117.add($.__views.__alloyId118);
-    $.__views.__alloyId119 = Ti.UI.createLabel({
+    $.__views.__alloyId152.add($.__views.__alloyId153);
+    $.__views.__alloyId154 = Ti.UI.createLabel({
         font: {
             fontSize: 12
         },
         color: "#666666",
-        text: "A consultoria em finanças permite uma análise aprofundada da situação financeira da organização. Essa consiste no desenvolvimento de ferramentas de controle financeiro e na elaboração de uma estrutura de custos compatível com a realidade da mesma. Estas medidas possibilitam a visualização clara do desempenho da empresa e a determinação das melhores práticas para solucionar as oscilações e evitar a ocorrência de gastos desnecessários.\n\n\nEste serviço é indicado para empresas que:\n\n	• Desconhecem a sua lucratividade;\n	• Apresentam dificuldade no gerenciamento de seus gastos;\n	• Desejam construir ferramentas para controle e planejamento de gastos futuros.",
+        text: "A consultoria em finanças permite uma análise aprofundada da situação financeira da organização. Essa consiste no desenvolvimento de ferramentas de controle financeiro e na elaboração de uma estrutura de custos compatível com a realidade da mesma. Estas medidas possibilitam a visualização clara do desempenho da empresa e a determinação das melhores práticas para solucionar as oscilações e evitar a ocorrência de gastos desnecessários.\n\nEste serviço é indicado para empresas que:\n	• Desconhecem a sua lucratividade;\n	• Apresentam dificuldade no gerenciamento de seus gastos;\n	• Desejam construir ferramentas para controle e planejamento de gastos futuros.",
         left: "10",
         right: "10",
         top: "10",
         textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
-        id: "__alloyId119"
+        id: "__alloyId154"
     });
-    $.__views.__alloyId113.add($.__views.__alloyId119);
+    $.__views.__alloyId148.add($.__views.__alloyId154);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var args = arguments[0] || {};

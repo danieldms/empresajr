@@ -1,4 +1,4 @@
-ts	1381001023000
+ts	1381103898000
 .DS_Store	6148
 Default-Landscape.jpg	36232
 Default-Portrait.jpg	28479
@@ -12,39 +12,57 @@ alloy
 	controllers
 		BaseController.js	1108
 		BaseController.js.uncompressed.js	5693
-		consultoriafinanceira.js	3267
-		consultoriafinanceira.js.uncompressed.js	4373
-		estudomkt.js	3204
-		estudomkt.js.uncompressed.js	4310
-		faleconosco.js	5711
-		faleconosco.js.uncompressed.js	8383
-		index.js	17279
-		index.js.uncompressed.js	26200
+		faleconosco.js	5668
+		faleconosco.js.uncompressed.js	8340
+		financeira
+			analise.js	2931
+			analise.js.uncompressed.js	4037
+			estrutura.js	3252
+			estrutura.js.uncompressed.js	4358
+			estudo.js	2944
+			estudo.js.uncompressed.js	4050
+		gestao
+			desenpenho.js	3200
+			desenpenho.js.uncompressed.js	4306
+			pesquisa.js	3049
+			pesquisa.js.uncompressed.js	4155
+		index.js	23726
+		index.js.uncompressed.js	35254
 		login.js	4184
 		login.js.uncompressed.js	6198
-		mainView.js	3303
-		mainView.js.uncompressed.js	4757
-		mapa.js	2172
-		mapa.js.uncompressed.js	3100
-		negociosmkt.js	3253
-		negociosmkt.js.uncompressed.js	4359
-		organizacional.js	1361
-		organizacional.js.uncompressed.js	1874
-		pesquisamkt.js	3254
-		pesquisamkt.js.uncompressed.js	4360
-		planomkt.js	3232
-		planomkt.js.uncompressed.js	4338
+		mainView.js	3327
+		mainView.js.uncompressed.js	4781
+		mapa.js	2185
+		mapa.js.uncompressed.js	3115
+		marketing
+			pesquisa.js	2980
+			pesquisa.js.uncompressed.js	4086
+			plano.js	3091
+			plano.js.uncompressed.js	4197
+		organizacional
+			estrutura.js	3218
+			estrutura.js.uncompressed.js	4324
+			padronizacao.js	3005
+			padronizacao.js.uncompressed.js	4111
 		sac.js	6128
 		sac.js.uncompressed.js	9414
 		sobre.js	5131
 		sobre.js.uncompressed.js	6116
 	styles
-		consultoriafinanceira.js	2728
-		consultoriafinanceira.js.uncompressed.js	2974
-		estudomkt.js	2728
-		estudomkt.js.uncompressed.js	2974
 		faleconosco.js	2728
 		faleconosco.js.uncompressed.js	2974
+		financeira
+			analise.js	2728
+			analise.js.uncompressed.js	2974
+			estrutura.js	2728
+			estrutura.js.uncompressed.js	2974
+			estudo.js	2728
+			estudo.js.uncompressed.js	2974
+		gestao
+			desenpenho.js	2728
+			desenpenho.js.uncompressed.js	2974
+			pesquisa.js	2728
+			pesquisa.js.uncompressed.js	2974
 		index.js	4040
 		index.js.uncompressed.js	4422
 		login.js	2728
@@ -53,14 +71,16 @@ alloy
 		mainView.js.uncompressed.js	2974
 		mapa.js	2728
 		mapa.js.uncompressed.js	2974
-		negociosmkt.js	2728
-		negociosmkt.js.uncompressed.js	2974
-		organizacional.js	2728
-		organizacional.js.uncompressed.js	2974
-		pesquisamkt.js	2728
-		pesquisamkt.js.uncompressed.js	2974
-		planomkt.js	2728
-		planomkt.js.uncompressed.js	2974
+		marketing
+			pesquisa.js	2728
+			pesquisa.js.uncompressed.js	2974
+			plano.js	2728
+			plano.js.uncompressed.js	2974
+		organizacional
+			estrutura.js	2728
+			estrutura.js.uncompressed.js	2974
+			padronizacao.js	2728
+			padronizacao.js.uncompressed.js	2974
 		sac.js	2728
 		sac.js.uncompressed.js	2974
 		sobre.js	2728

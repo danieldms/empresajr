@@ -1,16 +1,16 @@
 function Controller() {
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
-    this.__controllerPath = "consultoriafinanceira";
+    this.__controllerPath = "organizacional/padronizacao";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
     arguments[0] ? arguments[0]["$model"] : null;
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
-    $.__views.consultoriafinanceira = Ti.UI.createView({
+    $.__views.padronizacao = Ti.UI.createView({
         layout: "vertical",
-        id: "consultoriafinanceira"
+        id: "padronizacao"
     });
-    $.__views.consultoriafinanceira && $.addTopLevelView($.__views.consultoriafinanceira);
+    $.__views.padronizacao && $.addTopLevelView($.__views.padronizacao);
     $.__views.navView = Ti.UI.createView({
         height: 44,
         width: "100%",
@@ -19,12 +19,12 @@ function Controller() {
         backgroundImage: "lightbg.png",
         id: "navView"
     });
-    $.__views.consultoriafinanceira.add($.__views.navView);
+    $.__views.padronizacao.add($.__views.navView);
     $.__views.button = Ti.UI.createView({
         id: "button"
     });
     $.__views.navView.add($.__views.button);
-    $.__views.__alloyId0 = Ti.UI.createLabel({
+    $.__views.__alloyId203 = Ti.UI.createLabel({
         height: "46dp",
         font: {
             fontSize: "18dp",
@@ -37,35 +37,35 @@ function Controller() {
             x: "0dp",
             y: "1dp"
         },
-        text: "Consultoria Financeira",
-        id: "__alloyId0"
+        text: "Consultoria Organizacional",
+        id: "__alloyId203"
     });
-    $.__views.navView.add($.__views.__alloyId0);
-    $.__views.__alloyId1 = Ti.UI.createScrollView({
+    $.__views.navView.add($.__views.__alloyId203);
+    $.__views.__alloyId204 = Ti.UI.createScrollView({
         backgroundColor: "transparent",
         layout: "vertical",
         scrollingEnabled: "true",
-        id: "__alloyId1"
+        id: "__alloyId204"
     });
-    $.__views.consultoriafinanceira.add($.__views.__alloyId1);
-    $.__views.__alloyId2 = Ti.UI.createView({
+    $.__views.padronizacao.add($.__views.__alloyId204);
+    $.__views.__alloyId205 = Ti.UI.createView({
         left: 0,
         width: "100%",
         height: 100,
         layout: "horizontal",
-        id: "__alloyId2"
+        id: "__alloyId205"
     });
-    $.__views.__alloyId1.add($.__views.__alloyId2);
-    $.__views.__alloyId3 = Ti.UI.createImageView({
+    $.__views.__alloyId204.add($.__views.__alloyId205);
+    $.__views.__alloyId206 = Ti.UI.createImageView({
         image: "images/outros/header_oculos.png",
         height: "50",
         width: "110",
         left: "10",
         top: "20",
-        id: "__alloyId3"
+        id: "__alloyId206"
     });
-    $.__views.__alloyId2.add($.__views.__alloyId3);
-    $.__views.__alloyId4 = Ti.UI.createLabel({
+    $.__views.__alloyId205.add($.__views.__alloyId206);
+    $.__views.__alloyId207 = Ti.UI.createLabel({
         left: 20,
         right: 10,
         top: 30,
@@ -75,20 +75,20 @@ function Controller() {
             fontFamily: "DIN-BoldAlternate"
         },
         color: "#115a98",
-        text: "CONSULTORIA\nFINANCEIRA",
-        id: "__alloyId4"
+        text: "PADRONIZAÇÃO DE \nPROCESSESOS",
+        id: "__alloyId207"
     });
-    $.__views.__alloyId2.add($.__views.__alloyId4);
-    $.__views.__alloyId5 = Ti.UI.createView({
+    $.__views.__alloyId205.add($.__views.__alloyId207);
+    $.__views.__alloyId208 = Ti.UI.createView({
         height: 26,
         left: 0,
         bottom: 2,
         layout: "vertical",
         backgroundColor: "#f5f5f5",
-        id: "__alloyId5"
+        id: "__alloyId208"
     });
-    $.__views.__alloyId1.add($.__views.__alloyId5);
-    $.__views.__alloyId6 = Ti.UI.createLabel({
+    $.__views.__alloyId204.add($.__views.__alloyId208);
+    $.__views.__alloyId209 = Ti.UI.createLabel({
         font: {
             fontSize: 11,
             fontWeight: "bold"
@@ -97,22 +97,22 @@ function Controller() {
         top: 6,
         color: "#8a8a8a",
         text: "Descritivo",
-        id: "__alloyId6"
+        id: "__alloyId209"
     });
-    $.__views.__alloyId5.add($.__views.__alloyId6);
-    $.__views.__alloyId7 = Ti.UI.createLabel({
+    $.__views.__alloyId208.add($.__views.__alloyId209);
+    $.__views.__alloyId210 = Ti.UI.createLabel({
         font: {
             fontSize: 12
         },
         color: "#666666",
-        text: "A consultoria em finanças permite uma análise aprofundada da situação financeira da organização. Essa consiste no desenvolvimento de ferramentas de controle financeiro e na elaboração de uma estrutura de custos compatível com a realidade da mesma. Estas medidas possibilitam a visualização clara do desempenho da empresa e a determinação das melhores práticas para solucionar as oscilações e evitar a ocorrência de gastos desnecessários.\n\n\nEste serviço é indicado para empresas que:\n\n	• Desconhecem a sua lucratividade;\n	• Apresentam dificuldade no gerenciamento de seus gastos;\n	• Desejam construir ferramentas para controle e planejamento de gastos futuros.",
+        text: "Padronização de Processos é um projeto oferecido pela consultoria Organizacional que tem o objetivo de melhorar o fluxo de informação da empresa, assim como garantir que as atividades ocorram de uma forma pré-estabelecida.\n\nEste serviço é indicado para empresas que:\n	• Não possuem uma definição bem estabelecida dos seus processos;\n	• Necessitem de ferramentas que auxiliem no controle.",
         left: "10",
         right: "10",
         top: "10",
         textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
-        id: "__alloyId7"
+        id: "__alloyId210"
     });
-    $.__views.__alloyId1.add($.__views.__alloyId7);
+    $.__views.__alloyId204.add($.__views.__alloyId210);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var args = arguments[0] || {};

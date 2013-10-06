@@ -1,16 +1,16 @@
 function Controller() {
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
-    this.__controllerPath = "estudomkt";
+    this.__controllerPath = "financeira/analise";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
     arguments[0] ? arguments[0]["$model"] : null;
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
-    $.__views.estudomkt = Ti.UI.createView({
+    $.__views.analise = Ti.UI.createView({
         layout: "vertical",
-        id: "estudomkt"
+        id: "analise"
     });
-    $.__views.estudomkt && $.addTopLevelView($.__views.estudomkt);
+    $.__views.analise && $.addTopLevelView($.__views.analise);
     $.__views.navView = Ti.UI.createView({
         height: 44,
         width: "100%",
@@ -19,12 +19,12 @@ function Controller() {
         backgroundImage: "lightbg.png",
         id: "navView"
     });
-    $.__views.estudomkt.add($.__views.navView);
+    $.__views.analise.add($.__views.navView);
     $.__views.button = Ti.UI.createView({
         id: "button"
     });
     $.__views.navView.add($.__views.button);
-    $.__views.__alloyId8 = Ti.UI.createLabel({
+    $.__views.__alloyId139 = Ti.UI.createLabel({
         height: "46dp",
         font: {
             fontSize: "18dp",
@@ -38,34 +38,34 @@ function Controller() {
             y: "1dp"
         },
         text: "Consultoria Financeira",
-        id: "__alloyId8"
+        id: "__alloyId139"
     });
-    $.__views.navView.add($.__views.__alloyId8);
-    $.__views.__alloyId9 = Ti.UI.createScrollView({
+    $.__views.navView.add($.__views.__alloyId139);
+    $.__views.__alloyId140 = Ti.UI.createScrollView({
         backgroundColor: "transparent",
         layout: "vertical",
         scrollingEnabled: "true",
-        id: "__alloyId9"
+        id: "__alloyId140"
     });
-    $.__views.estudomkt.add($.__views.__alloyId9);
-    $.__views.__alloyId10 = Ti.UI.createView({
+    $.__views.analise.add($.__views.__alloyId140);
+    $.__views.__alloyId141 = Ti.UI.createView({
         left: 0,
         width: "100%",
         height: 100,
         layout: "horizontal",
-        id: "__alloyId10"
+        id: "__alloyId141"
     });
-    $.__views.__alloyId9.add($.__views.__alloyId10);
-    $.__views.__alloyId11 = Ti.UI.createImageView({
+    $.__views.__alloyId140.add($.__views.__alloyId141);
+    $.__views.__alloyId142 = Ti.UI.createImageView({
         image: "images/outros/header_oculos.png",
         height: "50",
         width: "110",
         left: "10",
         top: "20",
-        id: "__alloyId11"
+        id: "__alloyId142"
     });
-    $.__views.__alloyId10.add($.__views.__alloyId11);
-    $.__views.__alloyId12 = Ti.UI.createLabel({
+    $.__views.__alloyId141.add($.__views.__alloyId142);
+    $.__views.__alloyId143 = Ti.UI.createLabel({
         left: 20,
         right: 10,
         top: 30,
@@ -75,20 +75,20 @@ function Controller() {
             fontFamily: "DIN-BoldAlternate"
         },
         color: "#115a98",
-        text: "ESTUDO DE \nVIABILIDADE",
-        id: "__alloyId12"
+        text: "ANÁLISE FINANCEIRA",
+        id: "__alloyId143"
     });
-    $.__views.__alloyId10.add($.__views.__alloyId12);
-    $.__views.__alloyId13 = Ti.UI.createView({
+    $.__views.__alloyId141.add($.__views.__alloyId143);
+    $.__views.__alloyId144 = Ti.UI.createView({
         height: 26,
         left: 0,
         bottom: 2,
         layout: "vertical",
         backgroundColor: "#f5f5f5",
-        id: "__alloyId13"
+        id: "__alloyId144"
     });
-    $.__views.__alloyId9.add($.__views.__alloyId13);
-    $.__views.__alloyId14 = Ti.UI.createLabel({
+    $.__views.__alloyId140.add($.__views.__alloyId144);
+    $.__views.__alloyId145 = Ti.UI.createLabel({
         font: {
             fontSize: 11,
             fontWeight: "bold"
@@ -97,22 +97,22 @@ function Controller() {
         top: 6,
         color: "#8a8a8a",
         text: "Descritivo",
-        id: "__alloyId14"
+        id: "__alloyId145"
     });
-    $.__views.__alloyId13.add($.__views.__alloyId14);
-    $.__views.__alloyId15 = Ti.UI.createLabel({
+    $.__views.__alloyId144.add($.__views.__alloyId145);
+    $.__views.__alloyId146 = Ti.UI.createLabel({
         font: {
             fontSize: 12
         },
         color: "#666666",
-        text: "A consultoria em finanças permite uma análise aprofundada da situação financeira da organização. Essa consiste no desenvolvimento de ferramentas de controle financeiro e na elaboração de uma estrutura de custos compatível com a realidade da mesma. Estas medidas possibilitam a visualização clara do desempenho da empresa e a determinação das melhores práticas para solucionar as oscilações e evitar a ocorrência de gastos desnecessários.\n\n\nEste serviço é indicado para empresas que:\n\n	• Desconhecem a sua lucratividade;\n	• Apresentam dificuldade no gerenciamento de seus gastos;\n	• Desejam construir ferramentas para controle e planejamento de gastos futuros.",
+        text: "Este serviço de consultoria voltado para a análise do desempenho da empresa, através de seus relatórios financeiros e contábeis. Ideal para fornecer insumos que auxiliem na tomada de decisão e para que o gestor conheça a real situação da empresa.\n\nEste serviço é indicado para empresas que:\n	• Buscam por análises mais embasadas para conhecer a real situação da mesma.",
         left: "10",
         right: "10",
         top: "10",
         textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
-        id: "__alloyId15"
+        id: "__alloyId146"
     });
-    $.__views.__alloyId9.add($.__views.__alloyId15);
+    $.__views.__alloyId140.add($.__views.__alloyId146);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var args = arguments[0] || {};
