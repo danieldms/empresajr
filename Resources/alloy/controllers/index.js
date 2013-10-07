@@ -934,12 +934,6 @@ function Controller() {
         width: "25dp",
         image: "images/icons/menu.png"
     });
-    backView.addEventListener("touchend", function() {
-        if (!touchRightStarted) {
-            buttonPressed = true;
-            toggleSlide(null);
-        }
-    });
     backView.addEventListener("touchstart", function() {
         this.backgroundColor = "#000";
         this.opacity = .2;
@@ -947,6 +941,10 @@ function Controller() {
     backView.addEventListener("touchend", function() {
         this.backgroundColor = "transparent";
         this.opacity = 1;
+        if (!touchRightStarted) {
+            buttonPressed = true;
+            toggleSlide(null);
+        }
     });
     backView.add(backbutton);
     var args = {

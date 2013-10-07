@@ -42,13 +42,6 @@ var backbutton = Ti.UI.createImageView({
 	image: 'images/icons/menu.png'
 });
 
-backView.addEventListener('touchend', function(e){
-	if(!touchRightStarted){
-		buttonPressed = true;	
-		toggleSlide(null);
-	}
-});
-
 backView.addEventListener('touchstart', function(e){
 	this.backgroundColor = "#000";
 	this.opacity = 0.2;
@@ -57,6 +50,11 @@ backView.addEventListener('touchstart', function(e){
 backView.addEventListener('touchend', function(e){
 	this.backgroundColor = "transparent";
 	this.opacity = 1;
+	
+	if(!touchRightStarted){
+		buttonPressed = true;	
+		toggleSlide(null);
+	}
 });
 
 backView.add(backbutton);

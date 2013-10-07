@@ -2,9 +2,9 @@
 	<View layout="vertical">
 		<View id="navView">
 			<View id="button"></View>
-			<Label class="title">SAC</Label>			
+			<Label class="title">SAC</Label>		
 		</View>
-		<ScrollView class="contentView" scrollingEnabled="true">
+		<ScrollView class="contentView" id="content" scrollingEnabled="true" contentHeight="auto">
 			<View class="fixedHeader">
 				<Label class="titleFixed">Seu Projeto</Label>
 			</View>
@@ -39,7 +39,14 @@
 			<View class="fixedHeader" top="10"> 
 				<Label class="titleFixed">Comentários</Label>
 			</View>
-			<View id="comentario"></View>
+			<View id="comentario" layout="vertical" />
+			
+			<View backgroundColor="#eeeeee" left="0" right="0" top="20" height="200" layout="vertical">
+				<View backgroundColor="#FFF" layout="vertical" top="10" left="10" right="10" height="130" bottom="10">
+					<Label class="labelFields">Mensagem:  </Label><TextArea class="textArea" id="mensagem" left="11"></TextArea>
+				</View>
+				<Button class="buttonFields" id="enviar">Enviar</Button>
+			</View>
 		</ScrollView>
 	</View>
 </Alloy>

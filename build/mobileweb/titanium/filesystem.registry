@@ -1,4 +1,4 @@
-ts	1381103898000
+ts	1381116831000
 .DS_Store	6148
 Default-Landscape.jpg	36232
 Default-Portrait.jpg	28479
@@ -26,8 +26,8 @@ alloy
 			desenpenho.js.uncompressed.js	4306
 			pesquisa.js	3049
 			pesquisa.js.uncompressed.js	4155
-		index.js	23726
-		index.js.uncompressed.js	35254
+		index.js	23683
+		index.js.uncompressed.js	35191
 		login.js	4184
 		login.js.uncompressed.js	6198
 		mainView.js	3327
@@ -44,8 +44,11 @@ alloy
 			estrutura.js.uncompressed.js	4324
 			padronizacao.js	3005
 			padronizacao.js.uncompressed.js	4111
-		sac.js	6128
-		sac.js.uncompressed.js	9414
+		sac
+			perguntas.js	609
+			perguntas.js.uncompressed.js	780
+		sac.js	8003
+		sac.js.uncompressed.js	13011
 		sobre.js	5131
 		sobre.js.uncompressed.js	6116
 	styles
@@ -81,6 +84,9 @@ alloy
 			estrutura.js.uncompressed.js	2974
 			padronizacao.js	2728
 			padronizacao.js.uncompressed.js	2974
+		sac
+			perguntas.js	2728
+			perguntas.js.uncompressed.js	2974
 		sac.js	2728
 		sac.js.uncompressed.js	2974
 		sobre.js	2728
