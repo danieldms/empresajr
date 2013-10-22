@@ -1,19 +1,30 @@
 var args = arguments[0] || {};
+var projeto = null;
 
-$.button.add(args.backview);
+$.button.addEventListener('click', function(e){
+	Ti.App.fireEvent('app:toggle', null);
+});
 
+$.button.addEventListener('touchstart', function(e){
+	this.backgroudColor = "#000";
+	this.opacity = 0.2;
+});
+
+$.button.addEventListener('touchend', function(e){
+	this.backgroudColor = "transparent";
+	this.opacity = 1;
+});
 if(Alloy.Globals.Usuario != null){
 	Alloy.Globals.Util.getProjeto(Alloy.Globals.Usuario.id, isProjeto);
 };
 
 $.enviar.addEventListener('click', function(e){
-	$.mensagem.value = '';
-	$.content.setContentHeight('auto');
+	Alloy.Globals.Util.newComentario($.mensagem.value, projeto.id, Alloy.Globals.Usuario.id, newComentario);
 });
 
 function isProjeto(e){
-	Ti.API.log(e);
 	if(e.type == "sucesso"){
+		projeto = e;
 		$.titulo_projeto.text = e.titulo;
 		$.descritivo.text = e.descricao;
 		$.deadline.text = e.deadline;
@@ -29,28 +40,38 @@ function isProjeto(e){
 		}
 		$.srealizado.width = e.realizado +'%';
 		$.realizado.text = e.realizado +'%';
-		var color = null;
+
 		for(var i=0, j = e.comentarios.length; i<j; i++){
-			if(e.comentarios[i].usuarios_id == Alloy.Globals.Usuario.id){
-				color = "#105A99";
-			}else{
-				color = "#259D2D";
-			}
-		  	var view = Ti.UI.createView({height:15, top:0, layout:"vertical" });
-		  	var label = Ti.UI.createLabel({left: 10, top: 0, color: color, text: e.comentarios[i].nome, font:{fontSize: 10, fontWeight: 'bold'}});
-		  	var time = Ti.UI.createLabel({right: 5, top: "-12", textAlign: "right", text: e.comentarios[i].data, font:{fontSize: 10}, color: "#CCC"});
-		 	view.add(label);
-		  	view.add(time);
-		  	$.comentario.add(view);
-		  	var line = Ti.UI.createView({left:0,top:2, backgroundColor:"#ccc", height:1, width: "100%" });
-		  	$.comentario.add(line);
-		  	var descricao = Ti.UI.createLabel({left: 10, right: 10, bottom: 15, text:e.comentarios[i].descricao, font:{fontSize: 10}, color: "#9B9B9B" });
-		  	$.comentario.add(descricao);		  
+			processaComentario(e.comentarios[i]);
 		};
-		$.content.setContentHeight('auto');
 	}else{
 		alert(e.message);
 	}
 };
 
+function newComentario(e){
+	if(e.type == 'sucesso'){
+		processaComentario(e.comentario);
+		$.mensagem.value = '';
+	}
+};
+
+function processaComentario(data){
+	var color = null;
+	if(data.usuarios_id == Alloy.Globals.Usuario.id){
+		color = "#105A99";
+	}else{
+		color = "#259D2D";
+	}
+	var view = Ti.UI.createView({height:15, top:0, layout:"vertical" });
+	var label = Ti.UI.createLabel({left: 10, top: 0, color: color, text: data.nome, font:{fontSize: 10, fontWeight: 'bold'}});
+	var time = Ti.UI.createLabel({right: 5, top: "-12", textAlign: "right", text: data.data, font:{fontSize: 10}, color: "#CCC"});
+	view.add(label);
+	view.add(time);
+	$.comentario.add(view);
+	var line = Ti.UI.createView({left:0,top:2, backgroundColor:"#ccc", height:1, width: "100%" });
+	$.comentario.add(line);
+	var descricao = Ti.UI.createLabel({left: 10, right: 10, bottom: 15, text:data.descricao, font:{fontSize: 10}, color: "#9B9B9B" });
+	$.comentario.add(descricao);	
+};
 

@@ -2,22 +2,22 @@
 	<Window class="container">	
 		<View id="menuView">
 			<View id="menuNavView">
-				<ImageView image="images/icons/casa.png" width="22" height="22" left="10" top="12"></ImageView>
+				<ImageView image="/images/icons/casa.png" width="22" height="22" left="10" top="12"></ImageView>
 				<Label class="title" left="5" top="5">Menu</Label>
 			</View>
 			<View height="20" width="100%" backgroundColor="#6a6967" layout="horizontal">
-				<ImageView image="images/icons/oculos.png" height="10" top="5" width="22" left="10"></ImageView>
+				<ImageView image="/images/icons/oculos.png" height="10" top="5" width="22" left="10"></ImageView>
 				<Label class="labelfixed">SERVIÇOS DE CONSULTORIA</Label>		
 			</View>
 			<ScrollView id="menuContentView" layout="vertical" scrollingEnabled="true">
 				<View class="menuItem" onClick="clickMenu" subView='sub_fin' onTouchstart="touchStart" onTouchend="touchEnd">
 					<Label left="10">Financeira</Label>
-					<ImageView class="imgExpand" id="img" image="images/icons/expand.png"></ImageView>	
+					<ImageView class="imgExpand" id="img" image="/images/icons/expand.png"></ImageView>	
 				</View>
 				<View class="subMenu" height="0" id="sub_fin" expand="120">						
 					<View height="1" backgroundColor="#b1b0ac" width="100%" />		
 					<View class="menuItem" onClick="clickMenu" source="financeira/estrutura">
-						<Label class="subLabel">Estrutura Financeira</Label>	
+						<Label class="subLabel">Estruturação Financeira</Label>	
 					</View>		
 					
 					<View height="1" backgroundColor="#b1b0ac" width="100%" />		
@@ -35,7 +35,7 @@
 				<View height="1" backgroundColor="#303030" width="100%" />		
 				<View class="menuItem" onClick="clickMenu" subView='sub_mkt' onTouchstart="touchStart" onTouchend="touchEnd">
 					<Label left="10">Marketing</Label>
-					<ImageView class="imgExpand"  id="img" image="images/icons/expand.png"></ImageView>
+					<ImageView class="imgExpand"  id="img" image="/images/icons/expand.png"></ImageView>
 				</View>
 				<View class="subMenu" height="0" id="sub_mkt" expand="80">						
 					<View height="1" backgroundColor="#b1b0ac" width="100%" />		
@@ -53,7 +53,7 @@
 				<View height="1" backgroundColor="#303030" width="100%" />		
 				<View class="menuItem" onClick="clickMenu" subView='sub_org' onTouchstart="touchStart" onTouchend="touchEnd">
 					<Label left="10">Organizacional</Label>			
-					<ImageView class="imgExpand" id="img" image="images/icons/expand.png"></ImageView>	
+					<ImageView class="imgExpand" id="img" image="/images/icons/expand.png"></ImageView>	
 				</View>				
 				<View class="subMenu" height="0" id="sub_org" expand="80">						
 					<View height="1" backgroundColor="#b1b0ac" width="100%" />		
@@ -71,7 +71,7 @@
 				<View height="1" backgroundColor="#303030" width="100%" />		
 				<View class="menuItem" onClick="clickMenu" subView='sub_gestao'  onTouchstart="touchStart" onTouchend="touchEnd">
 					<Label left="10">Gestão de Pessoas</Label>			
-					<ImageView class="imgExpand" id="img" image="images/icons/expand.png"></ImageView>	
+					<ImageView class="imgExpand" id="img" image="/images/icons/expand.png"></ImageView>	
 				</View>				
 				<View class="subMenu" height="0" id='sub_gestao' expand="80">						
 					<View height="1" backgroundColor="#b1b0ac" width="100%" />		
@@ -88,28 +88,28 @@
 				<View height="1" backgroundColor="#141414" width="100%" />		
 				<View height="1" backgroundColor="#303030" width="100%" />		
 				<View class="menuItem" onClick="clickMenu" onTouchstart="touchStart" source="sobre">
-					<ImageView image="images/icons/sobre.png" left="10" width="21" height="20" top="10"></ImageView>
+					<ImageView image="/images/icons/sobre.png" left="10" width="21" height="20" top="10"></ImageView>
 					<Label>Sobre a Empresa Jr.</Label>
 				</View>
 				
 				<View height="1" backgroundColor="#141414" width="100%" />		
 				<View height="1" backgroundColor="#303030" width="100%" />		
 				<View class="menuItem" onClick="clickMenu" restrito="true" onTouchstart="touchStart" source="sac">
-					<ImageView image="images/icons/SAC.png" left="10" width="16" height="20" top="10"></ImageView>
+					<ImageView image="/images/icons/SAC.png" left="10" width="16" height="20" top="10"></ImageView>
 					<Label>SAC</Label>
 				</View>
 				
 				<View height="1" backgroundColor="#141414" width="100%" />		
 				<View height="1" backgroundColor="#303030" width="100%" />		
 				<View class="menuItem" onClick="clickMenu" onTouchstart="touchStart" source="mapa">
-					<ImageView image="images/icons/mapa.png" left="10" width="15" height="20" top="10"></ImageView>
+					<ImageView image="/images/icons/mapa.png" left="10" width="15" height="20" top="10"></ImageView>
 					<Label>Mapa de Localização</Label>
 				</View>
 				
 				<View height="1" backgroundColor="#141414" width="100%" />		
 				<View height="1" backgroundColor="#303030" width="100%" />		
 				<View class="menuItem" onClick="clickMenu" onTouchstart="touchStart" source="faleconosco">
-					<ImageView image="images/icons/faleconosco.png" left="9" width="23" height="20" top="10"></ImageView>
+					<ImageView image="/images/icons/faleconosco.png" left="9" width="23" height="20" top="10"></ImageView>
 					<Label>Fale Conosco</Label>
 				</View>
 
@@ -118,7 +118,5 @@
 			</ScrollView>
 		</View>
 		<View id="main" backgroundColor="#FFF"/>
-		<View width="100%" zIndex="10" height="0%" top="0" left="0" backgroundColor="">
-		</View>
 	</Window>
 </Alloy>

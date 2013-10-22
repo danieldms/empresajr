@@ -12,19 +12,29 @@ function Controller() {
     });
     $.__views.analise && $.addTopLevelView($.__views.analise);
     $.__views.navView = Ti.UI.createView({
-        height: 44,
+        height: "44dp",
         width: "100%",
         top: 0,
         left: 0,
-        backgroundImage: "lightbg.png",
+        backgroundImage: "/lightbg.png",
         id: "navView"
     });
     $.__views.analise.add($.__views.navView);
     $.__views.button = Ti.UI.createView({
-        id: "button"
+        id: "button",
+        height: "50dp",
+        width: "50dp",
+        left: "0"
     });
     $.__views.navView.add($.__views.button);
-    $.__views.__alloyId141 = Ti.UI.createLabel({
+    $.__views.__alloyId146 = Ti.UI.createImageView({
+        image: "/images/icons/menu.png",
+        width: "25dp",
+        height: "15dp",
+        id: "__alloyId146"
+    });
+    $.__views.button.add($.__views.__alloyId146);
+    $.__views.__alloyId147 = Ti.UI.createLabel({
         height: "46dp",
         font: {
             fontSize: "18dp",
@@ -38,34 +48,34 @@ function Controller() {
             y: "1dp"
         },
         text: "Consultoria Financeira",
-        id: "__alloyId141"
+        id: "__alloyId147"
     });
-    $.__views.navView.add($.__views.__alloyId141);
-    $.__views.__alloyId142 = Ti.UI.createScrollView({
+    $.__views.navView.add($.__views.__alloyId147);
+    $.__views.__alloyId148 = Ti.UI.createScrollView({
         backgroundColor: "transparent",
         layout: "vertical",
         scrollingEnabled: "true",
-        id: "__alloyId142"
+        id: "__alloyId148"
     });
-    $.__views.analise.add($.__views.__alloyId142);
-    $.__views.__alloyId143 = Ti.UI.createView({
+    $.__views.analise.add($.__views.__alloyId148);
+    $.__views.__alloyId149 = Ti.UI.createView({
         left: 0,
         width: "100%",
         height: 100,
         layout: "horizontal",
-        id: "__alloyId143"
+        id: "__alloyId149"
     });
-    $.__views.__alloyId142.add($.__views.__alloyId143);
-    $.__views.__alloyId144 = Ti.UI.createImageView({
-        image: "images/outros/header_oculos.png",
+    $.__views.__alloyId148.add($.__views.__alloyId149);
+    $.__views.__alloyId150 = Ti.UI.createImageView({
+        image: "/images/outros/header_oculos.png",
         height: "50",
         width: "110",
         left: "10",
         top: "20",
-        id: "__alloyId144"
+        id: "__alloyId150"
     });
-    $.__views.__alloyId143.add($.__views.__alloyId144);
-    $.__views.__alloyId145 = Ti.UI.createLabel({
+    $.__views.__alloyId149.add($.__views.__alloyId150);
+    $.__views.__alloyId151 = Ti.UI.createLabel({
         left: 20,
         right: 10,
         top: 30,
@@ -76,19 +86,19 @@ function Controller() {
         },
         color: "#115a98",
         text: "ANÁLISE FINANCEIRA",
-        id: "__alloyId145"
+        id: "__alloyId151"
     });
-    $.__views.__alloyId143.add($.__views.__alloyId145);
-    $.__views.__alloyId146 = Ti.UI.createView({
+    $.__views.__alloyId149.add($.__views.__alloyId151);
+    $.__views.__alloyId152 = Ti.UI.createView({
         height: 26,
         left: 0,
         bottom: 2,
         layout: "vertical",
         backgroundColor: "#f5f5f5",
-        id: "__alloyId146"
+        id: "__alloyId152"
     });
-    $.__views.__alloyId142.add($.__views.__alloyId146);
-    $.__views.__alloyId147 = Ti.UI.createLabel({
+    $.__views.__alloyId148.add($.__views.__alloyId152);
+    $.__views.__alloyId153 = Ti.UI.createLabel({
         font: {
             fontSize: 11,
             fontWeight: "bold"
@@ -97,10 +107,10 @@ function Controller() {
         top: 6,
         color: "#8a8a8a",
         text: "Descritivo",
-        id: "__alloyId147"
+        id: "__alloyId153"
     });
-    $.__views.__alloyId146.add($.__views.__alloyId147);
-    $.__views.__alloyId148 = Ti.UI.createLabel({
+    $.__views.__alloyId152.add($.__views.__alloyId153);
+    $.__views.__alloyId154 = Ti.UI.createLabel({
         font: {
             fontSize: 12
         },
@@ -110,13 +120,23 @@ function Controller() {
         right: "10",
         top: "10",
         textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
-        id: "__alloyId148"
+        id: "__alloyId154"
     });
-    $.__views.__alloyId142.add($.__views.__alloyId148);
+    $.__views.__alloyId148.add($.__views.__alloyId154);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    var args = arguments[0] || {};
-    $.button.add(args.backview);
+    arguments[0] || {};
+    $.button.addEventListener("click", function() {
+        Ti.App.fireEvent("app:toggle", null);
+    });
+    $.button.addEventListener("touchstart", function() {
+        this.backgroudColor = "#000";
+        this.opacity = .2;
+    });
+    $.button.addEventListener("touchend", function() {
+        this.backgroudColor = "transparent";
+        this.opacity = 1;
+    });
     _.extend($, exports);
 }
 

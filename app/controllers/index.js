@@ -35,11 +35,10 @@ var borda2 = Ti.UI.createView({
 	backgroundColor: "#303030"
 });
 
-
 var backbutton = Ti.UI.createImageView({
 	height: '15dp',
 	width: '25dp',
-	image: 'images/icons/menu.png'
+	image: '/images/icons/menu.png'
 });
 
 backView.addEventListener('touchstart', function(e){
@@ -73,7 +72,6 @@ var args = {
 };	
 
 function clickMenu(){	
-	
 	if(this.subView == null){		
 		var layout = null;
 		if(this.restrito === "true" && Alloy.Globals.Usuario == null){			
@@ -149,29 +147,31 @@ $.main.addEventListener('touchend', function(e){
 
 $.main.addEventListener('touchmove', function(e){
 	
-	if(e.source.id != 'mapview'){
+	if(e.source.id != 'mapview' && e.source.id != "view"){
 		var coords = $.main.convertPointToView({
 			x : e.x,
 			y : e.y
 		}, $.index);
 		
 		var newLeft = coords.x - touchStartX;
-		if ((touchRightStarted && newLeft <= 250 && newLeft >= 0)) {
-			$.main.left = newLeft;
-		}else{
-			// Sometimes newLeft goes beyond its bounds so the view gets stuck.
-			// This is a hack to fix that.
-			if ((touchRightStarted && newLeft < 0)) {
-				$.main.left = 0;
+		if(newLeft > 25){
+			if ((touchRightStarted && newLeft <= 250 && newLeft >= 0)) {
+				$.main.left = newLeft;
+			}else{
+				// Sometimes newLeft goes beyond its bounds so the view gets stuck.
+				// This is a hack to fix that.
+				if ((touchRightStarted && newLeft < 0)) {
+					$.main.left = 0;
+				}
+				else if (touchRightStarted && newLeft > 250) {
+					$.main.left = 250;
+				}	
 			}
-			else if (touchRightStarted && newLeft > 250) {
-				$.main.left = 250;
+			
+			if (newLeft > 5 && !touchRightStarted) {
+				touchRightStarted = true;
 			}	
-		}
-		
-		if (newLeft > 5 && !touchRightStarted) {
-			touchRightStarted = true;
-		}		
+		}	
 	}
 });
 
@@ -185,8 +185,14 @@ function toggleSlide(e){
 	}
 }
 
-Ti.App.addEventListener("app:setLayout", function(e){
+Ti.App.addEventListener('app:toggle', function(e){
+	if(!touchRightStarted){
+		buttonPressed = true;	
+		toggleSlide(null);
+	}
+});
 
+Ti.App.addEventListener("app:setLayout", function(e){
 	var view = Alloy.createController(e.layout, args).getView();
 	
 	$.main.add(view);
@@ -196,10 +202,9 @@ Ti.App.addEventListener("app:setLayout", function(e){
 	view = null;
 	
 	if(e.swipe == null){
-		toggleSlide();
+		toggleSlide(null);
 	}
 });
-
 
 if(currentView == null){
 	currentView = Alloy.createController("mainView", args).getView();

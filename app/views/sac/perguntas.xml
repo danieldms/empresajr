@@ -1,4 +1,24 @@
 <Alloy>
-	<View class="container">
+	<View layout="vertical">
+		<View id="navView">
+			<View id="button" height="50dp" width="50dp" left="0">
+				<ImageView image="/images/icons/menu.png" width="25dp" height="15dp"></ImageView>
+			</View>
+			<Label class="title">SAC</Label>					
+		</View>
+		<ScrollView id="scrollview" class="contentView" contentHeight="auto" scrollingEnabled="true" showVerticalScrollIndicator="true">
+			<View class="fixedHeader">
+				<Label class="titleFixed">Questionário</Label>
+			</View>
+			<View backgroundColor="#eeeeee" left="20" right="20" top="20" bottom="20" height="405" layout="vertical">
+				<Label class="labelFields">por que?:  </Label>
+				<View backgroundColor="#FFF" layout="horizontal" left="10" right="10" height="45" bottom="2">
+					<TextField class="textFields" id="telefone" left="7"></TextField>
+				</View>
+
+				<Button class="buttonFields" id="enviar">ENVIAR</Button>
+			</View>
+
+		</ScrollView>
 	</View>
 </Alloy>

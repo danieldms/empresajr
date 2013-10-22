@@ -1,15 +1,12 @@
 function doPost(params, _callback) {
-    xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
-    xhr.onreadystatechange = function() {
-        if (4 == xhr.readyState && 200 == xhr.status && null != xhr.responseText) {
-            var json = JSON.parse(xhr.responseText);
+    xhr.onload = function(e) {
+        if (null != e) {
+            var json = JSON.parse(this.responseText);
             _callback && _callback(json);
         }
     };
-    var data = "?";
-    for (var prop in params) data += prop + "=" + params[prop] + "&";
-    xhr.open("POST", url + data);
-    xhr.send();
+    xhr.open("POST", url);
+    xhr.send(params);
 }
 
 var url = "http://162.243.4.229/servidor/empresajr/processa.php";
@@ -46,6 +43,17 @@ exports.newSac = function(nome, assunto, email, telefone, mensagem, _callback) {
         mensagem: mensagem,
         type: "mobile",
         "class": "newSac"
+    };
+    doPost(params, _callback);
+};
+
+exports.newComentario = function(descricao, projetos_id, usuarios_id, _callback) {
+    var params = {
+        descricao: descricao,
+        projetos_id: projetos_id,
+        usuarios_id: usuarios_id,
+        type: "mobile",
+        "class": "newComentario"
     };
     doPost(params, _callback);
 };

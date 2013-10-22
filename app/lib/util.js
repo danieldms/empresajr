@@ -1,4 +1,4 @@
-var url = "http://162.243.4.229/servidor/empresajr/processa.php";
+var url = "http://empresajr.com/app/processa.php";
 var result = {};
 var xhr = Ti.Network.createHTTPClient();
 
@@ -69,4 +69,14 @@ exports.newSac = function(nome, assunto, email, telefone, mensagem, _callback){
 					  'class': 'newSac'};
 		doPost(params, _callback);
 };
+
+exports.newComentario = function(descricao, projetos_id, usuarios_id, _callback){
+		var params = {'descricao': descricao, 
+					  'projetos_id': projetos_id,
+					  'usuarios_id': usuarios_id,
+					  'type': 'mobile',
+					  'class': 'newComentario'};
+		doPost(params, _callback);
+};
+
 

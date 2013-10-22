@@ -1,16 +1,18 @@
 <Alloy>
 	<View layout="vertical">
 		<View id="navView">
-			<View id="button"></View>
+			<View id="button" height="50dp" width="50dp" left="0">
+				<ImageView image="/images/icons/menu.png" width="25dp" height="15dp"></ImageView>
+			</View>
 			<Label class="title">SAC</Label>		
 		</View>
-		<ScrollView class="contentView" id="content" scrollingEnabled="true" contentHeight="auto">
+		<ScrollView class="contentView" id="content" contentHeight="auto">
 			<View class="fixedHeader">
 				<Label class="titleFixed">Seu Projeto</Label>
 			</View>
 			<View height="130" width="100%" layout="horizontal">
 				<View layout="vertical" width="80" left="0">
-					<ImageView image="/ooo.png" width="50" height="50" left="10" top="10"></ImageView>
+					<ImageView image="/images/icons/casa.png" width="50" height="50" left="10" top="10"></ImageView>
 					<Label class="labelMin" top="15" left="10">PREVISTO</Label>
 					<Label class="labelMin" left="10" top="7">REALIZADO</Label>
 				</View>
@@ -39,7 +41,8 @@
 			<View class="fixedHeader" top="10"> 
 				<Label class="titleFixed">Comentários</Label>
 			</View>
-			<View id="comentario" layout="vertical" />
+			<View id="comentario" layout="vertical" height="auto">
+			</View>
 			
 			<View backgroundColor="#eeeeee" left="0" right="0" top="20" height="200" layout="vertical">
 				<View backgroundColor="#FFF" layout="vertical" top="10" left="10" right="10" height="130" bottom="10">

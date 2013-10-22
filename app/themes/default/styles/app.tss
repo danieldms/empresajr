@@ -1,4 +1,4 @@
-"#navView": { height: 44, width: "100%", top: 0, left: 0, backgroundImage: 'lightbg.png'},
+"#navView": { height: "44dp", width: "100%", top: 0, left: 0, backgroundImage: '/lightbg.png'},
 
 ".title": {height: "46dp", font: {fontSize: "18dp",	fontWeight: "bold"}, color: "#FFF",	textAlign: "center", shadowColor: "#000",
 			shadowOffset: {	x: "0dp", y: "1dp"}},
@@ -28,7 +28,7 @@
 ".textArea": { height: 100, borderWidth: 0, top: 5, left: 5, right: 5, borderColor: "#FFF"},
 
 ".buttonFields":{left:10, bottom: 10, right: 10, height: 40, borderColor: "#FFF", font:{fontWeight: 'bold'}, borderRadius: 0, backgroundColor: "transparent", 
-				borderColor: "#2155bb", color:"white", backgroundImage: "back_button.png"},
+				borderColor: "#2155bb", color:"white", backgroundImage: "/back_button.png"},
 				
 ".titleProject":{ font:{fontFamily:"DIN-BoldAlternate", fontSize: 16}, color:"#7F7F7F"},
 

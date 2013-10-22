@@ -1,12 +1,14 @@
 <Alloy>
 	<View layout="vertical">
 		<View id="navView">
-			<View id="button" ></View>
+			<View id="button" height="50dp" width="50dp" left="0">
+				<ImageView image="/images/icons/menu.png" width="25dp" height="15dp"></ImageView>
+			</View>
 			<Label class="title">Sobre</Label>			
 		</View>
 		<ScrollView class="contentView" scrollingEnabled="true">
 			<View class="header" height="200">
-				<ImageView image="images/outros/sobre_header.png" width="100%" height="auto"></ImageView>
+				<ImageView image="/images/outros/sobre_header.png" width="100%" height="auto"></ImageView>
 			</View>
 			<View class="fixedHeader">
 				<Label class="titleFixed">SOBRE</Label>
