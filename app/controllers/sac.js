@@ -40,9 +40,10 @@ function processa(e){
 		}
 		$.srealizado.width = e.realizado +'%';
 		$.realizado.text = e.realizado +'%';
-
+			
 		for(var i=0, j = e.comentarios.length; i<j; i++){
 			processaComentario(e.comentarios[i]);
+			$.comentario.setHeight('auto');
 		};
 		
 		if(e.realizado >= 100 && e.avaliacao == null){
