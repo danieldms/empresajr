@@ -1,5 +1,5 @@
 function Controller() {
-    function isProjeto(e) {
+    function processa(e) {
         if ("sucesso" == e.type) {
             projeto = e;
             $.titulo_projeto.text = e.titulo;
@@ -12,6 +12,31 @@ function Controller() {
             $.srealizado.width = e.realizado + "%";
             $.realizado.text = e.realizado + "%";
             for (var i = 0, j = e.comentarios.length; j > i; i++) processaComentario(e.comentarios[i]);
+            if (e.realizado >= 100 && null == e.avaliacao) {
+                var alert = Titanium.UI.createAlertDialog({
+                    title: "Projeto Concluído",
+                    message: "Deseja fazer uma avaliação do projeto?",
+                    buttonNames: [ "Agora", "Agora não" ],
+                    cancel: 1
+                });
+                alert.addEventListener("click", function(e) {
+                    if (e.cancel === e.index || true === e.cancel) return;
+                    switch (e.index) {
+                      case 0:
+                        Ti.App.fireEvent("app:setLayout", {
+                            layout: "sac/perguntas",
+                            swipe: false
+                        });
+                        break;
+
+                      case 1:
+                        Titanium.API.info("Clicked button 1 (NO)");
+                        break;
+
+                      default:                    }
+                });
+                alert.show();
+            }
         } else alert(e.message);
     }
     function newComentario(e) {
@@ -464,7 +489,7 @@ function Controller() {
         this.backgroudColor = "transparent";
         this.opacity = 1;
     });
-    null != Alloy.Globals.Usuario && Alloy.Globals.Util.getProjeto(Alloy.Globals.Usuario.id, isProjeto);
+    null != Alloy.Globals.Usuario && Alloy.Globals.Util.getProjeto(Alloy.Globals.Usuario.id, processa);
     $.enviar.addEventListener("click", function() {
         Alloy.Globals.Util.newComentario($.mensagem.value, projeto.id, Alloy.Globals.Usuario.id, newComentario);
     });

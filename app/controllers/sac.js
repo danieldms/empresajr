@@ -15,14 +15,14 @@ $.button.addEventListener('touchend', function(e){
 	this.opacity = 1;
 });
 if(Alloy.Globals.Usuario != null){
-	Alloy.Globals.Util.getProjeto(Alloy.Globals.Usuario.id, isProjeto);
+	Alloy.Globals.Util.getProjeto(Alloy.Globals.Usuario.id, processa);
 };
 
 $.enviar.addEventListener('click', function(e){
 	Alloy.Globals.Util.newComentario($.mensagem.value, projeto.id, Alloy.Globals.Usuario.id, newComentario);
 });
 
-function isProjeto(e){
+function processa(e){
 	if(e.type == "sucesso"){
 		projeto = e;
 		$.titulo_projeto.text = e.titulo;
@@ -44,6 +44,30 @@ function isProjeto(e){
 		for(var i=0, j = e.comentarios.length; i<j; i++){
 			processaComentario(e.comentarios[i]);
 		};
+		
+		if(e.realizado >= 100 && e.avaliacao == null){
+			var alert = Titanium.UI.createAlertDialog({ title: 'Projeto Concluído', message: 'Deseja fazer uma avaliação do projeto?', buttonNames: ['Agora', 'Agora não'], cancel: 1 });
+			alert.addEventListener('click', function(e) {
+
+			   if (e.cancel === e.index || e.cancel === true) {
+			      return;
+			   }
+			   
+			   switch (e.index) {
+			      case 0: 	Ti.App.fireEvent('app:setLayout', {'layout':'sac/perguntas', 'swipe': false});
+			      break;
+			
+			      //This will never be reached, if you specified cancel for index 1
+			      case 1: Titanium.API.info('Clicked button 1 (NO)');
+			      break;
+			
+			      default:
+			      break;
+			
+			  }
+			});
+			alert.show();
+		}
 	}else{
 		alert(e.message);
 	}

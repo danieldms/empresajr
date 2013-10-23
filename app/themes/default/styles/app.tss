@@ -23,6 +23,17 @@
 
 ".labelFields": {font:{fontSize: 14}, color: "#c9c9c9", left: 5, top: 13},
 
+".Plabel": {font:{fontSize: 12}, color: "#6E6E6E", left: 5, top: 0},
+
+".Ptitle": {font:{fontSize: 16, fontWeight: "bold"}, color: "#6E6E6E"},
+".Ptitle-min": {font:{fontSize: 14, fontWeight: "bold"}},
+
+".min": {font: {fontSize: 10}},
+
+".med-bold": {font: {fontSize: 12, fontWeight: "bold"}},
+
+".med": {font: {fontSize: 12}},
+
 ".textFields": {width: 180, top: 12, left: 25, borderWidth: 0,  borderColor: "#FFF"},
 
 ".textArea": { height: 100, borderWidth: 0, top: 5, left: 5, right: 5, borderColor: "#FFF"},

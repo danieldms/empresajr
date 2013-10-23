@@ -9,6 +9,36 @@ exports.login = function(username, password, _callback){
 		  		  'class': 'login'};
 	doPost(params, _callback);
 };
+exports.sendQuestionario = function(data, _callback){
+	doPost(data, _callback);
+};
+
+exports.getProjeto = function(_id, _callback){
+		var params = {'usuarios_id': _id, 
+					  'type': 'mobile',
+					  'class': 'getProjeto'};
+		doPost(params, _callback);
+};
+
+exports.newSac = function(nome, assunto, email, telefone, mensagem, _callback){
+		var params = {'nome': nome, 
+					  'assunto': assunto,
+					  'email': email,
+					  'telefone': telefone,
+					  'mensagem': mensagem,
+					  'type': 'mobile',
+					  'class': 'newSac'};
+		doPost(params, _callback);
+};
+
+exports.newComentario = function(descricao, projetos_id, usuarios_id, _callback){
+		var params = {'descricao': descricao, 
+					  'projetos_id': projetos_id,
+					  'usuarios_id': usuarios_id,
+					  'type': 'mobile',
+					  'class': 'newComentario'};
+		doPost(params, _callback);
+};
 
 function doPost(params, _callback) {
 
@@ -41,42 +71,18 @@ function doPost(params, _callback) {
 	}else{
 		xhr.onload = function(e){
 			if(e != null){
-				var json = JSON.parse(this.responseText);
-				if(_callback){
-					_callback(json);
-				} 
+				try{
+					var json = JSON.parse(this.responseText);
+				}catch(e){
+					Ti.API.info(e);
+				}finally {
+					if(_callback){
+						_callback(json);
+					} 
+				}
 			}
 		};				
 		xhr.open("POST", url);
 		xhr.send(params) ;
 	}
 };
-
-exports.getProjeto = function(_id, _callback){
-		var params = {'usuarios_id': _id, 
-					  'type': 'mobile',
-					  'class': 'getProjeto'};
-		doPost(params, _callback);
-};
-
-exports.newSac = function(nome, assunto, email, telefone, mensagem, _callback){
-		var params = {'nome': nome, 
-					  'assunto': assunto,
-					  'email': email,
-					  'telefone': telefone,
-					  'mensagem': mensagem,
-					  'type': 'mobile',
-					  'class': 'newSac'};
-		doPost(params, _callback);
-};
-
-exports.newComentario = function(descricao, projetos_id, usuarios_id, _callback){
-		var params = {'descricao': descricao, 
-					  'projetos_id': projetos_id,
-					  'usuarios_id': usuarios_id,
-					  'type': 'mobile',
-					  'class': 'newComentario'};
-		doPost(params, _callback);
-};
-
-
