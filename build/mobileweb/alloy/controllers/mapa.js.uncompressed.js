@@ -1,4 +1,33 @@
 function Controller() {
+    function mobileMap() {
+        var empresa = Titanium.Map.createAnnotation({
+            latitude: -12.995626,
+            longitude: -38.520156,
+            title: "Empresa JR.",
+            subtitle: "Av. Reitor Miguel Calmon, s/n, Vale do Canela - Escola de Administração da Ufba, no térreo - Salvador/BA - Tel (71) 3245-0757",
+            pincolor: Titanium.Map.ANNOTATION_RED,
+            animate: true
+        });
+        var mapa = Titanium.Map.createView({
+            id: "mapview",
+            mapType: Titanium.Map.SATELLITE_TYPE,
+            region: {
+                latitude: -12.995626,
+                longitude: -38.520156,
+                latitudeDelta: .01,
+                longitudeDelta: .01
+            },
+            animate: true,
+            regionFit: true,
+            userLocation: true,
+            annotations: [ empresa ],
+            height: "100%",
+            width: "100%",
+            top: 0,
+            left: 0
+        });
+        $.mapview.add(mapa);
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "mapa";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
@@ -56,28 +85,21 @@ function Controller() {
         id: "__alloyId112"
     });
     $.__views.mapa.add($.__views.__alloyId112);
-    var __alloyId113 = [];
-    $.__views.mapview = Ti.Map.createView({
-        annotations: __alloyId113,
+    $.__views.mapview = Ti.UI.createView({
         id: "mapview",
-        ns: Ti.Map,
-        animate: "true",
-        regionFit: "true",
-        userLocation: "false",
-        height: "250",
-        mapType: Ti.Map.STANDARD_TYPE
+        height: "300dp"
     });
     $.__views.__alloyId112.add($.__views.mapview);
-    $.__views.__alloyId114 = Ti.UI.createView({
+    $.__views.__alloyId113 = Ti.UI.createView({
         height: 26,
         left: 0,
         bottom: 2,
         layout: "vertical",
         backgroundColor: "#f5f5f5",
-        id: "__alloyId114"
+        id: "__alloyId113"
     });
-    $.__views.__alloyId112.add($.__views.__alloyId114);
-    $.__views.__alloyId115 = Ti.UI.createLabel({
+    $.__views.__alloyId112.add($.__views.__alloyId113);
+    $.__views.__alloyId114 = Ti.UI.createLabel({
         font: {
             fontSize: 11,
             fontWeight: "bold"
@@ -86,10 +108,10 @@ function Controller() {
         top: 6,
         color: "#8a8a8a",
         text: "Endereço",
-        id: "__alloyId115"
+        id: "__alloyId114"
     });
-    $.__views.__alloyId114.add($.__views.__alloyId115);
-    $.__views.__alloyId116 = Ti.UI.createLabel({
+    $.__views.__alloyId113.add($.__views.__alloyId114);
+    $.__views.__alloyId115 = Ti.UI.createLabel({
         font: {
             fontSize: 12
         },
@@ -97,11 +119,10 @@ function Controller() {
         text: "Av. Reitor Miguel Calmon, s/n, Vale do Canela - Escola de Administração da Ufba, no térreo - Salvador/BA - Tel (71) 3245-0757",
         left: "10",
         right: "10",
-        top: "10",
         textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
-        id: "__alloyId116"
+        id: "__alloyId115"
     });
-    $.__views.__alloyId112.add($.__views.__alloyId116);
+    $.__views.__alloyId112.add($.__views.__alloyId115);
     exports.destroy = function() {};
     _.extend($, $.__views);
     arguments[0] || {};
@@ -116,6 +137,8 @@ function Controller() {
         this.backgroudColor = "transparent";
         this.opacity = 1;
     });
+    Ti.API.info("mobileweb");
+    mobileMap();
     _.extend($, exports);
 }
 

@@ -27,38 +27,38 @@ function Controller() {
         left: "0"
     });
     $.__views.navView.add($.__views.button);
-    $.__views.__alloyId173 = Ti.UI.createImageView({
+    $.__views.__alloyId172 = Ti.UI.createImageView({
         image: "/images/icons/menu.png",
         width: "25dp",
         height: "15dp",
-        id: "__alloyId173"
+        id: "__alloyId172"
     });
-    $.__views.button.add($.__views.__alloyId173);
-    $.__views.__alloyId174 = Ti.UI.createScrollView({
+    $.__views.button.add($.__views.__alloyId172);
+    $.__views.__alloyId173 = Ti.UI.createScrollView({
         backgroundColor: "transparent",
         layout: "vertical",
         scrollingEnabled: "true",
-        id: "__alloyId174"
+        id: "__alloyId173"
     });
-    $.__views.desenpenho.add($.__views.__alloyId174);
-    $.__views.__alloyId175 = Ti.UI.createView({
+    $.__views.desenpenho.add($.__views.__alloyId173);
+    $.__views.__alloyId174 = Ti.UI.createView({
         left: 0,
         width: "100%",
         height: 100,
         layout: "horizontal",
-        id: "__alloyId175"
+        id: "__alloyId174"
     });
-    $.__views.__alloyId174.add($.__views.__alloyId175);
-    $.__views.__alloyId176 = Ti.UI.createImageView({
+    $.__views.__alloyId173.add($.__views.__alloyId174);
+    $.__views.__alloyId175 = Ti.UI.createImageView({
         image: "/images/outros/header_oculos.png",
         height: "50",
         width: "110",
         left: "10",
         top: "20",
-        id: "__alloyId176"
+        id: "__alloyId175"
     });
-    $.__views.__alloyId175.add($.__views.__alloyId176);
-    $.__views.__alloyId177 = Ti.UI.createLabel({
+    $.__views.__alloyId174.add($.__views.__alloyId175);
+    $.__views.__alloyId176 = Ti.UI.createLabel({
         left: 20,
         right: 10,
         top: 30,
@@ -69,19 +69,19 @@ function Controller() {
         },
         color: "#115a98",
         text: "AVALIAÇÃO DE \nDESEMPENHO",
-        id: "__alloyId177"
+        id: "__alloyId176"
     });
-    $.__views.__alloyId175.add($.__views.__alloyId177);
-    $.__views.__alloyId178 = Ti.UI.createView({
+    $.__views.__alloyId174.add($.__views.__alloyId176);
+    $.__views.__alloyId177 = Ti.UI.createView({
         height: 26,
         left: 0,
         bottom: 2,
         layout: "vertical",
         backgroundColor: "#f5f5f5",
-        id: "__alloyId178"
+        id: "__alloyId177"
     });
-    $.__views.__alloyId174.add($.__views.__alloyId178);
-    $.__views.__alloyId179 = Ti.UI.createLabel({
+    $.__views.__alloyId173.add($.__views.__alloyId177);
+    $.__views.__alloyId178 = Ti.UI.createLabel({
         font: {
             fontSize: 11,
             fontWeight: "bold"
@@ -90,22 +90,22 @@ function Controller() {
         top: 6,
         color: "#8a8a8a",
         text: "Descritivo",
-        id: "__alloyId179"
+        id: "__alloyId178"
     });
-    $.__views.__alloyId178.add($.__views.__alloyId179);
-    $.__views.__alloyId180 = Ti.UI.createLabel({
+    $.__views.__alloyId177.add($.__views.__alloyId178);
+    $.__views.__alloyId179 = Ti.UI.createLabel({
         font: {
             fontSize: 12
         },
         color: "#666666",
-        text: "A Avaliação de Desempenho é um projeto da consultoria que fornece ferramentas que auxiliam os gestores a acompanhar o alcance dos objetivos da empresa através da mensuração do desempenho dos funcionários.\n\nEste serviço é indicado para empresas que:\n	• Desejam um sistema que auxilie os gestores a acompanhar o desempenho dos funcionários;\n	• Desejam o progresso, constante, de seus funcionários tanto profissional quanto pessoal, através da identificação dos pontos fortes e fracos de cada colaborador;\n	• Buscam otimizar o alcance de resultados da empresa por meio da melhoria do desempenho dos funcionários.",
+        text: "A Avaliação de Desempenho é um projeto da consultoria que fornece ferramentas que auxiliam os gestores a acompanhar o alcance dos objetivos da empresa através da mensuração do desempenho dos funcionários.\n\nEste serviço é indicado para empresas que:\n\n	• Desejam um sistema que auxilie os gestores a acompanhar o desempenho dos funcionários;\n	• Desejam o progresso, constante, de seus funcionários tanto profissional quanto pessoal, através da identificação dos pontos fortes e fracos de cada colaborador;\n	• Buscam otimizar o alcance de resultados da empresa por meio da melhoria do desempenho dos funcionários.",
         left: "10",
         right: "10",
         top: "10",
         textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
-        id: "__alloyId180"
+        id: "__alloyId179"
     });
-    $.__views.__alloyId174.add($.__views.__alloyId180);
+    $.__views.__alloyId173.add($.__views.__alloyId179);
     exports.destroy = function() {};
     _.extend($, $.__views);
     arguments[0] || {};

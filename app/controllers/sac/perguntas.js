@@ -20,7 +20,11 @@ $.enviar.addEventListener('click', function(e){
 });
 
 function enviar(){
-	var data = {'':''};	
+	var data = {'indica': $.Sindica.value , 'preco': $.SPreco.value, 'prazo': $.Sprazo.value, 'credibilidade': $.Scredibilidade.value, 
+				'aplicabilidade': $.Saplicabilidade.value, 'inovacao': $.Sinovacao.value, 'qualidade': $.Squalidade.value,
+				'preco_texto': $.preco.value, 'prazo_texto': $.prazo.value, 'credibilidade_texto': $.credibilidade.value, 
+				'aplicabilidade_texto': $.aplicabilidade.value, 'inovacao_texto': $.inovacao.value, 'qualidade_texto': $.qualidade.value };
+	
 	Alloy.Globals.Util.sendQuestionario(data, processa);
 }
 

@@ -1,4 +1,4 @@
-ts	1382468586000
+ts	1382707790000
 .DS_Store	6148
 Default-Landscape.jpg	36232
 Default-Portrait.jpg	28479
@@ -12,85 +12,85 @@ alloy
 	controllers
 		BaseController.js	1108
 		BaseController.js.uncompressed.js	5693
-		faleconosco.js	6125
-		faleconosco.js.uncompressed.js	8964
+		faleconosco.js	6729
+		faleconosco.js.uncompressed.js	9867
 		financeira
-			analise.js	3388
-			analise.js.uncompressed.js	4661
-			estrutura.js	3709
-			estrutura.js.uncompressed.js	4982
-			estudo.js	3401
-			estudo.js.uncompressed.js	4674
+			analise.js	3391
+			analise.js.uncompressed.js	4664
+			estrutura.js	3713
+			estrutura.js.uncompressed.js	4986
+			estudo.js	3403
+			estudo.js.uncompressed.js	4676
 		gestao
-			desenpenho.js	3386
-			desenpenho.js.uncompressed.js	4488
-			pesquisa.js	3506
-			pesquisa.js.uncompressed.js	4779
-		index.js	23625
-		index.js.uncompressed.js	35200
-		login.js	4639
-		login.js.uncompressed.js	6820
+			desenpenho.js	3388
+			desenpenho.js.uncompressed.js	4490
+			pesquisa.js	3508
+			pesquisa.js.uncompressed.js	4781
+		index.js	23642
+		index.js.uncompressed.js	35211
+		login.js	4695
+		login.js.uncompressed.js	6924
 		mainView.js	3769
 		mainView.js.uncompressed.js	5395
-		mapa.js	2641
-		mapa.js.uncompressed.js	3738
+		mapa.js	3126
+		mapa.js.uncompressed.js	4566
 		marketing
-			pesquisa.js	3437
-			pesquisa.js.uncompressed.js	4710
-			plano.js	3548
-			plano.js.uncompressed.js	4821
+			pesquisa.js	3439
+			pesquisa.js.uncompressed.js	4712
+			plano.js	3550
+			plano.js.uncompressed.js	4823
 		organizacional
-			estrutura.js	3675
-			estrutura.js.uncompressed.js	4948
-			padronizacao.js	3462
-			padronizacao.js.uncompressed.js	4735
+			estrutura.js	3677
+			estrutura.js.uncompressed.js	4950
+			padronizacao.js	3464
+			padronizacao.js.uncompressed.js	4737
 		sac
-			perguntas.js	7710
-			perguntas.js.uncompressed.js	11219
-		sac.js	8506
-		sac.js.uncompressed.js	13451
+			perguntas.js	12411
+			perguntas.js.uncompressed.js	17942
+		sac.js	8988
+		sac.js.uncompressed.js	14565
 		sobre.js	5588
 		sobre.js.uncompressed.js	6740
 	styles
-		faleconosco.js	2734
-		faleconosco.js.uncompressed.js	2980
+		faleconosco.js	3279
+		faleconosco.js.uncompressed.js	3597
 		financeira
-			analise.js	2734
-			analise.js.uncompressed.js	2980
-			estrutura.js	2734
-			estrutura.js.uncompressed.js	2980
-			estudo.js	2734
-			estudo.js.uncompressed.js	2980
+			analise.js	3279
+			analise.js.uncompressed.js	3597
+			estrutura.js	3279
+			estrutura.js.uncompressed.js	3597
+			estudo.js	3279
+			estudo.js.uncompressed.js	3597
 		gestao
-			desenpenho.js	2734
-			desenpenho.js.uncompressed.js	2980
-			pesquisa.js	2734
-			pesquisa.js.uncompressed.js	2980
-		index.js	4046
-		index.js.uncompressed.js	4428
-		login.js	2734
-		login.js.uncompressed.js	2980
-		mainView.js	2734
-		mainView.js.uncompressed.js	2980
-		mapa.js	2734
-		mapa.js.uncompressed.js	2980
+			desenpenho.js	3279
+			desenpenho.js.uncompressed.js	3597
+			pesquisa.js	3279
+			pesquisa.js.uncompressed.js	3597
+		index.js	4581
+		index.js.uncompressed.js	5035
+		login.js	3279
+		login.js.uncompressed.js	3597
+		mainView.js	3279
+		mainView.js.uncompressed.js	3597
+		mapa.js	3279
+		mapa.js.uncompressed.js	3597
 		marketing
-			pesquisa.js	2734
-			pesquisa.js.uncompressed.js	2980
-			plano.js	2734
-			plano.js.uncompressed.js	2980
+			pesquisa.js	3279
+			pesquisa.js.uncompressed.js	3597
+			plano.js	3279
+			plano.js.uncompressed.js	3597
 		organizacional
-			estrutura.js	2734
-			estrutura.js.uncompressed.js	2980
-			padronizacao.js	2734
-			padronizacao.js.uncompressed.js	2980
+			estrutura.js	3279
+			estrutura.js.uncompressed.js	3597
+			padronizacao.js	3279
+			padronizacao.js.uncompressed.js	3597
 		sac
-			perguntas.js	2734
-			perguntas.js.uncompressed.js	2980
-		sac.js	2734
-		sac.js.uncompressed.js	2980
-		sobre.js	2734
-		sobre.js.uncompressed.js	2980
+			perguntas.js	3279
+			perguntas.js.uncompressed.js	3597
+		sac.js	3279
+		sac.js.uncompressed.js	3597
+		sobre.js	3279
+		sobre.js.uncompressed.js	3597
 	sync
 		localStorage.js	1038
 		localStorage.js.uncompressed.js	1913
@@ -459,5 +459,5 @@ titanium
 titanium.css	38000
 titanium.js	239100
 titanium.js.uncompressed.js	488115
-util.js	897
-util.js.uncompressed.js	1653
+util.js	1082
+util.js.uncompressed.js	1938

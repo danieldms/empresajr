@@ -876,7 +876,6 @@ function Controller() {
         height: "100%",
         top: 0,
         left: 0,
-        zIndex: 10,
         backgroundColor: "#FFF",
         layout: "vertical",
         id: "main"
@@ -958,7 +957,7 @@ function Controller() {
         touchRightStarted = false;
     });
     $.main.addEventListener("touchmove", function(e) {
-        if ("mapview" != e.source.id && "view" != e.source.id) {
+        if ("mapview" != e.source.id && "view" != e.source.id && "scrollview" != e.source.id) {
             var coords = $.main.convertPointToView({
                 x: e.x,
                 y: e.y

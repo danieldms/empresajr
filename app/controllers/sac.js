@@ -47,25 +47,21 @@ function processa(e){
 		};
 		
 		if(e.realizado >= 100 && e.avaliacao == null){
-			var alert = Titanium.UI.createAlertDialog({ title: 'Projeto Concluído', message: 'Deseja fazer uma avaliação do projeto?', buttonNames: ['Agora', 'Agora não'], cancel: 1 });
-			alert.addEventListener('click', function(e) {
-
-			   if (e.cancel === e.index || e.cancel === true) {
-			      return;
-			   }
-			   
-			   switch (e.index) {
-			      case 0: 	Ti.App.fireEvent('app:setLayout', {'layout':'sac/perguntas', 'swipe': false});
-			      break;
-			
-			      //This will never be reached, if you specified cancel for index 1
-			      case 1: Titanium.API.info('Clicked button 1 (NO)');
-			      break;
-			
-			      default:
-			      break;
-			
-			  }
+				var alert = Titanium.UI.createAlertDialog({ title: 'Projeto Concluído', message: 'Deseja fazer uma avaliação do projeto?', buttonNames: ['Agora', 'Agora não'], cancel: 1, });
+				alert.addEventListener('click', function(e) {	
+			   	if (e.cancel === e.index || e.cancel === true) {
+			      	return;
+			   	}
+			   	switch (e.index) {
+			      	case 0: 	Ti.App.fireEvent('app:setLayout', {'layout':'sac/perguntas', 'swipe': false});
+				      	break;
+				
+				    case 1: Titanium.API.info('Clicked button 1 (NO)');
+				    	break;
+				
+				    default:
+						break;			
+				}
 			});
 			alert.show();
 		}
@@ -89,14 +85,14 @@ function processaComentario(data){
 		color = "#259D2D";
 	}
 	var view = Ti.UI.createView({height:15, top:0, layout:"vertical" });
-	var label = Ti.UI.createLabel({left: 10, top: 0, color: color, text: data.nome, font:{fontSize: 10, fontWeight: 'bold'}});
+	var label = Ti.UI.createLabel({left: 10, top: 4, color: color, text: data.nome, font:{fontSize: 10, fontWeight: 'bold'}});
 	var time = Ti.UI.createLabel({right: 5, top: "-12", textAlign: "right", text: data.data, font:{fontSize: 10}, color: "#CCC"});
 	view.add(label);
 	view.add(time);
 	$.comentario.add(view);
 	var line = Ti.UI.createView({left:0,top:2, backgroundColor:"#ccc", height:1, width: "100%" });
 	$.comentario.add(line);
-	var descricao = Ti.UI.createLabel({left: 10, right: 10, bottom: 15, text:data.descricao, font:{fontSize: 10}, color: "#9B9B9B" });
+	var descricao = Ti.UI.createLabel({left: 10,top: 5, right: 10, bottom: 15, text:data.descricao, font:{fontSize: 10}, color: "#9B9B9B" });
 	$.comentario.add(descricao);	
 };
 

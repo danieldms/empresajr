@@ -1,15 +1,17 @@
 function doPost(params, _callback) {
-    xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
-    xhr.onreadystatechange = function() {
-        if (4 == xhr.readyState && 200 == xhr.status && null != xhr.responseText) {
-            var json = JSON.parse(xhr.responseText);
-            _callback && _callback(json);
-        }
-    };
-    var data = "?";
-    for (var prop in params) data += prop + "=" + params[prop] + "&";
-    xhr.open("POST", url + data);
-    xhr.send();
+    if ("NONE" != Titanium.Network.networkTypeName && "UNKNOWN" != Titanium.Network.networkTypeName) {
+        xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
+        xhr.onreadystatechange = function() {
+            if (4 == xhr.readyState && 200 == xhr.status && null != xhr.responseText) {
+                var json = JSON.parse(xhr.responseText);
+                _callback && _callback(json);
+            }
+        };
+        var data = "?";
+        for (var prop in params) data += prop + "=" + params[prop] + "&";
+        xhr.open("POST", url + data);
+        xhr.send();
+    } else alert("Sem conexão com a internet!");
 }
 
 var url = "http://empresajr.com/app/processa.php";
@@ -26,6 +28,10 @@ exports.login = function(username, password, _callback) {
         "class": "login"
     };
     doPost(params, _callback);
+};
+
+exports.sendQuestionario = function(data, _callback) {
+    doPost(data, _callback);
 };
 
 exports.getProjeto = function(_id, _callback) {

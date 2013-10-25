@@ -9,7 +9,8 @@
 		<ScrollView class="contentView" scrollingEnabled="true">		
 			<View class="header">
 				<ImageView image="/images/outros/header_oculos.png" height="50" width="110" left="10" top="20"></ImageView>
-				<Label class="titleHeader">ESTRUTURAÇÃO FINANCEIRA</Label>
+				<Label class="titleHeader">ESTRUTURAÇÃO 
+FINANCEIRA</Label>
 			</View>
 			<View class="fixedHeader">
 				<Label class="titleFixed">Descritivo</Label>
@@ -18,6 +19,7 @@
 A consultoria em finanças permite uma análise aprofundada da situação financeira da organização. Essa consiste no desenvolvimento de ferramentas de controle financeiro e na elaboração de uma estrutura de custos compatível com a realidade da mesma. Estas medidas possibilitam a visualização clara do desempenho da empresa e a determinação das melhores práticas para solucionar as oscilações e evitar a ocorrência de gastos desnecessários.
 
 Este serviço é indicado para empresas que:
+
 	• Desconhecem a sua lucratividade;
 	• Apresentam dificuldade no gerenciamento de seus gastos;
 	• Desejam construir ferramentas para controle e planejamento de gastos futuros.			

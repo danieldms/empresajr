@@ -16,19 +16,19 @@
 			</View>
 			<View backgroundColor="#eeeeee" left="20" right="20" top="20" bottom="20" height="405" layout="vertical">
 				<View backgroundColor="#FFF" layout="horizontal" left="10" right="10" top="10" height="45" bottom="2">
-					<Label class="labelFields">Nome:</Label><TextField class="textFields" id="nome"></TextField>
+					<Label class="labelFields">Nome:</Label><TextField class="textFields" id="nome" returnKeyType="Ti.UI.RETURNKEY_NEXT"></TextField>
 				</View>
 				<View backgroundColor="#FFF" layout="horizontal" left="10" right="10" height="45" bottom="2">
-					<Label class="labelFields">Email:  </Label><TextField class="textFields" id="email" left="27"></TextField>
+					<Label class="labelFields">Email:  </Label><TextField class="textFields" id="email" returnKeyType="Ti.UI.RETURNKEY_NEXT" left="27"></TextField>
 				</View>
 				<View backgroundColor="#FFF" layout="horizontal" left="10" right="10" height="45" bottom="2">
-					<Label class="labelFields">Telefone:  </Label><TextField class="textFields" id="telefone" left="7"></TextField>
+					<Label class="labelFields">Telefone:  </Label><TextField class="textFields" id="telefone" returnKeyType="Ti.UI.RETURNKEY_NEXT" left="7"></TextField>
 				</View>
 				<View backgroundColor="#FFF" layout="horizontal" left="10" right="10" height="45" bottom="2">
-					<Label class="labelFields">Assunto:  </Label><TextField class="textFields" id="assunto" left="12"></TextField>
+					<Label class="labelFields">Assunto:  </Label><TextField class="textFields" id="assunto" returnKeyType="Ti.UI.RETURNKEY_NEXT" left="12"></TextField>
 				</View>
 				<View backgroundColor="#FFF" layout="vertical" left="10" right="10" height="145" bottom="10">
-					<Label class="labelFields">Mensagem:  </Label><TextArea class="textArea" id="mensagem" left="11"></TextArea>
+					<Label class="labelFields">Mensagem:  </Label><TextArea class="textArea" id="mensagem" returnKeyType="Ti.UI.RETURNKEY_GO" left="11"></TextArea>
 				</View>
 
 				<Button class="buttonFields" id="enviar">ENVIAR</Button>

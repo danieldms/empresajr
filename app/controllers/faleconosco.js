@@ -16,16 +16,42 @@ $.button.addEventListener('touchend', function(e){
 });
 
 $.enviar.addEventListener('click', function(e){
-	Alloy.Globals.Util.newSac($.nome.value, $.assunto.value, $.email.value, $.telefone.value, $.mensagem.value, isSac);
+	enviar();
 });
 
-function isSac(e){
-	Ti.API.log(e);
+function enviar(){
+	Alloy.Globals.Util.newSac($.nome.value, $.assunto.value, $.email.value, $.telefone.value, $.mensagem.value, processa);
+}
+
+function processa(e){
 	if(e.type == "sucesso"){
 		alert(e.message);
+		$.nome.value = '';
+		$.assunto.value = '';
+		$.email.value = '';
+		$.telefone.value = '';
+		$.mensagem.value = '';		
 	}else{
-		
+		alert(e.message);
 	}
 };
 
+$.nome.addEventListener('return', function(e){
+	$.email.focus();
+});
 
+$.email.addEventListener('return', function(e){
+	$.telefone.focus();
+});
+
+$.telefone.addEventListener('return', function(e){
+	$.assunto.focus();
+});
+
+$.assunto.addEventListener('return', function(e){
+	$.mensagem.focus();
+});
+
+$.mensagem.addEventListener('return', function(e){
+	enviar();
+});

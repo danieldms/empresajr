@@ -1,6 +1,8 @@
 function Controller() {
-    function isLogin(e) {
-        Ti.API.log(e);
+    function login() {
+        Alloy.Globals.Util.login($.username.value, $.senha.value, processa);
+    }
+    function processa(e) {
         if (null != e) if ("error" != e.type) if (e.projeto.count > 0) {
             Alloy.Globals.Usuario = e;
             setProjeto();
@@ -189,11 +191,11 @@ function Controller() {
     $.__views.senha = Ti.UI.createTextField({
         width: 180,
         top: "10",
-        left: "20",
+        left: "30",
         borderWidth: 0,
         borderColor: "#FFF",
         passwordMask: "true",
-        returnKeyType: "RETURNKEY_DONE",
+        returnKeyType: Ti.UI.RETURNKEY_GO,
         id: "senha"
     });
     $.__views.__alloyId96.add($.__views.senha);
@@ -224,12 +226,15 @@ function Controller() {
         this.backgroudColor = "#000";
         this.opacity = .2;
     });
+    $.senha.addEventListener("return", function() {
+        login();
+    });
     $.button.addEventListener("touchend", function() {
         this.backgroudColor = "transparent";
         this.opacity = 1;
     });
     $.entrar.addEventListener("click", function() {
-        Alloy.Globals.Util.login($.username.value, $.senha.value, isLogin);
+        login();
     });
     _.extend($, exports);
 }

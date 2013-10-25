@@ -147,7 +147,7 @@ $.main.addEventListener('touchend', function(e){
 
 $.main.addEventListener('touchmove', function(e){
 	
-	if(e.source.id != 'mapview' && e.source.id != "view"){
+	if(e.source.id != 'mapview' && e.source.id != "view" && e.source.id != 'scrollview'){
 		var coords = $.main.convertPointToView({
 			x : e.x,
 			y : e.y

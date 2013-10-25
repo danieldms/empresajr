@@ -27,14 +27,14 @@ function Controller() {
         left: "0"
     });
     $.__views.navView.add($.__views.button);
-    $.__views.__alloyId217 = Ti.UI.createImageView({
+    $.__views.__alloyId216 = Ti.UI.createImageView({
         image: "/images/icons/menu.png",
         width: "25dp",
         height: "15dp",
-        id: "__alloyId217"
+        id: "__alloyId216"
     });
-    $.__views.button.add($.__views.__alloyId217);
-    $.__views.__alloyId218 = Ti.UI.createLabel({
+    $.__views.button.add($.__views.__alloyId216);
+    $.__views.__alloyId217 = Ti.UI.createLabel({
         height: "46dp",
         font: {
             fontSize: "18dp",
@@ -48,34 +48,34 @@ function Controller() {
             y: "1dp"
         },
         text: "Consultoria Organizacional",
-        id: "__alloyId218"
+        id: "__alloyId217"
     });
-    $.__views.navView.add($.__views.__alloyId218);
-    $.__views.__alloyId219 = Ti.UI.createScrollView({
+    $.__views.navView.add($.__views.__alloyId217);
+    $.__views.__alloyId218 = Ti.UI.createScrollView({
         backgroundColor: "transparent",
         layout: "vertical",
         scrollingEnabled: "true",
-        id: "__alloyId219"
+        id: "__alloyId218"
     });
-    $.__views.padronizacao.add($.__views.__alloyId219);
-    $.__views.__alloyId220 = Ti.UI.createView({
+    $.__views.padronizacao.add($.__views.__alloyId218);
+    $.__views.__alloyId219 = Ti.UI.createView({
         left: 0,
         width: "100%",
         height: 100,
         layout: "horizontal",
-        id: "__alloyId220"
+        id: "__alloyId219"
     });
-    $.__views.__alloyId219.add($.__views.__alloyId220);
-    $.__views.__alloyId221 = Ti.UI.createImageView({
+    $.__views.__alloyId218.add($.__views.__alloyId219);
+    $.__views.__alloyId220 = Ti.UI.createImageView({
         image: "/images/outros/header_oculos.png",
         height: "50",
         width: "110",
         left: "10",
         top: "20",
-        id: "__alloyId221"
+        id: "__alloyId220"
     });
-    $.__views.__alloyId220.add($.__views.__alloyId221);
-    $.__views.__alloyId222 = Ti.UI.createLabel({
+    $.__views.__alloyId219.add($.__views.__alloyId220);
+    $.__views.__alloyId221 = Ti.UI.createLabel({
         left: 20,
         right: 10,
         top: 30,
@@ -86,19 +86,19 @@ function Controller() {
         },
         color: "#115a98",
         text: "PADRONIZAÇÃO DE \nPROCESSESOS",
-        id: "__alloyId222"
+        id: "__alloyId221"
     });
-    $.__views.__alloyId220.add($.__views.__alloyId222);
-    $.__views.__alloyId223 = Ti.UI.createView({
+    $.__views.__alloyId219.add($.__views.__alloyId221);
+    $.__views.__alloyId222 = Ti.UI.createView({
         height: 26,
         left: 0,
         bottom: 2,
         layout: "vertical",
         backgroundColor: "#f5f5f5",
-        id: "__alloyId223"
+        id: "__alloyId222"
     });
-    $.__views.__alloyId219.add($.__views.__alloyId223);
-    $.__views.__alloyId224 = Ti.UI.createLabel({
+    $.__views.__alloyId218.add($.__views.__alloyId222);
+    $.__views.__alloyId223 = Ti.UI.createLabel({
         font: {
             fontSize: 11,
             fontWeight: "bold"
@@ -107,22 +107,22 @@ function Controller() {
         top: 6,
         color: "#8a8a8a",
         text: "Descritivo",
-        id: "__alloyId224"
+        id: "__alloyId223"
     });
-    $.__views.__alloyId223.add($.__views.__alloyId224);
-    $.__views.__alloyId225 = Ti.UI.createLabel({
+    $.__views.__alloyId222.add($.__views.__alloyId223);
+    $.__views.__alloyId224 = Ti.UI.createLabel({
         font: {
             fontSize: 12
         },
         color: "#666666",
-        text: "Padronização de Processos é um projeto oferecido pela consultoria Organizacional que tem o objetivo de melhorar o fluxo de informação da empresa, assim como garantir que as atividades ocorram de uma forma pré-estabelecida.\n\nEste serviço é indicado para empresas que:\n	• Não possuem uma definição bem estabelecida dos seus processos;\n	• Necessitem de ferramentas que auxiliem no controle.",
+        text: "Padronização de Processos é um projeto oferecido pela consultoria Organizacional que tem o objetivo de melhorar o fluxo de informação da empresa, assim como garantir que as atividades ocorram de uma forma pré-estabelecida.\n\nEste serviço é indicado para empresas que:\n\n	• Não possuem uma definição bem estabelecida dos seus processos;\n	• Necessitem de ferramentas que auxiliem no controle.",
         left: "10",
         right: "10",
         top: "10",
         textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
-        id: "__alloyId225"
+        id: "__alloyId224"
     });
-    $.__views.__alloyId219.add($.__views.__alloyId225);
+    $.__views.__alloyId218.add($.__views.__alloyId224);
     exports.destroy = function() {};
     _.extend($, $.__views);
     arguments[0] || {};

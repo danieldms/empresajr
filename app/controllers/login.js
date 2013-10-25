@@ -9,17 +9,23 @@ $.button.addEventListener('touchstart', function(e){
 	this.opacity = 0.2;
 });
 
+$.senha.addEventListener("return", function(e){
+	login();
+});
 
 $.button.addEventListener('touchend', function(e){
 	this.backgroudColor = "transparent";
 	this.opacity = 1;
 });
 $.entrar.addEventListener('click', function(e){
-	Alloy.Globals.Util.login($.username.value, $.senha.value, isLogin);
+	login();
 });
 
-function isLogin(e){
-	Ti.API.log(e);
+function login(){
+	Alloy.Globals.Util.login($.username.value, $.senha.value, processa);
+}
+
+function processa(e){
 	if(e != null){
 		if(e.type != 'error'){
 			if(e.projeto.count > 0){

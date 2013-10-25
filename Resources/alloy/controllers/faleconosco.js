@@ -1,7 +1,16 @@
 function Controller() {
-    function isSac(e) {
-        Ti.API.log(e);
-        "sucesso" == e.type && alert(e.message);
+    function enviar() {
+        Alloy.Globals.Util.newSac($.nome.value, $.assunto.value, $.email.value, $.telefone.value, $.mensagem.value, processa);
+    }
+    function processa(e) {
+        if ("sucesso" == e.type) {
+            alert(e.message);
+            $.nome.value = "";
+            $.assunto.value = "";
+            $.email.value = "";
+            $.telefone.value = "";
+            $.mensagem.value = "";
+        } else alert(e.message);
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "faleconosco";
@@ -155,7 +164,8 @@ function Controller() {
         left: 25,
         borderWidth: 0,
         borderColor: "#FFF",
-        id: "nome"
+        id: "nome",
+        returnKeyType: Ti.UI.RETURNKEY_NEXT
     });
     $.__views.__alloyId8.add($.__views.nome);
     $.__views.__alloyId10 = Ti.UI.createView({
@@ -185,7 +195,8 @@ function Controller() {
         left: "27",
         borderWidth: 0,
         borderColor: "#FFF",
-        id: "email"
+        id: "email",
+        returnKeyType: Ti.UI.RETURNKEY_NEXT
     });
     $.__views.__alloyId10.add($.__views.email);
     $.__views.__alloyId12 = Ti.UI.createView({
@@ -215,7 +226,8 @@ function Controller() {
         left: "7",
         borderWidth: 0,
         borderColor: "#FFF",
-        id: "telefone"
+        id: "telefone",
+        returnKeyType: Ti.UI.RETURNKEY_NEXT
     });
     $.__views.__alloyId12.add($.__views.telefone);
     $.__views.__alloyId14 = Ti.UI.createView({
@@ -245,7 +257,8 @@ function Controller() {
         left: "12",
         borderWidth: 0,
         borderColor: "#FFF",
-        id: "assunto"
+        id: "assunto",
+        returnKeyType: Ti.UI.RETURNKEY_NEXT
     });
     $.__views.__alloyId14.add($.__views.assunto);
     $.__views.__alloyId16 = Ti.UI.createView({
@@ -276,7 +289,8 @@ function Controller() {
         left: "11",
         right: 5,
         borderColor: "#FFF",
-        id: "mensagem"
+        id: "mensagem",
+        returnKeyType: Ti.UI.RETURNKEY_GO
     });
     $.__views.__alloyId16.add($.__views.mensagem);
     $.__views.enviar = Ti.UI.createButton({
@@ -311,7 +325,22 @@ function Controller() {
         this.opacity = 1;
     });
     $.enviar.addEventListener("click", function() {
-        Alloy.Globals.Util.newSac($.nome.value, $.assunto.value, $.email.value, $.telefone.value, $.mensagem.value, isSac);
+        enviar();
+    });
+    $.nome.addEventListener("return", function() {
+        $.email.focus();
+    });
+    $.email.addEventListener("return", function() {
+        $.telefone.focus();
+    });
+    $.telefone.addEventListener("return", function() {
+        $.assunto.focus();
+    });
+    $.assunto.addEventListener("return", function() {
+        $.mensagem.focus();
+    });
+    $.mensagem.addEventListener("return", function() {
+        enviar();
     });
     _.extend($, exports);
 }
