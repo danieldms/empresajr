@@ -56,14 +56,14 @@ function Controller() {
         left: "0"
     });
     $.__views.navView.add($.__views.button);
-    $.__views.__alloyId110 = Ti.UI.createImageView({
+    $.__views.__alloyId114 = Ti.UI.createImageView({
         image: "/images/icons/menu.png",
         width: "25dp",
         height: "15dp",
-        id: "__alloyId110"
+        id: "__alloyId114"
     });
-    $.__views.button.add($.__views.__alloyId110);
-    $.__views.__alloyId111 = Ti.UI.createLabel({
+    $.__views.button.add($.__views.__alloyId114);
+    $.__views.__alloyId115 = Ti.UI.createLabel({
         height: "46dp",
         font: {
             fontSize: "18dp",
@@ -77,29 +77,29 @@ function Controller() {
             y: "1dp"
         },
         text: "Localização",
-        id: "__alloyId111"
+        id: "__alloyId115"
     });
-    $.__views.navView.add($.__views.__alloyId111);
-    $.__views.__alloyId112 = Ti.UI.createView({
+    $.__views.navView.add($.__views.__alloyId115);
+    $.__views.__alloyId116 = Ti.UI.createView({
         layout: "vertical",
-        id: "__alloyId112"
+        id: "__alloyId116"
     });
-    $.__views.mapa.add($.__views.__alloyId112);
+    $.__views.mapa.add($.__views.__alloyId116);
     $.__views.mapview = Ti.UI.createView({
         id: "mapview",
         height: "300dp"
     });
-    $.__views.__alloyId112.add($.__views.mapview);
-    $.__views.__alloyId113 = Ti.UI.createView({
+    $.__views.__alloyId116.add($.__views.mapview);
+    $.__views.__alloyId117 = Ti.UI.createView({
         height: 26,
         left: 0,
         bottom: 2,
         layout: "vertical",
         backgroundColor: "#f5f5f5",
-        id: "__alloyId113"
+        id: "__alloyId117"
     });
-    $.__views.__alloyId112.add($.__views.__alloyId113);
-    $.__views.__alloyId114 = Ti.UI.createLabel({
+    $.__views.__alloyId116.add($.__views.__alloyId117);
+    $.__views.__alloyId118 = Ti.UI.createLabel({
         font: {
             fontSize: 11,
             fontWeight: "bold"
@@ -108,10 +108,10 @@ function Controller() {
         top: 6,
         color: "#8a8a8a",
         text: "Endereço",
-        id: "__alloyId114"
+        id: "__alloyId118"
     });
-    $.__views.__alloyId113.add($.__views.__alloyId114);
-    $.__views.__alloyId115 = Ti.UI.createLabel({
+    $.__views.__alloyId117.add($.__views.__alloyId118);
+    $.__views.__alloyId119 = Ti.UI.createLabel({
         font: {
             fontSize: 12
         },
@@ -120,9 +120,9 @@ function Controller() {
         left: "10",
         right: "10",
         textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
-        id: "__alloyId115"
+        id: "__alloyId119"
     });
-    $.__views.__alloyId112.add($.__views.__alloyId115);
+    $.__views.__alloyId116.add($.__views.__alloyId119);
     exports.destroy = function() {};
     _.extend($, $.__views);
     arguments[0] || {};
@@ -137,7 +137,7 @@ function Controller() {
         this.backgroudColor = "transparent";
         this.opacity = 1;
     });
-    Ti.API.info("mobileweb");
+    Ti.API.info("iPhone OS");
     mobileMap();
     _.extend($, exports);
 }

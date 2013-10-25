@@ -44,6 +44,7 @@ function doPost(params, _callback) {
 
 	if(Titanium.Network.networkTypeName != 'NONE' && 
 		Titanium.Network.networkTypeName != 'UNKNOWN'){		
+		Alloy.Globals.preload.show();
 		if (Ti.Platform.osname == "mobileweb") {
 			if (window.XMLHttpRequest){
 		  		xhr=new XMLHttpRequest();
@@ -87,6 +88,7 @@ function doPost(params, _callback) {
 			xhr.open("POST", url);
 			xhr.send(params) ;
 		}
+		Alloy.Globals.preload.hide();
 	}else{
 		alert('Sem conexão com a internet!');
 	}

@@ -211,4 +211,17 @@ if(currentView == null){
 	$.main.add(currentView);
 };
 
+var style;
+if (Ti.Platform.name === 'iPhone OS'){
+  style = Titanium.UI.iPhone.ActivityIndicatorStyle.BIG;
+}
+else {
+  style = Ti.UI.ActivityIndicatorStyle.DARK;
+}
+
+$.activityIndicator.style = style;
+$.activityIndicator.show();
+	
+Alloy.Globals.preload = $.activityIndicator;
+
 $.index.open();
