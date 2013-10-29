@@ -27,41 +27,88 @@ function Controller() {
         left: "0"
     });
     $.__views.navView.add($.__views.button);
-    $.__views.__alloyId102 = Ti.UI.createImageView({
+    $.__views.__alloyId101 = Ti.UI.createImageView({
         image: "/images/icons/menu.png",
         width: "25dp",
         height: "15dp",
-        id: "__alloyId102"
+        id: "__alloyId101"
     });
-    $.__views.button.add($.__views.__alloyId102);
-    $.__views.__alloyId103 = Ti.UI.createLabel({
+    $.__views.button.add($.__views.__alloyId101);
+    $.__views.__alloyId102 = Ti.UI.createLabel({
         text: "MENU",
         left: "55dp",
         color: "#2276be",
-        id: "__alloyId103"
+        id: "__alloyId102"
     });
-    $.__views.navView.add($.__views.__alloyId103);
-    var __alloyId104 = [];
+    $.__views.navView.add($.__views.__alloyId102);
+    var __alloyId103 = [];
     $.__views.view = Ti.UI.createView({
-        id: "view",
-        layout: "vertical"
+        id: "view"
     });
-    __alloyId104.push($.__views.view);
-    $.__views.__alloyId105 = Ti.UI.createImageView({
+    __alloyId103.push($.__views.view);
+    $.__views.__alloyId104 = Ti.UI.createImageView({
         image: "/images/outros/home_empresajr.png",
         width: "200",
         height: "48",
         top: "70",
-        left: "40",
-        id: "__alloyId105"
+        id: "__alloyId104"
     });
-    $.__views.view.add($.__views.__alloyId105);
+    $.__views.view.add($.__views.__alloyId104);
     $.__views.view = Ti.UI.createView({
         id: "view",
         layout: "vertical"
     });
-    __alloyId104.push($.__views.view);
+    __alloyId103.push($.__views.view);
+    $.__views.__alloyId105 = Ti.UI.createLabel({
+        font: {
+            fontSize: 18,
+            fontWeight: "bold"
+        },
+        color: "#115a98",
+        left: 30,
+        top: 30,
+        text: "SOLUÇÃO EM",
+        id: "__alloyId105"
+    });
+    $.__views.view.add($.__views.__alloyId105);
     $.__views.__alloyId106 = Ti.UI.createLabel({
+        font: {
+            fontSize: 18,
+            fontWeight: "bold"
+        },
+        color: "#115a98",
+        left: 30,
+        top: "0",
+        text: "FINANÇAS",
+        id: "__alloyId106"
+    });
+    $.__views.view.add($.__views.__alloyId106);
+    $.__views.__alloyId107 = Ti.UI.createLabel({
+        font: {
+            fontSize: 10
+        },
+        color: "#115a98",
+        left: 30,
+        top: 5,
+        right: 50,
+        text: "EXAME APURADO DA SITUAÇÃO FINANCEIRA DA ORGANIZAÇÃO E UM MELHOR GERENCIAMENTO.",
+        id: "__alloyId107"
+    });
+    $.__views.view.add($.__views.__alloyId107);
+    $.__views.__alloyId108 = Ti.UI.createImageView({
+        image: "/images/outros/financeira.png",
+        width: "150",
+        height: "159",
+        top: "20",
+        id: "__alloyId108"
+    });
+    $.__views.view.add($.__views.__alloyId108);
+    $.__views.view = Ti.UI.createView({
+        id: "view",
+        layout: "vertical"
+    });
+    __alloyId103.push($.__views.view);
+    $.__views.__alloyId109 = Ti.UI.createLabel({
         font: {
             fontSize: 18,
             fontWeight: "bold"
@@ -70,10 +117,10 @@ function Controller() {
         left: 30,
         top: 30,
         text: "CONSULTORIA",
-        id: "__alloyId106"
+        id: "__alloyId109"
     });
-    $.__views.view.add($.__views.__alloyId106);
-    $.__views.__alloyId107 = Ti.UI.createLabel({
+    $.__views.view.add($.__views.__alloyId109);
+    $.__views.__alloyId110 = Ti.UI.createLabel({
         font: {
             fontSize: 18,
             fontWeight: "bold"
@@ -82,10 +129,10 @@ function Controller() {
         left: 30,
         top: "0",
         text: "ORGANIZACIONAL",
-        id: "__alloyId107"
+        id: "__alloyId110"
     });
-    $.__views.view.add($.__views.__alloyId107);
-    $.__views.__alloyId108 = Ti.UI.createLabel({
+    $.__views.view.add($.__views.__alloyId110);
+    $.__views.__alloyId111 = Ti.UI.createLabel({
         font: {
             fontSize: 10
         },
@@ -94,23 +141,23 @@ function Controller() {
         top: 5,
         right: 50,
         text: "ANÁLISE GERAL DA ORGANIZAÇÃO PARA QUE SE ESTABELEÇA UM MODELO DE ESTRUTURA MAIS ADEQUADO.",
-        id: "__alloyId108"
+        id: "__alloyId111"
     });
-    $.__views.view.add($.__views.__alloyId108);
-    $.__views.__alloyId109 = Ti.UI.createImageView({
+    $.__views.view.add($.__views.__alloyId111);
+    $.__views.__alloyId112 = Ti.UI.createImageView({
         image: "/images/outros/home_icon1.png",
         width: "150",
         height: "179",
         top: "20",
-        id: "__alloyId109"
+        id: "__alloyId112"
     });
-    $.__views.view.add($.__views.__alloyId109);
+    $.__views.view.add($.__views.__alloyId112);
     $.__views.view = Ti.UI.createView({
         id: "view",
         layout: "vertical"
     });
-    __alloyId104.push($.__views.view);
-    $.__views.__alloyId110 = Ti.UI.createLabel({
+    __alloyId103.push($.__views.view);
+    $.__views.__alloyId113 = Ti.UI.createLabel({
         font: {
             fontSize: 18,
             fontWeight: "bold"
@@ -119,10 +166,10 @@ function Controller() {
         left: 30,
         top: 30,
         text: "SOLUÇÃO",
-        id: "__alloyId110"
+        id: "__alloyId113"
     });
-    $.__views.view.add($.__views.__alloyId110);
-    $.__views.__alloyId111 = Ti.UI.createLabel({
+    $.__views.view.add($.__views.__alloyId113);
+    $.__views.__alloyId114 = Ti.UI.createLabel({
         font: {
             fontSize: 18,
             fontWeight: "bold"
@@ -131,10 +178,10 @@ function Controller() {
         left: 30,
         top: "0",
         text: "EM MARKETING",
-        id: "__alloyId111"
+        id: "__alloyId114"
     });
-    $.__views.view.add($.__views.__alloyId111);
-    $.__views.__alloyId112 = Ti.UI.createLabel({
+    $.__views.view.add($.__views.__alloyId114);
+    $.__views.__alloyId115 = Ti.UI.createLabel({
         font: {
             fontSize: 10
         },
@@ -143,19 +190,19 @@ function Controller() {
         top: 5,
         right: 50,
         text: "PESQUISAS DE MERCADO E ESTUDO EXPLORATÓRIOS, ELABORAÇÃO DE PLANOS DE MARKETING.",
-        id: "__alloyId112"
+        id: "__alloyId115"
     });
-    $.__views.view.add($.__views.__alloyId112);
-    $.__views.__alloyId113 = Ti.UI.createImageView({
+    $.__views.view.add($.__views.__alloyId115);
+    $.__views.__alloyId116 = Ti.UI.createImageView({
         image: "/images/outros/home_icon2.png",
         width: "150",
         height: "194",
         top: "20",
-        id: "__alloyId113"
+        id: "__alloyId116"
     });
-    $.__views.view.add($.__views.__alloyId113);
+    $.__views.view.add($.__views.__alloyId116);
     $.__views.scrollview = Ti.UI.createScrollableView({
-        views: __alloyId104,
+        views: __alloyId103,
         id: "scrollview",
         showPagingControl: "true",
         backgroundImage: "/images/outros/background.png"

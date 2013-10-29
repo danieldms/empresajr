@@ -1,33 +1,15 @@
 function doPost(params, _callback) {
-    if ("NONE" != Titanium.Network.networkTypeName && "UNKNOWN" != Titanium.Network.networkTypeName) {
-        Alloy.Globals.preload.show();
-        if ("mobileweb" == Ti.Platform.osname) {
-            xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
-            xhr.onreadystatechange = function() {
-                if (4 == xhr.readyState && 200 == xhr.status && null != xhr.responseText) {
-                    var json = JSON.parse(xhr.responseText);
-                    _callback && _callback(json);
-                }
-            };
-            var data = "?";
-            for (var prop in params) data += prop + "=" + params[prop] + "&";
-            xhr.open("POST", url + data);
-            xhr.send();
-        } else {
-            xhr.onload = function(e) {
-                if (null != e) try {
-                    var json = JSON.parse(this.responseText);
-                } catch (e) {
-                    Ti.API.info(e);
-                } finally {
-                    _callback && _callback(json);
-                }
-            };
-            xhr.open("POST", url);
-            xhr.send(params);
+    xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
+    xhr.onreadystatechange = function() {
+        if (4 == xhr.readyState && 200 == xhr.status && null != xhr.responseText) {
+            var json = JSON.parse(xhr.responseText);
+            _callback && _callback(json);
         }
-        Alloy.Globals.preload.hide();
-    } else alert("Sem conexão com a internet!");
+    };
+    var data = "?";
+    for (var prop in params) data += prop + "=" + params[prop] + "&";
+    xhr.open("POST", url + data);
+    xhr.send();
 }
 
 var url = "http://empresajr.com/app/processa.php";

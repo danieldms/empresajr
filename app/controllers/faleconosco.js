@@ -20,7 +20,10 @@ $.enviar.addEventListener('click', function(e){
 });
 
 function enviar(){
-	Alloy.Globals.Util.newSac($.nome.value, $.assunto.value, $.email.value, $.telefone.value, $.mensagem.value, processa);
+	if($.nome.value != null && ($.email.value != null || $.telefone.value != null) 
+		&& $.assunto.value != null && $.mensagem.value != null){
+		Alloy.Globals.Util.newSac($.nome.value, $.assunto.value, $.email.value, $.telefone.value, $.mensagem.value, processa);
+	}
 }
 
 function processa(e){

@@ -1,17 +1,15 @@
 function doPost(params, _callback) {
-    if ("NONE" != Titanium.Network.networkTypeName && "UNKNOWN" != Titanium.Network.networkTypeName) {
-        xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
-        xhr.onreadystatechange = function() {
-            if (4 == xhr.readyState && 200 == xhr.status && null != xhr.responseText) {
-                var json = JSON.parse(xhr.responseText);
-                _callback && _callback(json);
-            }
-        };
-        var data = "?";
-        for (var prop in params) data += prop + "=" + params[prop] + "&";
-        xhr.open("POST", url + data);
-        xhr.send();
-    } else alert("Sem conexão com a internet!");
+    xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
+    xhr.onreadystatechange = function() {
+        if (4 == xhr.readyState && 200 == xhr.status && null != xhr.responseText) {
+            var json = JSON.parse(xhr.responseText);
+            _callback && _callback(json);
+        }
+    };
+    var data = "?";
+    for (var prop in params) data += prop + "=" + params[prop] + "&";
+    xhr.open("POST", url + data);
+    xhr.send();
 }
 
 var url = "http://empresajr.com/app/processa.php";

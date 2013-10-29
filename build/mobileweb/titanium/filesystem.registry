@@ -1,7 +1,5 @@
-ts	1382707790000
+ts	1383064362000
 .DS_Store	6148
-Default-Landscape.jpg	36232
-Default-Portrait.jpg	28479
 alloy
 	CFG.js	49
 	CFG.js.uncompressed.js	64
@@ -12,8 +10,8 @@ alloy
 	controllers
 		BaseController.js	1108
 		BaseController.js.uncompressed.js	5693
-		faleconosco.js	6729
-		faleconosco.js.uncompressed.js	9867
+		faleconosco.js	6841
+		faleconosco.js.uncompressed.js	9999
 		financeira
 			analise.js	3391
 			analise.js.uncompressed.js	4664
@@ -26,12 +24,12 @@ alloy
 			desenpenho.js.uncompressed.js	4490
 			pesquisa.js	3508
 			pesquisa.js.uncompressed.js	4781
-		index.js	23642
-		index.js.uncompressed.js	35211
-		login.js	4695
-		login.js.uncompressed.js	6924
-		mainView.js	3769
-		mainView.js.uncompressed.js	5395
+		index.js	24796
+		index.js.uncompressed.js	36846
+		login.js	4819
+		login.js.uncompressed.js	7104
+		mainView.js	4651
+		mainView.js.uncompressed.js	6710
 		mapa.js	3126
 		mapa.js.uncompressed.js	4566
 		marketing
@@ -44,11 +42,13 @@ alloy
 			estrutura.js.uncompressed.js	4950
 			padronizacao.js	3464
 			padronizacao.js.uncompressed.js	4737
+		pdf.js	683
+		pdf.js.uncompressed.js	945
 		sac
 			perguntas.js	12411
 			perguntas.js.uncompressed.js	17942
-		sac.js	8988
-		sac.js.uncompressed.js	14565
+		sac.js	9503
+		sac.js.uncompressed.js	15283
 		sobre.js	5588
 		sobre.js.uncompressed.js	6740
 	styles
@@ -84,6 +84,8 @@ alloy
 			estrutura.js.uncompressed.js	3597
 			padronizacao.js	3279
 			padronizacao.js.uncompressed.js	3597
+		pdf.js	3279
+		pdf.js.uncompressed.js	3597
 		sac
 			perguntas.js	3279
 			perguntas.js.uncompressed.js	3597
@@ -107,14 +109,13 @@ alloy
 	widgets
 alloy.js	5356
 alloy.js.uncompressed.js	8623
-app.js	155
-app.js.uncompressed.js	173
-appicon.png	19109
-apple-touch-icon-114x114-precomposed.png	15820
-apple-touch-icon-57x57-precomposed.png	6790
-apple-touch-icon-72x72-precomposed.png	8844
-apple-touch-icon-precomposed.png	6790
-apple_startup_images	36232
+app.js	209
+app.js.uncompressed.js	235
+appicon.png	11446
+apple-touch-icon-114x114-precomposed.png	9706
+apple-touch-icon-57x57-precomposed.png	4655
+apple-touch-icon-72x72-precomposed.png	6031
+apple-touch-icon-precomposed.png	4655
 back_button.png	253
 favicon.ico	0
 fonts
@@ -130,12 +131,14 @@ images
 		mapa.png	1431
 		menu.png	1032
 		oculos.png	1509
+		pdf.png	7635
 		red_pin.png	3748
 		sobre.png	754
 	outros
 		back_button.png	253
 		background.png	918547
 		faleconosco_header.png	3565
+		financeira.png	18310
 		header_login.png	14251
 		header_oculos.png	2990
 		home_empresajr.png	23860
@@ -148,13 +151,11 @@ mobileweb
 	alloy
 		CFG.js	49
 		CFG.js.uncompressed.js	64
-	appicon.png	19109
+	appicon.png	11446
 	apple_startup_images
 		.DS_Store	6148
-		Default-Landscape.jpg	36232
-		Default-Landscape.png	513333
-		Default-Portrait.jpg	28479
-		Default-Portrait.png	76153
+		Default-Landscape.png	798430
+		Default-Portrait.png	548119
 		Default.png	87119
 		README	492
 	fonts
@@ -170,12 +171,14 @@ mobileweb
 			mapa.png	1431
 			menu.png	1032
 			oculos.png	1509
+			pdf.png	7635
 			red_pin.png	3748
 			sobre.png	754
 		outros
 			back_button.png	253
 			background.png	918547
 			faleconosco_header.png	3565
+			financeira.png	18310
 			header_login.png	14251
 			header_oculos.png	2990
 			home_empresajr.png	23860
@@ -456,8 +459,8 @@ titanium
 	Ti.js.uncompressed.js	11558
 	dependencies.json	10389
 	package.json	660
-titanium.css	38000
+titanium.css	6773
 titanium.js	239100
 titanium.js.uncompressed.js	488115
-util.js	1082
-util.js.uncompressed.js	1938
+util.js	949
+util.js.uncompressed.js	1741

@@ -1,6 +1,6 @@
 function Controller() {
     function enviar() {
-        Alloy.Globals.Util.newSac($.nome.value, $.assunto.value, $.email.value, $.telefone.value, $.mensagem.value, processa);
+        null == $.nome.value || null == $.email.value && null == $.telefone.value || null == $.assunto.value || null == $.mensagem.value || Alloy.Globals.Util.newSac($.nome.value, $.assunto.value, $.email.value, $.telefone.value, $.mensagem.value, processa);
     }
     function processa(e) {
         if ("sucesso" == e.type) {

@@ -216,11 +216,22 @@ if (Ti.Platform.name === 'iPhone OS'){
   style = Titanium.UI.iPhone.ActivityIndicatorStyle.BIG;
 }
 else {
-  style = Ti.UI.ActivityIndicatorStyle.DARK;
+  style = Titanium.UI.ActivityIndicatorStyle.PLAIN;
 }
 
 $.activityIndicator.style = style;
-$.activityIndicator.show();
+
+$.wait.hide();
+
+Ti.App.addEventListener('app:preload', function(e){
+	if($.wait.getVisible()){
+		$.activityIndicator.hide();
+		$.wait.hide();
+	}else{
+		$.wait.show();
+		$.activityIndicator.show();
+	}
+});
 	
 Alloy.Globals.preload = $.activityIndicator;
 

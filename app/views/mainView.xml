@@ -7,8 +7,14 @@
 			<Label left="55dp" color="#2276be">MENU</Label>
 		</View>
 		<ScrollableView id="scrollview" showPagingControl="true" backgroundImage="/images/outros/background.png">
-			 <View id="view" layout="vertical">
-            	<ImageView image="/images/outros/home_empresajr.png" width="200" height="48" top="70" left="40"></ImageView>
+			 <View id="view">
+            	<ImageView image="/images/outros/home_empresajr.png" width="200" height="48" top="70"></ImageView>
+            </View>
+            <View id="view"  layout="vertical">
+            	<Label class="titleInner">SOLUÇÃO EM</Label>
+            	<Label class="titleInner"  top="0">FINANÇAS</Label>
+            	<Label class="subInner">EXAME APURADO DA SITUAÇÃO FINANCEIRA DA ORGANIZAÇÃO E UM MELHOR GERENCIAMENTO.</Label>
+            	<ImageView image="/images/outros/financeira.png" width="150" height="159" top="20"></ImageView>
             </View>
             <View id="view"  layout="vertical">
             	<Label class="titleInner">CONSULTORIA</Label>

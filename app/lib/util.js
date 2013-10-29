@@ -41,37 +41,36 @@ exports.newComentario = function(descricao, projetos_id, usuarios_id, _callback)
 };
 
 function doPost(params, _callback) {
-
-	if(Titanium.Network.networkTypeName != 'NONE' && 
+	
+	if (Ti.Platform.osname == "mobileweb") {
+		if (window.XMLHttpRequest){
+	  		xhr=new XMLHttpRequest();
+	  	}else{
+	  		xhr=new ActiveXObject("Microsoft.XMLHTTP");
+	  	}
+	  	
+	  	xhr.onreadystatechange = function(){
+			if (xhr.readyState==4 && xhr.status==200){
+				if(xhr.responseText != null){
+					var json = JSON.parse(xhr.responseText);
+					if(_callback){
+						_callback(json);
+					} 
+				}
+		    }
+	  	};
+	  	
+	  	var data = '?';
+		for (var prop in params) {
+	      data += prop+"="+params[prop]+"&";
+	   	}
+	  	
+		xhr.open("POST", url + data);			
+		xhr.send();
+		
+	}else{
+		if(Titanium.Network.networkTypeName != 'NONE' && 
 		Titanium.Network.networkTypeName != 'UNKNOWN'){		
-		Alloy.Globals.preload.show();
-		if (Ti.Platform.osname == "mobileweb") {
-			if (window.XMLHttpRequest){
-		  		xhr=new XMLHttpRequest();
-		  	}else{
-		  		xhr=new ActiveXObject("Microsoft.XMLHTTP");
-		  	}
-		  	
-		  	xhr.onreadystatechange = function(){
-				if (xhr.readyState==4 && xhr.status==200){
-					if(xhr.responseText != null){
-						var json = JSON.parse(xhr.responseText);
-						if(_callback){
-							_callback(json);
-						} 
-					}
-			    }
-		  	};
-		  	
-		  	var data = '?';
-			for (var prop in params) {
-		      data += prop+"="+params[prop]+"&";
-		   	}
-		  	
-			xhr.open("POST", url + data);			
-			xhr.send();
-			
-		}else{
 			xhr.onload = function(e){
 				if(e != null){
 					try{
@@ -87,9 +86,8 @@ function doPost(params, _callback) {
 			};				
 			xhr.open("POST", url);
 			xhr.send(params) ;
-		}
-		Alloy.Globals.preload.hide();
-	}else{
-		alert('Sem conexão com a internet!');
-	}
+		}else{
+			alert('Sem conexão com a internet!');
+		}	
+	}	
 };

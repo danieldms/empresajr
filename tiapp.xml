@@ -33,8 +33,8 @@
     <mobileweb>
         <precache/>
         <splash>
-            <enabled>true</enabled>
-            <inline-css-images>true</inline-css-images>
+            <enabled>false</enabled>
+            <inline-css-images>false</inline-css-images>
         </splash>
         <theme>default</theme>
         <map>

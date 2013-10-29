@@ -881,46 +881,46 @@ function Controller() {
         id: "main"
     });
     $.__views.index.add($.__views.main);
-    $.__views.__alloyId87 = Ti.UI.createView({
+    $.__views.wait = Ti.UI.createView({
+        id: "wait",
         width: "100%",
         height: "100%",
         backgroundColor: "transparent",
         left: "0",
         top: "0",
-        zIndex: "10",
-        id: "__alloyId87"
+        zIndex: "10"
     });
-    $.__views.index.add($.__views.__alloyId87);
-    $.__views.__alloyId88 = Ti.UI.createView({
+    $.__views.index.add($.__views.wait);
+    $.__views.__alloyId87 = Ti.UI.createView({
         width: "200dp",
         height: "100dp",
-        id: "__alloyId88"
+        id: "__alloyId87"
     });
-    $.__views.__alloyId87.add($.__views.__alloyId88);
-    $.__views.__alloyId89 = Ti.UI.createView({
+    $.__views.wait.add($.__views.__alloyId87);
+    $.__views.__alloyId88 = Ti.UI.createView({
         borderRadius: "10dp",
         opacity: "0.7",
         backgroundColor: "#000",
         borderColor: "#fff",
         borderWidth: "1dp",
-        id: "__alloyId89"
+        id: "__alloyId88"
     });
-    $.__views.__alloyId88.add($.__views.__alloyId89);
+    $.__views.__alloyId87.add($.__views.__alloyId88);
     $.__views.activityIndicator = Ti.UI.createActivityIndicator({
         id: "activityIndicator",
         top: "20dp",
         indicatorColor: "#FFF"
     });
-    $.__views.__alloyId88.add($.__views.activityIndicator);
-    $.__views.__alloyId90 = Ti.UI.createLabel({
+    $.__views.__alloyId87.add($.__views.activityIndicator);
+    $.__views.__alloyId89 = Ti.UI.createLabel({
         color: "white",
         left: "60dp",
         font: "{fontSize: '22dp'}",
         top: "65dp",
         text: "Carregando...",
-        id: "__alloyId90"
+        id: "__alloyId89"
     });
-    $.__views.__alloyId88.add($.__views.__alloyId90);
+    $.__views.__alloyId87.add($.__views.__alloyId89);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var currentView = null;
@@ -1028,9 +1028,18 @@ function Controller() {
         $.main.add(currentView);
     }
     var style;
-    style = Titanium.UI.iPhone.ActivityIndicatorStyle.BIG;
+    style = Titanium.UI.ActivityIndicatorStyle.PLAIN;
     $.activityIndicator.style = style;
-    $.activityIndicator.show();
+    $.wait.hide();
+    Ti.App.addEventListener("app:preload", function() {
+        if ($.wait.getVisible()) {
+            $.activityIndicator.hide();
+            $.wait.hide();
+        } else {
+            $.wait.show();
+            $.activityIndicator.show();
+        }
+    });
     Alloy.Globals.preload = $.activityIndicator;
     $.index.open();
     __defers["$.__views.__alloyId24!click!clickMenu"] && $.__views.__alloyId24.addEventListener("click", clickMenu);

@@ -22,10 +22,14 @@ $.entrar.addEventListener('click', function(e){
 });
 
 function login(){
-	Alloy.Globals.Util.login($.username.value, $.senha.value, processa);
+	if($.username.value != null && $.senha.value != null){
+		Ti.App.fireEvent('app:preload', null);
+		Alloy.Globals.Util.login($.username.value, $.senha.value, processa);
+	}
 }
 
 function processa(e){
+	Ti.App.fireEvent('app:preload', null);
 	if(e != null){
 		if(e.type != 'error'){
 			if(e.projeto.count > 0){

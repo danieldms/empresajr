@@ -4,6 +4,8 @@ Alloy.Globals.Util = require("util");
 
 Alloy.Globals.Usuario = null;
 
+Alloy.Globals.Projeto = null;
+
 Alloy.Globals.preload = null;
 
 Alloy.createController("index");
