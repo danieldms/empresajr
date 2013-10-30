@@ -146,8 +146,8 @@ $.main.addEventListener('touchend', function(e){
 });
 
 $.main.addEventListener('touchmove', function(e){
-	
-	if(e.source.id != 'mapview' && e.source.id != "view" && e.source.id != 'scrollview'){
+
+	if(e.source.ignore == null){
 		var coords = $.main.convertPointToView({
 			x : e.x,
 			y : e.y
@@ -214,8 +214,7 @@ if(currentView == null){
 var style;
 if (Ti.Platform.name === 'iPhone OS'){
   style = Titanium.UI.iPhone.ActivityIndicatorStyle.BIG;
-}
-else {
+}else {
   style = Titanium.UI.ActivityIndicatorStyle.PLAIN;
 }
 

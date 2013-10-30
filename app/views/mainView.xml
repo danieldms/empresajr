@@ -10,19 +10,19 @@
 			 <View id="view">
             	<ImageView image="/images/outros/home_empresajr.png" width="200" height="48" top="70"></ImageView>
             </View>
-            <View id="view"  layout="vertical">
+            <View layout="vertical" ignore="true">
             	<Label class="titleInner">SOLUÇÃO EM</Label>
             	<Label class="titleInner"  top="0">FINANÇAS</Label>
             	<Label class="subInner">EXAME APURADO DA SITUAÇÃO FINANCEIRA DA ORGANIZAÇÃO E UM MELHOR GERENCIAMENTO.</Label>
             	<ImageView image="/images/outros/financeira.png" width="150" height="159" top="20"></ImageView>
             </View>
-            <View id="view"  layout="vertical">
+            <View layout="vertical" ignore="true">
             	<Label class="titleInner">CONSULTORIA</Label>
             	<Label class="titleInner"  top="0">ORGANIZACIONAL</Label>
             	<Label class="subInner">ANÁLISE GERAL DA ORGANIZAÇÃO PARA QUE SE ESTABELEÇA UM MODELO DE ESTRUTURA MAIS ADEQUADO.</Label>
             	<ImageView image="/images/outros/home_icon1.png" width="150" height="179" top="20"></ImageView>
             </View>
-            <View id="view" layout="vertical">
+            <View layout="vertical" ignore="true">
             	<Label class="titleInner">SOLUÇÃO</Label>
             	<Label class="titleInner"  top="0">EM MARKETING</Label>
             	<Label class="subInner">PESQUISAS DE MERCADO E ESTUDO EXPLORATÓRIOS, ELABORAÇÃO DE PLANOS DE MARKETING.</Label>

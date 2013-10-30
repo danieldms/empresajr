@@ -1,0 +1,28 @@
+<Alloy>
+	<View layout="vertical">
+		<View id="navView">
+			<View id="button" height="50dp" width="50dp" left="0">
+				<ImageView image="/images/icons/menu.png" width="25dp" height="15dp"></ImageView>
+			</View>
+			<Label class="title">Quer Abrir seu Negócio?</Label>			
+		</View>
+		<ScrollView class="contentView" scrollingEnabled="true">		
+			<View class="header">
+				<ImageView image="/images/outros/header_oculos.png" height="50" width="110" left="10" top="20"></ImageView>
+				<Label class="titleHeader">ESTUDO DE 
+VIABILIDADE</Label>
+			</View>
+			<View class="fixedHeader">
+				<Label class="titleFixed">Descritivo</Label>
+			</View>
+			<Label  left="10" right="10" top="10" textAlign="Ti.UI.TEXT_ALIGNMENT_LEFT" class="text">
+O Estudo de Viabilidade consiste em um projeto de consultoria baseado em análises de pesquisa de mercado e de estudo financeiro, que aponta as possibilidades de sucesso ou insucesso de um empreendimento.
+
+Este serviço é indicado para empresas que:
+
+	• Desejam saber se há espaço no mercado para seu novo produto/serviço;
+	• Desejam saber se o negócio é viável dentro dos moldes pensados.	
+			</Label>
+		</ScrollView>
+	</View>	
+</Alloy>

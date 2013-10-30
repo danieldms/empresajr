@@ -25,10 +25,6 @@
 						<Label class="subLabel">Análise Financeira</Label>	
 					</View>	
 					
-					<View height="1" backgroundColor="#b1b0ac" width="100%" />		
-					<View class="menuItem" onClick="clickMenu" source="financeira/estudo">
-						<Label class="subLabel">Estudo de Viabilidade</Label>	
-					</View>	
 				</View>
 						
 				<View height="1" backgroundColor="#141414" width="100%" />		
@@ -69,21 +65,40 @@
 
 				<View height="1" backgroundColor="#141414" width="100%" />		
 				<View height="1" backgroundColor="#303030" width="100%" />		
-				<View class="menuItem" onClick="clickMenu" subView='sub_gestao'  onTouchstart="touchStart" onTouchend="touchEnd">
+				<View class="menuItem" onClick="clickMenu" subView='sub_gestao' onTouchstart="touchStart" onTouchend="touchEnd">
 					<Label left="10">Gestão de Pessoas</Label>			
 					<ImageView class="imgExpand" id="img" image="/images/icons/expand.png"></ImageView>	
 				</View>				
 				<View class="subMenu" height="0" id='sub_gestao' expand="80">						
 					<View height="1" backgroundColor="#b1b0ac" width="100%" />		
-					<View class="menuItem" onClick="clickMenu" source="organizacional/estrutura">
+					<View class="menuItem" onClick="clickMenu" source="gestao/desempenho">
 						<Label class="subLabel">Avaliação de Desempenho</Label>	
 					</View>		
 					
 					<View height="1" backgroundColor="#b1b0ac" width="100%" />		
-					<View class="menuItem" onClick="clickMenu" source="organizacional/padronizacao">
+					<View class="menuItem" onClick="clickMenu" source="gestao/pesquisa">
 						<Label class="subLabel">Pesquisa de Clima Organizacional</Label>	
 					</View>	
 				</View>
+				
+				<View height="1" backgroundColor="#141414" width="100%" />		
+				<View height="1" backgroundColor="#303030" width="100%" />		
+				<View class="menuItem" onClick="clickMenu" subView='sub_gestao' onTouchstart="touchStart" onTouchend="touchEnd">
+					<Label left="10">Quer abrir seu negócio</Label>			
+					<ImageView class="imgExpand" id="img" image="/images/icons/expand.png"></ImageView>	
+				</View>				
+				<View class="subMenu" height="0" id='sub_gestao' expand="80">						
+					
+					<View height="1" backgroundColor="#b1b0ac" width="100%" />		
+					<View class="menuItem" onClick="clickMenu" source="negocio/plano">
+						<Label class="subLabel">Plano de negócios</Label>	
+					</View>	
+					
+					<View height="1" backgroundColor="#b1b0ac" width="100%" />		
+					<View class="menuItem" onClick="clickMenu" source="negocio/estudo">
+						<Label class="subLabel">Estudo de Viabilidade</Label>	
+					</View>	
+				</View>		
 								
 				<View height="1" backgroundColor="#141414" width="100%" />		
 				<View height="1" backgroundColor="#303030" width="100%" />		

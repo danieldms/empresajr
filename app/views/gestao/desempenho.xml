@@ -4,6 +4,7 @@
 			<View id="button" height="50dp" width="50dp" left="0">
 				<ImageView image="/images/icons/menu.png" width="25dp" height="15dp"></ImageView>
 			</View>	
+			<Label class="title">Gestão de Pessoas</Label>	
 		</View>	
 		<ScrollView class="contentView" scrollingEnabled="true">		
 			<View class="header">
