@@ -8,7 +8,7 @@
 		</View>
 		<ScrollView class="contentView" scrollingEnabled="true">		
 			<View class="header">
-				<ImageView image="/images/outros/header_oculos.png" height="50" width="110" left="10" top="20"></ImageView>
+				<ImageView image="/images/outros/header_oculos.png" height="50" width="110" left="10"></ImageView>
 				<Label class="titleHeader">ESTUDO DE 
 VIABILIDADE</Label>
 			</View>

@@ -1,32 +1,13 @@
 function Controller() {
-    function mobileMap() {
-        var empresa = Titanium.Map.createAnnotation({
-            latitude: -12.995626,
-            longitude: -38.520156,
-            title: "Empresa JR.",
-            subtitle: "Av. Reitor Miguel Calmon, s/n, Vale do Canela - Escola de Administração da Ufba, no térreo - Salvador/BA - Tel (71) 3245-0757",
-            pincolor: Titanium.Map.ANNOTATION_RED,
-            animate: true
+    function traceRoute() {
+        Titanium.Geolocation.getCurrentPosition(function(e) {
+            if (e.error) {
+                alert("HFL cannot get your current location");
+                return;
+            }
+            cur = [ e.coords.latitude, e.coords.longitude ];
         });
-        var mapa = Titanium.Map.createView({
-            id: "mapview",
-            mapType: Titanium.Map.SATELLITE_TYPE,
-            region: {
-                latitude: -12.995626,
-                longitude: -38.520156,
-                latitudeDelta: .01,
-                longitudeDelta: .01
-            },
-            animate: true,
-            regionFit: true,
-            userLocation: true,
-            annotations: [ empresa ],
-            height: "100%",
-            width: "100%",
-            top: 0,
-            left: 0
-        });
-        $.mapview.add(mapa);
+        Titanium.Platform.openURL("https://maps.google.com/maps?saddr=" + cur + "&daddr=-12.995626,-38.520156&f=d&sensor=false&doflg=ptm&hl=en&dirflg=d&output=embed");
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "mapa";
@@ -35,6 +16,7 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
+    var __defers = {};
     $.__views.mapa = Ti.UI.createView({
         layout: "vertical",
         id: "mapa"
@@ -87,7 +69,8 @@ function Controller() {
     $.__views.mapa.add($.__views.__alloyId129);
     $.__views.mapview = Ti.UI.createView({
         id: "mapview",
-        height: "300dp"
+        height: "80%",
+        ignore: "true"
     });
     $.__views.__alloyId129.add($.__views.mapview);
     $.__views.__alloyId130 = Ti.UI.createView({
@@ -111,7 +94,15 @@ function Controller() {
         id: "__alloyId131"
     });
     $.__views.__alloyId130.add($.__views.__alloyId131);
-    $.__views.__alloyId132 = Ti.UI.createLabel({
+    $.__views.__alloyId132 = Ti.UI.createButton({
+        title: "Rota",
+        top: "-20dp",
+        right: "5dp",
+        id: "__alloyId132"
+    });
+    $.__views.__alloyId130.add($.__views.__alloyId132);
+    traceRoute ? $.__views.__alloyId132.addEventListener("click", traceRoute) : __defers["$.__views.__alloyId132!click!traceRoute"] = true;
+    $.__views.__alloyId133 = Ti.UI.createLabel({
         font: {
             fontSize: 12
         },
@@ -120,9 +111,9 @@ function Controller() {
         left: "10",
         right: "10",
         textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
-        id: "__alloyId132"
+        id: "__alloyId133"
     });
-    $.__views.__alloyId129.add($.__views.__alloyId132);
+    $.__views.__alloyId129.add($.__views.__alloyId133);
     exports.destroy = function() {};
     _.extend($, $.__views);
     arguments[0] || {};
@@ -137,8 +128,54 @@ function Controller() {
         this.backgroudColor = "transparent";
         this.opacity = 1;
     });
-    Ti.API.info("iPhone OS");
-    mobileMap();
+    Ti.API.info("mobileweb");
+    var empresa = Titanium.Map.createAnnotation({
+        latitude: -12.995626,
+        longitude: -38.520156,
+        title: "Empresa JR.",
+        subtitle: "Av. Reitor Miguel Calmon, s/n, Vale do Canela - Escola de Administração da Ufba, no térreo - Salvador/BA - Tel (71) 3245-0757",
+        pincolor: Titanium.Map.ANNOTATION_RED,
+        animate: true
+    });
+    var mapa = Titanium.Map.createView({
+        id: "mapview",
+        mapType: Titanium.Map.SATELLITE_TYPE,
+        region: {
+            latitude: -12.995626,
+            longitude: -38.520156,
+            latitudeDelta: .01,
+            longitudeDelta: .01
+        },
+        animate: true,
+        regionFit: true,
+        userLocation: true,
+        annotations: [ empresa ],
+        height: "100%",
+        width: "100%",
+        top: 0,
+        left: 0
+    });
+    $.mapview.add(mapa);
+    Titanium.Geolocation.accuracy = Titanium.Geolocation.ACCURACY_BEST;
+    Titanium.Geolocation.distanceFilter = 10;
+    Titanium.Geolocation.purpose = "Directions";
+    Titanium.Geolocation.getCurrentPosition(function(e) {
+        if (!e.success || e.error) {
+            alert("Error - " + JSON.stringify(e.error));
+            return;
+        }
+    });
+    Titanium.Geolocation.accuracy = Titanium.Geolocation.ACCURACY_BEST;
+    Titanium.Geolocation.distanceFilter = 10;
+    var cur;
+    Titanium.Geolocation.getCurrentPosition(function(e) {
+        if (e.error) {
+            alert("HFL cannot get your current location");
+            return;
+        }
+        cur = [ e.coords.latitude, e.coords.longitude ];
+    });
+    __defers["$.__views.__alloyId132!click!traceRoute"] && $.__views.__alloyId132.addEventListener("click", traceRoute);
     _.extend($, exports);
 }
 

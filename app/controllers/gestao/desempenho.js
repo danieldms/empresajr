@@ -9,7 +9,6 @@ $.button.addEventListener('touchstart', function(e){
 	this.opacity = 0.2;
 });
 
-
 $.button.addEventListener('touchend', function(e){
 	this.backgroudColor = "transparent";
 	this.opacity = 1;

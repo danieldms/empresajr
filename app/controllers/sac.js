@@ -7,6 +7,8 @@ var comentario = Titanium.UI.createView({
 
 $.button.addEventListener('click', function(e){
 	Ti.App.fireEvent('app:toggle', null);
+	$.mensagem.blur();
+
 });
 
 $.button.addEventListener('touchstart', function(e){
@@ -32,6 +34,7 @@ if(Alloy.Globals.Usuario != null){
 };
 
 $.enviar.addEventListener('click', function(e){
+	Ti.App.fireEvent('app:preload', null);
 	Alloy.Globals.Util.newComentario($.mensagem.value, Alloy.Globals.Projeto.id, Alloy.Globals.Usuario.id, newComentario);
 });
 
@@ -58,9 +61,9 @@ function processa(e){
 			processaComentario(e.comentarios[i]);
 		};
 		
-		if(e.realizado >= 100 && e.avaliacao == null && Alloy.Globals.dialog == null){
-			var alert = Titanium.UI.createAlertDialog({ title: 'Projeto Concluído', message: 'Deseja fazer uma avaliação do projeto?', buttonNames: ['Agora', 'Agora não'], cancel: 1, });
-			alert.addEventListener('click', function(e) {	
+		if(e.realizado >= 100 && e.avaliacao == 'true' && Alloy.Globals.dialog == null){
+			var alerta = Titanium.UI.createAlertDialog({ title: 'Projeto Concluído', message: 'Deseja fazer uma avaliação do projeto?', buttonNames: ['Agora', 'Agora não'], cancel: 1, });
+			alerta.addEventListener('click', function(e) {	
 			   	if (e.cancel === e.index || e.cancel === true) {
 			   		Alloy.Globals.dialog = 0;
 			      	return;
@@ -77,7 +80,7 @@ function processa(e){
 						break;			
 				}
 			});
-			alert.show();
+			alerta.show();
 		}
 	}else{
 		alert(e.message);
@@ -85,9 +88,10 @@ function processa(e){
 };
 
 function newComentario(e){
+	Ti.App.fireEvent('app:preload', null);
 	if(e.type == 'sucesso'){
-		processaComentario(e.comentario);
-		$.mensagem.value = '';
+		alert(e.message);
+		Ti.App.fireEvent('app:setLayout', {'layout':'sac', 'swipe': false});
 	}
 };
 

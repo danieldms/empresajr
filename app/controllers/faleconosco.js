@@ -1,7 +1,13 @@
 var args = arguments[0] || {};
+var disabled = false;
 
 $.button.addEventListener('click', function(e){
 	Ti.App.fireEvent('app:toggle', null);
+	$.nome.blur();
+	$.email.blur();
+	$.telefone.blur();
+	$.assunto.blur();
+	$.mensagem.blur();
 });
 
 $.button.addEventListener('touchstart', function(e){
@@ -22,20 +28,21 @@ $.enviar.addEventListener('click', function(e){
 function enviar(){
 	if($.nome.value != null && ($.email.value != null || $.telefone.value != null) 
 		&& $.assunto.value != null && $.mensagem.value != null){
+		Ti.App.fireEvent('app:preload', null);
 		Alloy.Globals.Util.newSac($.nome.value, $.assunto.value, $.email.value, $.telefone.value, $.mensagem.value, processa);
 	}
 }
 
 function processa(e){
+	Ti.App.fireEvent('app:preload', null);
+	alert(e.message);
+	
 	if(e.type == "sucesso"){
-		alert(e.message);
 		$.nome.value = '';
 		$.assunto.value = '';
 		$.email.value = '';
 		$.telefone.value = '';
 		$.mensagem.value = '';		
-	}else{
-		alert(e.message);
 	}
 };
 

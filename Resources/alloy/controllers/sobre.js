@@ -27,14 +27,14 @@ function Controller() {
         left: "0"
     });
     $.__views.navView.add($.__views.button);
-    $.__views.__alloyId153 = Ti.UI.createImageView({
+    $.__views.__alloyId154 = Ti.UI.createImageView({
         image: "/images/icons/menu.png",
         width: "25dp",
         height: "15dp",
-        id: "__alloyId153"
+        id: "__alloyId154"
     });
-    $.__views.button.add($.__views.__alloyId153);
-    $.__views.__alloyId154 = Ti.UI.createLabel({
+    $.__views.button.add($.__views.__alloyId154);
+    $.__views.__alloyId155 = Ti.UI.createLabel({
         height: "46dp",
         font: {
             fontSize: "18dp",
@@ -48,41 +48,40 @@ function Controller() {
             y: "1dp"
         },
         text: "Sobre",
-        id: "__alloyId154"
+        id: "__alloyId155"
     });
-    $.__views.navView.add($.__views.__alloyId154);
-    $.__views.__alloyId155 = Ti.UI.createScrollView({
+    $.__views.navView.add($.__views.__alloyId155);
+    $.__views.__alloyId156 = Ti.UI.createScrollView({
         backgroundColor: "transparent",
         layout: "vertical",
         scrollingEnabled: "true",
-        id: "__alloyId155"
+        id: "__alloyId156"
     });
-    $.__views.sobre.add($.__views.__alloyId155);
-    $.__views.__alloyId156 = Ti.UI.createView({
+    $.__views.sobre.add($.__views.__alloyId156);
+    $.__views.__alloyId157 = Ti.UI.createView({
         left: 0,
         width: "100%",
         height: "200",
-        layout: "horizontal",
-        id: "__alloyId156"
-    });
-    $.__views.__alloyId155.add($.__views.__alloyId156);
-    $.__views.__alloyId157 = Ti.UI.createImageView({
-        image: "/images/outros/sobre_header.png",
-        width: "100%",
-        height: "auto",
         id: "__alloyId157"
     });
     $.__views.__alloyId156.add($.__views.__alloyId157);
-    $.__views.__alloyId158 = Ti.UI.createView({
+    $.__views.__alloyId158 = Ti.UI.createImageView({
+        image: "/images/outros/sobre_header.png",
+        width: "100%",
+        height: "auto",
+        id: "__alloyId158"
+    });
+    $.__views.__alloyId157.add($.__views.__alloyId158);
+    $.__views.__alloyId159 = Ti.UI.createView({
         height: 26,
         left: 0,
         bottom: 2,
         layout: "vertical",
         backgroundColor: "#f5f5f5",
-        id: "__alloyId158"
+        id: "__alloyId159"
     });
-    $.__views.__alloyId155.add($.__views.__alloyId158);
-    $.__views.__alloyId159 = Ti.UI.createLabel({
+    $.__views.__alloyId156.add($.__views.__alloyId159);
+    $.__views.__alloyId160 = Ti.UI.createLabel({
         font: {
             fontSize: 11,
             fontWeight: "bold"
@@ -91,27 +90,27 @@ function Controller() {
         top: 6,
         color: "#8a8a8a",
         text: "SOBRE",
-        id: "__alloyId159"
+        id: "__alloyId160"
     });
-    $.__views.__alloyId158.add($.__views.__alloyId159);
-    $.__views.__alloyId160 = Ti.UI.createLabel({
+    $.__views.__alloyId159.add($.__views.__alloyId160);
+    $.__views.__alloyId161 = Ti.UI.createLabel({
         font: {
             fontSize: 12
         },
         color: "#666666",
-        text: 'Ao longo da sua existência, a Empresa JR. ADM UFBA exerceu papel de liderança no Movimento Empresa Júnior (MEJ) com forte participação nas instâncias representativas e nos encontros realizados. Fundada em 1989, a empresa surgiu de uma iniciativa de estudantes da Escolda de Administração da UFBA que após contato com universitários da Fundação Getúlio Vargas, fundaram a empresa. Durante a década de 90, a empresa se profissionalizou, estruturou o seu processo seletivo e realizou inúmeros projetos de consultoria para micro e pequenas empresas. Ao longo dos anos, foi possível se inserir no mercado local, aumentando a quantidade dos projetos e a capacitação propiciada aos membros. A partir do ano 2000, Empresa JR. ADM UFBA se firmou como uma das melhores empresas juniores do país.\n\nNo ano de 2001, foi elaborado o primeiro planejamento estratégico anual, sendo a primeira empresa júnior a adotar a prática. Em 2003, entrou para a história do MEJ ao organizar o OXI ENEJ, o décimo primeiro Encontro Nacional de Empresas Juniores, que foi o maior encontro já realizado e onde foi criada a Confederação Brasileira de Empresas Juniores, a Brasil Júnior. Em 2005 a Empresa JR. ADM UFBA ganhou seu primeiro prêmio de qualidade, o Prêmio Realce Empresarial, hoje MPE Brasil, onde concorreu com mais de 3.500 empresas de mercado. Este prêmio aumentou a visibilidade da empresa no mercado local propiciando uma grande divulgação da sua marca. Neste mesmo ano, foi realizada uma grande reestruturação do funcionamento da empresa para modernizar seu funcionamento e ajustá-lo à execução dos projetos, dando origem à estrutura de núcleos de produção.\n\nNo final de 2007, para que a empresa oferecesse cada vez mais soluções para os clientes, foi repensada a sua forma de fazer consultoria. Dessa forma, os projetos se tornaram mais focados na realidade dos clientes através de diagnósticos iniciais aprofundados e, além disso, os projetos passaram a ser realizados por consultores generalistas, o que implica em um aumento da visão sistêmica dos projetos, da capacitação de consultores e em soluções mais aplicáveis à realidade dos clientes. Em 2008, o novo modelo de consultoria foi totalmente implementado e foi institucionalizada a Gerência de Qualidade, responsável pelos Comitês de Qualidade: que avaliam constantemente as práticas da empresa. Para atestar mais uma vez o nosso compromisso com a Excelência, fomos premiados com o PGQB (Prêmio Gestão Qualidade Bahia) ciclo 2008 no nível 1, realizado pela Associação Baiana para Gestão Competitiva (ABGC). Esse foi, sem dúvida, um dos grandes reconhecimentos de todos esses 20 anos de pioneirismo, um estímulo à continuar "Capacitando para Transformar".',
+        text: "Com mais de duas décadas de experiência no mercado, a Empresa Jr. ADM UFBA é uma empresa focada em mostrar resultados efetivos para seus clientes através de projetos de consultoria com preços abaixo do mercado.  Fundada em 1989, a empresa é pioneira no Movimento Empresa Júnior nacional, sendo composta e gerida integralmente por estudantes do curso de graduação em Administração da UFBA, contando com a orientação de professores da universidade.  A qualidade dos nossos serviços é reconhecida nos prêmios Realce empresarial de 2005 e PGQB Nível 1 2008 (Prêmio Gestão Qualidade Bahia).",
         left: "10",
         right: "10",
         top: "10",
         textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
-        id: "__alloyId160"
-    });
-    $.__views.__alloyId155.add($.__views.__alloyId160);
-    $.__views.__alloyId161 = Ti.UI.createView({
-        height: "50",
         id: "__alloyId161"
     });
-    $.__views.__alloyId155.add($.__views.__alloyId161);
+    $.__views.__alloyId156.add($.__views.__alloyId161);
+    $.__views.__alloyId162 = Ti.UI.createView({
+        height: "50",
+        id: "__alloyId162"
+    });
+    $.__views.__alloyId156.add($.__views.__alloyId162);
     exports.destroy = function() {};
     _.extend($, $.__views);
     arguments[0] || {};

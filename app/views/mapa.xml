@@ -8,13 +8,16 @@
 		</View>
 		<View class="contentView">
 			<!-- Note the ns attribute is used to change the default namespace. -->
-	        <View id="mapview" height="300dp" >	
+	        <View id="mapview" height="80%" ignore='true'>	
 	        </View>			
 			<View class="fixedHeader">
-				<Label class="titleFixed">Endereço</Label>
+				<Label class="titleFixed">Endereço</Label>	
+				<Button onClick="traceRoute" top="-20dp" right="5dp">Rota</Button>			
 			</View>
+
 			<Label  left="10" right="10" textAlign="Ti.UI.TEXT_ALIGNMENT_LEFT" class="text">
-				Av. Reitor Miguel Calmon, s/n, Vale do Canela - Escola de Administração da Ufba, no térreo - Salvador/BA - Tel (71) 3245-0757</Label>
+				Av. Reitor Miguel Calmon, s/n, Vale do Canela - Escola de Administração da Ufba, no térreo - Salvador/BA - Tel (71) 3245-0757
+			</Label>
 		</View>
 	</View>	
 </Alloy>

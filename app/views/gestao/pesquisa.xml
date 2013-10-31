@@ -9,7 +9,7 @@
 		<ScrollView class="contentView" scrollingEnabled="true">		
 			<View class="header">
 				<ImageView image="/images/outros/header_oculos.png" height="50" width="110" left="10" top="20"></ImageView>
-				<Label class="titleHeader" top="10">PESQUISA DE 
+				<Label class="titleHeader">PESQUISA DE 
 CLIMA ORGANIZACIONAL</Label>
 			</View>
 			<View class="fixedHeader">

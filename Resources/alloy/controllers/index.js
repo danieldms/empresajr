@@ -1127,7 +1127,7 @@ function Controller() {
         $.main.add(currentView);
     }
     var style;
-    style = Titanium.UI.iPhone.ActivityIndicatorStyle.BIG;
+    style = Titanium.UI.ActivityIndicatorStyle.PLAIN;
     $.activityIndicator.style = style;
     $.wait.hide();
     Ti.App.addEventListener("app:preload", function() {

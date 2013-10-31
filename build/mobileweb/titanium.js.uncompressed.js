@@ -55,14 +55,14 @@ var require = {
 		name: "Empresajr"
 	},
 	ti: {
-		buildHash: "5ceaff8",
-		buildDate: "08/14/13 12:45",
+		buildHash: "222f4d1",
+		buildDate: "09/18/13 12:00",
 		colorsModule: "Ti/_/colors",
 		filesystem: {
 			registry: "ondemand"
 		},
 		theme: "default",
-		version: "3.1.2"
+		version: "3.1.3"
 	},
 	vendorPrefixes: {
 		css: ["", "-webkit-", "-moz-", "-ms-", "-o-", "-khtml-"],
@@ -1987,7 +1987,8 @@ define(function() {
 "Ti/API":function(){
 /* /titanium/Ti/API.js */
 
-define(["Ti/_/Evented", "Ti/_/lang"], function(Evented, lang) {
+/*global define, window*/
+define(['Ti/_/Evented', 'Ti/_/lang'], function(Evented, lang) {
 
 	var api = {},
 		global = window,
@@ -1997,20 +1998,17 @@ define(["Ti/_/Evented", "Ti/_/lang"], function(Evented, lang) {
 
 		// the order of these DOES matter... it uses the last known function
 		// (i.e. if trace() does not exist, it'll use debug() for trace)
-		fns = ["debug", "trace", "error", "fatal", "critical", "info", "notice", "log", "warn"];
-
+	fns = ['debug', 'trace', 'error', 'fatal', 'critical', 'notice', 'warn', 'info'];
 	// console.*() shim
 	con === void 0 && (con = global.console = {});
 
-	// make sure "log" is always at the end
-	["debug", "info", "warn", "error", "log"].forEach(function(c) {
-		con[c] || (con[c] = ("log" in con)
-			?	function () {
-					var a = Array.apply({}, arguments);
-					a.unshift(c + ":");
-					con.log(a.join(" "));
-				}
-			:	function () {}
+	// make sure 'log' is always at the end
+	fns.forEach(function(c) {
+		con[c] || (con[c] = ('log' in con) ? function () {
+				var a = Array.apply({}, arguments);
+				a.unshift(c + ':');
+				con.log(a.join(' '));
+			} : function () {}
 		);
 	});
 
@@ -2020,14 +2018,20 @@ define(["Ti/_/Evented", "Ti/_/lang"], function(Evented, lang) {
 		(function(fn) {
 			var ls = last = console[fn] ? fn : last;
 			api[fn] = function() {
-				console[ls]("[" + fn.toUpperCase() + "] " + lang.toArray(arguments).map(function(a) {
-					return require.is(a, "Object") ? a.hasOwnProperty("toString") ? a.toString() : JSON.stringify(a) : a === null ? "null" : a === void 0 ? "undefined" : a;
+				console[ls]('[' + fn.toUpperCase() + '] ' + lang.toArray(arguments).map(function(a) {
+					return require.is(a, 'Object') ? a.hasOwnProperty('toString') ? a.toString() : JSON.stringify(a) : a === null ? 'null' : a === void 0 ? 'undefined' : a;
 				}).join(' '));
 			};
 		})(fns[i]);
 	}
 
-	return lang.setObject("Ti.API", Evented, api);
+	api.log = function () {
+		var a = lang.toArray(arguments);
+		var fn = ~fns.indexOf(('' + a[0]).toLowerCase()) && a.shift().toLowerCase();
+		api[fn||'info'].apply(this, a);
+	};
+
+	return lang.setObject('Ti.API', Evented, api);
 
 });
 },
@@ -4291,11 +4295,11 @@ define(["require", "Ti/_/lang", "Ti/_/Evented", "Ti/API"],
 
 /*global Ti define window document navigator instrumentation*/
 define(
-	['Ti/_', 'Ti/_/Evented', 'Ti/_/has', 'Ti/_/lang', 'Ti/_/ready', 'Ti/_/style', 'Ti/_/dom', 'Ti/_/event',
+	['Ti/_', 'Ti/_/Evented', 'Ti/_/has', 'Ti/_/lang', 'Ti/_/ready', 'Ti/_/style', 'Ti/_/dom', 'Ti/_/event', 'Ti/_/has',
 	'Ti/_/Gestures/DoubleTap', 'Ti/_/Gestures/Dragging', 'Ti/_/Gestures/LongPress', 'Ti/_/Gestures/Pinch', 'Ti/_/Gestures/SingleTap',
 	'Ti/_/Gestures/Swipe', 'Ti/_/Gestures/TouchCancel', 'Ti/_/Gestures/TouchEnd', 'Ti/_/Gestures/TouchMove',
 	'Ti/_/Gestures/TouchStart', 'Ti/_/Gestures/TwoFingerTap'],
-	function(_, Evented, has, lang, ready, style, dom, event,
+	function(_, Evented, has, lang, ready, style, dom, event, has,
 		DoubleTap, Dragging, LongPress, Pinch, SingleTap, Swipe, TouchCancel, TouchEnd, TouchMove, TouchStart, TwoFingerTap) {
 
 	var global = window,
@@ -4391,7 +4395,7 @@ define(
 				}),
 				node = container.domNode,
 				coefficients = container._layoutCoefficients,
-				useTouch = 'ontouchstart' in global,
+				useTouch = has('touch'),
 				touching = 0;
 
 			coefficients.width.x1 = 1;
@@ -4450,6 +4454,10 @@ define(
 				}
 			}
 
+			// NOTE: This may be unnecessary. We have changed the event propagation system
+			// a few times and we can't remember if this code is actually used. It certainly
+			// may be redundant since each Ti.UI.View instance has it's own event handling,
+			// so we're just not sure if this is the source of the events.
 			on(node, useTouch ? 'touchstart' : 'mousedown', function(evt){
 				var handles = [
 					on(global, useTouch ? 'touchmove' : 'mousemove', function(evt){
@@ -13055,7 +13063,7 @@ define(["Ti/_", "Ti/_/declare", "Ti/_/has", "Ti/_/lang", "Ti/_/Evented", "Ti/Fil
 				this._aborted = this._completed = 0;
 				has("ti-instrumentation") && (this._requestInstrumentationTest = instrumentation.startTest("HTTP Request")),
 				args = is(args, "Object") ? lang.urlEncode(args) : args;
-				args && this._xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+				this._contentTypeSet || args && this._xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 				this._xhr.setRequestHeader('X-Titanium-Id', App.guid);
 				this._xhr.send(args);
 				clearTimeout(this._timeoutTimer);
@@ -13069,6 +13077,7 @@ define(["Ti/_", "Ti/_/declare", "Ti/_/has", "Ti/_/lang", "Ti/_/Evented", "Ti/Fil
 		},
 
 		setRequestHeader: function(name, value) {
+			name === 'Content-Type' && (this._contentTypeSet = 1);
 			this._xhr.setRequestHeader(name, value);
 		},
 
@@ -14461,8 +14470,8 @@ define(["Ti/_/declare", "Ti/_/lang", "Ti/_/Evented", "Ti/Locale", "Ti/UI", "Ti/_
 "Ti/UI/Picker":function(){
 /* /titanium/Ti/UI/Picker.js */
 
-define(["Ti/_/declare", "Ti/_/event", "Ti/UI/View", "Ti/_/UI/Widget", "Ti/UI", "Ti/_/lang", "Ti/_/dom", "Ti/_/ready"],
-	function(declare, event, View, Widget, UI, lang, dom, ready) {
+define(["Ti/_/declare", "Ti/_/event", 'Ti/_/has', "Ti/UI/View", "Ti/_/UI/Widget", "Ti/UI", "Ti/_/lang", "Ti/_/dom", "Ti/_/ready"],
+	function(declare, event, has, View, Widget, UI, lang, dom, ready) {
 
 	var is = require.is,
 		borderRadius = 6,
@@ -14494,7 +14503,7 @@ define(["Ti/_/declare", "Ti/_/event", "Ti/UI/View", "Ti/_/UI/Widget", "Ti/UI", "
 				}
 
 				self._handles = [
-					on(input, "ontouchstart" in window ? "touchend" : "click", handleChange),
+					on(input, has('touch') ? "touchend" : "click", handleChange),
 					on(input, "keyup", handleChange)
 				];
 			},
@@ -14599,7 +14608,7 @@ define(["Ti/_/declare", "Ti/_/event", "Ti/UI/View", "Ti/_/UI/Widget", "Ti/UI", "
 					}
 					eventInfo.selectedValue = selectedValue;
 				} else {
-					
+
 				}
 				this.fireEvent("change", eventInfo);
 			});
@@ -14608,7 +14617,7 @@ define(["Ti/_/declare", "Ti/_/event", "Ti/UI/View", "Ti/_/UI/Widget", "Ti/UI", "
 			this._add(column);
 			this._publish(column);
 		},
-		
+
 		_updateColumnHeights: function() {
 			var tallestColumnHeight = 0,
 				i;
@@ -14623,7 +14632,7 @@ define(["Ti/_/declare", "Ti/_/event", "Ti/UI/View", "Ti/_/UI/Widget", "Ti/UI", "
 		_defaultWidth: UI.SIZE,
 
 		_defaultHeight: UI.SIZE,
-		
+
 		add: function(value) {
 			if (is(value,"Array")) {
 				for (var i in value) {
@@ -14648,12 +14657,12 @@ define(["Ti/_/declare", "Ti/_/event", "Ti/UI/View", "Ti/_/UI/Widget", "Ti/UI", "
 			var column = this._columns[columnIndex];
 			return column && column.selectedRow;
 		},
-		
+
 		setSelectedRow: function(columnIndex, rowIndex) {
 			var column = this._columns[columnIndex];
 			column && (column.selectedRow = column.rows[rowIndex]);
 		},
-		
+
 		properties: {
 			columns: {
 				get: function() {
@@ -14719,7 +14728,7 @@ define(["Ti/_/declare", "Ti/_/event", "Ti/UI/View", "Ti/_/UI/Widget", "Ti/UI", "
 							case UI.PICKER_TYPE_TIME:
 								createInput("Time");
 								break;
-							case UI.PICKER_TYPE_DATE_AND_TIME: 
+							case UI.PICKER_TYPE_DATE_AND_TIME:
 								createInput("DateTime");
 								break;
 						}
@@ -14744,18 +14753,18 @@ define(["Ti/_/declare", "Ti/_/event", "Ti/UI/View", "Ti/_/UI/Widget", "Ti/UI", "
 "Ti/UI/PickerColumn":function(){
 /* /titanium/Ti/UI/PickerColumn.js */
 
-define(["Ti/_/declare", "Ti/_/UI/FontWidget", "Ti/_/dom", "Ti/UI", "Ti/_/style", "Ti/_/lang"],
-	function(declare, FontWidget, dom, UI, style, lang) {
-		
+define(["Ti/_/declare", "Ti/_/UI/FontWidget", "Ti/_/dom", "Ti/UI", 'Ti/_/has', "Ti/_/style", "Ti/_/lang"],
+	function(declare, FontWidget, dom, UI, has, style, lang) {
+
 	var setStyle = style.set,
 		contentPadding = 15,
 		on = require.on;
 
 	return declare("Ti.UI.PickerColumn", FontWidget, {
-		
+
 		constructor: function() {
 			var self = this,
-				clickEventName = "ontouchstart" in window ? "touchend" : "click",
+				clickEventName = has('touch') ? "touchend" : "click",
 				node = self.domNode,
 				rows = self.constants.__values__.rows = [],
 				upArrow = self._upArrow = dom.create("div", {
@@ -15203,8 +15212,8 @@ define(["Ti/_/declare", "Ti/_/UI/Widget", "Ti/_/UI/FontWidget", "Ti/_/lang", "Ti
 /* /titanium/Ti/UI/ScrollableView.js */
 
 /*global define window*/
-define(['Ti/_/declare', 'Ti/UI/View', 'Ti/_/dom', 'Ti/_/style', 'Ti/UI', 'Ti/_/browser'],
-	function(declare, View, dom, style, UI, browser) {
+define(['Ti/_/declare', 'Ti/UI/View', 'Ti/_/dom', 'Ti/_/has', 'Ti/_/style', 'Ti/UI', 'Ti/_/browser'],
+	function(declare, View, dom, has, style, UI, browser) {
 
 	var setStyle = style.set,
 		is = require.is,
@@ -15221,7 +15230,7 @@ define(['Ti/_/declare', 'Ti/UI/View', 'Ti/_/dom', 'Ti/_/style', 'Ti/UI', 'Ti/_/b
 		},
 		transitionEnd = transitionEvents[browser.runtime] || 'transitionEnd',
 
-		useTouch = 'ontouchstart' in global,
+		useTouch = has('touch'),
 
 		// Maximum time that a gesture can be considered a flick
 		maxFlickTime = 200,
@@ -17596,22 +17605,27 @@ define(["Ti/_/declare", "Ti/_/UI/TextBox", "Ti/_/css", "Ti/_/dom", "Ti/_/lang", 
 "Ti/UI/WebView":function(){
 /* /titanium/Ti/UI/WebView.js */
 
-define(["Ti/_/declare", "Ti/_/UI/Widget", "Ti/_/dom", "Ti/_/event", "Ti/_/lang", "Ti/_/text!Ti/_/UI/WebViewBridge.js", "Ti/App", "Ti/API", "Ti/UI"],
-	function(declare, Widget, dom, event, lang, bridge, App, API, UI) {
+/*global define, window*/
+define(['Ti/_/declare', 'Ti/_/UI/Widget', 'Ti/_/dom', 'Ti/_/event', 'Ti/_/lang', 'Ti/_/text!Ti/_/UI/WebViewBridge.js', 'Ti/App', 'Ti/API', 'Ti/UI', 'Ti/_/style'],
+	function(declare, Widget, dom, event, lang, bridge, App, API, UI, style) {
 
 	var on = require.on;
 
-	return declare("Ti.UI.WebView", Widget, {
+	return declare('Ti.UI.WebView', Widget, {
 
 		constructor: function() {
-			App.addEventListener(this.widgetId + ":unload", lang.hitch(this, function() {
+			App.addEventListener(this.widgetId + ':unload', lang.hitch(this, function() {
 				this._loading(1);
 			}));
-			this.backgroundColor = "#fff";
+			this.backgroundColor = '#fff';
+			style.set(this.domNode, {
+				overflow: 'auto',
+				overflowScrolling: 'touch'
+			});
 		},
 
 		destroy: function() {
-			App.removeEventListener(this.widgetId + ":unload");
+			App.removeEventListener(this.widgetId + ':unload');
 			this._destroy();
 			Widget.prototype.destroy.apply(this, arguments);
 		},
@@ -17627,27 +17641,27 @@ define(["Ti/_/declare", "Ti/_/UI/Widget", "Ti/_/dom", "Ti/_/event", "Ti/_/lang",
 			if (this._parent) {
 				this._destroy();
 				this._loading(1);
-
-				var url = this.url || "",
+				var url = this.url || '',
 					match = url.match(/(https?)\:\/\/([^\:\/]*)(:?\d*)(.*)/),
 					loc = window.location,
-					isSameDomain = !match || (match[0] + ":" === loc.protocol && match[1] + match[2] === window.location.host),
-					iframe = this._iframe = dom.create("iframe", {
+					isSameDomain = !match || (match[0] + ':' === loc.protocol && match[1] + match[2] === window.location.host),
+					iframe = this._iframe = dom.create('iframe', {
 						frameborder: 0,
 						marginwidth: 0,
 						marginheight: 0,
 						hspace: 0,
 						vspace: 0,
-						scrolling: this.showScrollbars ? "auto" : "no",
-						src: url || require.toUrl("Ti/_/UI/blank.html"),
+						scrolling: this.showScrollbars ? 'auto' : 'no',
+						src: url || require.toUrl('Ti/_/UI/blank.html'),
 						style: {
-							width: "100%",
-							height: "100%"
+							width: '100%',
+							height: '100%',
+							position: 'absolute'
 						}
 					}, this.domNode);
 
 				this._iframeHandles = [
-					on(iframe, "load", this, function(evt) {
+					on(iframe, 'load', this, function() {
 						var i = Math.max(isSameDomain | 0, 0),
 							cw = iframe.contentWindow,
 							prop,
@@ -17667,21 +17681,21 @@ define(["Ti/_/declare", "Ti/_/UI/Widget", "Ti/_/dom", "Ti/_/event", "Ti/_/lang",
 
 						if (i > 0) {
 							url = cw.location.href;
-							this.evalJS(bridge.replace("WEBVIEW_ID", this.widgetId + ":unload"));
+							this.evalJS(bridge.replace('WEBVIEW_ID', this.widgetId + ':unload'));
 							(html = this.properties.__values__.html) && this._setContent(html);
 						} else {
-							API.warn("Unable to inject WebView bridge into cross-domain URL, ignore browser security message");
+							API.warn('Unable to inject WebView bridge into cross-domain URL, ignore browser security message');
 						}
 
 						this._loading();
-						this.fireEvent("load", {
+						this.fireEvent('load', {
 							url: url ? (this.properties.__values__.url = url) : this.url
 						});
 					}),
-					on(iframe, "error", this, function() {
+					on(iframe, 'error', this, function() {
 						this._loading();
-						this.fireEvent("error", {
-							message: "Page failed to load",
+						this.fireEvent('error', {
+							message: 'Page failed to load',
 							url: this.url
 						});
 					})
@@ -17691,7 +17705,7 @@ define(["Ti/_/declare", "Ti/_/UI/Widget", "Ti/_/dom", "Ti/_/event", "Ti/_/lang",
 			}
 		},
 
-		_setParent: function(view) {
+		_setParent: function() {
 			Widget.prototype._setParent.apply(this, arguments);
 
 			// we are being added to a parent, need to manually fire
@@ -17711,7 +17725,7 @@ define(["Ti/_/declare", "Ti/_/UI/Widget", "Ti/_/dom", "Ti/_/event", "Ti/_/lang",
 		},
 
 		_loading: function(v) {
-			this.loading || v && this.fireEvent("beforeload", {
+			this.loading || v && this.fireEvent('beforeload', {
 				url: this.url
 			});
 			this.constants.loading = !!v;
@@ -17769,7 +17783,7 @@ define(["Ti/_/declare", "Ti/_/UI/Widget", "Ti/_/dom", "Ti/_/event", "Ti/_/lang",
 		_defaultWidth: UI.FILL,
 
 		_defaultHeight: UI.FILL,
-		
+
 		_getContentSize: function() {
 			return {
 				width: this._iframe ? this._iframe.clientWidth : 0,
@@ -17792,9 +17806,9 @@ define(["Ti/_/declare", "Ti/_/UI/Widget", "Ti/_/dom", "Ti/_/event", "Ti/_/lang",
 				set: function(value) {
 					var data = value;
 					switch (data && data.declaredClass) {
-						case "Ti.Filesystem.File":
+						case 'Ti.Filesystem.File':
 							data = data.read();
-						case "Ti.Blob":
+						case 'Ti.Blob':
 							data = data.toString();
 						default:
 							this.html = data;
@@ -17818,14 +17832,14 @@ define(["Ti/_/declare", "Ti/_/UI/Widget", "Ti/_/dom", "Ti/_/event", "Ti/_/lang",
 
 			showScrollbars: {
 				set: function(value) {
-					this._iframe && dom.attr.set(this._iframe, "scrolling", value ? "auto" : "no");
+					this._iframe && dom.attr.set(this._iframe, 'scrolling', value ? 'auto' : 'no');
 					return value;
 				},
 				value: true
 			},
 
-			url: { 
-				post: function(value) {
+			url: {
+				post: function() {
 					var values = this.properties.__values__;
 					values.data = void 0;
 					values.html = void 0;

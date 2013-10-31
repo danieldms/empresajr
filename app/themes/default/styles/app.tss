@@ -15,9 +15,9 @@
 
 ".text":{font: {fontSize: 12}, color: "#666666"},
 
-".header": {left: 0, width: '100%', height: 100, layout:"horizontal"},
+".header": {left: 0, width: '100%', height: 100},
 
-".titleHeader": { left: 20, right: 10, top: 30, font: {fontWeight: "bold", fontSize: 18, fontFamily:"DIN-BoldAlternate"}, color: "#115a98"},
+".titleHeader": { left: "140dp", right: 10, top: 30, font: {fontWeight: "bold", fontSize: 18, fontFamily:"DIN-BoldAlternate"}, color: "#115a98"},
 
 "ScrollView":{ backgroundColor:"transparent" },
 

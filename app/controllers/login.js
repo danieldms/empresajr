@@ -2,6 +2,8 @@ var args = arguments[0] || {};
 
 $.button.addEventListener('click', function(e){
 	Ti.App.fireEvent('app:toggle', null);
+	$.username.blur();
+	$.senha.blur();
 });
 
 $.button.addEventListener('touchstart', function(e){

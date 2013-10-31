@@ -81,7 +81,6 @@ function Controller() {
         left: 0,
         width: "100%",
         height: "100",
-        layout: "horizontal",
         id: "__alloyId99"
     });
     $.__views.scrollview.add($.__views.__alloyId99);
@@ -95,7 +94,7 @@ function Controller() {
     });
     $.__views.__alloyId99.add($.__views.__alloyId100);
     $.__views.label = Ti.UI.createLabel({
-        left: 20,
+        left: "140dp",
         right: 10,
         top: "20",
         font: {
@@ -225,6 +224,8 @@ function Controller() {
     arguments[0] || {};
     $.button.addEventListener("click", function() {
         Ti.App.fireEvent("app:toggle", null);
+        $.username.blur();
+        $.senha.blur();
     });
     $.button.addEventListener("touchstart", function() {
         this.backgroudColor = "#000";

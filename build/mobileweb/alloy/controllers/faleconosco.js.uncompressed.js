@@ -1,16 +1,20 @@
 function Controller() {
     function enviar() {
-        null == $.nome.value || null == $.email.value && null == $.telefone.value || null == $.assunto.value || null == $.mensagem.value || Alloy.Globals.Util.newSac($.nome.value, $.assunto.value, $.email.value, $.telefone.value, $.mensagem.value, processa);
+        if (null != $.nome.value && (null != $.email.value || null != $.telefone.value) && null != $.assunto.value && null != $.mensagem.value) {
+            Ti.App.fireEvent("app:preload", null);
+            Alloy.Globals.Util.newSac($.nome.value, $.assunto.value, $.email.value, $.telefone.value, $.mensagem.value, processa);
+        }
     }
     function processa(e) {
+        Ti.App.fireEvent("app:preload", null);
+        alert(e.message);
         if ("sucesso" == e.type) {
-            alert(e.message);
             $.nome.value = "";
             $.assunto.value = "";
             $.email.value = "";
             $.telefone.value = "";
             $.mensagem.value = "";
-        } else alert(e.message);
+        }
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "faleconosco";
@@ -44,6 +48,7 @@ function Controller() {
         image: "/images/icons/menu.png",
         width: "25dp",
         height: "15dp",
+        focusable: "true",
         id: "__alloyId0"
     });
     $.__views.button.add($.__views.__alloyId0);
@@ -77,7 +82,6 @@ function Controller() {
         left: 0,
         width: "100%",
         height: 100,
-        layout: "horizontal",
         id: "__alloyId2"
     });
     $.__views.scrollview.add($.__views.__alloyId2);
@@ -91,7 +95,7 @@ function Controller() {
     });
     $.__views.__alloyId2.add($.__views.__alloyId3);
     $.__views.__alloyId4 = Ti.UI.createLabel({
-        left: 20,
+        left: "140dp",
         right: 10,
         top: "40",
         font: {
@@ -315,6 +319,11 @@ function Controller() {
     arguments[0] || {};
     $.button.addEventListener("click", function() {
         Ti.App.fireEvent("app:toggle", null);
+        $.nome.blur();
+        $.email.blur();
+        $.telefone.blur();
+        $.assunto.blur();
+        $.mensagem.blur();
     });
     $.button.addEventListener("touchstart", function() {
         this.backgroudColor = "#000";
