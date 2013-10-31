@@ -21,7 +21,7 @@ function Controller() {
             var spin = Titanium.UI.createAnimation({
                 duration: 100
             });
-            "sub_mkt" == this.subView ? sub = $.sub_mkt : "sub_fin" == this.subView ? sub = $.sub_fin : "sub_org" == this.subView ? sub = $.sub_org : "sub_gestao" == this.subView && (sub = $.sub_gestao);
+            "sub_mkt" == this.subView ? sub = $.sub_mkt : "sub_fin" == this.subView ? sub = $.sub_fin : "sub_org" == this.subView ? sub = $.sub_org : "sub_gestao" == this.subView ? sub = $.sub_gestao : "sub_abrir" == this.subView && (sub = $.sub_abrir);
             if ("false" === this.toggle) {
                 this.toggle = "true";
                 t = t.rotate(180);
@@ -75,7 +75,7 @@ function Controller() {
     $.__views.index.add($.__views.menuView);
     $.__views.menuNavView = Ti.UI.createView({
         backgroundColor: "#042745",
-        height: 44,
+        height: "44dp",
         left: 0,
         top: 0,
         layout: "horizontal",
@@ -190,7 +190,7 @@ function Controller() {
         layout: "vertical",
         height: "0",
         id: "sub_fin",
-        expand: "120"
+        expand: "80"
     });
     $.__views.menuContentView.add($.__views.sub_fin);
     $.__views.__alloyId26 = Ti.UI.createView({
@@ -654,7 +654,7 @@ function Controller() {
             y: 1
         },
         toggle: "false",
-        subView: "sub_gestao",
+        subView: "sub_abrir",
         id: "__alloyId64"
     });
     $.__views.menuContentView.add($.__views.__alloyId64);
@@ -685,21 +685,21 @@ function Controller() {
         image: "/images/icons/expand.png"
     });
     $.__views.__alloyId64.add($.__views.img);
-    $.__views.sub_gestao = Ti.UI.createView({
+    $.__views.sub_abrir = Ti.UI.createView({
         backgroundColor: "#302c2b",
         layout: "vertical",
         height: "0",
-        id: "sub_gestao",
+        id: "sub_abrir",
         expand: "80"
     });
-    $.__views.menuContentView.add($.__views.sub_gestao);
+    $.__views.menuContentView.add($.__views.sub_abrir);
     $.__views.__alloyId66 = Ti.UI.createView({
         height: "1",
         backgroundColor: "#b1b0ac",
         width: "100%",
         id: "__alloyId66"
     });
-    $.__views.sub_gestao.add($.__views.__alloyId66);
+    $.__views.sub_abrir.add($.__views.__alloyId66);
     $.__views.__alloyId67 = Ti.UI.createView({
         layout: "horizontal",
         width: "100%",
@@ -711,7 +711,7 @@ function Controller() {
         source: "negocio/plano",
         id: "__alloyId67"
     });
-    $.__views.sub_gestao.add($.__views.__alloyId67);
+    $.__views.sub_abrir.add($.__views.__alloyId67);
     clickMenu ? $.__views.__alloyId67.addEventListener("click", clickMenu) : __defers["$.__views.__alloyId67!click!clickMenu"] = true;
     $.__views.__alloyId68 = Ti.UI.createLabel({
         color: "#f9f7f8",
@@ -731,7 +731,7 @@ function Controller() {
         width: "100%",
         id: "__alloyId69"
     });
-    $.__views.sub_gestao.add($.__views.__alloyId69);
+    $.__views.sub_abrir.add($.__views.__alloyId69);
     $.__views.__alloyId70 = Ti.UI.createView({
         layout: "horizontal",
         width: "100%",
@@ -743,7 +743,7 @@ function Controller() {
         source: "negocio/estudo",
         id: "__alloyId70"
     });
-    $.__views.sub_gestao.add($.__views.__alloyId70);
+    $.__views.sub_abrir.add($.__views.__alloyId70);
     clickMenu ? $.__views.__alloyId70.addEventListener("click", clickMenu) : __defers["$.__views.__alloyId70!click!clickMenu"] = true;
     $.__views.__alloyId71 = Ti.UI.createLabel({
         color: "#f9f7f8",
@@ -981,7 +981,8 @@ function Controller() {
         backgroundColor: "transparent",
         left: "0",
         top: "0",
-        zIndex: "10"
+        zIndex: "10",
+        visible: "false"
     });
     $.__views.index.add($.__views.wait);
     $.__views.__alloyId94 = Ti.UI.createView({
@@ -1022,6 +1023,7 @@ function Controller() {
     var touchStartX = 0;
     var buttonPressed = false;
     var touchRightStarted = false;
+    var pre = 0;
     var animateRight = Ti.UI.createAnimation({
         left: 250,
         curve: Ti.UI.ANIMATION_CURVE_EASE_OUT,
@@ -1090,7 +1092,11 @@ function Controller() {
         touchRightStarted = false;
     });
     $.main.addEventListener("touchmove", function(e) {
-        if (null == e.source.ignore) {
+        var x = "";
+        try {
+            x = e.source.getParent().getParent().ignore;
+        } catch (err) {}
+        if (!(null != e.source.ignore && "undefined" != e.source.ignore || null != x && "undefined" != x)) {
             var coords = $.main.convertPointToView({
                 x: e.x,
                 y: e.y
@@ -1125,12 +1131,14 @@ function Controller() {
     $.activityIndicator.style = style;
     $.wait.hide();
     Ti.App.addEventListener("app:preload", function() {
-        if ($.wait.getVisible()) {
+        if (1 == pre) {
             $.activityIndicator.hide();
             $.wait.hide();
+            pre = 0;
         } else {
             $.wait.show();
             $.activityIndicator.show();
+            pre = 1;
         }
     });
     Alloy.Globals.preload = $.activityIndicator;

@@ -424,7 +424,8 @@ function Controller() {
     $.__views.__alloyId148.add($.__views.__alloyId149);
     $.__views.comentario = Ti.UI.createView({
         id: "comentario",
-        layout: "vertical"
+        layout: "vertical",
+        ignore: "true"
     });
     $.__views.content.add($.__views.comentario);
     $.__views.__alloyId150 = Ti.UI.createView({

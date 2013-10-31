@@ -14,7 +14,7 @@
 					<Label left="10">Financeira</Label>
 					<ImageView class="imgExpand" id="img" image="/images/icons/expand.png"></ImageView>	
 				</View>
-				<View class="subMenu" height="0" id="sub_fin" expand="120">						
+				<View class="subMenu" height="0" id="sub_fin" expand="80">						
 					<View height="1" backgroundColor="#b1b0ac" width="100%" />		
 					<View class="menuItem" onClick="clickMenu" source="financeira/estrutura">
 						<Label class="subLabel">Estruturação Financeira</Label>	
@@ -83,11 +83,11 @@
 				
 				<View height="1" backgroundColor="#141414" width="100%" />		
 				<View height="1" backgroundColor="#303030" width="100%" />		
-				<View class="menuItem" onClick="clickMenu" subView='sub_gestao' onTouchstart="touchStart" onTouchend="touchEnd">
+				<View class="menuItem" onClick="clickMenu" subView='sub_abrir' onTouchstart="touchStart" onTouchend="touchEnd">
 					<Label left="10">Quer abrir seu negócio</Label>			
 					<ImageView class="imgExpand" id="img" image="/images/icons/expand.png"></ImageView>	
 				</View>				
-				<View class="subMenu" height="0" id='sub_gestao' expand="80">						
+				<View class="subMenu" height="0" id='sub_abrir' expand="80">						
 					
 					<View height="1" backgroundColor="#b1b0ac" width="100%" />		
 					<View class="menuItem" onClick="clickMenu" source="negocio/plano">
@@ -133,7 +133,7 @@
 			</ScrollView>
 		</View>
 		<View id="main" backgroundColor="#FFF"/>
-		<View id="wait" width="100%" height="100%" backgroundColor="transparent" left="0" top="0" zIndex="10">
+		<View id="wait" width="100%" height="100%" backgroundColor="transparent" left="0" top="0" zIndex="10" visible="false">
 			<View width="200dp" height="100dp">
 				<View borderRadius="10dp" opacity="0.7" backgroundColor="#000" borderColor="#fff" borderWidth="1dp"></View>
 				<ActivityIndicator id="activityIndicator" top="20dp" indicatorColor="#FFF" />

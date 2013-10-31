@@ -137,7 +137,7 @@ function Controller() {
         this.backgroudColor = "transparent";
         this.opacity = 1;
     });
-    Ti.API.info("mobileweb");
+    Ti.API.info("iPhone OS");
     mobileMap();
     _.extend($, exports);
 }

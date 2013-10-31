@@ -43,7 +43,8 @@ function Controller() {
     $.__views.navView.add($.__views.__alloyId109);
     var __alloyId110 = [];
     $.__views.view = Ti.UI.createView({
-        id: "view"
+        id: "view",
+        ignore: "true"
     });
     __alloyId110.push($.__views.view);
     $.__views.__alloyId111 = Ti.UI.createImageView({

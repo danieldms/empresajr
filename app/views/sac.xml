@@ -41,7 +41,7 @@
 			<View class="fixedHeader" top="10"> 
 				<Label class="titleFixed">Comentários</Label>
 			</View>
-			<View id="comentario" layout="vertical">
+			<View id="comentario" layout="vertical" ignore='true'>
 			</View>
 			
 			<View backgroundColor="#eeeeee" left="0" right="0" top="20" height="200" layout="vertical">

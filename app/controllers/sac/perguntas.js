@@ -55,3 +55,7 @@ $.inovacao.addEventListener('return', function() {
 $.qualidade.addEventListener('return', function(){
 	enviar();
 });
+
+$.SPreco.addEventListener('change', function(e){
+	$.SPreco.value = $.SPreco.value.toFixed();
+});

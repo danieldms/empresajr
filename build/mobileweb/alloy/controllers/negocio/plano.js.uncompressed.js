@@ -125,6 +125,18 @@ function Controller() {
     $.__views.__alloyId227.add($.__views.__alloyId233);
     exports.destroy = function() {};
     _.extend($, $.__views);
+    arguments[0] || {};
+    $.button.addEventListener("click", function() {
+        Ti.App.fireEvent("app:toggle", null);
+    });
+    $.button.addEventListener("touchstart", function() {
+        this.backgroudColor = "#000";
+        this.opacity = .2;
+    });
+    $.button.addEventListener("touchend", function() {
+        this.backgroudColor = "transparent";
+        this.opacity = 1;
+    });
     _.extend($, exports);
 }
 

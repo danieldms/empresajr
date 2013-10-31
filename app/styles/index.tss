@@ -2,7 +2,7 @@
 
 "#menuView":{ width:260, left: 0, top: 0, zIndex: 0, height: "100%", backgroundColor: "#1E1E1E", layout: "vertical"},
 
-"#menuNavView": { backgroundColor: "#042745", height: 44, left: 0, top: 0, layout: "horizontal"},
+"#menuNavView": { backgroundColor: "#042745", height: '44dp', left: 0, top: 0, layout: "horizontal"},
 
 ".labelfixed":{ font: {fontSize: 11, fontFamily: "Arial"}, left: 5, top: 4 },
 

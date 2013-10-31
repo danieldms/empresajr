@@ -4,6 +4,7 @@ var direction = 'reset';
 var touchStartX = 0;
 var buttonPressed = false;
 var touchRightStarted = false;
+var pre = 0;
 
 //animation for open the slidemenu
 var animateRight = Ti.UI.createAnimation({
@@ -103,6 +104,10 @@ function clickMenu(){
 				}else{
 					if(this.subView == 'sub_gestao'){
 						sub = $.sub_gestao; 
+					}else{
+						if(this.subView == 'sub_abrir'){
+							sub = $.sub_abrir; 
+						}
 					}
 				}
 			}
@@ -146,8 +151,13 @@ $.main.addEventListener('touchend', function(e){
 });
 
 $.main.addEventListener('touchmove', function(e){
-
-	if(e.source.ignore == null){
+	var x = '';
+	try{
+		x = e.source.getParent().getParent().ignore;
+	}catch(err){
+	}
+	
+	if((e.source.ignore == null || e.source.ignore == 'undefined') && (x == null || x == 'undefined') ){
 		var coords = $.main.convertPointToView({
 			x : e.x,
 			y : e.y
@@ -212,10 +222,11 @@ if(currentView == null){
 };
 
 var style;
+
 if (Ti.Platform.name === 'iPhone OS'){
-  style = Titanium.UI.iPhone.ActivityIndicatorStyle.BIG;
+	style = Titanium.UI.iPhone.ActivityIndicatorStyle.BIG;
 }else {
-  style = Titanium.UI.ActivityIndicatorStyle.PLAIN;
+	style = Titanium.UI.ActivityIndicatorStyle.PLAIN;
 }
 
 $.activityIndicator.style = style;
@@ -223,12 +234,14 @@ $.activityIndicator.style = style;
 $.wait.hide();
 
 Ti.App.addEventListener('app:preload', function(e){
-	if($.wait.getVisible()){
+	if(pre == 1){
 		$.activityIndicator.hide();
 		$.wait.hide();
+		pre = 0;
 	}else{
 		$.wait.show();
 		$.activityIndicator.show();
+		pre = 1;
 	}
 });
 	

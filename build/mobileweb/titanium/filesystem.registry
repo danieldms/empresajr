@@ -1,4 +1,4 @@
-ts	1383145864000
+ts	1383199039000
 .DS_Store	6148
 alloy
 	CFG.js	49
@@ -24,12 +24,12 @@ alloy
 			desenpenho.js.uncompressed.js	966
 			pesquisa.js	3510
 			pesquisa.js.uncompressed.js	4783
-		index.js	27178
-		index.js.uncompressed.js	40256
+		index.js	27349
+		index.js.uncompressed.js	40561
 		login.js	4848
 		login.js.uncompressed.js	7133
-		mainView.js	4861
-		mainView.js.uncompressed.js	6950
+		mainView.js	4875
+		mainView.js.uncompressed.js	6974
 		mapa.js	3126
 		mapa.js.uncompressed.js	4566
 		marketing
@@ -40,8 +40,8 @@ alloy
 		negocio
 			estudo.js	3402
 			estudo.js.uncompressed.js	4675
-			plano.js	3036
-			plano.js.uncompressed.js	4209
+			plano.js	3330
+			plano.js.uncompressed.js	4603
 		organizacional
 			estrutura.js	3677
 			estrutura.js.uncompressed.js	4950
@@ -52,8 +52,8 @@ alloy
 		sac
 			perguntas.js	12550
 			perguntas.js.uncompressed.js	18161
-		sac.js	9503
-		sac.js.uncompressed.js	15283
+		sac.js	9517
+		sac.js.uncompressed.js	15307
 		sobre.js	5588
 		sobre.js.uncompressed.js	6740
 	styles
@@ -71,8 +71,8 @@ alloy
 			desenpenho.js.uncompressed.js	20
 			pesquisa.js	3279
 			pesquisa.js.uncompressed.js	3597
-		index.js	4581
-		index.js.uncompressed.js	5035
+		index.js	4585
+		index.js.uncompressed.js	5039
 		login.js	3279
 		login.js.uncompressed.js	3597
 		mainView.js	3279
