@@ -1,13 +1,14 @@
 var args = arguments[0] || {};
 
 $.button.addEventListener('click', function(e){
-	Ti.App.fireEvent('app:toggle', null);
 	$.prazo.blur();
 	$.preco.blur();
 	$.credibilidade.blur();
 	$.aplicabilidade.blur();
 	$.inovacao.blur();
 	$.qualidade.blur();
+	Alloy.Globals.dialog = 0;
+	Ti.App.fireEvent('app:setLayout', {'layout':'sac', 'swipe': false});
 });
 
 $.button.addEventListener('touchstart', function(e){

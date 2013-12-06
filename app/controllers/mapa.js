@@ -12,7 +12,6 @@ $.button.addEventListener('touchstart', function(e){
 	this.opacity = 0.2;
 });
 
-
 $.button.addEventListener('touchend', function(e){
 	this.backgroudColor = "transparent";
 	this.opacity = 1;
@@ -34,6 +33,7 @@ var mapa = Titanium.Map.createView({
 	mapType: Titanium.Map.SATELLITE_TYPE,
 	region: {latitude:-12.995626, longitude:-38.520156, latitudeDelta: 0.01, longitudeDelta: 0.01},
 	animate:true, regionFit: true, userLocation: true, annotations: [empresa],
+	ignore:true,
 	height: '100%', width: '100%', top: 0, left: 0
 });
 

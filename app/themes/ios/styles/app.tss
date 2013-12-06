@@ -1,0 +1,61 @@
+"#navView": { height: "54dp", width: "100%", top: 0, left: 0, backgroundColor: "#105A99"},
+
+".title": {height: "46dp", font: {fontSize: "18dp",	fontWeight: "bold"}, color: "#FFF",	textAlign: "center", shadowColor: "#000",
+			shadowOffset: {	x: "0dp", y: "1dp"}},
+			
+"#menuNavView": { backgroundColor: "#042745", height: '54dp', left: 0, top: 0, layout: "horizontal"},
+
+".mainTitle": {font:{fontWeight: 'bold'}},
+
+".navContent":  {top: "15dp"},
+
+".contentView": { layout:"vertical"},
+
+".fixedHeader": {height: 26, left:0, bottom: 2, backgroundColor: "#f5f5f5"},
+
+".titleFixed": {font: {fontSize: 11, fontWeight: 'bold'}, left: 5, color: "#8a8a8a"},
+
+".titleInner":{font: {fontSize: 18, fontWeight:'bold'}, color: "#115a98", left: 30, top: 30 },
+
+".subInner":{font: {fontSize: 10}, color: "#115a98", left: 30, top: 5, right: 50 },
+
+".text":{font: {fontSize: 12}, color: "#666666"},
+
+".header": {left: 0, width: '100%', height: "100dp"},
+
+".titleHeader": { left: "140dp", right: 10, font: {fontWeight: "bold", fontSize: 18, fontFamily:"DIN-BoldAlternate"}, 
+				color: "#115a98", height: "100dp", verticalAlign: 'center'},
+
+"ScrollView":{ backgroundColor:"transparent" },
+
+".labelFields": {font:{fontSize: 14}, color: "#c9c9c9", left: 5, top: 13},
+
+".Plabel": {font:{fontSize: 12}, color: "#6E6E6E", left: 5, top: 0},
+
+".Ptitle": {font:{fontSize: 16, fontWeight: "bold"}, color: "#6E6E6E"},
+".Ptitle-min": {font:{fontSize: 14, fontWeight: "bold"}},
+
+".min": {font: {fontSize: 10}},
+
+".med-bold": {font: {fontSize: 12, fontWeight: "bold"}},
+
+".med": {font: {fontSize: 12}},
+
+".textFields": {width: 180, top: 12, left: 25, borderWidth: 0,  borderColor: "#FFF"},
+
+".textArea": { height: 100, borderWidth: 0, top: 5, left: 5, right: 5, borderColor: "#FFF"},
+
+".buttonFields":{left:10, bottom: 10, right: 10, height: 40, borderColor: "#FFF", font:{fontWeight: 'bold'}, borderRadius: 0, backgroundColor: "transparent", 
+				borderColor: "#2155bb", color:"white", backgroundImage: "/back_button.png"},
+				
+".titleProject":{ font:{fontFamily:"DIN-BoldAlternate", fontSize: 16}, color:"#7F7F7F"},
+
+".labelMin": { font: {fontSize: 10, fontWeight: "normal"}},
+
+".labelMin2": { font: {fontSize: 12, fontWeight: "bold"}},
+
+".pPrevisto": { backgroundGradient:{ type: "linear", startPoint: {x:0, y:"50%"}, endPoint: {x: "100%", y: "50%"},
+	colors: [ {color: '#125a95', offset: 0.0}, { color: '#4898dd', offset: 1.0 }], height: 10, left: 0 }},
+	
+".pRealizado": { backgroundGradient:{ type: "linear", startPoint: {x:0, y:"50%"}, endPoint: {x: "100%", y: "50%"},
+	colors: [ {color: '#125a95', offset: 0.0}, { color: '#1c5bc4', offset: 1.0 }], height: 10, left: 0 }}

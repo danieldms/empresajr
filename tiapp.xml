@@ -2,9 +2,9 @@
 <ti:app xmlns:ti="http://ti.appcelerator.org">
     <id>com.br.empresajr</id>
     <name>Empresajr</name>
-    <version>1.0</version>
-    <publisher>danielmarquesdasilva</publisher>
-    <url>http://</url>
+    <version>1.1</version>
+    <publisher>Ntera studio</publisher>
+    <url>http://ntera.com.br</url>
     <description>not specified</description>
     <copyright>2013 by danielmarquesdasilva</copyright>
     <icon>appicon.png</icon>
@@ -26,7 +26,8 @@
         </orientations>
     </iphone>
     <android xmlns:android="http://schemas.android.com/apk/res/android">
-        <manifest android:installLocation="preferExternal">
+        <manifest android:installLocation="preferExternal" package="com.br.empresajr" android:versionCode="2"
+     	android:versionName="1.2">
             <supports-screens android:anyDensity="true"
                 android:largeScreens="true" android:normalScreens="true" android:smallScreens="true"/>
             <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="11"/>

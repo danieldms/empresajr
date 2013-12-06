@@ -1,0 +1,7 @@
+eclipse.preferences.version=1
+provisioning_profiles/development/1C24ACAB-A738-4909-931A-52FF1364B9E9/appid=*
+provisioning_profiles/development/1C24ACAB-A738-4909-931A-52FF1364B9E9/name=iOS Team Provisioning Profile\: *
+provisioning_profiles/development/1C24ACAB-A738-4909-931A-52FF1364B9E9/uuid=1C24ACAB-A738-4909-931A-52FF1364B9E9
+provisioning_profiles/distribution/255AD86C-5BEA-4F70-B83E-FFD4D81A272F/appid=com.br.empresajr
+provisioning_profiles/distribution/255AD86C-5BEA-4F70-B83E-FFD4D81A272F/name=Empresa Jr
+provisioning_profiles/distribution/255AD86C-5BEA-4F70-B83E-FFD4D81A272F/uuid=255AD86C-5BEA-4F70-B83E-FFD4D81A272F

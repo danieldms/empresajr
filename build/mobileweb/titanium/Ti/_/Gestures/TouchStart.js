@@ -1,1 +1,0 @@
-define(["Ti/_/declare","Ti/_/lang"],function(e,t){return t.setObject("Ti._.Gestures.TouchStart",{processTouchStartEvent:function(e){for(var t=e.changedTouches,i=0,o=t.length,a={touchstart:[]};o>i;i++)a.touchstart.push({x:t[i].clientX,y:t[i].clientY});return a}})});

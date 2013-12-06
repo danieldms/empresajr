@@ -1,15 +1,17 @@
 <Alloy>
 	<View layout="vertical">
 		<View id="navView">
-			<View id="button" height="50dp" width="50dp" left="0">
-				<ImageView image="/images/icons/menu.png" width="25dp" height="15dp"></ImageView>
+			<View class="navContent">
+				<View id="button" height="50dp" width="50dp" left="0">
+					<ImageView image="/images/icons/menu.png" width="25dp" height="15dp"></ImageView>
+				</View>
+				<Label class="title">SAC</Label>			
 			</View>
-			<Label class="title">SAC</Label>			
 		</View>
 		<ScrollView id="scrollview" class="contentView" scrollingEnabled="true">
-			<View class="header" height="100">
-				<ImageView image="/images/outros/header_login.png" height="60" width="60" left="10" top="20"></ImageView>
-				<Label class="titleHeader" top="20" id="label" width="auto">ACOMPANHE O 
+			<View class="header">
+				<ImageView image="/images/outros/header_login.png" height="60" width="60" left="10"></ImageView>
+				<Label class="titleHeader" width="auto" left="90">ACOMPANHE O 
 ANDAMENTO DO SEU 
 PROJETO</Label>
 			</View>

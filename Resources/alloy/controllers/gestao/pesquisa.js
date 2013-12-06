@@ -12,29 +12,34 @@ function Controller() {
     });
     $.__views.pesquisa && $.addTopLevelView($.__views.pesquisa);
     $.__views.navView = Ti.UI.createView({
-        height: "44dp",
+        height: "54dp",
         width: "100%",
         top: 0,
         left: 0,
-        backgroundImage: "/lightbg.png",
+        backgroundColor: "#105A99",
         id: "navView"
     });
     $.__views.pesquisa.add($.__views.navView);
+    $.__views.__alloyId201 = Ti.UI.createView({
+        top: "15dp",
+        id: "__alloyId201"
+    });
+    $.__views.navView.add($.__views.__alloyId201);
     $.__views.button = Ti.UI.createView({
         id: "button",
         height: "50dp",
         width: "50dp",
         left: "0"
     });
-    $.__views.navView.add($.__views.button);
-    $.__views.__alloyId190 = Ti.UI.createImageView({
+    $.__views.__alloyId201.add($.__views.button);
+    $.__views.__alloyId202 = Ti.UI.createImageView({
         image: "/images/icons/menu.png",
         width: "25dp",
         height: "15dp",
-        id: "__alloyId190"
+        id: "__alloyId202"
     });
-    $.__views.button.add($.__views.__alloyId190);
-    $.__views.__alloyId191 = Ti.UI.createLabel({
+    $.__views.button.add($.__views.__alloyId202);
+    $.__views.__alloyId203 = Ti.UI.createLabel({
         height: "46dp",
         font: {
             fontSize: "18dp",
@@ -48,68 +53,66 @@ function Controller() {
             y: "1dp"
         },
         text: "Gestão de Pessoas",
-        id: "__alloyId191"
+        id: "__alloyId203"
     });
-    $.__views.navView.add($.__views.__alloyId191);
-    $.__views.__alloyId192 = Ti.UI.createScrollView({
+    $.__views.__alloyId201.add($.__views.__alloyId203);
+    $.__views.__alloyId204 = Ti.UI.createScrollView({
         backgroundColor: "transparent",
         layout: "vertical",
         scrollingEnabled: "true",
-        id: "__alloyId192"
+        id: "__alloyId204"
     });
-    $.__views.pesquisa.add($.__views.__alloyId192);
-    $.__views.__alloyId193 = Ti.UI.createView({
+    $.__views.pesquisa.add($.__views.__alloyId204);
+    $.__views.__alloyId205 = Ti.UI.createView({
         left: 0,
         width: "100%",
-        height: 100,
-        id: "__alloyId193"
+        height: "100dp",
+        id: "__alloyId205"
     });
-    $.__views.__alloyId192.add($.__views.__alloyId193);
-    $.__views.__alloyId194 = Ti.UI.createImageView({
+    $.__views.__alloyId204.add($.__views.__alloyId205);
+    $.__views.__alloyId206 = Ti.UI.createImageView({
         image: "/images/outros/header_oculos.png",
         height: "50",
         width: "110",
         left: "10",
-        top: "20",
-        id: "__alloyId194"
+        id: "__alloyId206"
     });
-    $.__views.__alloyId193.add($.__views.__alloyId194);
-    $.__views.__alloyId195 = Ti.UI.createLabel({
+    $.__views.__alloyId205.add($.__views.__alloyId206);
+    $.__views.__alloyId207 = Ti.UI.createLabel({
         left: "140dp",
         right: 10,
-        top: 30,
         font: {
             fontWeight: "bold",
             fontSize: 18,
             fontFamily: "DIN-BoldAlternate"
         },
         color: "#115a98",
+        height: "100dp",
+        verticalAlign: "center",
         text: "PESQUISA DE \nCLIMA ORGANIZACIONAL",
-        id: "__alloyId195"
+        id: "__alloyId207"
     });
-    $.__views.__alloyId193.add($.__views.__alloyId195);
-    $.__views.__alloyId196 = Ti.UI.createView({
+    $.__views.__alloyId205.add($.__views.__alloyId207);
+    $.__views.__alloyId208 = Ti.UI.createView({
         height: 26,
         left: 0,
         bottom: 2,
-        layout: "vertical",
         backgroundColor: "#f5f5f5",
-        id: "__alloyId196"
+        id: "__alloyId208"
     });
-    $.__views.__alloyId192.add($.__views.__alloyId196);
-    $.__views.__alloyId197 = Ti.UI.createLabel({
+    $.__views.__alloyId204.add($.__views.__alloyId208);
+    $.__views.__alloyId209 = Ti.UI.createLabel({
         font: {
             fontSize: 11,
             fontWeight: "bold"
         },
-        left: 10,
-        top: 6,
+        left: 5,
         color: "#8a8a8a",
         text: "Descritivo",
-        id: "__alloyId197"
+        id: "__alloyId209"
     });
-    $.__views.__alloyId196.add($.__views.__alloyId197);
-    $.__views.__alloyId198 = Ti.UI.createLabel({
+    $.__views.__alloyId208.add($.__views.__alloyId209);
+    $.__views.__alloyId210 = Ti.UI.createLabel({
         font: {
             fontSize: 12
         },
@@ -119,9 +122,9 @@ function Controller() {
         right: "10",
         top: "10",
         textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
-        id: "__alloyId198"
+        id: "__alloyId210"
     });
-    $.__views.__alloyId192.add($.__views.__alloyId198);
+    $.__views.__alloyId204.add($.__views.__alloyId210);
     exports.destroy = function() {};
     _.extend($, $.__views);
     arguments[0] || {};

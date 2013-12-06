@@ -1,0 +1,17 @@
+android/ATTR_MINIFY=true
+android/ATTR_PROJECT_NAME=Empresajr
+android/abi=armeabi
+android/distribute_path=/Users/danielmarquesdasilva/Documents/Documentos/key ntera
+android/keystore_alias=ntera
+android/keystore_password=
+android/keystore_path=/Users/danielmarquesdasilva/Documents/Documentos/key ntera/ntera
+android/recent_output=/Users/danielmarquesdasilva/Documents/Documentos/key ntera
+android/sdk_version=Google APIs (Android 2.3.3)
+eclipse.preferences.version=1
+iosLaunchConfigurationAttributes/ATTR_MINIFY=true
+iosLaunchConfigurationAttributes/ATTR_PROJECT_NAME=Empresajr
+iosLaunchConfigurationAttributes/appid=com.br.empresajr
+iosLaunchConfigurationAttributes/certificate=daniel da Silva (94T56G6YBT)
+iosLaunchConfigurationAttributes/keychain=
+iosLaunchConfigurationAttributes/sdk_version=7.0
+iosLaunchConfigurationAttributes/uuid=1C24ACAB-A738-4909-931A-52FF1364B9E9

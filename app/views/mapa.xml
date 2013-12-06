@@ -1,18 +1,20 @@
 <Alloy>
 	<View layout="vertical">
 		<View id="navView">
-			<View id="button" height="50dp" width="50dp" left="0">
-				<ImageView image="/images/icons/menu.png" width="25dp" height="15dp"></ImageView>
-			</View>
-			<Label class="title">Localização</Label>			
+			<View class="navContent">
+				<View id="button" height="50dp" width="50dp" left="0">
+					<ImageView image="/images/icons/menu.png" width="25dp" height="15dp"></ImageView>
+				</View>
+				<Label class="title">Localização</Label>	
+			</View>		
 		</View>
 		<View class="contentView">
 			<!-- Note the ns attribute is used to change the default namespace. -->
 	        <View id="mapview" height="80%" ignore='true'>	
 	        </View>			
 			<View class="fixedHeader">
-				<Label class="titleFixed">Endereço</Label>	
-				<Button onClick="traceRoute" top="-20dp" right="5dp">Rota</Button>			
+				<Label class="titleFixed" left="20">Endereço</Label>	
+				<Button onClick="traceRoute" right="5dp" backgroundColor="transparent" color="#">Rota</Button>			
 			</View>
 
 			<Label  left="10" right="10" textAlign="Ti.UI.TEXT_ALIGNMENT_LEFT" class="text">

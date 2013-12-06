@@ -1,4 +1,5 @@
 var args = arguments[0] || {};
+
 var disabled = false;
 
 $.button.addEventListener('click', function(e){

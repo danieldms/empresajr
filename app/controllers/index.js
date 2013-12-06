@@ -6,6 +6,8 @@ var buttonPressed = false;
 var touchRightStarted = false;
 var pre = 0;
 
+alert(Titanium.Platform.version);
+
 //animation for open the slidemenu
 var animateRight = Ti.UI.createAnimation({
 	left : 250,
@@ -128,9 +130,9 @@ function clickMenu(){
 		}		
 	}	
 }
-
+/*
 $.main.addEventListener('touchstart', function(e) {
-	touchStartX = e.x;
+	//touchStartX = e.x;
 });
 
 $.main.addEventListener('touchend', function(e){
@@ -183,7 +185,7 @@ $.main.addEventListener('touchmove', function(e){
 			}	
 		}	
 	}
-});
+});*/
 
 function toggleSlide(e){
 	if(direction == 'reset'){

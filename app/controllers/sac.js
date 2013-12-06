@@ -8,7 +8,6 @@ var comentario = Titanium.UI.createView({
 $.button.addEventListener('click', function(e){
 	Ti.App.fireEvent('app:toggle', null);
 	$.mensagem.blur();
-
 });
 
 $.button.addEventListener('touchstart', function(e){
@@ -21,9 +20,25 @@ $.button.addEventListener('touchend', function(e){
 	this.opacity = 1;
 });
 
-function clickPDF(){
+function clickPDF(){	
 	if(Alloy.Globals.Projeto.url != null){
-		Ti.App.fireEvent('app:setLayout', {'layout':'pdf', 'swipe': false});
+		//Ti.App.fireEvent('app:setLayout', {'layout':'pdf', 'swipe': false});
+		var alerta = Titanium.UI.createAlertDialog({ title: 'Arquivos', message: 'Deseja Enviar os arquivos para o seu Email?', buttonNames: ['Sim', 'Agora não'], cancel: 1, });
+			alerta.addEventListener('click', function(e) {	
+			   	switch (e.index) {
+			      	case 0: 	
+			      		Alloy.Globals.Util.sendArquivos(Alloy.Globals.Projeto.id);
+				      	break;
+				
+				    case 1: Titanium.Platform.openURL( "http://empresajr.com/app/uploads/"+Alloy.Globals.Projeto.url.src);
+
+				    	break;
+				
+				    default:
+						break;			
+				}
+			});
+			alerta.show();			
 	}else{
 		alert("Não foi adicionado nenhum arquivo!");
 	}
@@ -61,7 +76,7 @@ function processa(e){
 			processaComentario(e.comentarios[i]);
 		};
 		
-		if(e.realizado >= 100 && e.avaliacao == 'true' && Alloy.Globals.dialog == null){
+		if(e.realizado >= 100 && Alloy.Globals.dialog == null){
 			var alerta = Titanium.UI.createAlertDialog({ title: 'Projeto Concluído', message: 'Deseja fazer uma avaliação do projeto?', buttonNames: ['Agora', 'Agora não'], cancel: 1, });
 			alerta.addEventListener('click', function(e) {	
 			   	if (e.cancel === e.index || e.cancel === true) {

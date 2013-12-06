@@ -1,5 +1,8 @@
 var args = arguments[0] || {};
 
+$.button.add(args.backview);
+
+/*
 $.button.addEventListener('click', function(e){
 	Ti.App.fireEvent('app:toggle', null);
 });
@@ -13,4 +16,4 @@ $.button.addEventListener('touchstart', function(e){
 $.button.addEventListener('touchend', function(e){
 	this.backgroudColor = "transparent";
 	this.opacity = 1;
-});
+});*/

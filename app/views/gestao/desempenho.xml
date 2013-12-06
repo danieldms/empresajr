@@ -1,14 +1,16 @@
 <Alloy>
 	<View layout="vertical">
 		<View id="navView">
-			<View id="button" height="50dp" width="50dp" left="0">
-				<ImageView image="/images/icons/menu.png" width="25dp" height="15dp"></ImageView>
-			</View>	
-			<Label class="title">Gestão de Pessoas</Label>	
+			<View class="navContent">
+				<View id="button" height="50dp" width="50dp" left="0">
+					<ImageView image="/images/icons/menu.png" width="25dp" height="15dp"></ImageView>
+				</View>	
+				<Label class="title">Gestão de Pessoas</Label>	
+			</View>
 		</View>	
 		<ScrollView class="contentView" scrollingEnabled="true">		
 			<View class="header">
-				<ImageView image="/images/outros/header_oculos.png" height="50" width="110" left="10" top="20"></ImageView>
+				<ImageView image="/images/outros/header_oculos.png" height="50" width="110" left="10"></ImageView>
 				<Label class="titleHeader">AVALIAÇÃO DE 
 DESEMPENHO</Label>
 			</View>

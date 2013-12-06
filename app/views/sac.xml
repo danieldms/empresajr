@@ -1,10 +1,12 @@
 <Alloy>
 	<View layout="vertical">
 		<View id="navView">
-			<View id="button" height="50dp" width="50dp" left="0">
-				<ImageView image="/images/icons/menu.png" width="25dp" height="15dp"></ImageView>
-			</View>
-			<Label class="title">SAC</Label>		
+			<View class="navContent">
+				<View id="button" height="50dp" width="50dp" left="0">
+					<ImageView image="/images/icons/menu.png" width="25dp" height="15dp"></ImageView>
+				</View>
+				<Label class="title">SAC</Label>	
+			</View>	
 		</View>
 		<ScrollView class="contentView" id="content" contentHeight="auto">
 			<View class="fixedHeader">
