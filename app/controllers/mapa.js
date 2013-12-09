@@ -3,21 +3,8 @@ var args = arguments[0] || {};
 var destination = [-12.995626,-38.520156];
 var me =  [-12.99,-38.52];
 
-$.button.addEventListener('click', function(e){
-	Ti.App.fireEvent('app:toggle', null);
-});
-
-$.button.addEventListener('touchstart', function(e){
-	this.backgroudColor = "#000";
-	this.opacity = 0.2;
-});
-
-$.button.addEventListener('touchend', function(e){
-	this.backgroudColor = "transparent";
-	this.opacity = 1;
-});
-
-Ti.API.info(Ti.Platform.name);
+$.headers.add(args.headers);
+$.headers.setHeight(args.height);
 
 var empresa = Titanium.Map.createAnnotation({
     latitude:-12.995626,

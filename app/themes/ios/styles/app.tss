@@ -1,9 +1,7 @@
-"#navView": { height: "54dp", width: "100%", top: 0, left: 0, backgroundColor: "#105A99"},
-
 ".title": {height: "46dp", font: {fontSize: "18dp",	fontWeight: "bold"}, color: "#FFF",	textAlign: "center", shadowColor: "#000",
 			shadowOffset: {	x: "0dp", y: "1dp"}},
 			
-"#menuNavView": { backgroundColor: "#042745", height: '54dp', left: 0, top: 0, layout: "horizontal"},
+"#menuNavView": { backgroundColor: "#042745", left: 0, top: 0, layout: "horizontal"},
 
 ".mainTitle": {font:{fontWeight: 'bold'}},
 

@@ -2,9 +2,10 @@
 	<Window class="container">	
 		<View id="menuView">
 			<View id="menuNavView">
-				<View platform="ios" height="10dp"></View>
-				<ImageView image="/images/icons/casa.png" width="22dp" height="22dp" left="10" top="13dp" class="iconMenu"></ImageView>
-				<Label class="title" left="5" top="5">Menu</Label>
+				<View id="itemsMenu" layout="horizontal">
+					<ImageView image="/images/icons/casa.png" width="22dp" height="22dp" left="10" top="13dp" class="iconMenu"></ImageView>
+					<Label class="title" left="5" top="5">Menu</Label>
+				</View>
 			</View>
 			<View height="20" width="100%" backgroundColor="#6a6967" layout="horizontal">
 				<ImageView image="/images/icons/oculos.png" height="10" top="5" width="22" left="10"></ImageView>
@@ -17,12 +18,12 @@
 				</View>
 				<View class="subMenu" height="0" id="sub_fin" expand="80">						
 					<View height="1" backgroundColor="#b1b0ac" width="100%" />		
-					<View class="menuItem" onClick="clickMenu" source="financeira/estrutura">
+					<View class="menuItem" onClick="clickMenu" source="financeira/estrutura" title='Consultoria Financeira'>
 						<Label class="subLabel">Estruturação Financeira</Label>	
 					</View>		
 					
 					<View height="1" backgroundColor="#b1b0ac" width="100%" />		
-					<View class="menuItem" onClick="clickMenu" source="financeira/analise">
+					<View class="menuItem" onClick="clickMenu" source="financeira/analise" title='Consultoria Financeira'>
 						<Label class="subLabel">Análise Financeira</Label>	
 					</View>	
 					
@@ -36,12 +37,12 @@
 				</View>
 				<View class="subMenu" height="0" id="sub_mkt" expand="80">						
 					<View height="1" backgroundColor="#b1b0ac" width="100%" />		
-					<View class="menuItem" onClick="clickMenu" source="marketing/plano">
+					<View class="menuItem" onClick="clickMenu" source="marketing/plano" title='Consultoria Marketing'>
 						<Label class="subLabel">Plano de Marketing</Label>	
 					</View>		
 					
 					<View height="1" backgroundColor="#b1b0ac" width="100%" />		
-					<View class="menuItem" onClick="clickMenu" source="marketing/pesquisa">
+					<View class="menuItem" onClick="clickMenu" source="marketing/pesquisa" title='Consultoria Marketing'>
 						<Label class="subLabel">Pesquisa de Mercado</Label>	
 					</View>	
 				</View>
@@ -54,12 +55,12 @@
 				</View>				
 				<View class="subMenu" height="0" id="sub_org" expand="80">						
 					<View height="1" backgroundColor="#b1b0ac" width="100%" />		
-					<View class="menuItem" onClick="clickMenu" source="organizacional/estrutura">
+					<View class="menuItem" onClick="clickMenu" source="organizacional/estrutura" title='Consultoria Organizacional'>
 						<Label class="subLabel">Estrutura Organizacional</Label>	
 					</View>		
 					
 					<View height="1" backgroundColor="#b1b0ac" width="100%" />		
-					<View class="menuItem" onClick="clickMenu" source="organizacional/padronizacao">
+					<View class="menuItem" onClick="clickMenu" source="organizacional/padronizacao" title='Consultoria Organizacional'>
 						<Label class="subLabel">Padronização de Processos</Label>	
 					</View>	
 				</View>
@@ -72,12 +73,12 @@
 				</View>				
 				<View class="subMenu" height="0" id='sub_gestao' expand="80">						
 					<View height="1" backgroundColor="#b1b0ac" width="100%" />		
-					<View class="menuItem" onClick="clickMenu" source="gestao/desempenho">
+					<View class="menuItem" onClick="clickMenu" source="gestao/desempenho" title='Gestão de Pessoas'>
 						<Label class="subLabel">Avaliação de Desempenho</Label>	
 					</View>		
 					
 					<View height="1" backgroundColor="#b1b0ac" width="100%" />		
-					<View class="menuItem" onClick="clickMenu" source="gestao/pesquisa">
+					<View class="menuItem" onClick="clickMenu" source="gestao/pesquisa" title='Gestão de Pessoas'>
 						<Label class="subLabel">Pesquisa de Clima Organizacional</Label>	
 					</View>	
 				</View>
@@ -91,40 +92,40 @@
 				<View class="subMenu" height="0" id='sub_abrir' expand="80">						
 					
 					<View height="1" backgroundColor="#b1b0ac" width="100%" />		
-					<View class="menuItem" onClick="clickMenu" source="negocio/plano">
+					<View class="menuItem" onClick="clickMenu" source="negocio/plano" title='Quer abrir seu negócio?'>
 						<Label class="subLabel">Plano de negócios</Label>	
 					</View>	
 					
 					<View height="1" backgroundColor="#b1b0ac" width="100%" />		
-					<View class="menuItem" onClick="clickMenu" source="negocio/estudo">
+					<View class="menuItem" onClick="clickMenu" source="negocio/estudo" title='Quer abrir seu negócio?'>
 						<Label class="subLabel">Estudo de Viabilidade</Label>	
 					</View>	
 				</View>		
 								
 				<View height="1" backgroundColor="#141414" width="100%" />		
 				<View height="1" backgroundColor="#303030" width="100%" />		
-				<View class="menuItem" onClick="clickMenu" onTouchstart="touchStart" source="sobre">
+				<View class="menuItem" onClick="clickMenu" onTouchstart="touchStart" source="sobre" title='Sobre'>
 					<ImageView image="/images/icons/sobre.png" left="10" width="21" height="20" top="10"></ImageView>
 					<Label>Sobre a Empresa Jr.</Label>
 				</View>
 				
 				<View height="1" backgroundColor="#141414" width="100%" />		
 				<View height="1" backgroundColor="#303030" width="100%" />		
-				<View class="menuItem" onClick="clickMenu" restrito="true" onTouchstart="touchStart" source="sac">
+				<View class="menuItem" onClick="clickMenu" restrito="true" onTouchstart="touchStart" source="sac" title='SAC'>
 					<ImageView image="/images/icons/SAC.png" left="10" width="16" height="20" top="10"></ImageView>
 					<Label>SAC</Label>
 				</View>
 				
 				<View height="1" backgroundColor="#141414" width="100%" />		
 				<View height="1" backgroundColor="#303030" width="100%" />		
-				<View class="menuItem" onClick="clickMenu" onTouchstart="touchStart" source="mapa">
+				<View class="menuItem" onClick="clickMenu" onTouchstart="touchStart" source="mapa" title='Localização'>
 					<ImageView image="/images/icons/mapa.png" left="10" width="15" height="20" top="10"></ImageView>
 					<Label>Mapa de Localização</Label>
 				</View>
 				
 				<View height="1" backgroundColor="#141414" width="100%" />		
 				<View height="1" backgroundColor="#303030" width="100%" />		
-				<View class="menuItem" onClick="clickMenu" onTouchstart="touchStart" source="faleconosco">
+				<View class="menuItem" onClick="clickMenu" onTouchstart="touchStart" source="faleconosco" title='Fale Conosco'>
 					<ImageView image="/images/icons/faleconosco.png" left="9" width="23" height="20" top="10"></ImageView>
 					<Label>Fale Conosco</Label>
 				</View>

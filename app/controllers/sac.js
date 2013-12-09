@@ -5,20 +5,8 @@ var comentario = Titanium.UI.createView({
 	left: 0, top: 0
 });
 
-$.button.addEventListener('click', function(e){
-	Ti.App.fireEvent('app:toggle', null);
-	$.mensagem.blur();
-});
-
-$.button.addEventListener('touchstart', function(e){
-	this.backgroudColor = "#000";
-	this.opacity = 0.2;
-});
-
-$.button.addEventListener('touchend', function(e){
-	this.backgroudColor = "transparent";
-	this.opacity = 1;
-});
+$.headers.add(args.headers);
+$.headers.setHeight(args.height);
 
 function clickPDF(){	
 	if(Alloy.Globals.Projeto.url != null){
@@ -30,8 +18,8 @@ function clickPDF(){
 			      		Alloy.Globals.Util.sendArquivos(Alloy.Globals.Projeto.id);
 				      	break;
 				
-				    case 1: Titanium.Platform.openURL( "http://empresajr.com/app/uploads/"+Alloy.Globals.Projeto.url.src);
-
+				    case 1: 
+				    	Titanium.Platform.openURL( "http://empresajr.com/app/uploads/"+Alloy.Globals.Projeto.url.src);
 				    	break;
 				
 				    default:
@@ -84,11 +72,13 @@ function processa(e){
 			      	return;
 			   	}
 			   	switch (e.index) {
-			      	case 0: 	Ti.App.fireEvent('app:setLayout', {'layout':'sac/perguntas', 'swipe': false});
+			      	case 0: 	
+			      		Ti.App.fireEvent('app:setLayout', {'layout':'sac/perguntas','title': 'Avaliação', 'swipe': false});
 				      	break;
 				
-				    case 1: Titanium.API.info('Clicked button 1 (NO)');
-				    		Alloy.Globals.dialog = 0;
+				    case 1: 
+				    	Titanium.API.info('Clicked button 1 (NO)');
+			    		Alloy.Globals.dialog = 0;
 				    	break;
 				
 				    default:
@@ -106,7 +96,7 @@ function newComentario(e){
 	Ti.App.fireEvent('app:preload', null);
 	if(e.type == 'sucesso'){
 		alert(e.message);
-		Ti.App.fireEvent('app:setLayout', {'layout':'sac', 'swipe': false});
+		Ti.App.fireEvent('app:setLayout', {'layout':'sac', 'title': 'SAC', 'swipe': false});
 	}
 };
 

@@ -1,24 +1,11 @@
 var args = arguments[0] || {};
-
-$.button.addEventListener('click', function(e){
-	Ti.App.fireEvent('app:toggle', null);
-	$.username.blur();
-	$.senha.blur();
-});
-
-$.button.addEventListener('touchstart', function(e){
-	this.backgroudColor = "#000";
-	this.opacity = 0.2;
-});
+$.headers.add(args.headers);
+$.headers.setHeight(args.height);
 
 $.senha.addEventListener("return", function(e){
 	login();
 });
 
-$.button.addEventListener('touchend', function(e){
-	this.backgroudColor = "transparent";
-	this.opacity = 1;
-});
 $.entrar.addEventListener('click', function(e){
 	login();
 });
@@ -47,5 +34,5 @@ function processa(e){
 };
 
 function setProjeto(e){
-	Ti.App.fireEvent('app:setLayout', {'layout':'sac', 'swipe': false});
+	Ti.App.fireEvent('app:setLayout', {'layout':'sac', 'title': 'SAC', 'swipe': false});
 };

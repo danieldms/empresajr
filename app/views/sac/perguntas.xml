@@ -1,14 +1,6 @@
 <Alloy>
 	<View layout="vertical">
-		<View id="navView">
-			<View class="navContent">
-				<View id="button" height="50dp" width="50dp" left="0">
-					<ImageView image="/images/icons/menu.png" width="30dp" height="15dp"></ImageView>
-				</View>
-				<Label left="55dp" color="#2276be">Voltar</Label>
-				<Label class="title">SAC</Label>	
-			</View>				
-		</View>
+		<View id="headers"></View>
 		<ScrollView ignore="true" class="contentView" contentHeight="auto" scrollingEnabled="true" showVerticalScrollIndicator="true">
 			<View class="fixedHeader">
 				<Label class="titleFixed">Questionário</Label>

@@ -1,25 +1,7 @@
 var args = arguments[0] || {};
 
-$.button.addEventListener('click', function(e){
-	$.prazo.blur();
-	$.preco.blur();
-	$.credibilidade.blur();
-	$.aplicabilidade.blur();
-	$.inovacao.blur();
-	$.qualidade.blur();
-	Alloy.Globals.dialog = 0;
-	Ti.App.fireEvent('app:setLayout', {'layout':'sac', 'swipe': false});
-});
-
-$.button.addEventListener('touchstart', function(e){
-	this.backgroudColor = "#000";
-	this.opacity = 0.2;
-});
-
-$.button.addEventListener('touchend', function(e){
-	this.backgroudColor = "transparent";
-	this.opacity = 1;
-});
+$.headers.add(args.headers);
+$.headers.setHeight(args.height);
 
 $.enviar.addEventListener('click', function(e){
 	enviar();

@@ -1,13 +1,6 @@
 <Alloy>
 	<View layout="vertical">
-		<View id="navView">
-			<View class="navContent">
-				<View id="button" height="50dp" width="50dp" left="0">
-					<ImageView image="/images/icons/menu.png" width="25dp" height="15dp"></ImageView>
-				</View>
-				<Label left="55dp" color="#2276be" class="mainTitle">MENU</Label>
-			</View>
-		</View>
+		<View id="headers"></View>
 		<ScrollableView id="scrollview" showPagingControl="true" backgroundImage="/images/outros/background.png">
 			 <View id="view" ignore="true">
             	<ImageView image="/images/outros/home_empresajr.png" width="200" height="48" top="70"></ImageView>

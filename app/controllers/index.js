@@ -5,8 +5,7 @@ var touchStartX = 0;
 var buttonPressed = false;
 var touchRightStarted = false;
 var pre = 0;
-
-alert(Titanium.Platform.version);
+var titleHeight = '44dp';
 
 //animation for open the slidemenu
 var animateRight = Ti.UI.createAnimation({
@@ -22,8 +21,9 @@ var animateReset = Ti.UI.createAnimation({
 });
 
 // Referente ao Button superior que abre o slide do menu
-var backView = Ti.UI.createView({
-	height: '50dp',
+var leftButton = Ti.UI.createView({
+	top: 0,
+	height: '44dp',
 	width: '50dp',
 	left: 0
 });
@@ -38,20 +38,18 @@ var borda2 = Ti.UI.createView({
 	backgroundColor: "#303030"
 });
 
-var backbutton = Ti.UI.createImageView({
+var iconLeftButton = Ti.UI.createImageView({
 	height: '15dp',
 	width: '25dp',
 	image: '/images/icons/menu.png'
 });
 
-backView.addEventListener('touchstart', function(e){
-	this.backgroundColor = "#000";
-	this.opacity = 0.2;
+leftButton.addEventListener('touchstart', function(e){
+	iconLeftButton.opacity = 0.2;
 });
 
-backView.addEventListener('touchend', function(e){
-	this.backgroundColor = "transparent";
-	this.opacity = 1;
+leftButton.addEventListener('touchend', function(e){
+	iconLeftButton.opacity = 1;
 	
 	if(!touchRightStarted){
 		buttonPressed = true;	
@@ -59,7 +57,59 @@ backView.addEventListener('touchend', function(e){
 	}
 });
 
-backView.add(backbutton);
+leftButton.add(iconLeftButton);
+
+var header = Ti.UI.createView({
+	height: '44dp', width: '100%', backgroundColor: "#105A99",
+	top: 0, left: 0
+});
+
+var title = Ti.UI.createLabel({
+	height: "44dp", 
+	font: {fontSize: "18dp", fontWeight: "bold"}, 
+	color: "#FFF", 
+	textAlign: "center", 
+	shadowColor: "#000",
+	shadowOffset: {	x: "0dp", y: "1dp"},
+});
+
+if (Ti.Platform.name === 'iPhone OS'){
+	var version = Titanium.Platform.version.split(".");
+	var major = parseInt(version[0]);
+	
+	if(major >= 7){
+		// MENU
+		$.itemsMenu.setTop('20dp');
+		
+		//TITULOS DAS VIEWS
+		titleHeight = '64dp';
+		var space = Ti.UI.createView({
+			top: '20dp', height: '44dp', left: 0, width: '100%'
+		});
+		
+		leftButton.setHeight('44dp');
+		title.setHeight('44dp');
+		header.setHeight(titleHeight);
+		
+		space.add(leftButton);
+		space.add(title);
+		header.add(space);
+	}else{
+		header.add(leftButton);
+		header.add(title);
+	}
+}else{
+	header.add(leftButton);
+	header.add(title);
+}
+
+$.menuNavView.setHeight(titleHeight);
+
+// Argumentos que são passados para cada controller
+var args = {
+	'headers': header,
+	'height' : titleHeight,
+};	
 
 function touchStart(){
 	this.backgroundColor = "#000";
@@ -68,11 +118,6 @@ function touchStart(){
 function touchEnd(){
 	this.backgroundColor = 'transparent';
 };
-
-// Argumentos que são passados para cada controller
-var args = {
-	'backview': backView
-};	
 
 function clickMenu(){	
 	if(this.subView == null){		
@@ -83,7 +128,7 @@ function clickMenu(){
 			layout = this.source;
 		}
 		
-		Ti.App.fireEvent("app:setLayout", {'layout': layout });	
+		Ti.App.fireEvent("app:setLayout", {'layout': layout, 'title': this.title });	
 		layout = null;
 					
 		if(currentMenu != null && currentMenu != this){
@@ -205,6 +250,8 @@ Ti.App.addEventListener('app:toggle', function(e){
 });
 
 Ti.App.addEventListener("app:setLayout", function(e){
+	title.text = e.title;
+	
 	var view = Alloy.createController(e.layout, args).getView();
 	
 	$.main.add(view);

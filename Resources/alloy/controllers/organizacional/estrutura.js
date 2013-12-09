@@ -11,74 +11,33 @@ function Controller() {
         id: "estrutura"
     });
     $.__views.estrutura && $.addTopLevelView($.__views.estrutura);
-    $.__views.navView = Ti.UI.createView({
-        height: "54dp",
-        width: "100%",
-        top: 0,
-        left: 0,
-        backgroundColor: "#105A99",
-        id: "navView"
+    $.__views.headers = Ti.UI.createView({
+        id: "headers"
     });
-    $.__views.estrutura.add($.__views.navView);
-    $.__views.__alloyId251 = Ti.UI.createView({
-        top: "15dp",
-        id: "__alloyId251"
-    });
-    $.__views.navView.add($.__views.__alloyId251);
-    $.__views.button = Ti.UI.createView({
-        id: "button",
-        height: "50dp",
-        width: "50dp",
-        left: "0"
-    });
-    $.__views.__alloyId251.add($.__views.button);
-    $.__views.__alloyId252 = Ti.UI.createImageView({
-        image: "/images/icons/menu.png",
-        width: "25dp",
-        height: "15dp",
-        id: "__alloyId252"
-    });
-    $.__views.button.add($.__views.__alloyId252);
-    $.__views.__alloyId253 = Ti.UI.createLabel({
-        height: "46dp",
-        font: {
-            fontSize: "18dp",
-            fontWeight: "bold"
-        },
-        color: "#FFF",
-        textAlign: "center",
-        shadowColor: "#000",
-        shadowOffset: {
-            x: "0dp",
-            y: "1dp"
-        },
-        text: "Consultoria Organizacional",
-        id: "__alloyId253"
-    });
-    $.__views.__alloyId251.add($.__views.__alloyId253);
-    $.__views.__alloyId254 = Ti.UI.createScrollView({
+    $.__views.estrutura.add($.__views.headers);
+    $.__views.__alloyId208 = Ti.UI.createScrollView({
         backgroundColor: "transparent",
         layout: "vertical",
         scrollingEnabled: "true",
-        id: "__alloyId254"
+        id: "__alloyId208"
     });
-    $.__views.estrutura.add($.__views.__alloyId254);
-    $.__views.__alloyId255 = Ti.UI.createView({
+    $.__views.estrutura.add($.__views.__alloyId208);
+    $.__views.__alloyId209 = Ti.UI.createView({
         left: 0,
         width: "100%",
         height: "100dp",
-        id: "__alloyId255"
+        id: "__alloyId209"
     });
-    $.__views.__alloyId254.add($.__views.__alloyId255);
-    $.__views.__alloyId256 = Ti.UI.createImageView({
+    $.__views.__alloyId208.add($.__views.__alloyId209);
+    $.__views.__alloyId210 = Ti.UI.createImageView({
         image: "/images/outros/header_oculos.png",
         height: "50",
         width: "110",
         left: "10",
-        id: "__alloyId256"
+        id: "__alloyId210"
     });
-    $.__views.__alloyId255.add($.__views.__alloyId256);
-    $.__views.__alloyId257 = Ti.UI.createLabel({
+    $.__views.__alloyId209.add($.__views.__alloyId210);
+    $.__views.__alloyId211 = Ti.UI.createLabel({
         left: "140dp",
         right: 10,
         font: {
@@ -90,18 +49,18 @@ function Controller() {
         height: "100dp",
         verticalAlign: "center",
         text: "ESTRUTURAÇÃO \nORGANIZACIONAL",
-        id: "__alloyId257"
+        id: "__alloyId211"
     });
-    $.__views.__alloyId255.add($.__views.__alloyId257);
-    $.__views.__alloyId258 = Ti.UI.createView({
+    $.__views.__alloyId209.add($.__views.__alloyId211);
+    $.__views.__alloyId212 = Ti.UI.createView({
         height: 26,
         left: 0,
         bottom: 2,
         backgroundColor: "#f5f5f5",
-        id: "__alloyId258"
+        id: "__alloyId212"
     });
-    $.__views.__alloyId254.add($.__views.__alloyId258);
-    $.__views.__alloyId259 = Ti.UI.createLabel({
+    $.__views.__alloyId208.add($.__views.__alloyId212);
+    $.__views.__alloyId213 = Ti.UI.createLabel({
         font: {
             fontSize: 11,
             fontWeight: "bold"
@@ -109,10 +68,10 @@ function Controller() {
         left: 5,
         color: "#8a8a8a",
         text: "Descritivo",
-        id: "__alloyId259"
+        id: "__alloyId213"
     });
-    $.__views.__alloyId258.add($.__views.__alloyId259);
-    $.__views.__alloyId260 = Ti.UI.createLabel({
+    $.__views.__alloyId212.add($.__views.__alloyId213);
+    $.__views.__alloyId214 = Ti.UI.createLabel({
         font: {
             fontSize: 12
         },
@@ -122,23 +81,14 @@ function Controller() {
         right: "10",
         top: "10",
         textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
-        id: "__alloyId260"
+        id: "__alloyId214"
     });
-    $.__views.__alloyId254.add($.__views.__alloyId260);
+    $.__views.__alloyId208.add($.__views.__alloyId214);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    arguments[0] || {};
-    $.button.addEventListener("click", function() {
-        Ti.App.fireEvent("app:toggle", null);
-    });
-    $.button.addEventListener("touchstart", function() {
-        this.backgroudColor = "#000";
-        this.opacity = .2;
-    });
-    $.button.addEventListener("touchend", function() {
-        this.backgroudColor = "transparent";
-        this.opacity = 1;
-    });
+    var args = arguments[0] || {};
+    $.headers.add(args.headers);
+    $.headers.setHeight(args.height);
     _.extend($, exports);
 }
 

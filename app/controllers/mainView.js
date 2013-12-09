@@ -1,8 +1,9 @@
 var args = arguments[0] || {};
 
-$.button.add(args.backview);
-
+$.headers.add(args.headers);
+$.headers.setHeight(args.height);
 /*
+
 $.button.addEventListener('click', function(e){
 	Ti.App.fireEvent('app:toggle', null);
 });

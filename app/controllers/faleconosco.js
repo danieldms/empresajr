@@ -2,6 +2,14 @@ var args = arguments[0] || {};
 
 var disabled = false;
 
+$.headers.add(args.headers);
+$.headers.setHeight(args.height);
+
+/*if(Ti.Platform.version <= 6.1){
+	$.navContent.top = 0;
+	$.navView.height = '44dp';
+}
+*//*
 $.button.addEventListener('click', function(e){
 	Ti.App.fireEvent('app:toggle', null);
 	$.nome.blur();
@@ -21,7 +29,7 @@ $.button.addEventListener('touchend', function(e){
 	this.backgroudColor = "transparent";
 	this.opacity = 1;
 });
-
+*/
 $.enviar.addEventListener('click', function(e){
 	enviar();
 });
