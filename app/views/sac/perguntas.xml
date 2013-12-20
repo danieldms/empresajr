@@ -27,7 +27,7 @@
 				</View>			
 			</View>
 			
-			<View left="10" right="10" top="0" layout="vertical" height="205dp">
+			<View left="10" right="10" top="0" layout="vertical" height="225dp">
 				<Label class="Plabel med-bold">PREÇO:</Label>
 				<Label class="Plabel min">O PREÇO ESTÁ LIGADO AO QUE O CLIENTE ACHOU JUSTO APÓS A FINALIZAÇÃO DO PROJETO. SE O PROJETO REALIZADO ESTEVE DE ACORDO COM O PREÇO DEFINIDO ANTES.</Label>
 				<Slider id="SPreco"  min="0" max="10" width="100%" value="0" top="5dp" ignore="true"></Slider>
@@ -48,7 +48,7 @@
 				<TextArea class="textArea" height="70dp" id="preco" returnKeyType="Ti.UI.RETURNKEY_NEXT" textAlign="left" borderColor="#EEEEEE" borderWidth="8dp"></TextArea>			
 			</View>
 			
-			<View left="10" right="10" top="20" layout="vertical" height="195dp">
+			<View left="10" right="10" top="20" layout="vertical" height="235dp">
 				<Label class="Plabel med-bold">PRAZO:</Label>
 				<Label class="Plabel min">O PRAZO CORRESPONDE AO CUMPRIMENTO QUE FOI ACORDADO NO INÍCIO. SE, AO FINAL, O CLIENTE FICOU SATISFEITO COM O PRAZO E OS PERÍODOS EM ATRASO, CASO TENHA OCORRIDO.</Label>
 				<Slider id="Sprazo"  min="0" max="10" width="100%" value="0" top="5dp" ignore="true"></Slider>
@@ -69,7 +69,7 @@
 				<TextArea class="textArea" height="70dp" id="prazo" returnKeyType="Ti.UI.RETURNKEY_NEXT" textAlign="left" borderColor="#EEEEEE" borderWidth="8dp"></TextArea>			
 			</View>
 			
-			<View left="10" right="10" top="20" layout="vertical" height="225dp">
+			<View left="10" right="10" top="20" layout="vertical" height="245dp">
 				<Label class="Plabel med-bold">CREDIBILIDADE:</Label>
 				<Label class="Plabel min">CREDIBILIDADE EQUIVALE AO QUE O CLIENTE ACHA DA IMAGEM DA EMPRESA, LOGO ENQUADRA-SE O PROFISSIONALISMO, CONHECIMENTO TÉCNICO, POSTURA, TEMPO DE EXITÊNCIA, A UNIVERSIDADE, APÓS A FINALIZAÇÃO DO PROJETO.</Label>
 				<Slider id="Scredibilidade"  min="0" max="10" width="100%" value="0" top="5dp" ignore="true"></Slider>
@@ -90,7 +90,7 @@
 				<TextArea class="textArea" height="70dp" id="credibilidade" returnKeyType="Ti.UI.RETURNKEY_NEXT" textAlign="left" borderColor="#EEEEEE" borderWidth="8dp"></TextArea>			
 			</View>
 
-			<View left="10" right="10" top="20" layout="vertical" height="205dp">
+			<View left="10" right="10" top="20" layout="vertical" height="225dp">
 				<Label class="Plabel med-bold">APLICABILIDADE:</Label>
 				<Label class="Plabel min">APLICABILIDADE PODE SER DEFINIDA COMO A CAPACIDADE DE O PROJETO SER POSTO EM PRÁTICA E TRAZER RETORNOS PALPÁVEIS. PODE SER SINÔNIMO DE IMPLEMENTAÇÃO.</Label>
 				<Slider id="Saplicabilidade" min="0" max="10" width="100%" value="0" top="5dp" ignore="true"></Slider>
@@ -111,7 +111,7 @@
 				<TextArea class="textArea" height="70dp" id="aplicabilidade" returnKeyType="Ti.UI.RETURNKEY_NEXT" textAlign="left" borderColor="#EEEEEE" borderWidth="8dp"></TextArea>		
 			</View>
 			
-			<View left="10" right="10" top="20" layout="vertical" height="185dp">
+			<View left="10" right="10" top="20" layout="vertical" height="205dp">
 				<Label class="Plabel med-bold">INOVAÇÃO:</Label>
 				<Label class="Plabel min">INOVAÇÃO ESTÁ RELACIONADO AO PROJETO E O QUE ELE TRAZ DE DIFERENTE NA PERCEPÇÃO DO CLIENTE, SEJA NA SUA ABORDAGEM OU EM CONHECIMENTOS NOVOS.</Label>
 				<Slider id="Sinovacao"  min="0" max="10" width="100%" value="0" ignore="true"></Slider>
@@ -132,7 +132,7 @@
 				<TextArea class="textArea" height="70dp" id="inovacao" returnKeyType="Ti.UI.RETURNKEY_NEXT" textAlign="left" borderColor="#EEEEEE" borderWidth="8dp"></TextArea>		
 			</View>
 			
-			<View left="10" right="10" top="20" layout="vertical" height="185dp">
+			<View left="10" right="10" top="20" layout="vertical" height="205dp">
 				<Label class="Plabel med-bold">QUALIDADE:</Label>
 				<Label class="Plabel min">QUALIDADE DIZ RESPEITO AO PROJETO, SEJA EM TEMOS TÉCNICOS, ESTRUTURA DO DOCUMENTO, A APRESENTAÇÃO DO RESULTADO EM SI, etc.</Label>
 				<Slider id="Squalidade"  min="0" max="10" width="100%" value="0" ignore="true"></Slider>

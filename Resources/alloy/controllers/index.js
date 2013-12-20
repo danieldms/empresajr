@@ -1096,6 +1096,20 @@ function Controller() {
         top: 0,
         left: 0
     });
+    var menuTitle = Ti.UI.createLabel({
+        text: "MENU",
+        left: "55dp",
+        color: "#2276be",
+        font: {
+            fontWeight: "bold"
+        }
+    });
+    var space = Ti.UI.createView({
+        top: "20dp",
+        height: "44dp",
+        left: 0,
+        width: "100%"
+    });
     var title = Ti.UI.createLabel({
         height: "44dp",
         font: {
@@ -1115,20 +1129,16 @@ function Controller() {
     if (major >= 7) {
         $.itemsMenu.setTop("20dp");
         titleHeight = "64dp";
-        var space = Ti.UI.createView({
-            top: "20dp",
-            height: "44dp",
-            left: 0,
-            width: "100%"
-        });
         leftButton.setHeight("44dp");
         title.setHeight("44dp");
         header.setHeight(titleHeight);
         space.add(leftButton);
+        space.add(menuTitle);
         space.add(title);
         header.add(space);
     } else {
         header.add(leftButton);
+        header.add(menuTitle);
         header.add(title);
     }
     $.menuNavView.setHeight(titleHeight);
@@ -1144,6 +1154,9 @@ function Controller() {
     });
     Ti.App.addEventListener("app:setLayout", function(e) {
         title.text = e.title;
+        space.remove(menuTitle);
+        header.remove(menuTitle);
+        "sac/perguntas" == e.layout;
         var view = Alloy.createController(e.layout, args).getView();
         $.main.add(view);
         $.main.remove(currentView);

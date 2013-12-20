@@ -263,7 +263,7 @@ function Controller() {
         right: "10",
         top: "0",
         layout: "vertical",
-        height: "205dp",
+        height: "225dp",
         id: "__alloyId242"
     });
     $.__views.__alloyId222.add($.__views.__alloyId242);
@@ -444,7 +444,7 @@ function Controller() {
         right: "10",
         top: "20",
         layout: "vertical",
-        height: "195dp",
+        height: "235dp",
         id: "__alloyId258"
     });
     $.__views.__alloyId222.add($.__views.__alloyId258);
@@ -625,7 +625,7 @@ function Controller() {
         right: "10",
         top: "20",
         layout: "vertical",
-        height: "225dp",
+        height: "245dp",
         id: "__alloyId274"
     });
     $.__views.__alloyId222.add($.__views.__alloyId274);
@@ -806,7 +806,7 @@ function Controller() {
         right: "10",
         top: "20",
         layout: "vertical",
-        height: "205dp",
+        height: "225dp",
         id: "__alloyId290"
     });
     $.__views.__alloyId222.add($.__views.__alloyId290);
@@ -987,7 +987,7 @@ function Controller() {
         right: "10",
         top: "20",
         layout: "vertical",
-        height: "185dp",
+        height: "205dp",
         id: "__alloyId306"
     });
     $.__views.__alloyId222.add($.__views.__alloyId306);
@@ -1167,7 +1167,7 @@ function Controller() {
         right: "10",
         top: "20",
         layout: "vertical",
-        height: "185dp",
+        height: "205dp",
         id: "__alloyId322"
     });
     $.__views.__alloyId222.add($.__views.__alloyId322);
