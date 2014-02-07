@@ -1,4 +1,1 @@
-module.exports = {
-    dependencies: {},
-    theme: "ios"
-};
+module.exports={"dependencies":{},"theme":"ios"};
