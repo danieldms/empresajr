@@ -1,9 +1,8 @@
 <Alloy>
 	<View layout="vertical">
-		<View id="headers"></View>
 		<ScrollView class="contentView" scrollingEnabled="true">		
 			<View class="header">
-				<ImageView image="/images/outros/header_oculos.png" height="50" width="110"></ImageView>
+				<ImageView image="/images/outros/header_oculos.png" height="50" width="110" left="10"></ImageView>
 				<Label class="titleHeader">ESTUDO DE 
 VIABILIDADE</Label>
 			</View>

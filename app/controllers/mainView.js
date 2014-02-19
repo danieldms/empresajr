@@ -1,8 +1,5 @@
 var args = arguments[0] || {};
 
-$.headers.add(args.headers);
-$.headers.setHeight(args.height);
-
 /*
 
 $.button.addEventListener('click', function(e){

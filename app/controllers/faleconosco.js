@@ -1,35 +1,5 @@
 var args = arguments[0] || {};
 
-var disabled = false;
-
-$.headers.add(args.headers);
-$.headers.setHeight(args.height);
-
-/*if(Ti.Platform.version <= 6.1){
-	$.navContent.top = 0;
-	$.navView.height = '44dp';
-}
-*//*
-$.button.addEventListener('click', function(e){
-	Ti.App.fireEvent('app:toggle', null);
-	$.nome.blur();
-	$.email.blur();
-	$.telefone.blur();
-	$.assunto.blur();
-	$.mensagem.blur();
-});
-
-$.button.addEventListener('touchstart', function(e){
-	this.backgroudColor = "#000";
-	this.opacity = 0.2;
-});
-
-
-$.button.addEventListener('touchend', function(e){
-	this.backgroudColor = "transparent";
-	this.opacity = 1;
-});
-*/
 $.enviar.addEventListener('click', function(e){
 	enviar();
 });

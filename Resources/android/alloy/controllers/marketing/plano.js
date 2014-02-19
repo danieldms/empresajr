@@ -11,10 +11,6 @@ function Controller() {
         id: "plano"
     });
     $.__views.plano && $.addTopLevelView($.__views.plano);
-    $.__views.headers = Ti.UI.createView({
-        id: "headers"
-    });
-    $.__views.plano.add($.__views.headers);
     $.__views.__alloyId184 = Ti.UI.createScrollView({
         backgroundColor: "transparent",
         layout: "vertical",
@@ -85,9 +81,7 @@ function Controller() {
     $.__views.__alloyId184.add($.__views.__alloyId190);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    var args = arguments[0] || {};
-    $.headers.add(args.headers);
-    $.headers.setHeight(args.height);
+    arguments[0] || {};
     _.extend($, exports);
 }
 

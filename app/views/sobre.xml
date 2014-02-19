@@ -1,9 +1,8 @@
 <Alloy>
 	<View layout="vertical">
-		<View id="headers"></View>
 		<ScrollView class="contentView" scrollingEnabled="true">
-			<View class="header" height="200dp">
-				<ImageView image="/images/outros/sobre_header.png" width="100%" height="auto"></ImageView>
+			<View class="header" id='video' height="50%">
+
 			</View>
 			<View class="fixedHeader">
 				<Label class="titleFixed">SOBRE</Label>

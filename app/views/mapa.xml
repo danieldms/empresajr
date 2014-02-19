@@ -1,6 +1,5 @@
 <Alloy>
 	<View layout="vertical">
-		<View id="headers"></View>
 		<View class="contentView">
 			<!-- Note the ns attribute is used to change the default namespace. -->
 	        <View id="mapview" height="80%" ignore='true'>	

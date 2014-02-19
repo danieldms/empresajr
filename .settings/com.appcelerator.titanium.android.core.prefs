@@ -1,0 +1,9 @@
+android/ATTR_PROJECT_NAME=Empresajr
+android/abi=armeabi
+android/distribute_path=/Users/danielmarques/Documents/workspace/ntera/distribution
+android/keystore_alias=empresajr
+android/keystore_password=empresajr
+android/keystore_path=/Users/danielmarques/Documents/workspace/ntera/distribution/empresajr.keystore
+android/recent_output=/Users/danielmarques/Documents/workspace/ntera/distribution
+android/sdk_version=2.3.3
+eclipse.preferences.version=1

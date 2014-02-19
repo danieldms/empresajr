@@ -993,6 +993,14 @@ function Controller() {
         id: "main"
     });
     $.__views.index.add($.__views.main);
+    $.__views.header = Ti.UI.createView({
+        id: "header"
+    });
+    $.__views.main.add($.__views.header);
+    $.__views.content = Ti.UI.createView({
+        id: "content"
+    });
+    $.__views.main.add($.__views.content);
     $.__views.wait = Ti.UI.createView({
         id: "wait",
         width: "100%",
@@ -1010,37 +1018,30 @@ function Controller() {
         id: "__alloyId91"
     });
     $.__views.wait.add($.__views.__alloyId91);
-    $.__views.__alloyId92 = Ti.UI.createImageView({
-        url: "/images/outros/background-load.png",
-        width: "100%",
-        height: "100%",
-        id: "__alloyId92"
-    });
-    $.__views.__alloyId91.add($.__views.__alloyId92);
-    $.__views.__alloyId93 = Ti.UI.createView({
+    $.__views.__alloyId92 = Ti.UI.createView({
         borderRadius: "10dp",
         opacity: "0.7",
         backgroundColor: "#000",
         borderColor: "#fff",
         borderWidth: "1dp",
-        id: "__alloyId93"
+        id: "__alloyId92"
     });
-    $.__views.__alloyId91.add($.__views.__alloyId93);
+    $.__views.__alloyId91.add($.__views.__alloyId92);
     $.__views.activityIndicator = Ti.UI.createActivityIndicator({
         id: "activityIndicator",
         top: "20dp",
         indicatorColor: "#FFF"
     });
     $.__views.__alloyId91.add($.__views.activityIndicator);
-    $.__views.__alloyId94 = Ti.UI.createLabel({
+    $.__views.__alloyId93 = Ti.UI.createLabel({
         color: "white",
         left: "60dp",
         font: "{fontSize: '22dp'}",
         top: "65dp",
         text: "Carregando...",
-        id: "__alloyId94"
+        id: "__alloyId93"
     });
-    $.__views.__alloyId91.add($.__views.__alloyId94);
+    $.__views.__alloyId91.add($.__views.__alloyId93);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var currentView = null;
@@ -1153,6 +1154,7 @@ function Controller() {
         headers: header,
         height: titleHeight
     };
+    Alloy.Globals.header = header;
     Ti.App.addEventListener("app:toggle", function() {
         if (!touchRightStarted) {
             buttonPressed = true;
@@ -1165,15 +1167,19 @@ function Controller() {
         header.remove(menuTitle);
         "sac/perguntas" == e.layout;
         var view = Alloy.createController(e.layout, args).getView();
-        $.main.add(view);
-        $.main.remove(currentView);
+        $.content.removeAllChildren();
+        $.content.add(view);
         currentView = view;
         view = null;
-        null == e.swipe && toggleSlide(null);
+        setTimeout(function() {
+            null == e.swipe && toggleSlide(null);
+        }, 200);
     });
     if (null == currentView) {
         currentView = Alloy.createController("mainView", args).getView();
-        $.main.add(currentView);
+        $.header.setHeight(titleHeight);
+        $.header.add(header);
+        $.content.add(currentView);
     }
     var style;
     style = Titanium.UI.iPhone.ActivityIndicatorStyle.BIG;

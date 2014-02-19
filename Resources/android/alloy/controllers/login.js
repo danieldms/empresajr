@@ -31,10 +31,6 @@ function Controller() {
         id: "login"
     });
     $.__views.login && $.addTopLevelView($.__views.login);
-    $.__views.headers = Ti.UI.createView({
-        id: "headers"
-    });
-    $.__views.login.add($.__views.headers);
     $.__views.scrollview = Ti.UI.createScrollView({
         backgroundColor: "transparent",
         layout: "vertical",
@@ -183,9 +179,7 @@ function Controller() {
     $.__views.__alloyId99.add($.__views.entrar);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    var args = arguments[0] || {};
-    $.headers.add(args.headers);
-    $.headers.setHeight(args.height);
+    arguments[0] || {};
     $.senha.addEventListener("return", function() {
         login();
     });

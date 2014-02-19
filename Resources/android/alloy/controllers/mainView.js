@@ -11,10 +11,6 @@ function Controller() {
         id: "mainView"
     });
     $.__views.mainView && $.addTopLevelView($.__views.mainView);
-    $.__views.headers = Ti.UI.createView({
-        id: "headers"
-    });
-    $.__views.mainView.add($.__views.headers);
     var __alloyId104 = [];
     $.__views.view = Ti.UI.createView({
         id: "view",
@@ -188,9 +184,7 @@ function Controller() {
     $.__views.mainView.add($.__views.scrollview);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    var args = arguments[0] || {};
-    $.headers.add(args.headers);
-    $.headers.setHeight(args.height);
+    arguments[0] || {};
     _.extend($, exports);
 }
 

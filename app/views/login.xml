@@ -1,6 +1,5 @@
 <Alloy>
 	<View layout="vertical">
-		<View id="headers"></View>
 		<ScrollView id="scrollview" class="contentView" scrollingEnabled="true">
 			<View class="header">
 				<ImageView image="/images/outros/header_login.png" height="60" width="60" left="10"></ImageView>

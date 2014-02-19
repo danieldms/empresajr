@@ -81,13 +81,12 @@ var title = Ti.UI.createLabel({
 	shadowOffset: {	x: "0dp", y: "1dp"},
 });
 
-
 if (Ti.Platform.name === 'iPhone OS'){
 	var version = Titanium.Platform.version.split(".");
 	var major = parseInt(version[0]);
 	
 	if(major >= 7){
-		// MENU
+		// MENU	
 		$.itemsMenu.setTop('20dp');
 		
 		//TITULOS DAS VIEWS
@@ -118,8 +117,10 @@ $.menuNavView.setHeight(titleHeight);
 // Argumentos que são passados para cada controller
 var args = {
 	'headers': header,
-	'height' : titleHeight,
+	'height' : titleHeight
 };	
+
+Alloy.Globals.header = header;
 
 function touchStart(){
 	this.backgroundColor = "#000";
@@ -269,21 +270,26 @@ Ti.App.addEventListener("app:setLayout", function(e){
 		
 	}
 	var view = Alloy.createController(e.layout, args).getView();
+		
+	$.content.removeAllChildren();
+	$.content.add(view);
 	
-	$.main.add(view);
-	$.main.remove(currentView);
-
 	currentView = view;
 	view = null;
 	
-	if(e.swipe == null){
-		toggleSlide(null);
-	}
+	setTimeout(function() {
+		if(e.swipe == null){
+			toggleSlide(null);
+		}		
+	}, 200);
+
 });
 
 if(currentView == null){
 	currentView = Alloy.createController("mainView", args).getView();
-	$.main.add(currentView);
+	$.header.setHeight(titleHeight);
+	$.header.add(header);
+	$.content.add(currentView);
 };
 
 var style;

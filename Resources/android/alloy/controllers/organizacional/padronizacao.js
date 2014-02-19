@@ -11,10 +11,6 @@ function Controller() {
         id: "padronizacao"
     });
     $.__views.padronizacao && $.addTopLevelView($.__views.padronizacao);
-    $.__views.headers = Ti.UI.createView({
-        id: "headers"
-    });
-    $.__views.padronizacao.add($.__views.headers);
     $.__views.__alloyId212 = Ti.UI.createScrollView({
         backgroundColor: "transparent",
         layout: "vertical",
@@ -85,9 +81,7 @@ function Controller() {
     $.__views.__alloyId212.add($.__views.__alloyId218);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    var args = arguments[0] || {};
-    $.headers.add(args.headers);
-    $.headers.setHeight(args.height);
+    arguments[0] || {};
     _.extend($, exports);
 }
 

@@ -11,33 +11,29 @@ function Controller() {
         id: "sobre"
     });
     $.__views.sobre && $.addTopLevelView($.__views.sobre);
-    $.__views.headers = Ti.UI.createView({
-        id: "headers"
-    });
-    $.__views.sobre.add($.__views.headers);
-    $.__views.__alloyId145 = Ti.UI.createScrollView({
+    $.__views.__alloyId144 = Ti.UI.createScrollView({
         backgroundColor: "transparent",
         layout: "vertical",
         scrollingEnabled: "true",
-        id: "__alloyId145"
+        id: "__alloyId144"
     });
-    $.__views.sobre.add($.__views.__alloyId145);
+    $.__views.sobre.add($.__views.__alloyId144);
     $.__views.video = Ti.UI.createView({
         left: 0,
         width: "100%",
-        height: "60%",
+        height: "50%",
         id: "video"
     });
-    $.__views.__alloyId145.add($.__views.video);
-    $.__views.__alloyId146 = Ti.UI.createView({
+    $.__views.__alloyId144.add($.__views.video);
+    $.__views.__alloyId145 = Ti.UI.createView({
         height: 26,
         left: 0,
         bottom: 2,
         backgroundColor: "#f5f5f5",
-        id: "__alloyId146"
+        id: "__alloyId145"
     });
-    $.__views.__alloyId145.add($.__views.__alloyId146);
-    $.__views.__alloyId147 = Ti.UI.createLabel({
+    $.__views.__alloyId144.add($.__views.__alloyId145);
+    $.__views.__alloyId146 = Ti.UI.createLabel({
         font: {
             fontSize: 11,
             fontWeight: "bold"
@@ -45,10 +41,10 @@ function Controller() {
         left: 5,
         color: "#8a8a8a",
         text: "SOBRE",
-        id: "__alloyId147"
+        id: "__alloyId146"
     });
-    $.__views.__alloyId146.add($.__views.__alloyId147);
-    $.__views.__alloyId148 = Ti.UI.createLabel({
+    $.__views.__alloyId145.add($.__views.__alloyId146);
+    $.__views.__alloyId147 = Ti.UI.createLabel({
         font: {
             fontSize: 12
         },
@@ -58,30 +54,33 @@ function Controller() {
         right: "10",
         top: "10",
         textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
+        id: "__alloyId147"
+    });
+    $.__views.__alloyId144.add($.__views.__alloyId147);
+    $.__views.__alloyId148 = Ti.UI.createView({
+        height: "50",
         id: "__alloyId148"
     });
-    $.__views.__alloyId145.add($.__views.__alloyId148);
-    $.__views.__alloyId149 = Ti.UI.createView({
-        height: "50",
-        id: "__alloyId149"
-    });
-    $.__views.__alloyId145.add($.__views.__alloyId149);
+    $.__views.__alloyId144.add($.__views.__alloyId148);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    var args = arguments[0] || {};
-    $.headers.add(args.headers);
-    $.headers.setHeight(args.height);
-    var contentURL = "http://www.youtube.com/embed/AsFCPsZyC2I?autoplay=1&autohide=1&cc_load_policy=0&color=white&controls=0&fs=0&iv_load_policy=3&modestbranding=1&rel=0&showinfo=0";
+    arguments[0] || {};
     if (Titanium.Network.networkType != Titanium.Network.NETWORK_NONE) {
-        var videoPlayer = Ti.UI.createWebView({
-            url: contentURL,
-            width: "100%",
-            height: "100%"
+        setTimeout(function() {
+            Titanium.App.fireEvent("app:preload");
+        }, 200);
+        var webView = Ti.UI.createWebView({
+            url: "http://www.youtube.com/embed/AsFCPsZyC2I?autoplay=1&autohide=1&cc_load_policy=0&color=white&controls=0&fs=0&iv_load_policy=3&modestbranding=1&rel=0&showinfo=0",
+            enableZoomControls: false,
+            scalesPageToFit: true,
+            scrollsToTop: false,
+            showScrollbars: false,
+            loading: true
         });
-        videoPlayer.addEventListener("load", function(e) {
-            Ti.API.info("webview loaded: " + e.url);
+        webView.addEventListener("load", function() {
+            Titanium.App.fireEvent("app:preload");
         });
-        $.video.add(videoPlayer);
+        $.video.add(webView);
     } else alert("Conexão com a internet indisponível!");
     _.extend($, exports);
 }

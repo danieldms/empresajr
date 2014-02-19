@@ -143,10 +143,6 @@ function Controller() {
         id: "sac"
     });
     $.__views.sac && $.addTopLevelView($.__views.sac);
-    $.__views.headers = Ti.UI.createView({
-        id: "headers"
-    });
-    $.__views.sac.add($.__views.headers);
     $.__views.content = Ti.UI.createScrollView({
         backgroundColor: "transparent",
         layout: "vertical",

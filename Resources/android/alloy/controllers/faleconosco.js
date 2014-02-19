@@ -28,10 +28,6 @@ function Controller() {
         id: "faleconosco"
     });
     $.__views.faleconosco && $.addTopLevelView($.__views.faleconosco);
-    $.__views.headers = Ti.UI.createView({
-        id: "headers"
-    });
-    $.__views.faleconosco.add($.__views.headers);
     $.__views.scrollview = Ti.UI.createScrollView({
         backgroundColor: "transparent",
         layout: "vertical",
@@ -276,9 +272,7 @@ function Controller() {
     $.__views.__alloyId5.add($.__views.enviar);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    var args = arguments[0] || {};
-    $.headers.add(args.headers);
-    $.headers.setHeight(args.height);
+    arguments[0] || {};
     $.enviar.addEventListener("click", function() {
         enviar();
     });

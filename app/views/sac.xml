@@ -1,6 +1,5 @@
 <Alloy>
 	<View layout="vertical">
-		<View id="headers"></View>
 		<ScrollView class="contentView" id="content" contentHeight="auto">
 			<View class="fixedHeader">
 				<Label class="titleFixed">Seu Projeto</Label>

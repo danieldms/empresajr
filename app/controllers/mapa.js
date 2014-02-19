@@ -1,23 +1,22 @@
 var args = arguments[0] || {};
 
+var Map = require('ti.map');
+
 var destination = [-12.995626,-38.520156];
-var me =  [-12.99,-38.52];
+//var me =  [-12.99,-38.52];
 
-$.headers.add(args.headers);
-$.headers.setHeight(args.height);
-
-var empresa = Titanium.Map.createAnnotation({
+var empresa = Map.createAnnotation({
     latitude:-12.995626,
     longitude:-38.520156,
     title:"Empresa JR.",
     subtitle:'Av. Reitor Miguel Calmon, s/n, Vale do Canela - Escola de Administração da Ufba, no térreo - Salvador/BA - Tel (71) 3245-0757',
-    pincolor:Titanium.Map.ANNOTATION_RED,
+    pincolor:Map.ANNOTATION_RED,
     animate:true
 });
 
-var mapa = Titanium.Map.createView({
+var mapa = Map.createView({
 	id:'mapview',
-	mapType: Titanium.Map.SATELLITE_TYPE,
+	mapType: Map.SATELLITE_TYPE,
 	region: {latitude:-12.995626, longitude:-38.520156, latitudeDelta: 0.01, longitudeDelta: 0.01},
 	animate:true, regionFit: true, userLocation: true, annotations: [empresa],
 	ignore:true,

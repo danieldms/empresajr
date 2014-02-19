@@ -994,6 +994,14 @@ function Controller() {
         id: "main"
     });
     $.__views.index.add($.__views.main);
+    $.__views.header = Ti.UI.createView({
+        id: "header"
+    });
+    $.__views.main.add($.__views.header);
+    $.__views.content = Ti.UI.createView({
+        id: "content"
+    });
+    $.__views.main.add($.__views.content);
     $.__views.wait = Ti.UI.createView({
         id: "wait",
         width: "100%",
@@ -1133,6 +1141,7 @@ function Controller() {
         headers: header,
         height: titleHeight
     };
+    Alloy.Globals.header = header;
     Ti.App.addEventListener("app:toggle", function() {
         if (!touchRightStarted) {
             buttonPressed = true;
@@ -1145,21 +1154,23 @@ function Controller() {
         header.remove(menuTitle);
         "sac/perguntas" == e.layout;
         var view = Alloy.createController(e.layout, args).getView();
-        $.main.add(view);
-        $.main.remove(currentView);
+        $.content.removeAllChildren();
+        $.content.add(view);
         currentView = view;
         view = null;
-        null == e.swipe && toggleSlide(null);
+        setTimeout(function() {
+            null == e.swipe && toggleSlide(null);
+        }, 200);
     });
     if (null == currentView) {
         currentView = Alloy.createController("mainView", args).getView();
-        $.main.add(currentView);
+        $.header.setHeight(titleHeight);
+        $.header.add(header);
+        $.content.add(currentView);
     }
     var style;
-    style = Titanium.UI.ActivityIndicatorStyle.BIG;
+    style = Titanium.UI.ActivityIndicatorStyle.PLAIN;
     $.activityIndicator.style = style;
-    $.activityIndicator.setWidth("30dp");
-    $.activityIndicator.setHeight("30dp");
     $.wait.hide();
     Ti.App.addEventListener("app:preload", function() {
         if (1 == pre) {

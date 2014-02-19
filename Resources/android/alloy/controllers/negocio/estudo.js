@@ -11,10 +11,6 @@ function Controller() {
         id: "estudo"
     });
     $.__views.estudo && $.addTopLevelView($.__views.estudo);
-    $.__views.headers = Ti.UI.createView({
-        id: "headers"
-    });
-    $.__views.estudo.add($.__views.headers);
     $.__views.__alloyId191 = Ti.UI.createScrollView({
         backgroundColor: "transparent",
         layout: "vertical",
@@ -33,6 +29,7 @@ function Controller() {
         image: "/images/outros/header_oculos.png",
         height: "50",
         width: "110",
+        left: "10",
         id: "__alloyId193"
     });
     $.__views.__alloyId192.add($.__views.__alloyId193);
@@ -84,9 +81,7 @@ function Controller() {
     $.__views.__alloyId191.add($.__views.__alloyId197);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    var args = arguments[0] || {};
-    $.headers.add(args.headers);
-    $.headers.setHeight(args.height);
+    arguments[0] || {};
     _.extend($, exports);
 }
 

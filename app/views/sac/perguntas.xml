@@ -1,6 +1,5 @@
 <Alloy>
 	<View layout="vertical">
-		<View id="headers"></View>
 		<ScrollView ignore="true" class="contentView" contentHeight="auto" scrollingEnabled="true" showVerticalScrollIndicator="true">
 			<View class="fixedHeader">
 				<Label class="titleFixed">Questionário</Label>
