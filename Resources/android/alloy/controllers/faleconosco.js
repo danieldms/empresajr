@@ -123,7 +123,9 @@ function Controller() {
         top: 12,
         left: 25,
         borderWidth: 0,
+        height: "50dp",
         borderColor: "#FFF",
+        color: "#000",
         id: "nome",
         returnKeyType: Ti.UI.RETURNKEY_NEXT
     });
@@ -154,7 +156,9 @@ function Controller() {
         top: 12,
         left: "27",
         borderWidth: 0,
+        height: "50dp",
         borderColor: "#FFF",
+        color: "#000",
         id: "email",
         returnKeyType: Ti.UI.RETURNKEY_NEXT
     });
@@ -185,7 +189,9 @@ function Controller() {
         top: 12,
         left: "7",
         borderWidth: 0,
+        height: "50dp",
         borderColor: "#FFF",
+        color: "#000",
         id: "telefone",
         returnKeyType: Ti.UI.RETURNKEY_NEXT
     });
@@ -216,7 +222,9 @@ function Controller() {
         top: 12,
         left: "12",
         borderWidth: 0,
+        height: "50dp",
         borderColor: "#FFF",
+        color: "#000",
         id: "assunto",
         returnKeyType: Ti.UI.RETURNKEY_NEXT
     });

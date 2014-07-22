@@ -5,8 +5,6 @@
 
 "#menuNavView": { backgroundColor: "#042745", left: 0, top: 0, layout: "horizontal"},
 
-
-
 ".mainTitle": {font:{fontWeight: 'bold'}},
 
 ".navContent":  {top: "15dp"},

@@ -121,10 +121,12 @@ function Controller() {
     $.__views.__alloyId100.add($.__views.__alloyId101);
     $.__views.username = Ti.UI.createTextField({
         width: 180,
-        top: "10",
+        top: "0",
         left: "20",
         borderWidth: 0,
+        height: "50dp",
         borderColor: "#FFF",
+        color: "#000",
         id: "username"
     });
     $.__views.__alloyId100.add($.__views.username);
@@ -151,10 +153,12 @@ function Controller() {
     $.__views.__alloyId102.add($.__views.__alloyId103);
     $.__views.senha = Ti.UI.createTextField({
         width: 180,
-        top: "10",
+        top: "0",
         left: "29",
         borderWidth: 0,
+        height: "50dp",
         borderColor: "#FFF",
+        color: "#000",
         passwordMask: "true",
         returnKeyType: Ti.UI.RETURNKEY_GO,
         id: "senha"

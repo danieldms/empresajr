@@ -24,6 +24,8 @@ if (isTitanium) {
 
 // General default values
 exports.ALLOY_DIR = 'app';
+exports.ALLOY_RUNTIME_DIR = 'alloy';
+exports.RESOURCES_DIR = 'Resources';
 exports.NAME_DEFAULT = 'index';
 exports.NAME_WIDGET_DEFAULT = 'widget';
 exports.GLOBAL_STYLE = 'app.tss';
@@ -39,6 +41,8 @@ exports.ITEM_TEMPLATE_VAR = '__itemTemplate';
 exports.PARENT_SYMBOL_VAR = '__parentSymbol';
 exports.WIDGET_OBJECT = 'Widget';
 exports.SKIP_EVENT_HANDLING = ['Ti.UI.ListItem','Alloy.Abstract.ItemTemplate'];
+exports.ADAPTERS = ['localStorage', 'properties', 'sql'];
+exports.CONTROLLER_NODES = ['Alloy.Require', 'Alloy.Widget'];
 
 // property names
 exports.CLASS_PROPERTY = 'classes';
@@ -95,7 +99,9 @@ exports.DIR = {
 	LIB: 'lib',
 	COMPONENT: 'controllers',
 	MAP: 'build/map',
-	VENDOR: 'vendor'
+	VENDOR: 'vendor',
+	THEME: 'themes',
+	BUILD: 'build/alloy'
 };
 
 // constants identifying JS reserved words
@@ -181,9 +187,17 @@ exports.IMPLICIT_NAMESPACES = {
 	RightNavButton: 'Ti.UI.Window',
 	TitleControl: 'Ti.UI.Window',
 
-	// Ti.UI.TableView
-	HeaderView: 'Ti.UI.TableView',
-	HeaderPullView: 'Ti.UI.TableView',
-	FooterView: 'Ti.UI.TableView',
-	Search: 'Ti.UI.TableView'
+	// Table and List proxy properties
+	FooterView: '_ProxyProperty._Lists',
+	HeaderView: '_ProxyProperty._Lists',
+	HeaderPullView: '_ProxyProperty._Lists',
+	PullView: '_ProxyProperty._Lists',
+	Search: '_ProxyProperty._Lists',
+	SearchView: '_ProxyProperty._Lists',
+
+	// misc proxy properties
+	RightButton: '_ProxyProperty',
+	LeftButton: '_ProxyProperty',
+	KeyboardToolbar: '_ProxyProperty'
+
 };

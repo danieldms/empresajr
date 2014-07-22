@@ -1,6 +1,5 @@
 <Alloy>
 	<View layout="vertical">
-
 		<ScrollableView id="scrollview" showPagingControl="true" backgroundImage="/images/outros/background.png">
 			 <View id="view" ignore="true">
             	<ImageView image="/images/outros/home_empresajr.png" width="200" height="48" top="70"></ImageView>

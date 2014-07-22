@@ -122,7 +122,7 @@ function Controller() {
     $.__views.__alloyId100.add($.__views.__alloyId101);
     $.__views.username = Ti.UI.createTextField({
         width: 180,
-        top: "10",
+        top: "0",
         left: "20",
         borderWidth: 0,
         borderColor: "#FFF",
@@ -152,7 +152,7 @@ function Controller() {
     $.__views.__alloyId102.add($.__views.__alloyId103);
     $.__views.senha = Ti.UI.createTextField({
         width: 180,
-        top: "10",
+        top: "0",
         left: "29",
         borderWidth: 0,
         borderColor: "#FFF",

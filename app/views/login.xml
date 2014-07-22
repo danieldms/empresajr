@@ -12,10 +12,10 @@ PROJETO</Label>
 			</View>
 			<View backgroundColor="#eeeeee" left="20" right="20" top="20" height="162" layout="vertical">
 				<View backgroundColor="#FFF" layout="horizontal" left="10" right="10" top="10" height="45" bottom="2">
-					<Label class="labelFields">Usuário:</Label><TextField class="textFields" id="username" left="20" top="10"></TextField>
+					<Label class="labelFields">Usuário:</Label><TextField class="textFields" id="username" left="20" top="0"></TextField>
 				</View>
 				<View backgroundColor="#FFF" layout="horizontal" left="10" right="10" height="45" bottom="10">
-					<Label class="labelFields">Senha:  </Label><TextField passwordMask="true" returnKeyType="Ti.UI.RETURNKEY_GO" class="textFields" id="senha" left="29" top="10"></TextField>
+					<Label class="labelFields">Senha:  </Label><TextField passwordMask="true" returnKeyType="Ti.UI.RETURNKEY_GO" class="textFields" id="senha" left="29" top="0"></TextField>
 				</View>
 				<Button class="buttonFields" id="entrar">ENTRAR</Button>
 			</View>

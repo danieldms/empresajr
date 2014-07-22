@@ -31,10 +31,6 @@ function Controller() {
         id: "login"
     });
     $.__views.login && $.addTopLevelView($.__views.login);
-    $.__views.headers = Ti.UI.createView({
-        id: "headers"
-    });
-    $.__views.login.add($.__views.headers);
     $.__views.scrollview = Ti.UI.createScrollView({
         backgroundColor: "transparent",
         layout: "vertical",
@@ -42,22 +38,22 @@ function Controller() {
         scrollingEnabled: "true"
     });
     $.__views.login.add($.__views.scrollview);
-    $.__views.__alloyId95 = Ti.UI.createView({
+    $.__views.__alloyId94 = Ti.UI.createView({
         left: 0,
         width: "100%",
         height: "100dp",
-        id: "__alloyId95"
+        id: "__alloyId94"
     });
-    $.__views.scrollview.add($.__views.__alloyId95);
-    $.__views.__alloyId96 = Ti.UI.createImageView({
+    $.__views.scrollview.add($.__views.__alloyId94);
+    $.__views.__alloyId95 = Ti.UI.createImageView({
         image: "/images/outros/header_login.png",
         height: "60",
         width: "60",
         left: "10",
-        id: "__alloyId96"
+        id: "__alloyId95"
     });
-    $.__views.__alloyId95.add($.__views.__alloyId96);
-    $.__views.__alloyId97 = Ti.UI.createLabel({
+    $.__views.__alloyId94.add($.__views.__alloyId95);
+    $.__views.__alloyId96 = Ti.UI.createLabel({
         left: "90",
         right: 10,
         font: {
@@ -70,18 +66,18 @@ function Controller() {
         verticalAlign: "center",
         text: "ACOMPANHE O \nANDAMENTO DO SEU \nPROJETO",
         width: "auto",
-        id: "__alloyId97"
+        id: "__alloyId96"
     });
-    $.__views.__alloyId95.add($.__views.__alloyId97);
-    $.__views.__alloyId98 = Ti.UI.createView({
+    $.__views.__alloyId94.add($.__views.__alloyId96);
+    $.__views.__alloyId97 = Ti.UI.createView({
         height: 26,
         left: 0,
         bottom: 2,
         backgroundColor: "#f5f5f5",
-        id: "__alloyId98"
+        id: "__alloyId97"
     });
-    $.__views.scrollview.add($.__views.__alloyId98);
-    $.__views.__alloyId99 = Ti.UI.createLabel({
+    $.__views.scrollview.add($.__views.__alloyId97);
+    $.__views.__alloyId98 = Ti.UI.createLabel({
         font: {
             fontSize: 11,
             fontWeight: "bold"
@@ -89,20 +85,20 @@ function Controller() {
         left: 5,
         color: "#8a8a8a",
         text: "LOGIN",
-        id: "__alloyId99"
+        id: "__alloyId98"
     });
-    $.__views.__alloyId98.add($.__views.__alloyId99);
-    $.__views.__alloyId100 = Ti.UI.createView({
+    $.__views.__alloyId97.add($.__views.__alloyId98);
+    $.__views.__alloyId99 = Ti.UI.createView({
         backgroundColor: "#eeeeee",
         left: "20",
         right: "20",
         top: "20",
         height: "162",
         layout: "vertical",
-        id: "__alloyId100"
+        id: "__alloyId99"
     });
-    $.__views.scrollview.add($.__views.__alloyId100);
-    $.__views.__alloyId101 = Ti.UI.createView({
+    $.__views.scrollview.add($.__views.__alloyId99);
+    $.__views.__alloyId100 = Ti.UI.createView({
         backgroundColor: "#FFF",
         layout: "horizontal",
         left: "10",
@@ -110,10 +106,10 @@ function Controller() {
         top: "10",
         height: "45",
         bottom: "2",
-        id: "__alloyId101"
+        id: "__alloyId100"
     });
-    $.__views.__alloyId100.add($.__views.__alloyId101);
-    $.__views.__alloyId102 = Ti.UI.createLabel({
+    $.__views.__alloyId99.add($.__views.__alloyId100);
+    $.__views.__alloyId101 = Ti.UI.createLabel({
         font: {
             fontSize: 14
         },
@@ -121,29 +117,29 @@ function Controller() {
         left: 5,
         top: 13,
         text: "Usuário:",
-        id: "__alloyId102"
+        id: "__alloyId101"
     });
-    $.__views.__alloyId101.add($.__views.__alloyId102);
+    $.__views.__alloyId100.add($.__views.__alloyId101);
     $.__views.username = Ti.UI.createTextField({
         width: 180,
-        top: "10",
+        top: "0",
         left: "20",
         borderWidth: 0,
         borderColor: "#FFF",
         id: "username"
     });
-    $.__views.__alloyId101.add($.__views.username);
-    $.__views.__alloyId103 = Ti.UI.createView({
+    $.__views.__alloyId100.add($.__views.username);
+    $.__views.__alloyId102 = Ti.UI.createView({
         backgroundColor: "#FFF",
         layout: "horizontal",
         left: "10",
         right: "10",
         height: "45",
         bottom: "10",
-        id: "__alloyId103"
+        id: "__alloyId102"
     });
-    $.__views.__alloyId100.add($.__views.__alloyId103);
-    $.__views.__alloyId104 = Ti.UI.createLabel({
+    $.__views.__alloyId99.add($.__views.__alloyId102);
+    $.__views.__alloyId103 = Ti.UI.createLabel({
         font: {
             fontSize: 14
         },
@@ -151,12 +147,12 @@ function Controller() {
         left: 5,
         top: 13,
         text: "Senha:",
-        id: "__alloyId104"
+        id: "__alloyId103"
     });
-    $.__views.__alloyId103.add($.__views.__alloyId104);
+    $.__views.__alloyId102.add($.__views.__alloyId103);
     $.__views.senha = Ti.UI.createTextField({
         width: 180,
-        top: "10",
+        top: "0",
         left: "29",
         borderWidth: 0,
         borderColor: "#FFF",
@@ -164,7 +160,7 @@ function Controller() {
         returnKeyType: Ti.UI.RETURNKEY_GO,
         id: "senha"
     });
-    $.__views.__alloyId103.add($.__views.senha);
+    $.__views.__alloyId102.add($.__views.senha);
     $.__views.entrar = Ti.UI.createButton({
         left: 10,
         bottom: 10,
@@ -181,12 +177,10 @@ function Controller() {
         title: "ENTRAR",
         id: "entrar"
     });
-    $.__views.__alloyId100.add($.__views.entrar);
+    $.__views.__alloyId99.add($.__views.entrar);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    var args = arguments[0] || {};
-    $.headers.add(args.headers);
-    $.headers.setHeight(args.height);
+    arguments[0] || {};
     $.senha.addEventListener("return", function() {
         login();
     });

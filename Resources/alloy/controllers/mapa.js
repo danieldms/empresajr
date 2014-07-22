@@ -22,30 +22,26 @@ function Controller() {
         id: "mapa"
     });
     $.__views.mapa && $.addTopLevelView($.__views.mapa);
-    $.__views.headers = Ti.UI.createView({
-        id: "headers"
-    });
-    $.__views.mapa.add($.__views.headers);
-    $.__views.__alloyId122 = Ti.UI.createView({
+    $.__views.__alloyId121 = Ti.UI.createView({
         layout: "vertical",
-        id: "__alloyId122"
+        id: "__alloyId121"
     });
-    $.__views.mapa.add($.__views.__alloyId122);
+    $.__views.mapa.add($.__views.__alloyId121);
     $.__views.mapview = Ti.UI.createView({
         id: "mapview",
         height: "80%",
         ignore: "true"
     });
-    $.__views.__alloyId122.add($.__views.mapview);
-    $.__views.__alloyId123 = Ti.UI.createView({
+    $.__views.__alloyId121.add($.__views.mapview);
+    $.__views.__alloyId122 = Ti.UI.createView({
         height: 26,
         left: 0,
         bottom: 2,
         backgroundColor: "#f5f5f5",
-        id: "__alloyId123"
+        id: "__alloyId122"
     });
-    $.__views.__alloyId122.add($.__views.__alloyId123);
-    $.__views.__alloyId124 = Ti.UI.createLabel({
+    $.__views.__alloyId121.add($.__views.__alloyId122);
+    $.__views.__alloyId123 = Ti.UI.createLabel({
         font: {
             fontSize: 11,
             fontWeight: "bold"
@@ -53,19 +49,19 @@ function Controller() {
         left: "20",
         color: "#8a8a8a",
         text: "Endereço",
-        id: "__alloyId124"
+        id: "__alloyId123"
     });
-    $.__views.__alloyId123.add($.__views.__alloyId124);
-    $.__views.__alloyId125 = Ti.UI.createButton({
+    $.__views.__alloyId122.add($.__views.__alloyId123);
+    $.__views.__alloyId124 = Ti.UI.createButton({
         title: "Rota",
         right: "5dp",
         backgroundColor: "transparent",
         color: "#",
-        id: "__alloyId125"
+        id: "__alloyId124"
     });
-    $.__views.__alloyId123.add($.__views.__alloyId125);
-    traceRoute ? $.__views.__alloyId125.addEventListener("click", traceRoute) : __defers["$.__views.__alloyId125!click!traceRoute"] = true;
-    $.__views.__alloyId126 = Ti.UI.createLabel({
+    $.__views.__alloyId122.add($.__views.__alloyId124);
+    traceRoute ? $.__views.__alloyId124.addEventListener("click", traceRoute) : __defers["$.__views.__alloyId124!click!traceRoute"] = true;
+    $.__views.__alloyId125 = Ti.UI.createLabel({
         font: {
             fontSize: 12
         },
@@ -74,25 +70,24 @@ function Controller() {
         left: "10",
         right: "10",
         textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
-        id: "__alloyId126"
+        id: "__alloyId125"
     });
-    $.__views.__alloyId122.add($.__views.__alloyId126);
+    $.__views.__alloyId121.add($.__views.__alloyId125);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    var args = arguments[0] || {};
-    $.headers.add(args.headers);
-    $.headers.setHeight(args.height);
-    var empresa = Titanium.Map.createAnnotation({
+    arguments[0] || {};
+    var Map = require("ti.map");
+    var empresa = Map.createAnnotation({
         latitude: -12.995626,
         longitude: -38.520156,
         title: "Empresa JR.",
         subtitle: "Av. Reitor Miguel Calmon, s/n, Vale do Canela - Escola de Administração da Ufba, no térreo - Salvador/BA - Tel (71) 3245-0757",
-        pincolor: Titanium.Map.ANNOTATION_RED,
+        pincolor: Map.ANNOTATION_RED,
         animate: true
     });
-    var mapa = Titanium.Map.createView({
+    var mapa = Map.createView({
         id: "mapview",
-        mapType: Titanium.Map.SATELLITE_TYPE,
+        mapType: Map.SATELLITE_TYPE,
         region: {
             latitude: -12.995626,
             longitude: -38.520156,
@@ -129,7 +124,7 @@ function Controller() {
         }
         cur = [ e.coords.latitude, e.coords.longitude ];
     });
-    __defers["$.__views.__alloyId125!click!traceRoute"] && $.__views.__alloyId125.addEventListener("click", traceRoute);
+    __defers["$.__views.__alloyId124!click!traceRoute"] && $.__views.__alloyId124.addEventListener("click", traceRoute);
     _.extend($, exports);
 }
 

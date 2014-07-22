@@ -42,7 +42,7 @@
 
 ".med": {font: {fontSize: 12}},
 
-".textFields": {width: 180, top: 12, left: 25, borderWidth: 0,  borderColor: "#FFF"},
+".textFields": {width: 180, top: 12, left: 25, borderWidth: 0, height: '50dp', borderColor: "#FFF", color:"#000"},
 
 ".textArea": { height: 100, borderWidth: 0, top: 5, left: 5, right: 5, borderColor: "#FFF"},
 
